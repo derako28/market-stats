@@ -35,14 +35,6 @@ function App() {
                 element={<StatsTableNew />}
               />
               <Route
-                path="/market-stats/stats-table-es"
-                element={<StatsTableES />}
-              />
-              <Route
-                path="/market-stats/stats-table-nq"
-                element={<StatsTableNQ />}
-              />
-              <Route
                 path="/market-stats/stats-charts"
                 element={<StatsChartsAg />}
               />
@@ -53,6 +45,14 @@ function App() {
             </>
           )}
 
+          <Route
+            path="/market-stats/stats-table-es"
+            element={<StatsTableES />}
+          />
+          <Route
+            path="/market-stats/stats-table-nq"
+            element={<StatsTableNQ />}
+          />
           <Route
             path="/market-stats/stats-charts-es"
             element={<StatsChartsAGFiniteqES />}
