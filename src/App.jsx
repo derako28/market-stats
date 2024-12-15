@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home.jsx";
+import { Home } from "./pages/Home/Home.jsx";
 import { StatsTable } from "./pages/Stats/stats-table.jsx";
 import { StatsTableNew } from "./pages/Stats/stats-table-new.jsx";
 import { StatsChartsAg } from "./pages/Stats/stats-charts-ag.jsx";
