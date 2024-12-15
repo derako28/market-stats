@@ -12,28 +12,37 @@ import { BacktestsSanya } from "./pages/Backtests/Backtests-Sanya.jsx";
 import { BacktestsTapok } from "./pages/Backtests-Tapok/Backtests-Tapok.jsx";
 import { BacktestsTapokUS500 } from "./pages/Backtests-Tapok-US500/Backtests-Tapok-US500.jsx";
 import { getEnv } from "./utils/getEnv.js";
+import { getFeature } from "./utils/getFeature.js";
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route exact path="/market-stats/" element={<Home />} />
+          {getFeature("dax") && (
+            <>
+              <Route exact path="/market-stats/" element={<Home />} />
 
-          <Route path="/market-stats/stats-table" element={<StatsTable />} />
+              <Route
+                path="/market-stats/stats-table"
+                element={<StatsTable />}
+              />
 
-          <Route
-            path="/market-stats/stats-table-new"
-            element={<StatsTableNew />}
-          />
-          <Route
-            path="/market-stats/stats-charts"
-            element={<StatsChartsAg />}
-          />
-          <Route
-            path="/market-stats/stats-charts-2024"
-            element={<StatsChartsAG2024 />}
-          />
+              <Route
+                path="/market-stats/stats-table-new"
+                element={<StatsTableNew />}
+              />
+              <Route
+                path="/market-stats/stats-charts"
+                element={<StatsChartsAg />}
+              />
+              <Route
+                path="/market-stats/stats-charts-2024"
+                element={<StatsChartsAG2024 />}
+              />
+            </>
+          )}
+
           <Route
             path="/market-stats/stats-charts-es"
             element={<StatsChartsAGFiniteqES />}
@@ -44,18 +53,22 @@ function App() {
           />
           <Route path="/market-stats/backtests" element={<Backtests />} />
 
-          <Route
-            path="/market-stats/backtests-sanya"
-            element={<BacktestsSanya />}
-          />
-          <Route
-            path="/market-stats/backtests-tapok"
-            element={<BacktestsTapok />}
-          />
-          <Route
-            path="/market-stats/backtests-tapok-US500"
-            element={<BacktestsTapokUS500 />}
-          />
+          {getFeature("backtests") && (
+            <>
+              <Route
+                path="/market-stats/backtests-sanya"
+                element={<BacktestsSanya />}
+              />
+              <Route
+                path="/market-stats/backtests-tapok"
+                element={<BacktestsTapok />}
+              />
+              <Route
+                path="/market-stats/backtests-tapok-US500"
+                element={<BacktestsTapokUS500 />}
+              />
+            </>
+          )}
         </Routes>
       </div>
     </Router>
