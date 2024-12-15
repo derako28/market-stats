@@ -13,6 +13,8 @@ import { BacktestsTapok } from "./pages/Backtests-Tapok/Backtests-Tapok.jsx";
 import { BacktestsTapokUS500 } from "./pages/Backtests-Tapok-US500/Backtests-Tapok-US500.jsx";
 import { getEnv } from "./utils/getEnv.js";
 import { getFeature } from "./utils/getFeature.js";
+import { StatsTableES } from "./pages/Stats/stats-table-es.jsx";
+import { StatsTableNQ } from "./pages/Stats/stats-table-nq.jsx";
 
 function App() {
   return (
@@ -31,6 +33,14 @@ function App() {
               <Route
                 path="/market-stats/stats-table-new"
                 element={<StatsTableNew />}
+              />
+              <Route
+                path="/market-stats/stats-table-es"
+                element={<StatsTableES />}
+              />
+              <Route
+                path="/market-stats/stats-table-nq"
+                element={<StatsTableNQ />}
               />
               <Route
                 path="/market-stats/stats-charts"

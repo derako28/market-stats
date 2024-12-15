@@ -1246,6 +1246,10 @@ const determineOpenTypeABC = (acc, current) => {
   const isNearHigh = openPrice >= highestHigh - admission * 3;
   const isNearLow = openPrice <= lowestLow + admission * 3;
 
+  if (!aHigh || !aLow || !bHigh || !bLow || !cHigh || !cHigh) {
+    return "-";
+  }
+
   if (
     (aHigh === bHigh &&
       aLow === bLow &&
@@ -1369,4 +1373,92 @@ export const getIbRange = (item) => {
   const minLow = Math.min(A_Low, B_Low);
 
   return maxHigh - minLow;
+};
+
+export const convertToSegmentHighLow = (data) => {
+  // Группировка данных по дате
+  const grouped = data.reduce((acc, entry) => {
+    const date = new Date(entry.time).toISOString().split("T")[0];
+    if (!acc[date]) acc[date] = [];
+    acc[date].push(entry);
+    return acc;
+  }, {});
+
+  // Преобразование в массив с сегментами по дням
+  return Object.entries(grouped).map(([date, dayData]) => {
+    const segments = ["A", "B", "C"];
+
+    const daySegments = dayData
+      .slice(0, segments.length)
+      .reduce((result, entry, index) => {
+        const segment = segments[index];
+        result[`${segment}_High`] = entry.high;
+        result[`${segment}_Low`] = entry.low;
+        return result;
+      }, {});
+
+    return {
+      date,
+      ...daySegments,
+    };
+  });
+};
+
+export const mergeDataByDate = (data1, data2) => {
+  console.log("#data1: ", data1);
+  console.log("#data2: ", data2[0]);
+
+  console.log(moment(data1[0].TPO_Date, "DD/MM/YYYY"));
+  console.log(moment(data2[0].date, "YYYY-MM-DD"));
+
+  return data1.map((item) => {
+    const itemDate = moment(item.TPO_Date, "DD/MM/YYYY");
+    console.log("#itemDate: ", itemDate);
+
+    const dataPeriods = data2.find((el) => {
+      const elDate = moment(el.date, "YYYY-MM-DD");
+
+      // console.log("#el.date: ", elDate);
+
+      return itemDate.isSame(elDate);
+    });
+
+    console.log(dataPeriods);
+    console.log("======");
+
+    return { ...item, ...dataPeriods };
+  });
+};
+
+export const mergeTPOData = (tpoArray, segmentArray) => {
+  // Функция для преобразования даты из формата dd/MM/yyyy в yyyy-MM-dd
+  const normalizeDate = (dateStr) => {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}-${month}-${day}`;
+  };
+
+  // Преобразуем segmentArray в карту для быстрого поиска по дате
+  const segmentMap = segmentArray.reduce((map, entry) => {
+    const normalizedDate = entry.date; // Дата в segmentArray уже в формате yyyy-MM-dd
+    map[normalizedDate] = entry; // Сохраняем объект с ключом даты
+
+    console.log("#entry.date: ", entry.date);
+
+    return map;
+  }, {});
+
+  // Смерджим данные
+  return tpoArray.map((tpoEntry) => {
+    const normalizedDate = normalizeDate(tpoEntry.TPO_Date); // Приводим TPO_Date к формату yyyy-MM-dd
+    console.log("#normalizedDate: ", normalizedDate);
+
+    // Ищем соответствующие данные сегментов по нормализованной дате
+    const segmentData = segmentMap[normalizedDate] || {};
+
+    // Объединяем данные TPO и сегменты
+    return {
+      ...tpoEntry,
+      ...segmentData, // Добавляем сегменты, если они есть
+    };
+  });
 };

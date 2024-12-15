@@ -3,19 +3,20 @@ import { getEnv } from "../../../utils/getEnv.js";
 import { getFeature } from "../../../utils/getFeature.js";
 
 export const Header = () => {
-  console.log(window.location.origin);
-
   return (
     <div className={"flex gap-8 text-gray-300 p-4 mb-8"}>
       {getFeature("dax") && (
         <>
           <NavLink to={"/market-stats/stats-table"}>Table</NavLink>
           <NavLink to={"/market-stats/stats-table-new"}>Table New</NavLink>
+
           <NavLink to={"/market-stats/stats-charts"}>Charts 2023</NavLink>
           <NavLink to={"/market-stats/stats-charts-2024"}>Charts 2024</NavLink>
         </>
       )}
 
+      <NavLink to={"/market-stats/stats-table-es"}>Table ES</NavLink>
+      <NavLink to={"/market-stats/stats-table-nq"}>Table NQ</NavLink>
       <NavLink to={"/market-stats/stats-charts-es"}>Charts ES</NavLink>
       <NavLink to={"/market-stats/stats-charts-nq"}>Charts NQ</NavLink>
 
