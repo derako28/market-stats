@@ -11,6 +11,7 @@ import { Backtests } from "./pages/Backtests/Backtests.jsx";
 import { BacktestsSanya } from "./pages/Backtests/Backtests-Sanya.jsx";
 import { BacktestsTapok } from "./pages/Backtests-Tapok/Backtests-Tapok.jsx";
 import { BacktestsTapokUS500 } from "./pages/Backtests-Tapok-US500/Backtests-Tapok-US500.jsx";
+import { getEnv } from "./utils/getEnv.js";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <div>
         <Routes>
           <Route exact path="/market-stats/" element={<Home />} />
+
           <Route path="/market-stats/stats-table" element={<StatsTable />} />
+
           <Route
             path="/market-stats/stats-table-new"
             element={<StatsTableNew />}
