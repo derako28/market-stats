@@ -1,11 +1,11 @@
 export const getEnv = () => {
   switch (window.location.origin) {
-    case "https://derako28.github.io/market-stats/":
+    case "http://localhost:3000":
       return {
-        env: "deploy",
+        env: "dev",
         features: {
-          dax: false,
-          backtests: false,
+          dax: true,
+          backtests: true,
           nq: true,
           es: true,
         },
@@ -13,10 +13,10 @@ export const getEnv = () => {
 
     default:
       return {
-        env: "dev",
+        env: "deploy",
         features: {
-          dax: true,
-          backtests: true,
+          dax: false,
+          backtests: false,
           es: true,
           nq: true,
         },

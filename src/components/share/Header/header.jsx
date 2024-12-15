@@ -3,6 +3,8 @@ import { getEnv } from "../../../utils/getEnv.js";
 import { getFeature } from "../../../utils/getFeature.js";
 
 export const Header = () => {
+  console.log(window.location.origin);
+
   return (
     <div className={"flex gap-8 text-gray-300 p-4 mb-8"}>
       {getFeature("dax") && (
