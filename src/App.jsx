@@ -21,10 +21,10 @@ function App() {
     <Router>
       <div>
         <Routes>
+          <Route exact path="/market-stats/" element={<Home />} />
+
           {getFeature("dax") && (
             <>
-              <Route exact path="/market-stats/" element={<Home />} />
-
               <Route
                 path="/market-stats/stats-table"
                 element={<StatsTable />}
