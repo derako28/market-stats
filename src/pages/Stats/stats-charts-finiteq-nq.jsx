@@ -302,7 +302,7 @@ export const StatsChartsAGFiniteqNQ = () => {
             <div className={"text-gray-300"}>IB Ext</div>
             <AgCharts
               options={getBarChartHorizontalConfig(
-                getDataIExtensionChart(tableData, OPENS_LABEL),
+                getDataIExtensionChart(tableData),
                 tableData.length,
                 700,
                 500,
