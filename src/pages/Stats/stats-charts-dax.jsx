@@ -9,6 +9,7 @@ import {
   getChartConfigForExt,
   getDataIBChart,
   getDataIBSizeChart,
+  getDataIExtensionChart,
   getDayOfWeek,
   getOptions,
   segmentData,
@@ -219,6 +220,32 @@ export const StatsChartsDax = () => {
           {/*    <div className={'text-gray-300 mb-10'}>NY Continuation</div>*/}
           {/*    <AgCharts options={getChartConfigForExtContinuation(tableData, 600, 600) } />*/}
           {/*</div>*/}
+        </div>
+
+        <div className={"flex justify-center gap-16 mb-10"}>
+          <div className={"flex flex-col justify-center items-center"}>
+            <div className={"text-gray-300"}>IB Ext</div>
+            <AgCharts
+              options={getBarChartHorizontalConfig(
+                getDataIExtensionChart(tableData),
+                tableData.length,
+                700,
+                500,
+              )}
+            />
+          </div>
+
+          <div className={"flex flex-col justify-center items-center"}>
+            <div className={"text-gray-300"}>IB Ext</div>
+            <AgCharts
+              options={getBarChartHorizontalConfig(
+                getDataIExtensionChart(tableData, "ib_ext_ny"),
+                tableData.length,
+                700,
+                500,
+              )}
+            />
+          </div>
         </div>
 
         {/*<div className={'flex justify-center gap-16 mb-20'}>*/}

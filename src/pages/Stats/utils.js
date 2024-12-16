@@ -412,45 +412,14 @@ export const getChartConfigFoBroken = (
 
 export const getDataIExtensionChart = (data, property = "ib_ext") => {
   const newDataReduce = data.reduce((acc, item) => {
-    const { ib_size, ib_ext } = item;
-    const ibExtCof = ((ib_ext / ib_size) * 100).toFixed(0);
+    const { ib_size } = item;
+
+    const ibExt = item[property];
+
+    const ibExtCof = ((ibExt / ib_size) * 100).toFixed(0);
     const roundedIbExt = roundToNearest(ibExtCof, 25);
 
     acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
-
-    // // if (ibExtCof >= 5) {
-    // //     const property = '>5x';
-    // //
-    // //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // // } else if(ibExtCof >= 4) {
-    // //     const property = '4x';
-    // //
-    // //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // // }
-    //
-    // //  if(ibExtCof >= 3) {
-    // //     const property = '3x';
-    // //
-    // //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // // }
-    //
-    // if(ibExtCof >= 2) {
-    //     const property = '>2x';
-    //
-    //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // } else if(ibExtCof >= 1.5){
-    //     const property = '1.5x';
-    //
-    //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // } else if(ibExtCof >= 1.25){
-    //     const property = '1.25x';
-    //
-    //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // } else {
-    //     const property = '<1.25x';
-    //
-    //     acc[property] = acc[property] ? acc[property] + 1 : 1
-    // }
 
     return acc;
   }, {});
