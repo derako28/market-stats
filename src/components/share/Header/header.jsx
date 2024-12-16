@@ -7,13 +7,14 @@ export const Header = () => {
     <div className={"flex gap-8 text-gray-300 p-4 mb-8"}>
       {getFeature("dax") && (
         <>
-          <NavLink to={"/market-stats/stats-table"}>Table</NavLink>
           <NavLink to={"/market-stats/stats-table-new"}>Table New</NavLink>
 
-          <NavLink to={"/market-stats/stats-charts"}>Charts 2023</NavLink>
           <NavLink to={"/market-stats/stats-charts-2024"}>Charts 2024</NavLink>
         </>
       )}
+
+      <NavLink to={"/market-stats/stats-table-dax"}>Table DAX</NavLink>
+      <NavLink to={"/market-stats/stats-charts-dax"}>Charts DAX</NavLink>
 
       <NavLink to={"/market-stats/stats-table-es"}>Table ES</NavLink>
       <NavLink to={"/market-stats/stats-table-nq"}>Table NQ</NavLink>

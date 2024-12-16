@@ -63,7 +63,7 @@ const filterOptions = [
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
 ];
 
-export const StatsTable = () => {
+export const StatsTableDax = () => {
   const [tableData, setTableData] = useState(data);
   const [modalData, setModalData] = useState();
 
@@ -87,7 +87,6 @@ export const StatsTable = () => {
         }
 
         if (key === "ib_size") {
-          // return +item[key] === +dataFilter[key]
           return (
             +item[key] >= +dataFilter[key] - 5 &&
             +item[key] <= +dataFilter[key] + 5

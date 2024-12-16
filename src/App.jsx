@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home/Home.jsx";
-import { StatsTable } from "./pages/Stats/stats-table.jsx";
+import { StatsTableDax } from "./pages/Stats/stats-table-dax.jsx";
 import { StatsTableNew } from "./pages/Stats/stats-table-new.jsx";
-import { StatsChartsAg } from "./pages/Stats/stats-charts-ag.jsx";
+import { StatsChartsDax } from "./pages/Stats/stats-charts-dax.jsx";
 import { StatsChartsAG2024 } from "./pages/Stats/stats-charts-ag-24.jsx";
 import { StatsChartsAGFiniteqES } from "./pages/Stats/stats-charts-finiteq-es.jsx";
 import { StatsChartsAGFiniteqNQ } from "./pages/Stats/stats-charts-finiteq-nq.jsx";
@@ -26,24 +26,25 @@ function App() {
           {getFeature("dax") && (
             <>
               <Route
-                path="/market-stats/stats-table"
-                element={<StatsTable />}
-              />
-
-              <Route
                 path="/market-stats/stats-table-new"
                 element={<StatsTableNew />}
               />
+
               <Route
-                path="/market-stats/stats-charts"
-                element={<StatsChartsAg />}
-              />
-              <Route
-                path="/market-stats/stats-charts-2024"
+                path="/market-stats/stats-charts-24"
                 element={<StatsChartsAG2024 />}
               />
             </>
           )}
+
+          <Route
+            path="/market-stats/stats-table-dax"
+            element={<StatsTableDax />}
+          />
+          <Route
+            path="/market-stats/stats-charts-dax"
+            element={<StatsChartsDax />}
+          />
 
           <Route
             path="/market-stats/stats-table-es"
