@@ -1,4 +1,4 @@
-import data from "../../Data-TW/FDAX.json";
+import data from "../../Data-TW/NQ.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
@@ -11,6 +11,7 @@ import {
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
   OPENS_LABEL,
+  OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "../Stats/constants.js";
 import { useState } from "react";
@@ -38,6 +39,12 @@ import { Table } from "../../components/table.jsx";
 import { Statistic } from "./Statistic/Statistic.jsx";
 
 const filterOptions = [
+  {
+    id: "open_relation",
+    title: "Open Relation",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENS_OPTIONS),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
@@ -90,21 +97,13 @@ const initialData = segmentData(
     prepareData(calculateMarketProfileByDay(data)),
   ).reverse(),
 );
-// console.log("#initialData: ", initialData);
-// console.log(
-//   "#initialData: ",
-//   getLeastFrequentByIbSize(calculateMarketProfileByDay(data)),
-// );
 
-// const filteredData = getIbSizeBreaksByLondon(calculateMarketProfileByDay(data));
-// console.log(filteredData);
-
-export const Es = () => {
+export const NQ = () => {
   const [tableData, setTableData] = useState(initialData);
 
   const visibleCharts = true;
-  const visibleTable = false;
-  const filterVisible = false;
+  const visibleTable = true;
+  const filterVisible = true;
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -252,12 +251,14 @@ export const Es = () => {
             </div>
           </div>
 
+          {/*Touch ZONE*/}
+
           <div className={"flex justify-center gap-16 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Test VA</div>
+              <div className={"text-gray-300"}>Touch IB</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestVA", TEST_OPTIONS),
+                  getDataChart(tableData, "isTestIB", TEST_OPTIONS),
                   tableData.length,
                   500,
                   500,
@@ -266,7 +267,7 @@ export const Es = () => {
             </div>
 
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Test POC</div>
+              <div className={"text-gray-300"}>Touch POC</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
@@ -278,18 +279,19 @@ export const Es = () => {
             </div>
 
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Test IB</div>
+              <div className={"text-gray-300"}>Touch VA</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestIB", TEST_OPTIONS),
+                  getDataChart(tableData, "isTestVA", TEST_OPTIONS),
                   tableData.length,
                   500,
                   500,
                 )}
               />
             </div>
+
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Test Range</div>
+              <div className={"text-gray-300"}>Touch Range</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestRange", TEST_OPTIONS),
@@ -300,6 +302,8 @@ export const Es = () => {
               />
             </div>
           </div>
+
+          {/*Touch ZONE END*/}
 
           <div className={"flex justify-center gap-16 mt-10 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -419,7 +423,7 @@ export const Es = () => {
           {/*IB Ext Bar Type End*/}
           <div className={"flex justify-center gap-16 mt-20 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size </div>
+              <div className={"text-gray-300"}>IB Size</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIBSizeChart(tableData, "ibSize"),
@@ -443,93 +447,9 @@ export const Es = () => {
               />
             </div>
           </div>
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByLondon", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByLondon", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High By Ny</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByNY", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low By Ny</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByNY", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High By All Day</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByAllDay", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low By All Day</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByAllDay", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
         </>
       )}
-      {visibleTable && (
-        <Table
-          columns={columns}
-          data={tableData}
-          // filterData={tableData}
-        />
-      )}
+      {visibleTable && <Table columns={columns} data={tableData} />}
     </Page>
   );
 };

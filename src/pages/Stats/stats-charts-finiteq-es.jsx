@@ -17,6 +17,8 @@ import {
   segmentData,
 } from "./utils";
 import {
+  DATE_RANGE_OPTIONS,
+  DATE_RANGE_VALUE,
   DAY_TYPES_LABEL,
   DAYS_OPTIONS,
   FILTER_TYPES,
@@ -83,6 +85,12 @@ const filterOptions = [
   },
 
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "date_range",
+    title: "Date Range",
+    type: FILTER_TYPES.SELECT,
+    options: DATE_RANGE_OPTIONS,
+  },
 ];
 
 const columns = [
@@ -163,6 +171,59 @@ export const StatsChartsAGFiniteqES = () => {
 
         if (key === "ib_size_to") {
           return +dataFilter.ib_size_to >= +item.ib_size;
+        }
+
+        if (key === "date_range") {
+          const dateEl = moment(item.TPO_Date);
+          const now = moment();
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.LAST_MONTH) {
+            const startDate = now.clone().subtract(1, "month");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_MONTH) {
+            const startDate = now.clone().subtract(3, "month");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.SIX_MONTH) {
+            const startDate = now.clone().subtract(6, "month");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.ONE_YEAR) {
+            const startDate = now.clone().subtract(1, "year");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.TWO_YEAR) {
+            const startDate = now.clone().subtract(2, "year");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_YEAR) {
+            const startDate = now.clone().subtract(3, "year");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.FOUR_YEAR) {
+            const startDate = now.clone().subtract(4, "year");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
+
+          if (dataFilter[key] === DATE_RANGE_VALUE.FIVE_YEAR) {
+            const startDate = now.clone().subtract(5, "year");
+
+            return dateEl.isBetween(startDate, now, "day");
+          }
         }
 
         return item[key]
@@ -259,6 +320,18 @@ export const StatsChartsAGFiniteqES = () => {
             <AgCharts
               options={getBarChartHorizontalConfig(
                 getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
+                tableData.length,
+                500,
+                500,
+              )}
+            />
+          </div>
+
+          <div className={"flex flex-col justify-center items-center"}>
+            <div className={"text-gray-300"}>Test Range</div>
+            <AgCharts
+              options={getBarChartHorizontalConfig(
+                getDataChart(tableData, "isTestRange", TEST_OPTIONS),
                 tableData.length,
                 500,
                 500,

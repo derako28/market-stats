@@ -61,18 +61,48 @@ export const OPENS_LABEL = {
   LOWER_RANGE: "O < Range",
 };
 
-export const CLOSE_LABEL_BY_CURRENT_DAY = {
-  IN_VA: "In VA",
-  ABOVE_VA: "O > VA",
-  LOWER_VA: "O < VA",
-};
-
 export const OPENS_OPTIONS = {
   IN_VA: OPENS_LABEL.IN_VA,
   ABOVE_VA: OPENS_LABEL.ABOVE_VA,
   LOWER_VA: OPENS_LABEL.LOWER_VA,
   ABOVE_RANGE: OPENS_LABEL.ABOVE_RANGE,
   LOWER_RANGE: OPENS_LABEL.LOWER_RANGE,
+};
+
+export const CLOSES = {
+  IN_VA: "IN_VA",
+  ABOVE_VA: "ABOVE_VA",
+  LOWER_VA: "LOWER_VA",
+  ABOVE_RANGE: "ABOVE_RANGE",
+  LOWER_RANGE: "LOWER_RANGE",
+};
+
+export const CLOSES_LABEL = {
+  IN_VA: "In VA",
+  ABOVE_VA: "C > VA",
+  LOWER_VA: "C < VA",
+  ABOVE_RANGE: "C > Range",
+  LOWER_RANGE: "C < Range",
+};
+
+export const CLOSES_TO_CURRENT_DAY_LABEL = {
+  IN_VA: "In VA",
+  ABOVE_VA: "C > VA",
+  LOWER_VA: "C < VA",
+};
+
+export const CLOSES_OPTIONS = {
+  IN_VA: CLOSES_LABEL.IN_VA,
+  ABOVE_VA: CLOSES_LABEL.ABOVE_VA,
+  LOWER_VA: CLOSES_LABEL.LOWER_VA,
+  ABOVE_RANGE: CLOSES_LABEL.ABOVE_RANGE,
+  LOWER_RANGE: CLOSES_LABEL.LOWER_RANGE,
+};
+
+export const CLOSE_LABEL_BY_CURRENT_DAY = {
+  IN_VA: "In VA",
+  ABOVE_VA: "O > VA",
+  LOWER_VA: "O < VA",
 };
 
 export const DIRECTION = {
@@ -108,6 +138,7 @@ export const IB_BROKEN_LABELS = {
   ib_low_broken: "IB Low Broken",
   ib_both_broken: "IB Both Broken",
   ib_one_side_broken: "IB One Side Broken",
+  // ib_no_broken: "IB No Broken",
 };
 
 export const DIRECTION_OPTIONS = {
@@ -123,6 +154,9 @@ export const RESULT_OPTIONS = {
 export const TEST_OPTIONS = {
   YES: "YES",
   NO: "NO",
+  OPEN_IN_IB: "OPEN IN IB",
+  OPEN_IN_VA: "OPEN IN VA",
+  OPEN_IN_RANGE: "OPEN IN Range",
 };
 
 export const chartConfig = (
@@ -180,3 +214,35 @@ export const chartConfig = (
     },
   };
 };
+
+export const DATE_RANGE_VALUE = {
+  LAST_MONTH: "LAST_MONTH",
+  THREE_MONTH: "THREE_MONTH",
+  SIX_MONTH: "SIX_MONTH",
+  ONE_YEAR: "ONE_YEAR",
+  TWO_YEAR: "TWO_YEAR",
+  THREE_YEAR: "THREE_YEAR",
+  FOUR_YEAR: "FOUR_YEAR",
+  FIVE_YEAR: "FIVE_YEAR",
+};
+export const DATE_RANGE_LABEL = {
+  LAST_MONTH: "Last Month",
+  THREE_MONTH: "Three Month",
+  SIX_MONTH: "Six Month",
+  ONE_YEAR: "1 YEAR",
+  TWO_YEAR: "2 YEAR",
+  THREE_YEAR: "3 YEAR",
+  FOUR_YEAR: "4 YEAR",
+  FIVE_YEAR: "5 YEAR",
+};
+
+export const DATE_RANGE_OPTIONS = [
+  { value: DATE_RANGE_VALUE.LAST_MONTH, label: DATE_RANGE_LABEL.LAST_MONTH },
+  { value: DATE_RANGE_VALUE.THREE_MONTH, label: DATE_RANGE_LABEL.THREE_MONTH },
+  { value: DATE_RANGE_VALUE.SIX_MONTH, label: DATE_RANGE_LABEL.SIX_MONTH },
+  { value: DATE_RANGE_VALUE.ONE_YEAR, label: DATE_RANGE_LABEL.ONE_YEAR },
+  { value: DATE_RANGE_VALUE.TWO_YEAR, label: DATE_RANGE_LABEL.TWO_YEAR },
+  { value: DATE_RANGE_VALUE.THREE_YEAR, label: DATE_RANGE_LABEL.THREE_YEAR },
+  { value: DATE_RANGE_VALUE.FOUR_YEAR, label: DATE_RANGE_LABEL.FOUR_YEAR },
+  { value: DATE_RANGE_VALUE.FIVE_YEAR, label: DATE_RANGE_LABEL.FIVE_YEAR },
+];

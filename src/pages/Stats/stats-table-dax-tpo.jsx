@@ -1,6 +1,6 @@
 import { Table } from "../../components/table.jsx";
 
-import data from "./data-ib-broke-us.json";
+import data from "../../Data/data-dax-tv.json";
 import BacktestData from "../Backtests/data-backtests-2.json";
 
 import { useState } from "react";
@@ -20,51 +20,67 @@ import { Modal } from "../../components/share/Modal/modal.jsx";
 import { BacktestTable } from "../Backtests/backtest-table.jsx";
 
 import moment from "moment/moment";
+import {
+  analyzeDayData,
+  calculateTPOPerDay,
+  calculateTPOPerDay2,
+} from "./utils-tpo.js";
 
 const columns = [
-  { id: "date", title: "Date", type: FILTER_TYPES.DATEPICKER_RANGE },
-  {
-    id: "open",
-    title: "Open Relation",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(OPENS_OPTIONS),
-  },
-  {
-    id: "opening_type",
-    title: "Opening Type",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(OPENING_TYPES),
-  },
-  {
-    id: "type_day",
-    title: "Type Day",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(DAY_TYPES),
-  },
-  {
-    id: "ib_broken",
-    title: "IB Broken",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN),
-  },
-  {
-    id: "direction",
-    title: "Direction",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(DIRECTION),
-  },
-  { id: "ib_size", title: "IB Size" },
-  { id: "ib_ext", title: "IB_Exp", filter: false },
-  { id: "ib_ext_ny", title: "IB Exp NY", filter: false },
+  { id: "day", title: "Date", type: FILTER_TYPES.DATEPICKER_RANGE },
+  // {
+  //   id: "open",
+  //   title: "Open Relation",
+  // },
+  // {
+  //   id: "opening_type",
+  //   title: "Opening Type",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(OPENING_TYPES),
+  // },
+  // {
+  //   id: "type_day",
+  //   title: "Type Day",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(DAY_TYPES),
+  // },
+  // {
+  //   id: "ib_broken",
+  //   title: "IB Broken",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(IB_BROKEN),
+  // },
+  // {
+  //   id: "direction",
+  //   title: "Direction",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(DIRECTION),
+  // },
+  { id: "ibSize", title: "IB Size" },
+  { id: "ibrHigh", title: "IB High" },
+  { id: "ibrLow", title: "IB Low" },
+  { id: "poc", title: "poc" },
+  { id: "vah", title: "vah" },
+  { id: "val", title: "val" },
+  { id: "tpoOpen", title: "tpoOpen" },
+  { id: "tpoClose", title: "tpoClose" },
+  { id: "tpoHigh", title: "tpoHigh" },
+  { id: "tpoLow", title: "tpoLow" },
+
+  // { id: "ib_ext", title: "IB_Exp", filter: false },
+  // { id: "ib_ext_ny", title: "IB Exp NY", filter: false },
 ];
 
 const filterOptions = [
-  ...columns,
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
 ];
 
-export const StatsTableDax = () => {
-  const [tableData, setTableData] = useState(data);
+const initialData = analyzeDayData(
+  calculateTPOPerDay2(data, 68, 5).slice(0, 5).reverse(),
+);
+
+export const StatsTableDaxTPO = () => {
+  const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
   const dataFilter = (dataFilter) => {
@@ -118,6 +134,10 @@ export const StatsTableDax = () => {
       </Modal>
 
       <Filter options={filterOptions} onChange={dataFilter} />
+
+      {/*{JSON.parse(initialData.slice(0, 2).toString())}*/}
+      {/*{initialData.slice(0, 2)}*/}
+
       <Table
         columns={columns}
         data={tableData}

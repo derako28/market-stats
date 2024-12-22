@@ -19,12 +19,15 @@
     "react-router-dom": "^7.0.2"
   },
   "devDependencies": {
+    "@dxfeed/api": "^1.6.0",
+    "@dxfeed/dxlink-api": "^0.3.0",
     "@eslint/js": "^9.15.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "ag-charts-react": "^11.0.0",
     "autoprefixer": "^10.4.20",
+    "classnames": "^2.5.1",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",

@@ -13,7 +13,13 @@ export const Table = ({ columns, data = [], onClickRow, isFooter = true }) => {
             <tr>
               {columns.map((column) => {
                 return (
-                  <th scope="col" className="px-6 py-3" key={column.id}>
+                  <th
+                    scope="col"
+                    className="px-6 py-3"
+                    key={
+                      column.subId ? column.id + "_" + column.subId : column.id
+                    }
+                  >
                     {column.title}
                   </th>
                 );
@@ -48,8 +54,19 @@ export const Table = ({ columns, data = [], onClickRow, isFooter = true }) => {
                       }
 
                       return (
-                        <td className="px-6 py-4" key={column.id}>
-                          {capitalizeFirstLetter(item[column.id]) || "-"}
+                        <td
+                          className="px-6 py-4"
+                          key={
+                            column.subId
+                              ? column.id + "_" + column.subId
+                              : column.id
+                          }
+                        >
+                          {column.subId
+                            ? capitalizeFirstLetter(
+                                item[column.id][column.subId],
+                              )
+                            : capitalizeFirstLetter(item[column.id]) || "-"}
                         </td>
                       );
                     })}

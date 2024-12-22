@@ -41,33 +41,45 @@ const PriceLevel = ({ price, segments, poc, vah, val }) => {
   );
 };
 
-export const MarketProfileChart = ({ data }) => {
-  console.log("#data: ", data);
+export const MarketProfileChartList = ({
+  data,
+  valueAreaPercent = 68,
+  tpr = 5,
+}) => {
+  const groupedData = groupDataByDate(data); // Группируем данные по датам
 
   return (
     <div className="market-profile-chart flex flex-wrap gap-14">
-      <h3>Market Profile Chart</h3>
-
-      <div className={""}>
-        {/*<h4>{date}</h4>*/}
-        {/*<div className="summary">*/}
-        {/*  <strong>POC:</strong> {poc} <br />*/}
-        {/*  <strong>VAH:</strong> {vah} <br />*/}
-        {/*  <strong>VAL:</strong> {val}*/}
-        {/*</div>*/}
-        <div className="profile">
-          {data?.profile?.map(({ price, segments }) => (
-            <PriceLevel
-              key={price}
-              price={price}
-              segments={segments}
-              poc={poc}
-              vah={vah}
-              val={val}
-            />
-          ))}
-        </div>
-      </div>
+      {/*<h3>Market Profile Chart</h3> */}
+      {Object.keys(groupedData).map((date) => {
+        const { poc, vah, val, profile } = buildMarketProfile(
+          groupedData[date],
+          valueAreaPercent,
+          tpr,
+        );
+        return (
+          <div key={date} className={""}>
+            {/*<h4>{date}</h4>*/}
+            {/*<div className="summary">*/}
+            {/*  <strong>POC:</strong> {poc} <br />*/}
+            {/*  <strong>VAH:</strong> {vah} <br />*/}
+            {/*  <strong>VAL:</strong> {val}*/}
+            {/*</div>*/}
+            <div className="profile">
+              {profile.map(({ price, segments }) => (
+                <PriceLevel
+                  key={price}
+                  price={price}
+                  segments={segments}
+                  poc={poc}
+                  vah={vah}
+                  val={val}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 html {
   background: #0b0b0f;
+  color: #fff;
 }
 
 .App {
@@ -43,4 +44,39 @@ html {
 
 a.active {
   color: #0075ff;
+}
+
+
+
+.market-profile-chart {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.summary {
+  margin-bottom: 20px;
+}
+
+.profile {
+  margin-top: 20px;
+}
+
+.price-level {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.price-label {
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.tpo-bar {
+  height: 20px;
+}
+
+.tpo-count {
+  margin-left: 10px;
 }

@@ -1,9 +1,9 @@
 import { Header } from "../Header/header.jsx";
 
-export const Page = ({ children }) => {
+export const Page = ({ children, noHeader }) => {
   return (
     <>
-      <Header />
+      {!noHeader && <Header />}
       {children}
     </>
   );

@@ -4,12 +4,22 @@ import { getFeature } from "../../../utils/getFeature.js";
 
 export const Header = () => {
   return (
-    <div className={"flex gap-8 text-gray-300 p-4 mb-8"}>
+    <div className={"flex gap-4 text-gray-300 p-4 mb-2"}>
+      {getFeature("TWData") && (
+        <>
+          <NavLink to={"/market-stats/dax"}>DAX</NavLink>
+          <NavLink to={"/market-stats/es"}>ES</NavLink>
+          <NavLink to={"/market-stats/nq"}>NQ</NavLink>
+        </>
+      )}
       {getFeature("dax") && (
         <>
           <NavLink to={"/market-stats/stats-table-new"}>Table New</NavLink>
 
           <NavLink to={"/market-stats/stats-charts-2024"}>Charts 2024</NavLink>
+          <NavLink to={"/market-stats/stats-table-tpo-dax"}>
+            Table DAX TPO
+          </NavLink>
         </>
       )}
 

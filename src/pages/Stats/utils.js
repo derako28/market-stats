@@ -210,7 +210,8 @@ export const getBarChartHorizontalConfig = (
         label: {
           color: "#fff",
           formatter: ({ value }) => {
-            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(0)}%)` : ""} `;
+            return `${value.toFixed(0)}  `;
+            // return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(0)}%)` : ""} `;
           },
         },
 
@@ -250,17 +251,20 @@ export const dataWithIbInfo = (data, property = "ib_broken") => {
       ib_high_broken: isHighBroken,
       ib_low_broken: isLowBroken,
       ib_both_broken: isLowBroken && isHighBroken,
+      ib_no_broken: !isLowBroken && !isHighBroken,
     };
   });
 };
 
-export const getDataIBSizeChart = (data, property) => {
+export const getDataIBSizeChart = (data, property, subProperty = null) => {
   const newData = {};
 
   data.forEach((item) => {
-    newData[item[property]] = newData[item[property]]
-      ? newData[item[property]] + 1
-      : 1;
+    const key = subProperty ? item[property][subProperty] : item[property];
+
+    if (key !== 0) {
+      newData[key] = newData[key] ? newData[key] + 1 : 1;
+    }
   });
 
   return Object.keys(newData)
@@ -268,21 +272,23 @@ export const getDataIBSizeChart = (data, property) => {
     .map((key) => {
       return { asset: key, amount: newData[key] };
     })
-    .filter((item) => item.amount > data.length / 250);
+    .filter((item) => item.amount > data.length * (0.25 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {
-  return Object.keys(labels).map((key) => {
-    return {
-      asset: labels[key],
-      amount: data.filter((item) => {
-        return (
-          item[property]?.toString()?.toLowerCase() ===
-          labels[key]?.toString()?.toLowerCase()
-        );
-      }).length,
-    };
-  });
+  return Object.keys(labels)
+    .map((key) => {
+      return {
+        asset: labels[key],
+        amount: data.filter((item) => {
+          return (
+            item[property]?.toString()?.toLowerCase() ===
+            labels[key]?.toString()?.toLowerCase()
+          );
+        }).length,
+      };
+    })
+    .filter(({ amount }) => amount);
 };
 
 export const getDataIBChart = (data = [], labels) => {
@@ -410,16 +416,21 @@ export const getChartConfigFoBroken = (
   };
 };
 
-export const getDataIExtensionChart = (data, property = "ib_ext") => {
+export const getDataIExtensionChart = (
+  data,
+  property = "ib_ext",
+  subProperty = null,
+) => {
   const newDataReduce = data.reduce((acc, item) => {
-    const { ib_size } = item;
-
-    const ibExt = item[property];
+    const ib_size = item.ib_size || item.ibSize;
+    const ibExt = subProperty ? item[property][subProperty] : item[property];
 
     const ibExtCof = ((ibExt / ib_size) * 100).toFixed(0);
     const roundedIbExt = roundToNearest(ibExtCof, 25);
 
-    acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
+    if (ibExt !== 0) {
+      acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
+    }
 
     return acc;
   }, {});
@@ -427,9 +438,12 @@ export const getDataIExtensionChart = (data, property = "ib_ext") => {
   return Object.keys(newDataReduce)
     .sort((a, b) => a - b)
     .map((key) => {
-      return { asset: key + "%", amount: newDataReduce[key] };
+      return {
+        asset: key === "0" ? "0-25" : key + "%",
+        amount: newDataReduce[key],
+      };
     })
-    .filter((item) => item.amount > data.length / 100);
+    .filter((item) => item.amount > data.length * (1 / 100));
 };
 
 export const getChartConfigForBacktest = (
@@ -692,31 +706,31 @@ export const getProfit = (data) => {
 };
 
 export const getRelation = (acc, current, type) => {
-  const previtem = acc[acc.length - 1];
+  const prevItem = acc[acc.length - 1];
 
   const openClose = type === "open" ? current?.TPO_Open : current?.TPO_Close;
 
-  if (previtem === undefined) {
+  if (prevItem === undefined) {
     return "-";
   }
 
-  if (openClose >= previtem?.VAL && openClose <= previtem?.VAH) {
+  if (openClose >= prevItem?.VAL && openClose <= prevItem?.VAH) {
     return OPENS_OPTIONS.IN_VA;
   }
 
-  if (openClose > previtem?.TPO_High) {
+  if (openClose > prevItem?.TPO_High) {
     return OPENS_OPTIONS.ABOVE_RANGE;
   }
 
-  if (openClose < previtem?.TPO_Low) {
+  if (openClose < prevItem?.TPO_Low) {
     return OPENS_OPTIONS.LOWER_RANGE;
   }
 
-  if (openClose > previtem?.VAH) {
+  if (openClose > prevItem?.VAH) {
     return OPENS_OPTIONS.ABOVE_VA;
   }
 
-  if (openClose < previtem?.VAL) {
+  if (openClose < prevItem?.VAL) {
     return OPENS_OPTIONS.LOWER_VA;
   }
 };
@@ -795,9 +809,9 @@ export const getIbBroken = (item) => {
 };
 
 export const isTestVA = (acc, item) => {
-  const previtem = acc[acc.length - 1];
+  const prevItem = acc[acc.length - 1];
 
-  if (!previtem) {
+  if (!prevItem) {
     return false;
   }
 
@@ -805,7 +819,7 @@ export const isTestVA = (acc, item) => {
   const TPO_Low = item.TPO_Low;
   const TPO_High = item.TPO_High;
 
-  const { VAL, VAH } = previtem;
+  const { VAL, VAH } = prevItem;
 
   if (open >= VAL && open <= VAH) {
     return TEST_OPTIONS.YES;
@@ -822,10 +836,10 @@ export const isTestVA = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestIB = (acc, item) => {
-  const previtem = acc[acc.length - 1];
+export const isTestRange = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
 
-  if (!previtem) {
+  if (!prevItem) {
     return false;
   }
 
@@ -833,7 +847,35 @@ export const isTestIB = (acc, item) => {
   const TPO_Low = item.TPO_Low;
   const TPO_High = item.TPO_High;
 
-  const { IBRHigh, IBRLow } = previtem;
+  const { TPO_High: TPO_HighPrev, TPO_Low: TPO_LowPrev } = prevItem;
+
+  if (open >= TPO_LowPrev && open <= TPO_HighPrev) {
+    return TEST_OPTIONS.OPEN_IN_RANGE;
+  }
+
+  if (open > TPO_HighPrev && TPO_Low < TPO_HighPrev) {
+    return TEST_OPTIONS.YES;
+  }
+
+  if (open < TPO_LowPrev && TPO_High > TPO_LowPrev) {
+    return TEST_OPTIONS.YES;
+  }
+
+  return TEST_OPTIONS.NO;
+};
+
+export const isTestIB = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return false;
+  }
+
+  const open = item.TPO_Open;
+  const TPO_Low = item.TPO_Low;
+  const TPO_High = item.TPO_High;
+
+  const { IBRHigh, IBRLow } = prevItem;
 
   if (open >= IBRLow && open <= IBRHigh) {
     return TEST_OPTIONS.YES;
@@ -851,9 +893,9 @@ export const isTestIB = (acc, item) => {
 };
 
 export const isTestPOC = (acc, item) => {
-  const previtem = acc[acc.length - 1];
+  const prevItem = acc[acc.length - 1];
 
-  if (!previtem) {
+  if (!prevItem) {
     return false;
   }
 
@@ -863,7 +905,7 @@ export const isTestPOC = (acc, item) => {
   const TPO_Low = item.TPO_Low;
   const TPO_High = item.TPO_High;
 
-  const { POC } = previtem;
+  const { POC } = prevItem;
   const POC_High = +POC + admission;
   const POC_LOW = +POC + admission;
 
@@ -904,6 +946,7 @@ export const prepareDataFiniteq = (data) => {
           type_day: determineDayType(item),
           isTestVA: isTestVA(acc, item),
           isTestPOC: isTestPOC(acc, item),
+          isTestRange: isTestRange(acc, item),
           isTestIB: isTestIB(acc, item),
         },
       ];
@@ -1021,9 +1064,9 @@ const determineOpenType2 = ({
 };
 
 const determineOpenType = (acc, current) => {
-  const previtem = acc[acc.length - 1];
+  const prevItem = acc[acc.length - 1];
 
-  if (!previtem || !current) {
+  if (!prevItem || !current) {
     return "-";
   }
 
@@ -1034,10 +1077,10 @@ const determineOpenType = (acc, current) => {
   const dayHigh = toNumber(current.TPO_High);
   const dayLow = toNumber(current.TPO_Low);
 
-  const prevDayHigh = toNumber(previtem.TPO_High);
-  const prevDayLow = toNumber(previtem.TPO_Low);
-  const prevVah = toNumber(previtem.VAH);
-  const prevVal = toNumber(previtem.VAL);
+  const prevDayHigh = toNumber(prevItem.TPO_High);
+  const prevDayLow = toNumber(prevItem.TPO_Low);
+  const prevVah = toNumber(prevItem.VAH);
+  const prevVal = toNumber(prevItem.VAL);
 
   // Проверка на валидность данных
   if (
@@ -1170,9 +1213,9 @@ export const setMatchOpeningType = (data) => {
 };
 
 const determineOpenTypeABC = (acc, current) => {
-  const previtem = acc[acc.length - 1];
+  const prevItem = acc[acc.length - 1];
 
-  // if(!previtem || !current ) {
+  // if(!prevItem || !current ) {
   //     return "-";
   // }
 
@@ -1192,10 +1235,10 @@ const determineOpenTypeABC = (acc, current) => {
   const cLow = current?.C_Low;
   const ibRange = current?.ibRange;
 
-  const prevHigh = toNumber(previtem?.TPO_High);
-  const prevLow = toNumber(previtem?.TPO_Low);
-  const vah = toNumber(previtem?.VAH);
-  const val = toNumber(previtem?.VAL);
+  const prevHigh = toNumber(prevItem?.TPO_High);
+  const prevLow = toNumber(prevItem?.TPO_Low);
+  const vah = toNumber(prevItem?.VAH);
+  const val = toNumber(prevItem?.VAL);
 
   // const prevHigh = parseFloat(prevDay.TPO_High); // High предыдущего дня
   // const prevLow = parseFloat(prevDay.TPO_Low); // Low предыдущего дня

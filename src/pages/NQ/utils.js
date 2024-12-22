@@ -7,7 +7,7 @@ import {
 
 export const calculateMarketProfileByDay = (
   data,
-  valueAreaPercent = 70,
+  valueAreaPercent = 68,
   tpr = 5,
 ) => {
   // 1. Группируем данные по дням
