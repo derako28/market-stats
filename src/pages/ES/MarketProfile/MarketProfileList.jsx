@@ -48,6 +48,8 @@ export const MarketProfileChartList = ({
 }) => {
   const groupedData = groupDataByDate(data); // Группируем данные по датам
 
+  console.log("#groupedData: ", groupedData);
+
   return (
     <div className="market-profile-chart flex flex-wrap gap-14">
       {/*<h3>Market Profile Chart</h3> */}
@@ -59,12 +61,12 @@ export const MarketProfileChartList = ({
         );
         return (
           <div key={date} className={""}>
-            {/*<h4>{date}</h4>*/}
-            {/*<div className="summary">*/}
-            {/*  <strong>POC:</strong> {poc} <br />*/}
-            {/*  <strong>VAH:</strong> {vah} <br />*/}
-            {/*  <strong>VAL:</strong> {val}*/}
-            {/*</div>*/}
+            <h4>{date}</h4>
+            <div className="summary">
+              <strong>POC:</strong> {poc} <br />
+              <strong>VAH:</strong> {vah} <br />
+              <strong>VAL:</strong> {val}
+            </div>
             <div className="profile">
               {profile.map(({ price, segments }) => (
                 <PriceLevel

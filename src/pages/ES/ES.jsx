@@ -2,6 +2,7 @@ import data from "../../Data-TW/ES.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
+  BREAKOUT_PERIODS_LABEL,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
@@ -19,13 +20,14 @@ import {
   compileMarketProfileByDays,
   prepareData,
   segmentData,
-} from "./utils.js";
+} from "../../utils/prepareData.js";
 import { AgCharts } from "ag-charts-react";
 import {
   dataWithIbInfo,
   getBarChartConfig,
   getBarChartHorizontalConfig,
   getChartConfig,
+  getChartConfigForBreakoutPeriods,
   getDataChart,
   getDataIBChart,
   getDataIBSizeChart,
@@ -64,20 +66,21 @@ const filterOptions = [
 
 const columns = [
   { id: "date", title: "Date" },
-  { id: "open_relation", title: "Open Relation" },
+  // { id: "open_relation", title: "Open Relation" },
+  { id: "opening_type", title: "Opening Type" },
   { id: "tpoOpen", title: "tpoOpen" },
   { id: "tpoClose", title: "tpoClose" },
   { id: "tpoHigh", title: "tpoHigh" },
   { id: "tpoLow", title: "tpoLow" },
 
-  { id: "ibSize", title: "IB Size" },
-  { id: "ibHigh", title: "IB High" },
-  { id: "ibLow", title: "IB Low" },
+  // { id: "ibSize", title: "IB Size" },
+  // { id: "ibHigh", title: "IB High" },
+  // { id: "ibLow", title: "IB Low" },
 
-  { id: "ibBroken", title: "IB Broken" },
+  // { id: "ibBroken", title: "IB Broken" },
 
-  { id: "ibExt", subId: "highExt", title: "IB Ext High" },
-  { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
+  // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
+  // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 
   { id: "poc", title: "poc" },
   { id: "vah", title: "vah" },
@@ -90,14 +93,17 @@ const columns = [
 //   ).reverse(),
 // );
 
-// console.log(JSON.stringify(initialData));
-
 // const initialData = calculateMarketProfileByDay(data);
 // const initialDat2 = calculateOHLCProfile(data).reverse();
 
 const initialData = segmentData(
-  prepareData(compileMarketProfileByDays(data, 68, 5)),
-).reverse();
+  prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
+);
+
+// console.log("#initialData: ", initialData);
+// console.log(JSON.stringify(initialData));
+
+// console.log("#forecastNextDay: ", forecastNextDay(initialData, "O > VA"));
 
 export const ES = () => {
   const [tableData, setTableData] = useState(initialData);
@@ -105,7 +111,7 @@ export const ES = () => {
 
   const visibleCharts = true;
   const visibleTable = false;
-  const filterVisible = false;
+  const filterVisible = true;
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -211,7 +217,7 @@ export const ES = () => {
 
       <Statistic data={tableData} />
 
-      {/*<MarketProfileChart data={data.slice(0, 200)} />*/}
+      {/*<MarketProfileChartList data={data} />*/}
       {filterVisible && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
@@ -313,7 +319,121 @@ export const ES = () => {
             </div>
           </div>
 
+          <div className={"flex justify-center gap-16 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAL (Open Under POC)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "underPoc",
+                    ),
+                    "isTestVAL",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  ).length,
+                  500,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAL (Open Over POC)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "overPoc",
+                    ),
+                    "isTestVAL",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  ).length,
+                  500,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAH (Open Under Poc)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "underPoc",
+                    ),
+                    "isTestVAH",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  ).length,
+                  500,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAH (Open Over Poc)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "overPoc",
+                    ),
+                    "isTestVAH",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  ).length,
+                  500,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+
           {/*Touch ZONE END*/}
+
+          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300 mb-4"}>First Breakout Periods</div>
+              <AgCharts
+                options={getChartConfigForBreakoutPeriods(
+                  tableData,
+                  "firstBreakout",
+                  BREAKOUT_PERIODS_LABEL,
+                  600,
+                  600,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300 mb-4"}>
+                Opposite Breakout Periods
+              </div>
+              <AgCharts
+                options={getChartConfigForBreakoutPeriods(
+                  tableData.filter(
+                    (item) => item?.breakoutPeriods?.oppositeBreakout.period,
+                  ),
+                  "oppositeBreakout",
+                  BREAKOUT_PERIODS_LABEL,
+                  600,
+                  600,
+                )}
+              />
+            </div>
+          </div>
 
           <div className={"flex justify-center gap-16 mt-10 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>

@@ -1,4 +1,4 @@
-import data from "../../Data-TW/YM-short.json";
+import data from "../../Data-TW/YM.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
@@ -17,7 +17,6 @@ import {
 import { useState } from "react";
 import {
   compileMarketProfileByDays,
-  forecastNextDay,
   prepareData,
   segmentData,
 } from "./utils.js";
@@ -38,6 +37,7 @@ import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
 import { Statistic } from "./Statistic/Statistic.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
+import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 
 const filterOptions = [
   {
@@ -66,7 +66,7 @@ const filterOptions = [
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
-  { id: "opening_type", title: "Opening Type" },
+  // { id: "opening_type", title: "Opening Type" },
   { id: "tpoOpen", title: "tpoOpen" },
   { id: "tpoClose", title: "tpoClose" },
   { id: "tpoHigh", title: "tpoHigh" },
@@ -86,25 +86,11 @@ const columns = [
   { id: "val", title: "val" },
 ];
 
-// const initialData = segmentData(
-//   filterLeastFrequentByIbSize(
-//     prepareData(calculateMarketProfileByDay(data)),
-//   ).reverse(),
-// );
-
-// const initialData = calculateMarketProfileByDay(data);
-// const initialDat2 = calculateOHLCProfile(data).reverse();
-
 const initialData = segmentData(
-  prepareData(compileMarketProfileByDays(data, 68, 5)),
-).reverse();
+  prepareData(compileMarketProfileByDays(data, 68, 20)),
+);
 
-console.log("#initialData: ", initialData);
-// console.log(JSON.stringify(initialData));
-
-console.log("#forecastNextDay: ", forecastNextDay(initialData, "O > VA"));
-
-export const ES = () => {
+export const YM = () => {
   const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
@@ -210,17 +196,16 @@ export const ES = () => {
     <Page>
       <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
         <div className={"mt-5 text-gray-200"}>
-          {/*<MarketProfileChart data={modalData} />*/}
+          <MarketProfileChart data={modalData} />
         </div>
       </Modal>
 
       <Statistic data={tableData} />
 
-      {/*<MarketProfileChart data={data.slice(0, 200)} />*/}
       {filterVisible && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
-      {/*Count days: {tableData.length}*/}
+
       {visibleCharts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
@@ -266,7 +251,7 @@ export const ES = () => {
             </div>
           </div>
 
-          {/*Touch ZONE*/}
+          {/*Touch ZONES*/}
 
           <div className={"flex justify-center gap-16 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -318,7 +303,7 @@ export const ES = () => {
             </div>
           </div>
 
-          {/*Touch ZONE END*/}
+          {/*Touch ZONES END*/}
 
           <div className={"flex justify-center gap-16 mt-10 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -401,6 +386,7 @@ export const ES = () => {
           </div>
         </>
       )}
+
       {visibleTable && (
         <Table
           columns={columns}

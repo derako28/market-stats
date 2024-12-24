@@ -3,6 +3,7 @@ import {
   OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "../Stats/constants.js";
+import { toNumber } from "../Stats/utils.js";
 
 export const buildMarketProfileOld = (data, valueAreaPercent = 68, tpr = 5) => {
   const priceStep = tpr * 0.25; // Шаг цены для округления уровней, учитывая ticks per row
@@ -52,14 +53,16 @@ export const buildMarketProfileOld = (data, valueAreaPercent = 68, tpr = 5) => {
 
 export const calculateOHLCProfile = (data, valueAreaPercent = 68) => {
   // Группировка данных по дням
-  const groupedByDay = data.reduce((acc, period) => {
-    const date = period.time.split("T")[0]; // Получаем дату из строки времени
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(period);
-    return acc;
-  }, {});
+  const groupedByDay = data
+    .filter((item) => !item.time.includes("22:00"))
+    .reduce((acc, period) => {
+      const date = period.time.split("T")[0]; // Получаем дату из строки времени
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(period);
+      return acc;
+    }, {});
 
   // Функция для расчета POC, VAH и VAL для данных одного дня
   const calculateProfile = (dayData) => {
@@ -134,12 +137,14 @@ export const calculateMarketProfileByDay = (
   tpr = 5,
 ) => {
   // 1. Группируем данные по дням
-  const dailyData = data.reduce((acc, entry) => {
-    const day = entry.time.split("T")[0]; // Извлекаем дату в формате "YYYY-MM-DD"
-    if (!acc[day]) acc[day] = [];
-    acc[day].push(entry);
-    return acc;
-  }, {});
+  const dailyData = data
+    .filter((item) => !item.time.includes("22:00"))
+    .reduce((acc, entry) => {
+      const day = entry.time.split("T")[0]; // Извлекаем дату в формате "YYYY-MM-DD"
+      if (!acc[day]) acc[day] = [];
+      acc[day].push(entry);
+      return acc;
+    }, {});
 
   // 2. Рассчитываем профиль для каждого дня
   return Object.entries(dailyData).map(([date, dayData]) => {
@@ -431,6 +436,7 @@ export const prepareData = (data) => {
         isTestPOC: isTestPOC(acc, item),
         isTestRange: isTestRange(acc, item),
         isTestIB: isTestIB(acc, item),
+        opening_type: determineOpenTypeABC(acc, item),
       },
     ];
   }, []);
@@ -619,16 +625,20 @@ export const compileMarketProfileByDays = (
   data,
   valueAreaPercent = 68,
   tpr = 5,
+  step = 0.25,
 ) => {
-  const priceStep = tpr * 0.25; // Рассчитываем шаг цен
+  const priceStep = tpr * step; // Рассчитываем шаг цен
 
   // Группировка данных по дням
-  const groupedData = data.reduce((acc, entry) => {
-    const date = entry.time.split("T")[0]; // Извлечение даты
-    if (!acc[date]) acc[date] = [];
-    acc[date].push(entry);
-    return acc;
-  }, {});
+  const groupedData = data
+    .filter((item) => !item.time.includes("22:00"))
+    .reduce((acc, entry) => {
+      const date = entry.time.split("T")[0];
+
+      if (!acc[date]) acc[date] = [];
+      acc[date].push(entry);
+      return acc;
+    }, {});
 
   // Итоговый массив с §данными по дням
   return Object.entries(groupedData).map(([date, dailyData]) => {
@@ -662,6 +672,15 @@ export const compileMarketProfileByDays = (
 
     const ibSize = (ibHigh - ibLow) * 4;
 
+    const A_High = dailyData[0].high;
+    const A_Low = dailyData[0].low;
+
+    const B_High = dailyData[1].high;
+    const B_Low = dailyData[1].low;
+
+    const C_High = dailyData[2].high;
+    const C_Low = dailyData[2].low;
+
     return {
       date,
       tpoHigh,
@@ -674,9 +693,15 @@ export const compileMarketProfileByDays = (
       poc,
       vah,
       val,
-      profile,
+      // profile,
       ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
+      A_High,
+      A_Low,
+      B_High,
+      B_Low,
+      C_High,
+      C_Low,
     };
   });
 };
@@ -803,7 +828,10 @@ export const calculateValueArea = (profileArray, valueAreaPercent) => {
 
 export const buildMarketProfile = (data, valueAreaPercent = 68, tpr = 5) => {
   const priceStep = tpr * 0.25;
-  const profileArray = calculateTPOProfile(data, priceStep);
+  const profileArray = calculateTPOProfile(
+    data.filter((item) => !item.time.includes("22:00")),
+    priceStep,
+  );
 
   // Вычисляем Value Area High и Value Area Low
   const { vah, val } = calculateValueArea(profileArray, valueAreaPercent);
@@ -812,4 +840,207 @@ export const buildMarketProfile = (data, valueAreaPercent = 68, tpr = 5) => {
   const poc = getPOCWithValueAreaCenter(profileArray, vah, val);
 
   return { poc, vah, val, profile: profileArray };
+};
+
+export const forecastNextDay = (historicalData, openRelation) => {
+  // 1. Рассчитываем средние значения
+  const averages = historicalData.reduce(
+    (acc, day) => {
+      acc.ibSize += day.ibSize;
+      acc.highExt += day.ibExt.highExt;
+      acc.lowExt += day.ibExt.lowExt;
+      acc.poc += day.poc;
+      acc.vah += day.vah;
+      acc.val += day.val;
+      return acc;
+    },
+    { ibSize: 0, highExt: 0, lowExt: 0, poc: 0, vah: 0, val: 0 },
+  );
+
+  const count = historicalData.length;
+  const avgIbSize = averages.ibSize / count;
+  const avgHighExt = averages.highExt / count;
+  const avgLowExt = averages.lowExt / count;
+  const avgPoc = averages.poc / count;
+  const avgVah = averages.vah / count;
+  const avgVal = averages.val / count;
+
+  // 2. Прогноз уровней
+  const forecast = {
+    poc: avgPoc.toFixed(2),
+    vah: (avgVah + avgHighExt).toFixed(2),
+    val: (avgVal - avgLowExt).toFixed(2),
+    probableIbSize: avgIbSize.toFixed(2),
+    probableBreak: avgHighExt > avgLowExt ? "High Broken" : "Low Broken",
+  };
+
+  // 3. Учет open_relation для уточнения сценария
+  switch (openRelation) {
+    case "O > VA":
+      forecast.openRelationScenario = "Likely bullish start with upward trend.";
+      break;
+    case "O < VA":
+      forecast.openRelationScenario =
+        "Likely bearish start with downward trend.";
+      break;
+    case "O in VA":
+      forecast.openRelationScenario = "Likely ranging day within value area.";
+      break;
+    default:
+      forecast.openRelationScenario = "No specific scenario for open relation.";
+  }
+
+  // 4. Определяем трендовый или флэтовый сценарий
+  forecast.trendBias =
+    forecast.vah - forecast.val > avgIbSize ? "Trending Day" : "Ranging Day";
+
+  return forecast;
+};
+
+const determineOpenTypeABC = (acc, current) => {
+  const prevItem = acc[acc.length - 1];
+
+  // console.log("#prevItem: ", prevItem);
+  // console.log("#current: ", current);
+
+  if (!prevItem || !current) {
+    return "-";
+  }
+
+  const admission = 2.5;
+
+  const openPrice = current?.tpoOpen;
+  const aHigh = toNumber(current?.A_High);
+  const aLow = toNumber(current?.A_Low);
+  const bHigh = current?.B_High;
+  const bLow = current?.B_Low;
+  const cHigh = current?.C_High;
+  const cLow = current?.C_Low;
+
+  const prevVah = toNumber(prevItem?.vah);
+  const prevVal = toNumber(prevItem?.val);
+
+  const isCAboveAandB = cHigh > aHigh + admission && cHigh > bHigh + admission; // C выше обоих
+  const isCBelowAandB = cLow < aLow - admission && cLow < bLow - admission;
+
+  const isBAboveA = bHigh > aHigh; // C выше обоих
+  const isBBelowA = bLow < aLow;
+
+  const isOpenOnExtremum = aLow - openPrice > admission * 2;
+
+  const highestHigh = Math.max(aHigh, bHigh, cHigh);
+  const lowestLow = Math.min(aLow, bLow, cLow);
+
+  // Проверяем, находится ли TPO_Open в пределах допуска
+  const isNearHigh = openPrice >= highestHigh - admission * 3;
+  const isNearLow = openPrice <= lowestLow + admission * 3;
+
+  if (!aHigh || !aLow || !bHigh || !bLow || !cHigh || !cLow) {
+    return "-";
+  }
+
+  console.log("#prevItem: ", prevItem);
+  console.log("#current: ", current);
+  console.log("#aHigh: ", aHigh);
+  console.log("#aLow: ", aLow);
+  console.log("#bHigh: ", bHigh);
+  console.log("#bLow: ", bLow);
+  console.log("#cHigh: ", cHigh);
+  console.log("#cLow: ", cLow);
+
+  console.log("#openPrice: ", openPrice);
+  console.log("#prevVah: ", prevVah);
+  console.log("#prevVal: ", prevVal);
+
+  console.log("======");
+
+  // 4. Open-Auction (OA)
+  if (openPrice >= prevVal && openPrice <= prevVah) {
+    return "OA";
+  }
+
+  if (openPrice >= prevVah && aLow <= prevVah) {
+    return "OTD";
+  }
+
+  if (
+    (aHigh === bHigh &&
+      aLow === bLow &&
+      !(
+        cLow < lowestLow - admission * 3 || cHigh > highestHigh + admission * 3
+      )) ||
+    (aHigh > bHigh && aLow < bLow)
+  ) {
+    return "OA";
+  }
+
+  // 1. Open-Drive (OD)
+  if (
+    ((cLow < bLow && bLow < aLow) ||
+      (cHigh > bHigh && bHigh > aHigh) ||
+      (isNearHigh && aHigh > bHigh && aHigh > cHigh) ||
+      (isNearLow && cLow > bLow && aLow > cLow)) &&
+    (isNearHigh || isNearLow)
+  ) {
+    return "OD";
+  }
+
+  if (
+    openPrice >= prevVal &&
+    openPrice <= prevVah &&
+    (((aHigh > prevVah || bHigh > prevVah) && cLow < prevVah) ||
+      ((aLow < prevVal || bLow < prevVal) && cHigh > prevVal))
+  ) {
+    return "ORR";
+  }
+
+  if (
+    ((openPrice >= prevVah &&
+      (aHigh > openPrice || bHigh > openPrice) &&
+      cLow < aLow &&
+      cLow < bLow) ||
+      (openPrice <= prevVal &&
+        (aLow < openPrice || bLow < openPrice) &&
+        cHigh > aHigh &&
+        cHigh > bHigh)) &&
+    !(aLow < prevVal && aHigh > prevVah)
+  ) {
+    return "ORR";
+  }
+
+  if (
+    (openPrice > prevVah && aLow <= prevVah && cHigh > bHigh) ||
+    (openPrice < prevVal && aHigh >= prevVal && cLow < bLow) ||
+    (openPrice > prevVah &&
+      aLow < openPrice - admission * 4 &&
+      cHigh > bHigh + admission) ||
+    (openPrice > prevVal &&
+      aHigh > openPrice + admission * 4 &&
+      cLow < bLow - admission)
+  ) {
+    return "OTD";
+  }
+
+  // 4. Open-Auction (OA)
+  if (
+    openPrice >= prevVal &&
+    openPrice <= prevVah && // Внутри VA
+    aHigh <= prevVah &&
+    aLow >= prevVal
+  ) {
+    return "OA";
+  }
+
+  if (
+    ((!isCAboveAandB && !isCBelowAandB) || (!isBAboveA && !isBBelowA)) &&
+    !(isNearHigh || isNearLow)
+  ) {
+    return "OA";
+  }
+
+  if (cLow >= lowestLow && cHigh <= highestHigh) {
+    return "OA";
+  }
+
+  return "-"; // Не удалось точно определить тип
 };

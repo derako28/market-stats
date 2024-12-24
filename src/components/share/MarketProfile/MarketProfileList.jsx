@@ -1,6 +1,9 @@
 import css from "./market-profile.module.scss";
 import cn from "classnames";
-import { buildMarketProfile, groupDataByDate } from "../utils.js";
+import {
+  buildMarketProfile,
+  groupDataByDate,
+} from "../../../utils/prepareData.js";
 
 // Функция для группировки данных по дням
 
@@ -61,7 +64,7 @@ export const MarketProfileChartList = ({
         );
         return (
           <div key={date} className={""}>
-            {/*<h4>{date}</h4>*/}
+            <h4>{date}</h4>
             <div className="summary">
               <strong>POC:</strong> {poc} <br />
               <strong>VAH:</strong> {vah} <br />

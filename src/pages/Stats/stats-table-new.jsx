@@ -24,13 +24,13 @@ const columns = [
   // { id: 'open_relation', title: 'Open Relation' },
   // { id: 'close_relation_prev', title: 'close_relation_prev' },
   // { id: 'close_relation', title: 'close_relation' },
-  { id: "manualOpeningType", title: "Manual Opening Type" },
+  // { id: "manualOpeningType", title: "Manual Opening Type" },
   { id: "opening_type", title: "Opening Type" },
-  {
-    id: "matchOpeningType",
-    title: "Matched Opening Type",
-    type: FILD_TYPES.CHECKBOX,
-  },
+  // {
+  //   id: "matchOpeningType",
+  //   title: "Matched Opening Type",
+  //   type: FILD_TYPES.CHECKBOX,
+  // },
   { id: "ibRange", title: "IB Range" },
   // { id: 'type_day', title: 'Type Day'  },
 

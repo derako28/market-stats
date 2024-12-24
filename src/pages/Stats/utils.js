@@ -210,8 +210,8 @@ export const getBarChartHorizontalConfig = (
         label: {
           color: "#fff",
           formatter: ({ value }) => {
-            return `${value.toFixed(0)}  `;
-            // return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(0)}%)` : ""} `;
+            // return `${value.toFixed(0)}  `;
+            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(0)}%)` : ""} `;
           },
         },
 
@@ -271,8 +271,8 @@ export const getDataIBSizeChart = (data, property, subProperty = null) => {
     .sort((a, b) => a - b)
     .map((key) => {
       return { asset: key, amount: newData[key] };
-    })
-    .filter((item) => item.amount > data.length * (0.25 / 100));
+    });
+  // .filter((item) => item.amount > data.length * (0.25 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {
@@ -1215,9 +1215,9 @@ export const setMatchOpeningType = (data) => {
 const determineOpenTypeABC = (acc, current) => {
   const prevItem = acc[acc.length - 1];
 
-  // if(!prevItem || !current ) {
-  //     return "-";
-  // }
+  if (!prevItem || !current) {
+    return "-";
+  }
 
   const admission = 2.5;
 
@@ -1262,14 +1262,8 @@ const determineOpenTypeABC = (acc, current) => {
     return "-";
   }
 
-  if (
-    (aHigh === bHigh &&
-      aLow === bLow &&
-      !(
-        cLow < lowestLow - admission * 3 || cHigh > highestHigh + admission * 3
-      )) ||
-    (aHigh > bHigh && aLow < bLow)
-  ) {
+  // 4. Open-Auction (OA)
+  if (openPrice >= val && openPrice <= vah) {
     return "OA";
   }
 
@@ -1282,6 +1276,36 @@ const determineOpenTypeABC = (acc, current) => {
     (isNearHigh || isNearLow)
   ) {
     return "OD";
+  }
+
+  if (openPrice >= vah && aLow <= vah) {
+    return "OTD";
+  }
+
+  if (
+    (openPrice > vah && aLow <= vah) ||
+    (openPrice < val && aHigh >= val) ||
+    (openPrice > vah &&
+      aLow < openPrice - admission * 4 &&
+      cHigh > bHigh + admission) ||
+    (openPrice > val &&
+      aHigh > openPrice + admission * 4 &&
+      cLow < bLow - admission)
+  ) {
+    return "OTD";
+  }
+
+  if (
+    (openPrice > vah && aLow <= vah) ||
+    (openPrice < val && aHigh >= val) ||
+    (openPrice > vah &&
+      aLow < openPrice - admission * 4 &&
+      cHigh > bHigh + admission) ||
+    (openPrice > val &&
+      aHigh > openPrice + admission * 4 &&
+      cLow < bLow - admission)
+  ) {
+    return "OTD";
   }
 
   if (
@@ -1308,16 +1332,14 @@ const determineOpenTypeABC = (acc, current) => {
   }
 
   if (
-    (openPrice > vah && aLow <= vah && cHigh > bHigh) ||
-    (openPrice < val && aHigh >= val && cLow < bLow) ||
-    (openPrice > vah &&
-      aLow < openPrice - admission * 4 &&
-      cHigh > bHigh + admission) ||
-    (openPrice > val &&
-      aHigh > openPrice + admission * 4 &&
-      cLow < bLow - admission)
+    (aHigh === bHigh &&
+      aLow === bLow &&
+      !(
+        cLow < lowestLow - admission * 3 || cHigh > highestHigh + admission * 3
+      )) ||
+    (aHigh > bHigh && aLow < bLow)
   ) {
-    return "OTD";
+    return "OA";
   }
 
   // 4. Open-Auction (OA)
@@ -1473,4 +1495,89 @@ export const mergeTPOData = (tpoArray, segmentArray) => {
       ...segmentData, // Добавляем сегменты, если они есть
     };
   });
+};
+
+export const getChartConfigForBreakoutPeriods = (
+  data = [],
+  type,
+  labels,
+  width = 300,
+  height = 300,
+) => {
+  const newData = getDataChartForBreakoutPeriods(data, type, labels);
+
+  return {
+    data: newData,
+    width: width,
+    height: height,
+    theme: "ag-default-dark",
+    background: {
+      visible: false,
+    },
+
+    series: [
+      {
+        type: "donut",
+        calloutLabelKey: "asset",
+        angleKey: "amount",
+        innerRadiusRatio: 0.8,
+
+        fills: [
+          "rgba(0, 117, 225, 1)",
+          "rgba(0, 117, 225, .9)",
+          "rgba(0, 117, 225, .8)",
+          "rgba(0, 117, 225, .7)",
+          "rgba(0, 117, 225, .6)",
+          "rgba(0, 117, 225, .5)",
+          "rgba(0, 117, 225, .4)",
+          "rgba(0, 117, 225, .3)",
+          "rgba(0, 117, 225, .2)",
+          "rgba(0, 117, 225, .1)",
+        ],
+
+        calloutLabel: {
+          formatter: ({ value }) => {
+            return `${value.toFixed(0)} ${data.length ? `(${((value / data.length) * 100).toFixed(0)}%)` : ""} `;
+          },
+        },
+
+        innerLabels: [
+          {
+            text: data.length.toString(),
+            fontSize: 16,
+          },
+        ],
+      },
+    ],
+    legend: {
+      enabled: true,
+      item: {
+        label: {
+          spacing: 20,
+          formatter: ({ itemId, value }) => {
+            return `${value}: (${((newData[itemId].amount / data.length) * 100).toFixed(0)}%)`;
+          },
+        },
+      },
+    },
+  };
+};
+
+export const getDataChartForBreakoutPeriods = (data = [], type, labels) => {
+  return Object.keys(labels)
+    .map((key) => {
+      return {
+        asset: labels[key],
+        amount: data.filter((item) => {
+          const value = item["breakoutPeriods"][type].period;
+
+          return (
+            value?.toString()?.toLowerCase() ===
+            labels[key]?.toString()?.toLowerCase()
+          );
+        }).length,
+      };
+    })
+    .sort((a, b) => b.amount - a.amount)
+    .filter(({ amount }) => amount);
 };

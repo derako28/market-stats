@@ -2,6 +2,7 @@ import data from "../../Data-TW/NQ.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
+  BREAKOUT_PERIODS_LABEL,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
@@ -16,17 +17,17 @@ import {
 } from "../Stats/constants.js";
 import { useState } from "react";
 import {
-  calculateMarketProfileByDay,
-  filterLeastFrequentByIbSize,
+  compileMarketProfileByDays,
   prepareData,
   segmentData,
-} from "./utils.js";
+} from "../../utils/prepareData.js";
 import { AgCharts } from "ag-charts-react";
 import {
   dataWithIbInfo,
   getBarChartConfig,
   getBarChartHorizontalConfig,
   getChartConfig,
+  getChartConfigForBreakoutPeriods,
   getDataChart,
   getDataIBChart,
   getDataIBSizeChart,
@@ -37,6 +38,7 @@ import moment from "moment";
 import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
 import { Statistic } from "./Statistic/Statistic.jsx";
+import { Modal } from "../../components/share/Modal/modal.jsx";
 
 const filterOptions = [
   {
@@ -64,46 +66,60 @@ const filterOptions = [
 
 const columns = [
   { id: "date", title: "Date" },
-  { id: "open_relation", title: "Open Relation" },
-  // { id: "tpoOpen", title: "tpoOpen" },
-  // { id: "tpoClose", title: "tpoClose" },
-  // { id: "tpoHigh", title: "tpoHigh" },
-  // { id: "tpoLow", title: "tpoLow" },
+  // { id: "open_relation", title: "Open Relation" },
+  { id: "opening_type", title: "Opening Type" },
+  { id: "tpoOpen", title: "tpoOpen" },
+  { id: "tpoClose", title: "tpoClose" },
+  { id: "tpoHigh", title: "tpoHigh" },
+  { id: "tpoLow", title: "tpoLow" },
 
-  { id: "ibSize", title: "IB Size" },
-  { id: "ibHigh", title: "IB High" },
-  { id: "ibLow", title: "IB Low" },
+  // { id: "ibSize", title: "IB Size" },
+  // { id: "ibHigh", title: "IB High" },
+  // { id: "ibLow", title: "IB Low" },
 
-  { id: "ibBrokenByLondon", title: "IB Broken by London" },
-  { id: "ibBrokenByAllDay", title: "IB Broken by All Day" },
-  // { id: "ibBrokenNY", title: "IB Broken by Ny" },
+  // { id: "ibBroken", title: "IB Broken" },
 
-  { id: "ibExtByLondon", subId: "highExt", title: "IB Ext High" },
-  { id: "ibExtByLondon", subId: "lowExt", title: "IB Ext Low" },
-
-  // { id: "ibExtByNY", subId: "highExt", title: "IB Ext High By NY" },
-  // { id: "ibExtByNY", subId: "lowExt", title: "IB Ext Low By NY" },
-
-  { id: "ibExtByAllDay", subId: "highExt", title: "IB Ext High By All Day" },
-  { id: "ibExtByAllDay", subId: "lowExt", title: "IB Ext Low By All Day" },
+  // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
+  // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 
   { id: "poc", title: "poc" },
   { id: "vah", title: "vah" },
   { id: "val", title: "val" },
 ];
 
+// const initialData = segmentData(
+//   filterLeastFrequentByIbSize(
+//     prepareData(calculateMarketProfileByDay(data)),
+//   ).reverse(),
+// );
+
+// const initialData = calculateMarketProfileByDay(data);
+// const initialDat2 = calculateOHLCProfile(data).reverse();
+
 const initialData = segmentData(
-  filterLeastFrequentByIbSize(
-    prepareData(calculateMarketProfileByDay(data)),
-  ).reverse(),
+  prepareData(compileMarketProfileByDays(data, 68, 5, 4)),
 );
+
+console.log("#initialData: ", initialData);
+
+// console.log("#initialData: ", initialData);
+// console.log(JSON.stringify(initialData));
+
+// console.log("#forecastNextDay: ", forecastNextDay(initialData, "O > VA"));
 
 export const NQ = () => {
   const [tableData, setTableData] = useState(initialData);
+  const [modalData, setModalData] = useState();
 
+  const visibleTable = false;
   const visibleCharts = true;
-  const visibleTable = true;
   const filterVisible = true;
+
+  console.log(
+    tableData.filter((item) => {
+      return item?.breakoutPeriods?.oppositeBreakout.period;
+    }),
+  );
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -200,15 +216,23 @@ export const NQ = () => {
   };
 
   return (
-    <Page noHeader={false}>
+    <Page>
+      <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
+        <div className={"mt-5 text-gray-200"}>
+          {/*<MarketProfileChart data={modalData} />*/}
+        </div>
+      </Modal>
+
       <Statistic data={tableData} />
+
+      {/*<MarketProfileChartList data={data} />*/}
       {filterVisible && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
       {/*Count days: {tableData.length}*/}
       {visibleCharts && (
         <>
-          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+          <div className={"flex justify-center gap-4 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300 mb-4"}>Open Relation</div>
               <AgCharts
@@ -253,14 +277,14 @@ export const NQ = () => {
 
           {/*Touch ZONE*/}
 
-          <div className={"flex justify-center gap-16 mb-10"}>
+          <div className={"flex justify-center gap-4 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>Touch IB</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestIB", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -272,7 +296,7 @@ export const NQ = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -284,7 +308,7 @@ export const NQ = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestVA", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -296,7 +320,89 @@ export const NQ = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestRange", TEST_OPTIONS),
                   tableData.length,
+                  400,
                   500,
+                )}
+              />
+            </div>
+          </div>
+
+          <div className={"flex justify-center gap-4 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAL (Open Under POC)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "underPoc",
+                    ),
+                    "isTestVAL",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  ).length,
+                  400,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAL (Open Over POC)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "overPoc",
+                    ),
+                    "isTestVAL",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  ).length,
+                  400,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAH (Open Under Poc)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "underPoc",
+                    ),
+                    "isTestVAH",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  ).length,
+                  400,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>Touch VAH (Open Over Poc)</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChart(
+                    tableData.filter(
+                      (item) => item.open_relation_to_poc === "overPoc",
+                    ),
+                    "isTestVAH",
+                    TEST_OPTIONS,
+                  ),
+                  tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  ).length,
+                  400,
                   500,
                 )}
               />
@@ -305,41 +411,45 @@ export const NQ = () => {
 
           {/*Touch ZONE END*/}
 
-          <div className={"flex justify-center gap-16 mt-10 mb-10"}>
+          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Broken by London</div>
+              <div className={"text-gray-300 mb-4"}>First Breakout Periods</div>
               <AgCharts
-                options={getBarChartConfig(
-                  getDataIBChart(
-                    dataWithIbInfo(tableData, "ibBrokenByLondon"),
-                    IB_BROKEN_LABELS,
-                  ),
-                  tableData.length,
-                  700,
-                  300,
+                options={getChartConfigForBreakoutPeriods(
+                  tableData,
+                  "firstBreakout",
+                  BREAKOUT_PERIODS_LABEL,
+                  600,
+                  600,
                 )}
               />
             </div>
-            {/*<div className={"flex flex-col justify-center items-center"}>*/}
-            {/*  <div className={"text-gray-300"}>IB Broken by NY</div>*/}
-            {/*  <AgCharts*/}
-            {/*    options={getBarChartConfig(*/}
-            {/*      getDataIBChart(*/}
-            {/*        dataWithIbInfo(tableData, "ibBrokenNY"),*/}
-            {/*        IB_BROKEN_LABELS,*/}
-            {/*      ),*/}
-            {/*      tableData.length,*/}
-            {/*      700,*/}
-            {/*      300,*/}
-            {/*    )}*/}
-            {/*  />*/}
-            {/*</div>*/}
+
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Broken by All Day</div>
+              <div className={"text-gray-300 mb-4"}>
+                Opposite Breakout Periods
+              </div>
+              <AgCharts
+                options={getChartConfigForBreakoutPeriods(
+                  tableData.filter(
+                    (item) => item?.breakoutPeriods?.oppositeBreakout.period,
+                  ),
+                  "oppositeBreakout",
+                  BREAKOUT_PERIODS_LABEL,
+                  600,
+                  600,
+                )}
+              />
+            </div>
+          </div>
+
+          <div className={"flex justify-center gap-16 mt-10 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Broken</div>
               <AgCharts
                 options={getBarChartConfig(
                   getDataIBChart(
-                    dataWithIbInfo(tableData, "ibBrokenByAllDay"),
+                    dataWithIbInfo(tableData, "ibBroken"),
                     IB_BROKEN_LABELS,
                   ),
                   tableData.length,
@@ -355,7 +465,7 @@ export const NQ = () => {
               <div className={"text-gray-300"}>IB High Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "highExt"),
+                  getDataIExtensionChart(tableData, "ibExt", "highExt"),
                   tableData.length,
                   700,
                   500,
@@ -366,7 +476,7 @@ export const NQ = () => {
               <div className={"text-gray-300"}>IB Low Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "lowExt"),
+                  getDataIExtensionChart(tableData, "ibExt", "lowExt"),
                   tableData.length,
                   700,
                   500,
@@ -377,42 +487,7 @@ export const NQ = () => {
               <div className={"text-gray-300"}>IB Max Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "maxExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB High Ext By All Day</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "highExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Low Ext By All Day</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "lowExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Max Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "maxExt"),
+                  getDataIExtensionChart(tableData, "ibExt", "maxExt"),
                   tableData.length,
                   700,
                   500,
@@ -449,7 +524,15 @@ export const NQ = () => {
           </div>
         </>
       )}
-      {visibleTable && <Table columns={columns} data={tableData} />}
+      {visibleTable && (
+        <Table
+          columns={columns}
+          data={tableData}
+          onClickRow={(item) => {
+            setModalData(item);
+          }}
+        />
+      )}
     </Page>
   );
 };

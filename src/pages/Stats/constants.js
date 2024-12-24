@@ -227,7 +227,7 @@ export const DATE_RANGE_VALUE = {
 };
 export const DATE_RANGE_LABEL = {
   LAST_MONTH: "Last Month",
-  THREE_MONTH: "Three Month",
+  THREE_MONTH: "Three Months",
   SIX_MONTH: "Six Month",
   ONE_YEAR: "1 YEAR",
   TWO_YEAR: "2 YEAR",
@@ -246,3 +246,19 @@ export const DATE_RANGE_OPTIONS = [
   { value: DATE_RANGE_VALUE.FOUR_YEAR, label: DATE_RANGE_LABEL.FOUR_YEAR },
   { value: DATE_RANGE_VALUE.FIVE_YEAR, label: DATE_RANGE_LABEL.FIVE_YEAR },
 ];
+
+export const BREAKOUT_PERIODS_LABEL = {
+  A: "A",
+  B: "B",
+  C: "C",
+  D: "D",
+  E: "E",
+  F: "F",
+  G: "G",
+  H: "H",
+  I: "I",
+  J: "J",
+  K: "K:",
+  L: "L:",
+  M: "M:",
+};

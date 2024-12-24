@@ -10,6 +10,7 @@ export const Header = () => {
           <NavLink to={"/market-stats/dax"}>DAX</NavLink>
           <NavLink to={"/market-stats/es"}>ES</NavLink>
           <NavLink to={"/market-stats/nq"}>NQ</NavLink>
+          <NavLink to={"/market-stats/ym"}>YM</NavLink>
         </>
       )}
       {getFeature("dax") && (

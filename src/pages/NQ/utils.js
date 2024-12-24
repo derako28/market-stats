@@ -1,9 +1,133 @@
-import moment from "moment";
 import {
   CLOSES_OPTIONS,
   OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "../Stats/constants.js";
+import { toNumber } from "../Stats/utils.js";
+
+export const buildMarketProfileOld = (data, valueAreaPercent = 68, tpr = 5) => {
+  const priceStep = tpr * 0.25; // Шаг цены для округления уровней, учитывая ticks per row
+  const profile = new Map(); // Хранение TPO по уровням цен
+
+  // Заполнение TPO профиля
+  data.forEach(({ high, low }) => {
+    let price = Math.floor(low / priceStep) * priceStep; // Округление до ближайшего шага цены
+    while (price <= high) {
+      profile.set(price, (profile.get(price) || 0) + 1);
+      price += priceStep;
+    }
+  });
+
+  // Преобразование Map в массив для анализа
+  const profileArray = Array.from(profile.entries())
+    .map(([price, tpo]) => ({ price: parseFloat(price), tpo }))
+    .sort((a, b) => b.price - a.price);
+
+  // Вычисление POC, VAH, VAL
+  const totalTPOs = profileArray.reduce((sum, { tpo }) => sum + tpo, 0);
+  let valueAreaTPOs = 0;
+  const valueAreaThreshold = (valueAreaPercent / 100) * totalTPOs;
+  let poc = null;
+  let vah = null;
+  let val = null;
+
+  profileArray.forEach(({ tpo }, index) => {
+    if (poc === null || tpo > profileArray[poc].tpo) {
+      poc = index;
+    }
+
+    if (valueAreaTPOs < valueAreaThreshold) {
+      valueAreaTPOs += tpo;
+      if (vah === null) vah = index;
+      val = index;
+    }
+  });
+
+  return {
+    poc: profileArray[poc]?.price,
+    vah: profileArray[vah]?.price,
+    val: profileArray[val]?.price,
+    profile: profileArray,
+  };
+};
+
+export const calculateOHLCProfile = (data, valueAreaPercent = 68) => {
+  // Группировка данных по дням
+  const groupedByDay = data.reduce((acc, period) => {
+    const date = period.time.split("T")[0]; // Получаем дату из строки времени
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(period);
+    return acc;
+  }, {});
+
+  // Функция для расчета POC, VAH и VAL для данных одного дня
+  const calculateProfile = (dayData) => {
+    let priceLevels = {};
+
+    // Заполняем ценовые уровни
+    dayData.forEach((period) => {
+      const { low, high } = period;
+      const step = 0.25; // Шаг для уровней цен (можно варьировать)
+
+      // Для каждого периода рассчитываем диапазон цен
+      for (let price = low; price <= high; price += step) {
+        const roundedPrice = Math.round(price * 100) / 100; // округляем до 2 знаков
+        priceLevels[roundedPrice] = (priceLevels[roundedPrice] || 0) + 1;
+      }
+    });
+
+    // Преобразуем объект в массив для сортировки
+    let sortedPriceLevels = Object.entries(priceLevels).map(
+      ([price, count]) => ({
+        price: parseFloat(price),
+        count,
+      }),
+    );
+
+    // Сортируем по убыванию частоты появления
+    sortedPriceLevels.sort((a, b) => b.count - a.count);
+
+    // Общая сумма блоков
+    const totalBlocks = sortedPriceLevels.reduce(
+      (sum, entry) => sum + entry.count,
+      0,
+    );
+    const targetBlocks = totalBlocks * (valueAreaPercent / 100);
+
+    let vaBlocks = [];
+    let vaBlockCount = 0;
+
+    // Собираем блоки до достижения целевого количества для VA
+    for (
+      let i = 0;
+      vaBlockCount < targetBlocks && i < sortedPriceLevels.length;
+      i++
+    ) {
+      vaBlocks.push(sortedPriceLevels[i]);
+      vaBlockCount += sortedPriceLevels[i].count;
+    }
+
+    // Определяем POC, VAH и VAL
+    const poc = sortedPriceLevels[0].price; // Цена с максимальной плотностью
+    const vah = Math.max(...vaBlocks.map((block) => block.price)); // Value Area High
+    const val = Math.min(...vaBlocks.map((block) => block.price)); // Value Area Low
+
+    return { poc, vah, val };
+  };
+
+  // Для каждого дня вычисляем POC, VAH, VAL и возвращаем результаты
+  return Object.entries(groupedByDay).map(([date, dayData]) => {
+    const profile = calculateProfile(dayData);
+    return {
+      date,
+      poc: profile.poc,
+      vah: profile.vah,
+      val: profile.val,
+    };
+  });
+};
 
 export const calculateMarketProfileByDay = (
   data,
@@ -58,7 +182,6 @@ export const calculateMarketProfileByDay = (
     }
 
     const firstTwoPeriods = dayData.slice(0, 2);
-    const firstTwoPeriodByNY = dayData.slice(15, 17);
 
     const vah = Math.max(...valueAreaPrices);
     const val = Math.min(...valueAreaPrices);
@@ -69,29 +192,8 @@ export const calculateMarketProfileByDay = (
     const tpoOpen = dayData[0]?.open;
     const tpoClose = dayData[dayData.length - 1]?.close;
 
-    const londonHighLow = getSessionHighLow(
-      dayData,
-      londonSession.start,
-      londonSession.end,
-    );
-
-    const allDayHighLow = getSessionHighLow(
-      dayData,
-      londonNewYorkSession.start,
-      londonNewYorkSession.end,
-    );
-
-    const nyHighLow = getSessionHighLow(
-      dayData,
-      newYorkSession.start,
-      newYorkSession.end,
-    );
-
     const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
     const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
-
-    const ibHighNY = Math.max(...firstTwoPeriodByNY.map(({ high }) => high));
-    const ibLowNY = Math.min(...firstTwoPeriodByNY.map(({ low }) => low));
 
     const ibSize = ibHigh - ibLow;
 
@@ -107,51 +209,119 @@ export const calculateMarketProfileByDay = (
       ibHigh,
       ibLow,
       ibSize,
-      ibBrokenByLondon: getIbBroken(
-        londonHighLow.high,
-        londonHighLow.low,
-        ibHigh,
-        ibLow,
-      ),
-      ibBrokenByAllDay: getIbBroken(
-        allDayHighLow.high,
-        allDayHighLow.low,
-        ibHigh,
-        ibLow,
-      ),
-      ibBrokenNY: getIbBroken(nyHighLow.high, nyHighLow.low, ibHigh, ibLow),
-      ibExtByLondon: getIbExt(
-        londonHighLow.high,
-        londonHighLow.low,
-        ibHigh,
-        ibLow,
-      ),
-      ibExtByAllDay: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
-      ibExtByNY: getIbExt(nyHighLow.high, nyHighLow.low, ibHighNY, ibLowNY),
+      ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
+      ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
     };
   });
 };
 
-const getSessionHighLow = (data, sessionStartTime, sessionEndTime) => {
-  const sessionData = data.filter((item) => {
-    const itemTime = moment(item.time);
-    const itemHoursMinutes = itemTime.format("HH:mm");
+export const calculateMarketProfileByDay2 = (
+  data,
+  valueAreaPercent = 68,
+  ticksPerRow = 5,
+) => {
+  const dailyData = data.reduce((acc, entry) => {
+    const day = entry.time.split("T")[0]; // Извлекаем дату в формате "YYYY-MM-DD"
+    if (!acc[day]) acc[day] = [];
+    acc[day].push(entry);
 
-    return (
-      itemHoursMinutes >= sessionStartTime && itemHoursMinutes <= sessionEndTime
-    );
+    return acc;
+  }, {});
+
+  return Object.entries(dailyData).map(([date, dayData]) => {
+    let totalVolume = 0;
+    let priceVolumes = {};
+
+    // Шаг 1: Фильтруем данные по дате (по времени свечи)
+    const targetDate = new Date().toDateString(); // Берем текущую дату для фильтрации данных
+
+    // Фильтруем только те данные, которые принадлежат нужной дате
+    const filteredData = data.filter((candle) => {
+      const candleDate = new Date(candle.time); // Преобразуем время свечи в объект Date
+      return candleDate.toDateString() === targetDate; // Сравниваем только день (игнорируем время)
+    });
+
+    // Шаг 2: Суммируем объемы для каждого ценового уровня
+    filteredData.forEach((candle) => {
+      const { open, high, low, close, volume } = candle;
+      const priceRange = [low, high];
+
+      // Создаем диапазон цен для расчета
+      let step = ticksPerRow; // Шаг равен ticksPerRow (5)
+      let startPrice = Math.floor(low / step) * step; // Начальная цена для диапазона
+      let endPrice = Math.ceil(high / step) * step; // Конечная цена для диапазона
+
+      // Разбиваем диапазон цен на уровни
+      for (let price = startPrice; price <= endPrice; price += step) {
+        priceVolumes[price] = (priceVolumes[price] || 0) + volume;
+      }
+
+      totalVolume += volume;
+    });
+
+    // Шаг 3: Находим POC (уровень с максимальным объемом)
+    let maxVolume = -Infinity;
+    let POC = null;
+    for (let price in priceVolumes) {
+      if (priceVolumes[price] > maxVolume) {
+        maxVolume = priceVolumes[price];
+        POC = parseFloat(price); // Определяем POC
+      }
+    }
+
+    // Шаг 4: Вычисляем VAH и VAL для заданного процента объема (Value Area)
+    let cumulativeVolume = 0;
+    let VAH = null,
+      VAL = null;
+    const priceLevels = Object.keys(priceVolumes)
+      .map(Number)
+      .sort((a, b) => a - b); // Цены отсортированы по возрастанию
+
+    const valueAreaVolume = totalVolume * (valueAreaPercent / 100); // Рассчитываем объем для Value Area (68% по умолчанию)
+
+    for (let price of priceLevels) {
+      cumulativeVolume += priceVolumes[price];
+
+      if (cumulativeVolume <= valueAreaVolume) {
+        VAL = price;
+      }
+
+      if (cumulativeVolume >= valueAreaVolume) {
+        VAH = price;
+        break;
+      }
+    }
+
+    // 7. Возвращаем результ
+    const firstTwoPeriods = dayData.slice(0, 2);
+
+    const tpoHigh = Math.max(...dayData.map(({ high }) => high));
+    const tpoLow = Math.min(...dayData.map(({ low }) => low));
+
+    const tpoOpen = dayData[0]?.open;
+    const tpoClose = dayData[dayData.length - 1]?.close;
+
+    const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
+    const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
+
+    const ibSize = (ibHigh - ibLow) * 4;
+
+    return {
+      tpoHigh,
+      tpoLow,
+      tpoOpen,
+      tpoClose,
+      date,
+      poc: POC,
+      vah: VAH,
+      val: VAL,
+      ibHigh,
+      ibLow,
+      ibSize,
+      ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
+      ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
+    };
   });
-
-  const high =
-    sessionData.length > 0
-      ? Math.max(...sessionData.map((item) => item.high))
-      : null;
-  const low =
-    sessionData.length > 0
-      ? Math.min(...sessionData.map((item) => item.low))
-      : null;
-
-  return { high, low };
 };
 
 const getIbBroken = (high, low, ibHigh, ibLow) => {
@@ -165,27 +335,11 @@ const getIbBroken = (high, low, ibHigh, ibLow) => {
 };
 
 export const getIbExt = (high, low, ibHigh, ibLow) => {
-  const highExt = high > ibHigh ? high - ibHigh : 0;
-  const lowExt = low < ibLow ? ibLow - low : 0;
+  const highExt = high > ibHigh ? (high - ibHigh) * 4 : 0;
+  const lowExt = low < ibLow ? (ibLow - low) * 4 : 0;
   const maxExt = highExt > lowExt ? highExt : lowExt;
 
   return { highExt, lowExt, maxExt };
-};
-
-// Сессии
-const londonSession = {
-  start: "09:30",
-  end: "13:30",
-};
-
-const londonNewYorkSession = {
-  start: "08:00",
-  end: "24:00",
-};
-
-const newYorkSession = {
-  start: "15:30",
-  end: "24:00",
 };
 
 export const segmentData = (data, segmentSize = 5) => {
@@ -260,57 +414,6 @@ export const getLeastFrequentByIbSize = (data, percentage = minPercentage) => {
   return data.filter(({ ibSize }) => leastFrequentValues.includes(ibSize));
 };
 
-export const getIbSizeBreaksByLondon = (data) => {
-  // Проверка на пустой массив
-  if (!data.length) {
-    return null;
-  }
-
-  // Шаг 1: Разделить данные на "High Broken" и "Low Broken"
-  const highBroken = data.filter(
-    ({ ibBrokenByLondon }) => ibBrokenByLondon === "High Broken",
-  );
-  const lowBroken = data.filter(
-    ({ ibBrokenByLondon }) => ibBrokenByLondon === "Low Broken",
-  );
-
-  // Шаг 2: Функция для подсчета частоты
-  const calculateFrequency = (items) =>
-    items.reduce((acc, { ibSize }) => {
-      if (ibSize !== undefined && ibSize !== null) {
-        acc.set(ibSize, (acc.get(ibSize) || 0) + 1);
-      }
-      return acc;
-    }, new Map());
-
-  // Шаг 3: Подсчет частоты для каждого типа ломки
-  const highFrequencyMap = calculateFrequency(highBroken);
-  const lowFrequencyMap = calculateFrequency(lowBroken);
-
-  // Шаг 4: Определить наиболее частое значение для "High Broken"
-  const getMostFrequent = (frequencyMap) => {
-    let maxFrequency = 0;
-    let mostFrequentIbSize = null;
-
-    for (const [ibSize, frequency] of frequencyMap.entries()) {
-      if (frequency > maxFrequency) {
-        maxFrequency = frequency;
-        mostFrequentIbSize = ibSize;
-      }
-    }
-
-    return { mostFrequentIbSize, frequency: maxFrequency };
-  };
-
-  const mostFrequentHigh = getMostFrequent(highFrequencyMap);
-  const mostFrequentLow = getMostFrequent(lowFrequencyMap);
-
-  return {
-    highBroken: mostFrequentHigh,
-    lowBroken: mostFrequentLow,
-  };
-};
-
 export const filter = (filterValue, item) => {};
 
 export const prepareData = (data) => {
@@ -326,8 +429,12 @@ export const prepareData = (data) => {
         // opening_type: determineOpenTypeABC(acc, item),
         // type_day: determineDayType(item),
         isTestVA: isTestVA(acc, item),
+        isTestVAL: isTestVAL(acc, item),
+        isTestVAH: isTestVAH(acc, item),
         isTestPOC: isTestPOC(acc, item),
         isTestRange: isTestRange(acc, item),
+        isTestIB: isTestIB(acc, item),
+        opening_type: determineOpenTypeABC(acc, item),
       },
     ];
   }, []);
@@ -416,21 +523,55 @@ export const isTestVA = (acc, item) => {
     return false;
   }
 
-  const open = item.tpoOpen;
-  const tpoLow = item.tpoLow;
-  const tpoHigh = item.tpoHigh;
+  const { tpoOpen, tpoLow, tpoHigh } = item;
 
-  const { VAL, VAH } = prevItem;
+  const { val, vah } = prevItem;
 
-  if (open >= VAL && open <= VAH) {
+  if (tpoOpen >= val && tpoOpen <= vah) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open > VAH && tpoLow < VAH) {
+  if (tpoOpen >= vah && tpoLow <= vah) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open < VAL && tpoHigh > VAL) {
+  if (tpoOpen <= val && tpoHigh >= val) {
+    return TEST_OPTIONS.YES;
+  }
+
+  return TEST_OPTIONS.NO;
+};
+
+export const isTestVAL = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return false;
+  }
+
+  const { tpoOpen, tpoLow, tpoHigh } = item;
+
+  const { val: prevVal } = prevItem;
+
+  if (tpoLow <= prevVal) {
+    return TEST_OPTIONS.YES;
+  }
+
+  return TEST_OPTIONS.NO;
+};
+
+export const isTestVAH = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return false;
+  }
+
+  const { tpoOpen, tpoLow, tpoHigh } = item;
+
+  const { vah: prevVah } = prevItem;
+
+  if (tpoHigh >= prevVah) {
     return TEST_OPTIONS.YES;
   }
 
@@ -444,21 +585,18 @@ export const isTestRange = (acc, item) => {
     return false;
   }
 
-  const open = item.tpoOpen;
-  const tpoLow = item.tpoLow;
-  const tpoHigh = item.tpoHigh;
-
+  const { tpoOpen, tpoLow, tpoHigh } = item;
   const { tpoLow: tpoLowPrev, tpoHigh: tpoHighPrev } = prevItem;
 
-  if (open >= tpoLow && open <= tpoHigh) {
+  if (tpoOpen >= tpoLowPrev && tpoOpen <= tpoHighPrev) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open > tpoHigh && tpoLow < tpoHigh) {
+  if (tpoOpen > tpoHighPrev && tpoLow <= tpoHighPrev) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open < tpoLow && tpoHigh > tpoLow) {
+  if (tpoOpen < tpoLowPrev && tpoHigh >= tpoLowPrev) {
     return TEST_OPTIONS.YES;
   }
 
@@ -472,21 +610,19 @@ export const isTestIB = (acc, item) => {
     return false;
   }
 
-  const open = item.tpoOpen;
-  const tpoLow = item.tpoLow;
-  const tpoHigh = item.tpoHigh;
+  const { tpoOpen, tpoLow, tpoHigh } = item;
 
   const { ibHigh, ibLow } = prevItem;
 
-  if (open >= ibLow && open <= ibHigh) {
+  if (tpoOpen >= ibLow && tpoOpen <= ibHigh) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open > ibHigh && tpoLow < ibHigh) {
+  if (tpoOpen > ibHigh && tpoLow < ibHigh) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open < ibLow && tpoHigh > ibLow) {
+  if (tpoOpen < ibLow && tpoHigh > ibLow) {
     return TEST_OPTIONS.YES;
   }
 
@@ -502,21 +638,427 @@ export const isTestPOC = (acc, item) => {
 
   const admission = 2;
 
-  const open = item.tpoOpen;
-  const tpoLow = item.tpoLow;
-  const tpoHigh = item.tpoHigh;
+  const { tpoOpen, tpoLow, tpoHigh } = item;
 
   const { poc } = prevItem;
   const POC_High = poc + admission;
   const POC_LOW = poc + admission;
 
-  if (open > poc && tpoLow < POC_High) {
+  if (tpoOpen > poc && tpoLow < POC_High) {
     return TEST_OPTIONS.YES;
   }
 
-  if (open < poc && tpoHigh > POC_LOW) {
+  if (tpoOpen < poc && tpoHigh > POC_LOW) {
     return TEST_OPTIONS.YES;
   }
 
   return TEST_OPTIONS.NO;
+};
+
+export const compileMarketProfileByDays = (
+  data,
+  valueAreaPercent = 68,
+  tpr = 5,
+  step = 0.25,
+) => {
+  const priceStep = tpr * step; // Рассчитываем шаг цен
+
+  // Группировка данных по дням
+  const groupedData = data
+    .filter((item) => !item.time.includes("22:00"))
+    .reduce((acc, entry) => {
+      const date = entry.time.split("T")[0];
+
+      if (!acc[date]) acc[date] = [];
+      acc[date].push(entry);
+      return acc;
+    }, {});
+
+  // Итоговый массив с §данными по дням
+  return Object.entries(groupedData).map(([date, dailyData]) => {
+    const profileArray = calculateTPOProfile(dailyData, priceStep); // Формируем TPO профиль
+
+    // Расчёт Value Area
+    const { vah, val } = calculateValueArea(profileArray, valueAreaPercent);
+
+    // Расчёт POC, используя метод поиска ближе к центру Value Area
+    const poc = getPOCWithValueAreaCenter(profileArray, vah, val);
+
+    // Формируем данные профиля
+    const profile = profileArray.map((level) => ({
+      price: level.price,
+      tpoCount: level.segments.length,
+      isPOC: level.price === poc,
+      isVAH: level.price === vah,
+      isVAL: level.price === val,
+    }));
+
+    const tpoHigh = Math.max(...dailyData.map(({ high }) => high));
+    const tpoLow = Math.min(...dailyData.map(({ low }) => low));
+
+    const tpoOpen = dailyData[0]?.open;
+    const tpoClose = dailyData[dailyData.length - 1]?.close;
+
+    const firstTwoPeriods = dailyData.slice(0, 2);
+
+    const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
+    const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
+
+    const ibSize = (ibHigh - ibLow) * 4;
+
+    const A_High = dailyData[0].high;
+    const A_Low = dailyData[0].low;
+
+    const B_High = dailyData[1].high;
+    const B_Low = dailyData[1].low;
+
+    const C_High = dailyData[2].high;
+    const C_Low = dailyData[2].low;
+
+    return {
+      date,
+      tpoHigh,
+      tpoLow,
+      tpoOpen,
+      tpoClose,
+      ibHigh,
+      ibLow,
+      ibSize,
+      poc,
+      vah,
+      val,
+      // profile,
+      ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
+      ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
+      A_High,
+      A_Low,
+      B_High,
+      B_Low,
+      C_High,
+      C_Low,
+    };
+  });
+};
+
+export const groupDataByDate = (data) => {
+  const groupedData = {};
+
+  data.forEach(({ time, high, low, open, close }) => {
+    const date = new Date(time).toLocaleDateString(); // Получаем только дату (без времени)
+    if (!groupedData[date]) {
+      groupedData[date] = [];
+    }
+    groupedData[date].push({ time, high, low, open, close });
+  });
+
+  return groupedData;
+};
+
+// Функция для расчета профиля с буквами, где каждая буква соответствует 30 минутам
+export const calculateTPOProfile = (data, priceStep) => {
+  const profile = new Map();
+  let letterIndex = 0;
+
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Буквы для каждого блока (для 26 временных отрезков)
+
+  data.forEach(({ time, high, low }) => {
+    let price = Math.floor(low / priceStep) * priceStep;
+    const letter = alphabet[letterIndex % alphabet.length]; // Используем буквы по циклу
+
+    // Разбиваем данные по временным отрезкам (например, 30 минут)
+    const timeKey = new Date(time).toLocaleString(); // Делаем ключ на основе времени, чтобы различать отрезки
+
+    while (price <= high) {
+      if (!profile.has(price)) {
+        profile.set(price, []);
+      }
+      profile.get(price).push({ letter, timeKey }); // Добавляем букву и временной отрезок
+      price += priceStep;
+    }
+
+    letterIndex++; // Увеличиваем индекс для следующей буквы
+  });
+
+  // Преобразуем Map в массив для сортировки
+  return Array.from(profile.entries())
+    .map(([price, segments]) => ({
+      price: parseFloat(price),
+      segments,
+    }))
+    .sort((a, b) => b.price - a.price);
+};
+
+// Функция для расчета Value Area
+export const getPOCWithValueAreaCenter = (profileArray, vah, val) => {
+  const valueAreaCenter = (vah + val) / 2;
+
+  return profileArray
+    .filter(
+      ({ segments }) =>
+        segments.length ===
+        Math.max(...profileArray.map(({ segments }) => segments.length)),
+    )
+    .reduce((closest, level) => {
+      const currentDiff = Math.abs(level.price - valueAreaCenter);
+      const closestDiff = Math.abs(closest.price - valueAreaCenter);
+      return currentDiff < closestDiff ? level : closest;
+    }).price;
+};
+
+export const calculateValueArea = (profileArray, valueAreaPercent) => {
+  const totalBlocks = profileArray.reduce(
+    (sum, { segments }) => sum + segments.length,
+    0,
+  );
+  const valueAreaTarget = totalBlocks * (valueAreaPercent / 100);
+
+  // Найдём POC — уровень с максимальным количеством блоков
+  const pocIndex = profileArray.findIndex(
+    ({ segments }) =>
+      segments.length ===
+      Math.max(...profileArray.map(({ segments }) => segments.length)),
+  );
+
+  let valueAreaBlocks = profileArray[pocIndex].segments.length;
+  let vahIndex = pocIndex;
+  let valIndex = pocIndex;
+
+  while (valueAreaBlocks < valueAreaTarget) {
+    // Рассчитаем количество блоков выше и ниже текущего диапазона VA
+    const above = vahIndex > 0 ? profileArray[vahIndex - 1] : null;
+    const below =
+      valIndex < profileArray.length - 1 ? profileArray[valIndex + 1] : null;
+
+    const aboveBlocks = above ? above.segments.length : -1;
+    const belowBlocks = below ? below.segments.length : -1;
+
+    // Определяем, какой уровень добавить в VA: выше или ниже
+    if (aboveBlocks > belowBlocks) {
+      valueAreaBlocks += aboveBlocks;
+      vahIndex -= 1;
+    } else if (belowBlocks > aboveBlocks) {
+      valueAreaBlocks += belowBlocks;
+      valIndex += 1;
+    } else if (aboveBlocks === belowBlocks) {
+      // Если количество блоков одинаковое, выбираем уровень ближе к POC
+      const aboveDistance = Math.abs(vahIndex - 1 - pocIndex);
+      const belowDistance = Math.abs(valIndex + 1 - pocIndex);
+
+      if (aboveDistance <= belowDistance) {
+        valueAreaBlocks += aboveBlocks;
+        vahIndex -= 1;
+      } else {
+        valueAreaBlocks += belowBlocks;
+        valIndex += 1;
+      }
+    }
+  }
+
+  return {
+    vah: profileArray[vahIndex]?.price,
+    val: profileArray[valIndex]?.price,
+  };
+};
+
+export const buildMarketProfile = (data, valueAreaPercent = 68, tpr = 5) => {
+  const priceStep = tpr * 0.25;
+  const profileArray = calculateTPOProfile(data, priceStep);
+
+  // Вычисляем Value Area High и Value Area Low
+  const { vah, val } = calculateValueArea(profileArray, valueAreaPercent);
+
+  // Получаем POC, используя центр Value Area
+  const poc = getPOCWithValueAreaCenter(profileArray, vah, val);
+
+  return { poc, vah, val, profile: profileArray };
+};
+
+export const forecastNextDay = (historicalData, openRelation) => {
+  // 1. Рассчитываем средние значения
+  const averages = historicalData.reduce(
+    (acc, day) => {
+      acc.ibSize += day.ibSize;
+      acc.highExt += day.ibExt.highExt;
+      acc.lowExt += day.ibExt.lowExt;
+      acc.poc += day.poc;
+      acc.vah += day.vah;
+      acc.val += day.val;
+      return acc;
+    },
+    { ibSize: 0, highExt: 0, lowExt: 0, poc: 0, vah: 0, val: 0 },
+  );
+
+  const count = historicalData.length;
+  const avgIbSize = averages.ibSize / count;
+  const avgHighExt = averages.highExt / count;
+  const avgLowExt = averages.lowExt / count;
+  const avgPoc = averages.poc / count;
+  const avgVah = averages.vah / count;
+  const avgVal = averages.val / count;
+
+  // 2. Прогноз уровней
+  const forecast = {
+    poc: avgPoc.toFixed(2),
+    vah: (avgVah + avgHighExt).toFixed(2),
+    val: (avgVal - avgLowExt).toFixed(2),
+    probableIbSize: avgIbSize.toFixed(2),
+    probableBreak: avgHighExt > avgLowExt ? "High Broken" : "Low Broken",
+  };
+
+  // 3. Учет open_relation для уточнения сценария
+  switch (openRelation) {
+    case "O > VA":
+      forecast.openRelationScenario = "Likely bullish start with upward trend.";
+      break;
+    case "O < VA":
+      forecast.openRelationScenario =
+        "Likely bearish start with downward trend.";
+      break;
+    case "O in VA":
+      forecast.openRelationScenario = "Likely ranging day within value area.";
+      break;
+    default:
+      forecast.openRelationScenario = "No specific scenario for open relation.";
+  }
+
+  // 4. Определяем трендовый или флэтовый сценарий
+  forecast.trendBias =
+    forecast.vah - forecast.val > avgIbSize ? "Trending Day" : "Ranging Day";
+
+  return forecast;
+};
+
+const determineOpenTypeABC = (acc, current) => {
+  const prevItem = acc[acc.length - 1];
+
+  // console.log("#prevItem: ", prevItem);
+  // console.log("#current: ", current);
+
+  // if (!prevItem || !current) {
+  //   return "-";
+  // }
+
+  const admission = 2.5;
+
+  const openPrice = current?.TPO_Open;
+  const vaHigh = toNumber(current?.VAH);
+  const vaLow = toNumber(current?.VAL);
+  const poc = toNumber(current?.POC);
+  const dayHigh = toNumber(current?.TPO_High);
+  const dayLow = toNumber(current?.TPO_Low);
+  const aHigh = toNumber(current?.A_High);
+  const aLow = toNumber(current?.A_Low);
+  const bHigh = current?.B_High;
+  const bLow = current?.B_Low;
+  const cHigh = current?.C_High;
+  const cLow = current?.C_Low;
+  const ibRange = current?.ibRange;
+
+  const prevHigh = toNumber(prevItem?.TPO_High);
+  const prevLow = toNumber(prevItem?.TPO_Low);
+  const vah = toNumber(prevItem?.VAH);
+  const val = toNumber(prevItem?.VAL);
+
+  // const prevHigh = parseFloat(prevDay.TPO_High); // High предыдущего дня
+  // const prevLow = parseFloat(prevDay.TPO_Low); // Low предыдущего дня
+
+  const isCAboveAandB = cHigh > aHigh + admission && cHigh > bHigh + admission; // C выше обоих
+  const isCBelowAandB = cLow < aLow - admission && cLow < bLow - admission;
+
+  const isBAboveA = bHigh > aHigh; // C выше обоих
+  const isBBelowA = bLow < aLow;
+
+  const isOpenOnExtremum = aLow - openPrice > admission * 2;
+
+  const highestHigh = Math.max(aHigh, bHigh, cHigh);
+  const lowestLow = Math.min(aLow, bLow, cLow);
+
+  // Проверяем, находится ли TPO_Open в пределах допуска
+  const isNearHigh = openPrice >= highestHigh - admission * 3;
+  const isNearLow = openPrice <= lowestLow + admission * 3;
+
+  if (!aHigh || !aLow || !bHigh || !bLow || !cHigh || !cHigh) {
+    return "-";
+  }
+
+  if (
+    (aHigh === bHigh &&
+      aLow === bLow &&
+      !(
+        cLow < lowestLow - admission * 3 || cHigh > highestHigh + admission * 3
+      )) ||
+    (aHigh > bHigh && aLow < bLow)
+  ) {
+    return "OA";
+  }
+
+  // 1. Open-Drive (OD)
+  if (
+    ((cLow < bLow && bLow < aLow) ||
+      (cHigh > bHigh && bHigh > aHigh) ||
+      (isNearHigh && aHigh > bHigh && aHigh > cHigh) ||
+      (isNearLow && cLow > bLow && aLow > cLow)) &&
+    (isNearHigh || isNearLow)
+  ) {
+    return "OD";
+  }
+
+  if (
+    openPrice >= val &&
+    openPrice <= vah &&
+    (((aHigh > vah || bHigh > vah) && cLow < vah) ||
+      ((aLow < val || bLow < val) && cHigh > val))
+  ) {
+    return "ORR";
+  }
+
+  if (
+    ((openPrice >= vah &&
+      (aHigh > openPrice || bHigh > openPrice) &&
+      cLow < aLow &&
+      cLow < bLow) ||
+      (openPrice <= val &&
+        (aLow < openPrice || bLow < openPrice) &&
+        cHigh > aHigh &&
+        cHigh > bHigh)) &&
+    !(aLow < val && aHigh > vah)
+  ) {
+    return "ORR";
+  }
+
+  if (
+    (openPrice > vah && aLow <= vah && cHigh > bHigh) ||
+    (openPrice < val && aHigh >= val && cLow < bLow) ||
+    (openPrice > vah &&
+      aLow < openPrice - admission * 4 &&
+      cHigh > bHigh + admission) ||
+    (openPrice > val &&
+      aHigh > openPrice + admission * 4 &&
+      cLow < bLow - admission)
+  ) {
+    return "OTD";
+  }
+
+  // 4. Open-Auction (OA)
+  if (
+    openPrice >= val &&
+    openPrice <= vah && // Внутри VA
+    aHigh <= vah &&
+    aLow >= val
+  ) {
+    return "OA";
+  }
+
+  if (
+    ((!isCAboveAandB && !isCBelowAandB) || (!isBAboveA && !isBBelowA)) &&
+    !(isNearHigh || isNearLow)
+  ) {
+    return "OA";
+  }
+
+  if (cLow >= lowestLow && cHigh <= highestHigh) {
+    return "OA";
+  }
+
+  return "-"; // Не удалось точно определить тип
 };

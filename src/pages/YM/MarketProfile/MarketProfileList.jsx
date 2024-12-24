@@ -44,9 +44,12 @@ const PriceLevel = ({ price, segments, poc, vah, val }) => {
 export const MarketProfileChartList = ({
   data,
   valueAreaPercent = 68,
-  tpr = 5,
+  tpr = 20,
+  step = 1,
 }) => {
   const groupedData = groupDataByDate(data); // Группируем данные по датам
+
+  console.log("#groupedData: ", groupedData);
 
   return (
     <div className="market-profile-chart flex flex-wrap gap-14">
@@ -56,15 +59,16 @@ export const MarketProfileChartList = ({
           groupedData[date],
           valueAreaPercent,
           tpr,
+          step,
         );
         return (
           <div key={date} className={""}>
             {/*<h4>{date}</h4>*/}
-            {/*<div className="summary">*/}
-            {/*  <strong>POC:</strong> {poc} <br />*/}
-            {/*  <strong>VAH:</strong> {vah} <br />*/}
-            {/*  <strong>VAL:</strong> {val}*/}
-            {/*</div>*/}
+            <div className="summary">
+              <strong>POC:</strong> {poc} <br />
+              <strong>VAH:</strong> {vah} <br />
+              <strong>VAL:</strong> {val}
+            </div>
             <div className="profile">
               {profile.map(({ price, segments }) => (
                 <PriceLevel

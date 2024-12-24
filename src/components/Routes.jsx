@@ -15,8 +15,9 @@ import { BacktestsSanya } from "../pages/Backtests/Backtests-Sanya.jsx";
 import { BacktestsTapok } from "../pages/Backtests-Tapok/Backtests-Tapok.jsx";
 import { BacktestsTapokUS500 } from "../pages/Backtests-Tapok-US500/Backtests-Tapok-US500.jsx";
 import { Dax } from "../pages/Dax/Dax.jsx";
-import { ES } from "../pages/Es/ES.jsx";
+import { ES } from "../pages/ES/ES.jsx";
 import { NQ } from "../pages/NQ/NQ.jsx";
+import { YM } from "../pages/YM/YM.jsx";
 
 export const AppRoutes = () => {
   return (
@@ -31,6 +32,7 @@ export const AppRoutes = () => {
                 <Route path="/market-stats/dax" element={<Dax />} />
                 <Route path="/market-stats/es" element={<ES />} />
                 <Route path="/market-stats/nq" element={<NQ />} />
+                <Route path="/market-stats/ym" element={<YM />} />
               </>
             )}
 
