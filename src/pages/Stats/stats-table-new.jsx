@@ -1,22 +1,16 @@
 import data from "../../Data/es-09-24.json";
-import dataTv from "../../Data/data-es-tv.json";
 
 import { Table } from "../../components/table.jsx";
 import BacktestData from "../Backtests/data-backtests-2.json";
 
 import { useEffect, useState } from "react";
-import {
-  convertToSegmentHighLow,
-  getDayOfWeek,
-  prepareDataABC,
-  setMatchOpeningType,
-} from "./utils";
+import { getDayOfWeek, prepareDataABC, setMatchOpeningType } from "./utils";
 import { Page } from "../../components/share/Page/page.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { BacktestTable } from "../Backtests/backtest-table.jsx";
 
 import moment from "moment/moment";
-import { FILD_TYPES } from "./constants";
+import { Filter } from "../../components/filter.jsx";
 
 const columns = [
   { id: "TPO_Date", title: "Date" },
@@ -29,7 +23,7 @@ const columns = [
   // {
   //   id: "matchOpeningType",
   //   title: "Matched Opening Type",
-  //   type: FILD_TYPES.CHECKBOX,
+  //   type: FIELD_TYPES.CHECKBOX,
   // },
   { id: "ibRange", title: "IB Range" },
   // { id: 'type_day', title: 'Type Day'  },
@@ -53,8 +47,6 @@ const columns = [
 
 const initialData = prepareDataABC(data);
 const dataWithMatchedOpeningType = setMatchOpeningType(initialData);
-
-// console.log(dataTv);
 
 export const StatsTableNew = () => {
   const [tableData, setTableData] = useState(dataWithMatchedOpeningType);
@@ -116,9 +108,9 @@ export const StatsTableNew = () => {
 
   return (
     <Page>
-      <div className={"text-white font-bold mb-10 px-4"}>
-        Matched Opening Type: {matchedOpeningType}%
-      </div>
+      {/*<div className={"text-white font-bold mb-10 px-4"}>*/}
+      {/*  Matched Opening Type: {matchedOpeningType}%*/}
+      {/*</div>*/}
 
       <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
         {modalData?.screen && <img src={modalData.screen} />}
@@ -132,7 +124,7 @@ export const StatsTableNew = () => {
         </div>
       </Modal>
 
-      {/*<Filter options={filterOptions} onChange={dataFilter}/>*/}
+      {/*<Filter options={filterOptions} onChange={dataFilter} />*/}
       <Table
         columns={columns}
         data={tableData}

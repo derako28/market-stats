@@ -4,27 +4,15 @@ import data from "../../Data/data-dax-tv.json";
 import BacktestData from "../Backtests/data-backtests-2.json";
 
 import { useState } from "react";
-import { getDayOfWeek, getOptions } from "./utils";
-import {
-  DAY_TYPES,
-  DAYS_OPTIONS,
-  DIRECTION,
-  FILTER_TYPES,
-  IB_BROKEN,
-  OPENING_TYPES,
-  OPENS_OPTIONS,
-} from "./constants";
+import { getDayOfWeek } from "./utils";
+import { DAYS_OPTIONS, FILTER_TYPES } from "../../utils/constants.js";
 import { Filter } from "../../components/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { BacktestTable } from "../Backtests/backtest-table.jsx";
 
 import moment from "moment/moment";
-import {
-  analyzeDayData,
-  calculateTPOPerDay,
-  calculateTPOPerDay2,
-} from "./utils-tpo.js";
+import { analyzeDayData, calculateTPOPerDay2 } from "./utils-tpo.js";
 
 const columns = [
   { id: "day", title: "Date", type: FILTER_TYPES.DATEPICKER_RANGE },
@@ -134,9 +122,6 @@ export const StatsTableDaxTPO = () => {
       </Modal>
 
       <Filter options={filterOptions} onChange={dataFilter} />
-
-      {/*{JSON.parse(initialData.slice(0, 2).toString())}*/}
-      {/*{initialData.slice(0, 2)}*/}
 
       <Table
         columns={columns}

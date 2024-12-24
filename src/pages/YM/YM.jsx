@@ -13,13 +13,13 @@ import {
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "../Stats/constants.js";
+} from "../../utils/constants.js";
 import { useState } from "react";
 import {
   compileMarketProfileByDays,
   prepareData,
   segmentData,
-} from "./utils.js";
+} from "../../utils/prepareData.js";
 import { AgCharts } from "ag-charts-react";
 import {
   dataWithIbInfo,
@@ -35,9 +35,10 @@ import {
 import moment from "moment";
 import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
-import { Statistic } from "./Statistic/Statistic.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
+import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
+import { Switch } from "../../components/share/Switch/switch.jsx";
 
 const filterOptions = [
   {
@@ -94,9 +95,11 @@ export const YM = () => {
   const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
-  const visibleCharts = false;
-  const visibleTable = true;
-  const filterVisible = false;
+  const [visibleConfig, setVisibleConfig] = useState({
+    charts: true,
+    filter: true,
+    table: false,
+  });
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -202,11 +205,25 @@ export const YM = () => {
 
       <Statistic data={tableData} />
 
-      {filterVisible && (
+      <div className={"m-4"}>
+        <Switch
+          labelOn={"Charts"}
+          labelOff={"Table"}
+          onClick={(value) => {
+            setVisibleConfig({
+              ...visibleConfig,
+              charts: value,
+              table: !value,
+            });
+          }}
+        />
+      </div>
+
+      {visibleConfig.filter && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
 
-      {visibleCharts && (
+      {visibleConfig.charts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -387,7 +404,7 @@ export const YM = () => {
         </>
       )}
 
-      {visibleTable && (
+      {visibleConfig.table && (
         <Table
           columns={columns}
           data={tableData}

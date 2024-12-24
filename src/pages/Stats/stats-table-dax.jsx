@@ -13,7 +13,7 @@ import {
   IB_BROKEN,
   OPENING_TYPES,
   OPENS_OPTIONS,
-} from "./constants";
+} from "../../utils/constants.js";
 import { Filter } from "../../components/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";

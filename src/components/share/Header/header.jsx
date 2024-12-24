@@ -17,7 +17,6 @@ export const Header = () => {
         <>
           <NavLink to={"/market-stats/stats-table-new"}>Table New</NavLink>
 
-          <NavLink to={"/market-stats/stats-charts-2024"}>Charts 2024</NavLink>
           <NavLink to={"/market-stats/stats-table-tpo-dax"}>
             Table DAX TPO
           </NavLink>

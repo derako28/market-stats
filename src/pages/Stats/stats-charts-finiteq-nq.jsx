@@ -15,28 +15,22 @@ import {
   segmentData,
 } from "./utils";
 import {
-  CLOSE_LABEL_BY_CURRENT_DAY,
   DATE_RANGE_OPTIONS,
   DATE_RANGE_VALUE,
-  DAY_TYPES_LABEL,
   DAYS_OPTIONS,
   FILTER_TYPES,
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
-  OPENING_TYPES,
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "./constants";
+} from "../../utils/constants.js";
 import { Filter } from "../../components/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 
 import { AgCharts } from "ag-charts-react";
 
 import moment from "moment";
-
-// const dateFormat = "YYYY-MM-DD"
-// const dateFormat = "DD-MM-YYYY"
 
 const filterOptions = [
   // { id: 'TPO_Date', title: 'Date', type: FILTER_TYPES.DATEPICKER_RANGE },
@@ -114,14 +108,7 @@ const columns = [
   // { id: 'ib_ext_ny', title: 'IB Exp NY', filter: false },
 ];
 
-// const initialData = dataFiniteq
 const initialData = segmentData(prepareDataFiniteq(dataFiniteq), 1);
-
-// .filter((item) => (getYear(item.TPO_Date) > 2018))
-
-// const initialData = segmentData(prepareDataFiniteq(dataFiniteq.reverse()), 1).reverse()
-// const initialData = segmentData(prepareDataFiniteq(dataFiniteq), 0.5)
-// .filter((item) => (item.ib_size <= 40 && item.ib_size >= 20) )
 
 export const StatsChartsAGFiniteqNQ = () => {
   const [tableData, setTableData] = useState(initialData);

@@ -13,7 +13,7 @@ import {
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "../Stats/constants.js";
+} from "../../utils/constants.js";
 import { useState } from "react";
 import {
   calculateMarketProfileByDay,
@@ -36,7 +36,7 @@ import {
 import moment from "moment";
 import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
-import { Statistic } from "./Statistic/Statistic.jsx";
+import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 
 const filterOptions = [
   {
@@ -205,7 +205,6 @@ export const Dax = () => {
       {filterVisible && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
-      {/*Count days: {tableData.length}*/}
       {visibleCharts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
@@ -320,20 +319,7 @@ export const Dax = () => {
                 )}
               />
             </div>
-            {/*<div className={"flex flex-col justify-center items-center"}>*/}
-            {/*  <div className={"text-gray-300"}>IB Broken by NY</div>*/}
-            {/*  <AgCharts*/}
-            {/*    options={getBarChartConfig(*/}
-            {/*      getDataIBChart(*/}
-            {/*        dataWithIbInfo(tableData, "ibBrokenNY"),*/}
-            {/*        IB_BROKEN_LABELS,*/}
-            {/*      ),*/}
-            {/*      tableData.length,*/}
-            {/*      700,*/}
-            {/*      300,*/}
-            {/*    )}*/}
-            {/*  />*/}
-            {/*</div>*/}
+
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Broken by All Day</div>
               <AgCharts
@@ -447,84 +433,6 @@ export const Dax = () => {
               />
             </div>
           </div>
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByLondon", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByLondon", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High By Ny</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByNY", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low By Ny</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByNY", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension High By All Day</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByAllDay", "highExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div className={"flex justify-center gap-16 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Extension Low By All Day</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibExtByAllDay", "lowExt"),*/}
-          {/*        tableData.length,*/}
-          {/*        1700,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
         </>
       )}
       {visibleTable && <Table columns={columns} data={tableData} />}

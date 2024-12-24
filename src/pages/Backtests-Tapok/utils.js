@@ -1,4 +1,4 @@
-import { chartConfig } from "../Stats/constants";
+import { chartConfig } from "../../utils/chartConfigs.js";
 import { getDayOfWeek, getMonth } from "../Stats/utils";
 import moment from "moment";
 import colors from "tailwindcss/colors";

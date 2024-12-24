@@ -7,7 +7,6 @@ import {
   convertToSegmentHighLow,
   getDayOfWeek,
   getOptions,
-  mergeTPOData,
   prepareDataABC,
   segmentData,
 } from "./utils";
@@ -16,7 +15,7 @@ import {
   FILTER_TYPES,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "./constants";
+} from "../../utils/constants.js";
 import { Filter } from "../../components/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 

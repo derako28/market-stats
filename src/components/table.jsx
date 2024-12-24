@@ -1,5 +1,5 @@
 import { Checkbox } from "./share/Checkbox/checkbox.jsx";
-import { FILD_TYPES } from "../pages/Stats/constants";
+import { FIELD_TYPES } from "../utils/constants.js";
 import { capitalizeFirstLetter } from "../pages/Stats/utils";
 
 export const Table = ({ columns, data = [], onClickRow, isFooter = true }) => {
@@ -36,7 +36,7 @@ export const Table = ({ columns, data = [], onClickRow, isFooter = true }) => {
                     onClick={() => (onClickRow ? onClickRow(item) : null)}
                   >
                     {columns.map((column) => {
-                      if (column.type == FILD_TYPES.CHECKBOX) {
+                      if (column.type == FIELD_TYPES.CHECKBOX) {
                         return (
                           <td className=" px-6 py-4" key={column.id}>
                             <div>

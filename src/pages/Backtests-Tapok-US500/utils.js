@@ -1,4 +1,4 @@
-import { chartConfig } from "../Stats/constants";
+import { chartConfig } from "../../utils/chartConfigs.js";
 import moment from "moment";
 
 const propertyForResult = "result";

@@ -14,7 +14,7 @@ import {
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "../Stats/constants.js";
+} from "../../utils/constants.js";
 import { useState } from "react";
 import {
   compileMarketProfileByDays,
@@ -37,8 +37,9 @@ import {
 import moment from "moment";
 import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
-import { Statistic } from "./Statistic/Statistic.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
+import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
+import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 
 const filterOptions = [
   {
@@ -87,23 +88,9 @@ const columns = [
   { id: "val", title: "val" },
 ];
 
-// const initialData = segmentData(
-//   filterLeastFrequentByIbSize(
-//     prepareData(calculateMarketProfileByDay(data)),
-//   ).reverse(),
-// );
-
-// const initialData = calculateMarketProfileByDay(data);
-// const initialDat2 = calculateOHLCProfile(data).reverse();
-
 const initialData = segmentData(
   prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
 );
-
-// console.log("#initialData: ", initialData);
-// console.log(JSON.stringify(initialData));
-
-// console.log("#forecastNextDay: ", forecastNextDay(initialData, "O > VA"));
 
 export const ES = () => {
   const [tableData, setTableData] = useState(initialData);
@@ -211,17 +198,16 @@ export const ES = () => {
     <Page>
       <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
         <div className={"mt-5 text-gray-200"}>
-          {/*<MarketProfileChart data={modalData} />*/}
+          <MarketProfileChart data={modalData} />
         </div>
       </Modal>
 
       <Statistic data={tableData} />
 
-      {/*<MarketProfileChartList data={data} />*/}
       {filterVisible && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
-      {/*Count days: {tableData.length}*/}
+
       {visibleCharts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>

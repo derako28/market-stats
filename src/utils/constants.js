@@ -1,5 +1,3 @@
-const dateFormat = "DD-MM-YYYY";
-
 export const FILTER_TYPES = {
   TEXT: "TEXT",
   SELECT: "SELECT",
@@ -8,7 +6,7 @@ export const FILTER_TYPES = {
   NUMBER: "NUMBER",
   RANGE: "RANGE",
 };
-export const FILD_TYPES = {
+export const FIELD_TYPES = {
   CHECKBOX: "CHECKBOX",
 };
 
@@ -24,8 +22,6 @@ export const DAY_TYPES_LABEL = {
   NORMAL: "NORMAL",
   NORMAL_OF_VARIATION: "NORMAL OF VARIATION",
   NEUTRAL: "NEUTRAL",
-  // Breakout_Day: 'Breakout Day',
-  // Breakdown_Day: 'Breakdown Day',
 };
 
 export const OPENING_TYPES = {
@@ -157,62 +153,6 @@ export const TEST_OPTIONS = {
   OPEN_IN_IB: "OPEN IN IB",
   OPEN_IN_VA: "OPEN IN VA",
   OPEN_IN_RANGE: "OPEN IN Range",
-};
-
-export const chartConfig = (
-  getData,
-  data,
-  property,
-  labels,
-  width = 300,
-  height = 300,
-) => {
-  const newData = getData(data, property, labels);
-  return {
-    data: newData,
-    width: width,
-    height: height,
-    theme: "ag-default-dark",
-    background: {
-      visible: false,
-    },
-
-    series: [
-      {
-        type: "donut",
-        calloutLabelKey: "asset",
-        angleKey: "amount",
-        innerRadiusRatio: 0.8,
-
-        fills: [
-          "rgba(0, 117, 225, 1)",
-          "rgba(0, 117, 225, .9)",
-          "rgba(0, 117, 225, .8)",
-          "rgba(0, 117, 225, .7)",
-          "rgba(0, 117, 225, .6)",
-        ],
-
-        calloutLabel: {
-          formatter: ({ datum }) => {
-            return `${datum.asset}: ${datum.amount}`;
-          },
-          // avoidCollisions: false
-        },
-      },
-    ],
-    legend: {
-      enabled: true,
-      pagination: false,
-      item: {
-        label: {
-          spacing: 20,
-          formatter: ({ itemId, value }) => {
-            return `${value}: (${((newData[itemId].amount / data.length) * 100).toFixed(0)}%)`;
-          },
-        },
-      },
-    },
-  };
 };
 
 export const DATE_RANGE_VALUE = {

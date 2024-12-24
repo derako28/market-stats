@@ -3,7 +3,7 @@ import {
   CLOSES_OPTIONS,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "../Stats/constants.js";
+} from "../../utils/constants.js";
 
 export const calculateMarketProfileByDay = (
   data,

@@ -5,7 +5,7 @@ export const FILTER_TYPES = {
   DATEPICKER_RANGE: "DATEPICKER_RANGE",
   NUMBER: "NUMBER",
 };
-export const FILD_TYPES = {
+export const FIELD_TYPES = {
   CHECKBOX: "CHECKBOX",
 };
 

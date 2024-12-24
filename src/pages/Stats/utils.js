@@ -1,6 +1,7 @@
-import { chartConfig, OPENS_OPTIONS, TEST_OPTIONS } from "./constants";
+import { OPENS_OPTIONS, TEST_OPTIONS } from "../../utils/constants.js";
 import moment from "moment";
 import dataTapok from "../../Data/tapok-sep.json";
+import { chartConfig } from "../../utils/chartConfigs.js";
 
 export const getDayOfWeek = (dateString) => {
   const [day, month, year] = dateString.split("/").map(Number); // Преобразуем дату в формате DD/MM/YYYY
@@ -271,8 +272,8 @@ export const getDataIBSizeChart = (data, property, subProperty = null) => {
     .sort((a, b) => a - b)
     .map((key) => {
       return { asset: key, amount: newData[key] };
-    });
-  // .filter((item) => item.amount > data.length * (0.25 / 100));
+    })
+    .filter((item) => item.amount > data.length * (0.5 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {

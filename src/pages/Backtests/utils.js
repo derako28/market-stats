@@ -1,4 +1,4 @@
-import { chartConfig } from "../Stats/constants";
+import { chartConfig } from "../../utils/chartConfigs.js";
 
 export const mergeStatsAndBack = (stats, backs) => {
   return backs.map((back) => {

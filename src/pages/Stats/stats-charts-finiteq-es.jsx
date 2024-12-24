@@ -1,5 +1,4 @@
 import dataFiniteq from "../../Data/algo-es.json";
-// import dataFiniteq from '../../Data/algo-es-short.json'
 
 import { useState } from "react";
 import {
@@ -19,26 +18,20 @@ import {
 import {
   DATE_RANGE_OPTIONS,
   DATE_RANGE_VALUE,
-  DAY_TYPES_LABEL,
   DAYS_OPTIONS,
   FILTER_TYPES,
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
-  OPENING_TYPES,
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
-} from "./constants";
+} from "../../utils/constants.js";
 import { Filter } from "../../components/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 
 import { AgCharts } from "ag-charts-react";
 
 import moment from "moment";
-import { Table } from "../../components/table.jsx";
-import { getYear } from "../Backtests-Tapok-US500/utils";
-
-// const dateFormat = "YYYY-MM-DD"
 
 const filterOptions = [
   // { id: 'TPO_Date', title: 'Date', type: FILTER_TYPES.DATEPICKER_RANGE },
