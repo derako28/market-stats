@@ -5,7 +5,7 @@ import { getFeature } from "../../../utils/getFeature.js";
 export const Header = () => {
   return (
     <div className={"flex gap-4 text-gray-300 p-4 mb-2"}>
-      {getFeature("TWData") && (
+      {getFeature("newStatistics") && (
         <>
           <NavLink to={"/market-stats/dax"}>DAX</NavLink>
           <NavLink to={"/market-stats/es"}>ES</NavLink>
@@ -23,13 +23,17 @@ export const Header = () => {
         </>
       )}
 
-      <NavLink to={"/market-stats/stats-table-dax"}>Table DAX</NavLink>
-      <NavLink to={"/market-stats/stats-charts-dax"}>Charts DAX</NavLink>
+      {getFeature("oldStatistics") && (
+        <>
+          <NavLink to={"/market-stats/stats-table-dax"}>Table DAX</NavLink>
+          <NavLink to={"/market-stats/stats-charts-dax"}>Charts DAX</NavLink>
 
-      <NavLink to={"/market-stats/stats-table-es"}>Table ES</NavLink>
-      <NavLink to={"/market-stats/stats-table-nq"}>Table NQ</NavLink>
-      <NavLink to={"/market-stats/stats-charts-es"}>Charts ES</NavLink>
-      <NavLink to={"/market-stats/stats-charts-nq"}>Charts NQ</NavLink>
+          <NavLink to={"/market-stats/stats-table-es"}>Table ES</NavLink>
+          <NavLink to={"/market-stats/stats-table-nq"}>Table NQ</NavLink>
+          <NavLink to={"/market-stats/stats-charts-es"}>Charts ES</NavLink>
+          <NavLink to={"/market-stats/stats-charts-nq"}>Charts NQ</NavLink>
+        </>
+      )}
 
       {getFeature("backtests") && (
         <>

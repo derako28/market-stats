@@ -40,6 +40,7 @@ import { Table } from "../../components/table.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
+import { Switch } from "../../components/share/Switch/switch.jsx";
 
 const filterOptions = [
   {
@@ -96,9 +97,11 @@ export const ES = () => {
   const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
-  const visibleCharts = true;
-  const visibleTable = false;
-  const filterVisible = true;
+  const [visibleConfig, setVisibleConfig] = useState({
+    charts: true,
+    filter: true,
+    table: false,
+  });
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -204,11 +207,25 @@ export const ES = () => {
 
       <Statistic data={tableData} />
 
-      {filterVisible && (
+      <div className={"m-4"}>
+        <Switch
+          labelOn={"Charts"}
+          labelOff={"Table"}
+          onClick={(value) => {
+            setVisibleConfig({
+              ...visibleConfig,
+              charts: value,
+              table: !value,
+            });
+          }}
+        />
+      </div>
+
+      {visibleConfig.filter && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
 
-      {visibleCharts && (
+      {visibleConfig.charts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -305,87 +322,99 @@ export const ES = () => {
             </div>
           </div>
 
-          <div className={"flex justify-center gap-16 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VAL (Open Under POC)</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(
-                    tableData.filter(
-                      (item) => item.open_relation_to_poc === "underPoc",
-                    ),
-                    "isTestVAL",
-                    TEST_OPTIONS,
-                  ),
-                  tableData.filter(
-                    (item) => item.open_relation_to_poc === "underPoc",
-                  ).length,
-                  500,
-                  500,
-                )}
-              />
-            </div>
+          {1 > 2 && (
+            <>
+              <div className={"flex justify-center gap-16 mb-10"}>
+                <div className={"flex flex-col justify-center items-center"}>
+                  <div className={"text-gray-300"}>
+                    Touch VAL (Open Under POC)
+                  </div>
+                  <AgCharts
+                    options={getBarChartHorizontalConfig(
+                      getDataChart(
+                        tableData.filter(
+                          (item) => item.open_relation_to_poc === "underPoc",
+                        ),
+                        "isTestVAL",
+                        TEST_OPTIONS,
+                      ),
+                      tableData.filter(
+                        (item) => item.open_relation_to_poc === "underPoc",
+                      ).length,
+                      500,
+                      500,
+                    )}
+                  />
+                </div>
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VAL (Open Over POC)</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(
-                    tableData.filter(
-                      (item) => item.open_relation_to_poc === "overPoc",
-                    ),
-                    "isTestVAL",
-                    TEST_OPTIONS,
-                  ),
-                  tableData.filter(
-                    (item) => item.open_relation_to_poc === "overPoc",
-                  ).length,
-                  500,
-                  500,
-                )}
-              />
-            </div>
+                <div className={"flex flex-col justify-center items-center"}>
+                  <div className={"text-gray-300"}>
+                    Touch VAL (Open Over POC)
+                  </div>
+                  <AgCharts
+                    options={getBarChartHorizontalConfig(
+                      getDataChart(
+                        tableData.filter(
+                          (item) => item.open_relation_to_poc === "overPoc",
+                        ),
+                        "isTestVAL",
+                        TEST_OPTIONS,
+                      ),
+                      tableData.filter(
+                        (item) => item.open_relation_to_poc === "overPoc",
+                      ).length,
+                      500,
+                      500,
+                    )}
+                  />
+                </div>
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VAH (Open Under Poc)</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(
-                    tableData.filter(
-                      (item) => item.open_relation_to_poc === "underPoc",
-                    ),
-                    "isTestVAH",
-                    TEST_OPTIONS,
-                  ),
-                  tableData.filter(
-                    (item) => item.open_relation_to_poc === "underPoc",
-                  ).length,
-                  500,
-                  500,
-                )}
-              />
-            </div>
+                <div className={"flex flex-col justify-center items-center"}>
+                  <div className={"text-gray-300"}>
+                    Touch VAH (Open Under Poc)
+                  </div>
+                  <AgCharts
+                    options={getBarChartHorizontalConfig(
+                      getDataChart(
+                        tableData.filter(
+                          (item) => item.open_relation_to_poc === "underPoc",
+                        ),
+                        "isTestVAH",
+                        TEST_OPTIONS,
+                      ),
+                      tableData.filter(
+                        (item) => item.open_relation_to_poc === "underPoc",
+                      ).length,
+                      500,
+                      500,
+                    )}
+                  />
+                </div>
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VAH (Open Over Poc)</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(
-                    tableData.filter(
-                      (item) => item.open_relation_to_poc === "overPoc",
-                    ),
-                    "isTestVAH",
-                    TEST_OPTIONS,
-                  ),
-                  tableData.filter(
-                    (item) => item.open_relation_to_poc === "overPoc",
-                  ).length,
-                  500,
-                  500,
-                )}
-              />
-            </div>
-          </div>
+                <div className={"flex flex-col justify-center items-center"}>
+                  <div className={"text-gray-300"}>
+                    Touch VAH (Open Over Poc)
+                  </div>
+                  <AgCharts
+                    options={getBarChartHorizontalConfig(
+                      getDataChart(
+                        tableData.filter(
+                          (item) => item.open_relation_to_poc === "overPoc",
+                        ),
+                        "isTestVAH",
+                        TEST_OPTIONS,
+                      ),
+                      tableData.filter(
+                        (item) => item.open_relation_to_poc === "overPoc",
+                      ).length,
+                      500,
+                      500,
+                    )}
+                  />
+                </div>
+              </div>
+            </>
+          )}
 
           {/*Touch ZONE END*/}
 
@@ -502,7 +531,7 @@ export const ES = () => {
           </div>
         </>
       )}
-      {visibleTable && (
+      {visibleConfig.table && (
         <Table
           columns={columns}
           data={tableData}

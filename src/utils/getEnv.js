@@ -9,6 +9,8 @@ export const getEnv = () => {
           backtests: true,
           nq: true,
           es: true,
+          newStatistics: true,
+          oldStatistics: true,
         },
       };
 
@@ -19,8 +21,10 @@ export const getEnv = () => {
           TWData: false,
           dax: false,
           backtests: false,
-          es: true,
-          nq: true,
+          es: false,
+          nq: false,
+          newStatistics: true,
+          oldStatistics: false,
         },
       };
   }

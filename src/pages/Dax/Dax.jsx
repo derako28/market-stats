@@ -37,6 +37,7 @@ import moment from "moment";
 import { Filter } from "../../components/filter.jsx";
 import { Table } from "../../components/table.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
+import { Switch } from "../../components/share/Switch/switch.jsx";
 
 const filterOptions = [
   {
@@ -101,9 +102,11 @@ const initialData = segmentData(
 export const Dax = () => {
   const [tableData, setTableData] = useState(initialData);
 
-  const visibleCharts = true;
-  const visibleTable = false;
-  const filterVisible = true;
+  const [visibleConfig, setVisibleConfig] = useState({
+    charts: true,
+    filter: true,
+    table: false,
+  });
 
   const dataFilter = (dataFilter) => {
     const startDate = moment(dataFilter.date?.startDate);
@@ -202,10 +205,25 @@ export const Dax = () => {
   return (
     <Page noHeader={false}>
       <Statistic data={tableData} />
-      {filterVisible && (
+
+      <div className={"m-4"}>
+        <Switch
+          labelOn={"Charts"}
+          labelOff={"Table"}
+          onClick={(value) => {
+            setVisibleConfig({
+              ...visibleConfig,
+              charts: value,
+              table: !value,
+            });
+          }}
+        />
+      </div>
+
+      {visibleConfig.filter && (
         <Filter options={filterOptions} onChange={dataFilter} />
       )}
-      {visibleCharts && (
+      {visibleConfig.charts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -435,7 +453,7 @@ export const Dax = () => {
           </div>
         </>
       )}
-      {visibleTable && <Table columns={columns} data={tableData} />}
+      {visibleConfig.table && <Table columns={columns} data={tableData} />}
     </Page>
   );
 };

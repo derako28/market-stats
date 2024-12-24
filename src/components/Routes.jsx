@@ -1,5 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home/Home.jsx";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { getFeature } from "../utils/getFeature.js";
 import { StatsTableNew } from "../pages/Stats/stats-table-new.jsx";
 import { StatsChartsAG2024 } from "../pages/Stats/stats-charts-ag-24.jsx";
@@ -25,9 +29,7 @@ export const AppRoutes = () => {
       <Router>
         <div>
           <Routes>
-            <Route exact path="/market-stats/" element={<Home />} />
-
-            {getFeature("dax") && (
+            {getFeature("newStatistics") && (
               <>
                 <Route path="/market-stats/dax" element={<Dax />} />
                 <Route path="/market-stats/es" element={<ES />} />
@@ -98,6 +100,10 @@ export const AppRoutes = () => {
                 />
               </>
             )}
+            <Route
+              path="*"
+              element={<Navigate to="/market-stats/es" replace />}
+            />
           </Routes>
         </div>
       </Router>
