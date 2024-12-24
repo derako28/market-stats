@@ -1,0 +1,19 @@
+.block {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  background: rgba(255, 255, 255, .3);
+}
+
+
+.poc {
+  background: orange;
+}
+
+.outsideVa {
+  opacity: 0.4;
+}
