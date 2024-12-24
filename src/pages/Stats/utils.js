@@ -210,9 +210,10 @@ export const getBarChartHorizontalConfig = (
         yKey: "amount",
         label: {
           color: "#fff",
+          fontSize: 10,
+
           formatter: ({ value }) => {
-            // return `${value.toFixed(0)}  `;
-            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(0)}%)` : ""} `;
+            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
           },
         },
 
@@ -273,7 +274,7 @@ export const getDataIBSizeChart = (data, property, subProperty = null) => {
     .map((key) => {
       return { asset: key, amount: newData[key] };
     })
-    .filter((item) => item.amount > data.length * (0.5 / 100));
+    .filter((item) => item.amount > data.length * (1 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {
@@ -954,15 +955,6 @@ export const prepareDataFiniteq = (data) => {
     }, [])
     .reverse();
 };
-
-// "open": "O < VA",
-// "opening_type": "OD",
-// "type_day": "Trend",
-// "ib_broken": "High Broken",
-// "direction": "Long",
-// "ib_size": 60,
-// "ib_ext": 250,
-// "ib_ext_ny": 250
 
 export const toNumber = (number) => {
   return Number(number);

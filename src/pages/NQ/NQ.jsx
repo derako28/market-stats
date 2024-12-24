@@ -263,7 +263,7 @@ export const NQ = () => {
                   tableData,
                   "close_relation",
                   CLOSES_TO_CURRENT_DAY_LABEL,
-                  600,
+                  550,
                   600,
                 )}
               />
@@ -484,32 +484,34 @@ export const NQ = () => {
                 )}
               />
             </div>
+          </div>
+          <div>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Max Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExt", "maxExt"),
                   tableData.length,
-                  700,
+                  1400,
                   500,
                 )}
               />
             </div>
           </div>
           {/*IB Ext Bar Type End*/}
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ibSize"),
-                  tableData.length,
-                  1700,
-                  300,
-                )}
-              />
-            </div>
-          </div>
+          {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>IB Size</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataIBSizeChart(tableData, "ibSize"),*/}
+          {/*        tableData.length,*/}
+          {/*        1400,*/}
+          {/*        300,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className={"flex justify-center gap-16 mt-20 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Size Segmented</div>
@@ -517,7 +519,7 @@ export const NQ = () => {
                 options={getBarChartHorizontalConfig(
                   getDataIBSizeChart(tableData, "ib_size_segmented"),
                   tableData.length,
-                  1700,
+                  1400,
                   300,
                 )}
               />

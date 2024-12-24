@@ -233,7 +233,7 @@ export const Dax = () => {
                   tableData,
                   "open_relation",
                   OPENS_LABEL,
-                  600,
+                  500,
                   600,
                 )}
               />
@@ -246,7 +246,7 @@ export const Dax = () => {
                   tableData,
                   "close_relation_prev",
                   CLOSES_LABEL,
-                  550,
+                  450,
                   600,
                 )}
               />
@@ -261,7 +261,7 @@ export const Dax = () => {
                   tableData,
                   "close_relation",
                   CLOSES_TO_CURRENT_DAY_LABEL,
-                  600,
+                  500,
                   600,
                 )}
               />
@@ -270,14 +270,14 @@ export const Dax = () => {
 
           {/*Touch ZONE*/}
 
-          <div className={"flex justify-center gap-16 mb-10"}>
+          <div className={"flex justify-center gap-2 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>Touch IB</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestIB", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -289,7 +289,7 @@ export const Dax = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -301,7 +301,7 @@ export const Dax = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestVA", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -313,7 +313,7 @@ export const Dax = () => {
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestRange", TEST_OPTIONS),
                   tableData.length,
-                  500,
+                  400,
                   500,
                 )}
               />
@@ -377,13 +377,15 @@ export const Dax = () => {
                 )}
               />
             </div>
+          </div>
+          <div className={"mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Max Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExtByLondon", "maxExt"),
                   tableData.length,
-                  700,
+                  1400,
                   500,
                 )}
               />
@@ -412,32 +414,34 @@ export const Dax = () => {
                 )}
               />
             </div>
+          </div>
+          <div>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Max Ext</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExtByAllDay", "maxExt"),
                   tableData.length,
-                  700,
+                  1400,
                   500,
                 )}
               />
             </div>
           </div>
           {/*IB Ext Bar Type End*/}
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ibSize"),
-                  tableData.length,
-                  1700,
-                  300,
-                )}
-              />
-            </div>
-          </div>
+          {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>IB Size</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataIBSizeChart(tableData, "ibSize"),*/}
+          {/*        tableData.length,*/}
+          {/*        1700,*/}
+          {/*        300,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className={"flex justify-center gap-16 mt-20 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Size Segmented</div>
@@ -445,7 +449,7 @@ export const Dax = () => {
                 options={getBarChartHorizontalConfig(
                   getDataIBSizeChart(tableData, "ib_size_segmented"),
                   tableData.length,
-                  1700,
+                  1400,
                   300,
                 )}
               />
