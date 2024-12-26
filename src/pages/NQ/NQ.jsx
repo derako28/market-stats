@@ -102,8 +102,8 @@ export const NQ = () => {
 
   const [visibleConfig, setVisibleConfig] = useState({
     charts: true,
-    filter: true,
     table: false,
+    filter: true,
   });
 
   const dataFilter = (dataFilter) => {

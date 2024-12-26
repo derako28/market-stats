@@ -105,8 +105,8 @@ export const ES = () => {
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({
-    charts: false,
-    table: true,
+    charts: true,
+    table: false,
     filter: true,
   });
 
