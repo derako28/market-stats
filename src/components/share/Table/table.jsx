@@ -1,6 +1,6 @@
-import { Checkbox } from "./share/Checkbox/checkbox.jsx";
-import { FIELD_TYPES } from "../utils/constants.js";
-import { capitalizeFirstLetter } from "../pages/Stats/utils";
+import { Checkbox } from "../Checkbox/checkbox.jsx";
+import { FIELD_TYPES } from "../../../utils/constants.js";
+import { capitalizeFirstLetter } from "../../../pages/Stats/utils.js";
 
 export const Table = ({ columns, data = [], onClickRow, isFooter = true }) => {
   if (!data) return false;

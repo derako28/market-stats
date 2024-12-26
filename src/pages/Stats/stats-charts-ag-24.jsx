@@ -23,13 +23,13 @@ import {
   OPENS_LABEL,
   OPENS_OPTIONS,
 } from "../../utils/constants.js";
-import { Filter } from "../../components/filter.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 
 import { AgCharts } from "ag-charts-react";
 
 import moment from "moment";
-import { Table } from "../../components/table.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 
 const filterOptions = [
   { id: "date", title: "Date", type: FILTER_TYPES.DATEPICKER_RANGE },

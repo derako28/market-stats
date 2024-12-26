@@ -35,8 +35,8 @@ import {
   getOptions,
 } from "../Stats/utils.js";
 import moment from "moment";
-import { Filter } from "../../components/filter.jsx";
-import { Table } from "../../components/table.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";

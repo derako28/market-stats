@@ -4,13 +4,12 @@ export const getEnv = () => {
       return {
         env: "dev",
         features: {
-          TWData: true,
           dax: true,
-          backtests: true,
-          nq: true,
-          es: true,
+          backtests: false,
+          nq: false,
+          es: false,
+          oldStatistics: false,
           newStatistics: true,
-          oldStatistics: true,
         },
       };
 
@@ -18,13 +17,12 @@ export const getEnv = () => {
       return {
         env: "deploy",
         features: {
-          TWData: false,
           dax: false,
           backtests: false,
           es: false,
           nq: false,
-          newStatistics: true,
           oldStatistics: false,
+          newStatistics: true,
         },
       };
   }

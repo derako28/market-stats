@@ -1,4 +1,4 @@
-import { Table } from "../../components/table.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 
 import data from "./data-ib-broke-us.json";
 import BacktestData from "../Backtests/data-backtests-2.json";
@@ -14,7 +14,7 @@ import {
   OPENING_TYPES,
   OPENS_OPTIONS,
 } from "../../utils/constants.js";
-import { Filter } from "../../components/filter.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { BacktestTable } from "../Backtests/backtest-table.jsx";

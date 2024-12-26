@@ -34,8 +34,8 @@ import {
   getOptions,
 } from "../Stats/utils.js";
 import moment from "moment";
-import { Filter } from "../../components/filter.jsx";
-import { Table } from "../../components/table.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { Switch } from "../../components/share/Switch/switch.jsx";
 

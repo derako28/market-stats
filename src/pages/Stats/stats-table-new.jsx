@@ -1,6 +1,6 @@
 import data from "../../Data/es-09-24.json";
 
-import { Table } from "../../components/table.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 import BacktestData from "../Backtests/data-backtests-2.json";
 
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { Modal } from "../../components/share/Modal/modal.jsx";
 import { BacktestTable } from "../Backtests/backtest-table.jsx";
 
 import moment from "moment/moment";
-import { Filter } from "../../components/filter.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
 
 const columns = [
   { id: "TPO_Date", title: "Date" },

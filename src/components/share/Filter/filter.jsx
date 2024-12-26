@@ -1,10 +1,10 @@
 import { Controller, useForm } from "react-hook-form";
-import { DatepickerMY } from "./share/Datepicker/datepicker.jsx";
-import { FILTER_TYPES } from "../utils/constants.js";
-import { SelectMy } from "./share/select.jsx";
-import { Button } from "./share/Button/button.jsx";
-import { Input } from "./share/Input/input.jsx";
-import { MultiSelectMy } from "./share/MultiSelect/multi-select.jsx";
+import { DatepickerMY } from "../Datepicker/datepicker.jsx";
+import { FILTER_TYPES } from "../../../utils/constants.js";
+import { SelectMy } from "../Select/select.jsx";
+import { Button } from "../Button/button.jsx";
+import { Input } from "../Input/input.jsx";
+import { MultiSelectMy } from "../MultiSelect/multi-select.jsx";
 
 const defaultValue = {
   ib_size: null,

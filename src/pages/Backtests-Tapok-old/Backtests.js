@@ -1,6 +1,6 @@
 import { Page } from "../../components/share/Page/page.jsx";
-import { Filter } from "../../components/filter.jsx";
-import { Table } from "../../components/table.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 import { useState } from "react";
 
 import data from "./data-backtests-2.json";

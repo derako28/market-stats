@@ -1,4 +1,4 @@
-import { Table } from "../../components/table.jsx";
+import { Table } from "../../components/share/Table/table.jsx";
 
 import data from "../../Data/algo-nq.json";
 
@@ -16,7 +16,7 @@ import {
   OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "../../utils/constants.js";
-import { Filter } from "../../components/filter.jsx";
+import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Page } from "../../components/share/Page/page.jsx";
 
 import moment from "moment/moment";
