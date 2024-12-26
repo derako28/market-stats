@@ -25,10 +25,13 @@ export const DAY_TYPES_LABEL = {
 };
 
 export const OPENING_TYPES = {
-  OA: "OA",
   OD: "OD",
   OTD: "OTD",
   ORR: "ORR",
+  OA: "OA",
+  OA_OTD: "OA (OTD)",
+  OA_ORR: "OA (ORR)",
+  OA_OD: "OA (OD)",
 };
 
 export const CONTINUATION_TYPES = {

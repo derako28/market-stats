@@ -11,6 +11,7 @@ import {
   FILTER_TYPES,
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
+  OPENING_TYPES,
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
@@ -271,6 +272,41 @@ export const ES = () => {
                   "close_relation",
                   CLOSES_TO_CURRENT_DAY_LABEL,
                   550,
+                  600,
+                )}
+              />
+            </div>
+          </div>
+
+          <div className={"flex gap-8 justify-center mt-20 mb-20"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300 mb-4"}>Opening Type</div>
+              <AgCharts
+                options={getChartConfig(
+                  tableData.map((item) => ({
+                    ...item,
+                    opening_type: item.opening_type.includes("OA")
+                      ? "OA"
+                      : item.opening_type,
+                  })),
+                  "opening_type",
+                  OPENING_TYPES,
+                  600,
+                  600,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300 mb-4"}>
+                Opening Type With Alternative Opening
+              </div>
+              <AgCharts
+                options={getChartConfig(
+                  tableData,
+                  "opening_type",
+                  OPENING_TYPES,
+                  700,
                   600,
                 )}
               />

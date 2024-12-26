@@ -91,7 +91,9 @@ export const getChartConfig = (
   width = 300,
   height = 300,
 ) => {
-  const newData = getDataChart(data, property, labels);
+  const newData = getDataChart(data, property, labels).sort(
+    (a, b) => b.amount - a.amount,
+  );
 
   return {
     data: newData,
