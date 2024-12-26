@@ -102,17 +102,26 @@ export const prepareData = (data) => {
         open_relation: getOpenRelation(acc, item),
         close_relation_prev: getCloseRelationByPrevDay(acc, item),
         close_relation: getCloseRelation(item),
-
-        // opening_type: determineOpenTypeABC(acc, item),
-        // type_day: determineDayType(item),
         isTestVA: isTestVA(acc, item),
         isTestVAL: isTestVAL(acc, item),
         isTestVAH: isTestVAH(acc, item),
         isTestPOC: isTestPOC(acc, item),
         isTestRange: isTestRange(acc, item),
         isTestIB: isTestIB(acc, item),
-        opening_type: determineOpenTypeABC(acc, item),
         open_relation_to_poc: getOpenRelationToPoc(acc, item),
+        // type_day: determineDayType(item),
+      },
+    ];
+  }, []);
+};
+
+export const setOpeningType = (data) => {
+  return data.reduce((acc, item) => {
+    return [
+      ...acc,
+      {
+        ...item,
+        opening_type: determineOpenTypeABC(acc, item),
       },
     ];
   }, []);
@@ -403,14 +412,14 @@ export const compileMarketProfileByDays = (
 
     const ibSize = ibHigh - ibLow;
 
-    const A_High = dailyData[0].high;
-    const A_Low = dailyData[0].low;
+    const aHigh = dailyData[0].high;
+    const aLow = dailyData[0].low;
 
-    const B_High = dailyData[1].high;
-    const B_Low = dailyData[1].low;
+    const bHigh = dailyData[1].high;
+    const bLow = dailyData[1].low;
 
-    const C_High = dailyData[2].high;
-    const C_Low = dailyData[2].low;
+    const cHigh = dailyData[2].high;
+    const cLow = dailyData[2].low;
 
     return {
       date,
@@ -425,14 +434,14 @@ export const compileMarketProfileByDays = (
       vah,
       val,
       profile,
+      aHigh,
+      aLow,
+      bHigh,
+      bLow,
+      cHigh,
+      cLow,
       ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
-      A_High,
-      A_Low,
-      B_High,
-      B_Low,
-      C_High,
-      C_Low,
       breakoutPeriods: findBreakoutPeriods(dailyData),
     };
   });
@@ -638,22 +647,34 @@ const determineOpenTypeABC = (acc, current) => {
 
   const admission = 2.5;
 
-  const openPrice = current?.tpoOpen;
-  const aHigh = toNumber(current?.A_High);
-  const aLow = toNumber(current?.A_Low);
-  const bHigh = current?.B_High;
-  const bLow = current?.B_Low;
-  const cHigh = current?.C_High;
-  const cLow = current?.C_Low;
+  const {
+    aHigh,
+    aLow,
+    bHigh,
+    bLow,
+    cHigh,
+    cLow,
+    tpoOpen: openPrice,
+    open_relation: openRelation,
+  } = current;
+  const {
+    vah: prevVah,
+    val: prevVal,
+    tpoLow: prevTpoLow,
+    tpoHigh: prevTpoHigh,
+  } = prevItem;
 
-  const prevVah = toNumber(prevItem?.vah);
-  const prevVal = toNumber(prevItem?.val);
-
-  const isCAboveAandB = cHigh > aHigh + admission && cHigh > bHigh + admission; // C выше обоих
+  const isCAboveAandB = cHigh > aHigh + admission && cHigh > bHigh + admission;
   const isCBelowAandB = cLow < aLow - admission && cLow < bLow - admission;
 
-  const isBAboveA = bHigh > aHigh; // C выше обоих
+  const isBAboveA = bHigh > aHigh;
   const isBBelowA = bLow < aLow;
+
+  const isCAboveA = cHigh > aHigh;
+  const isCBelowA = cLow < aLow;
+
+  const isCAboveB = cHigh > bHigh;
+  const isCBelowB = cLow < bLow;
 
   const isOpenOnExtremum = aLow - openPrice > admission * 2;
 
@@ -661,20 +682,97 @@ const determineOpenTypeABC = (acc, current) => {
   const lowestLow = Math.min(aLow, bLow, cLow);
 
   // Проверяем, находится ли TPO_Open в пределах допуска
-  const isNearHigh = openPrice >= highestHigh - admission * 3;
-  const isNearLow = openPrice <= lowestLow + admission * 3;
+  const isNearHigh = openPrice >= highestHigh - admission * 2;
+  const isNearLow = openPrice <= lowestLow + admission * 2;
 
   if (!aHigh || !aLow || !bHigh || !bLow || !cHigh || !cLow) {
     return "-";
   }
 
-  // 4. Open-Auction (OA)
-  if (openPrice >= prevVal && openPrice <= prevVah) {
+  console.log("#openRelation: ", openRelation);
+  console.log("#prevItem: ", prevItem);
+  console.log("#current: ", current);
+  console.log("==============");
+
+  if (aHigh >= bHigh && aLow <= bLow) {
     return "OA";
   }
 
-  if (openPrice >= prevVah && aLow <= prevVah) {
-    return "OTD";
+  if (openRelation === OPENS_OPTIONS.IN_VA) {
+    if (isNearLow && aLow > prevVal && aHigh > prevVah && isCAboveA) {
+      return "OA (OD)";
+    }
+
+    if (isNearHigh && aHigh < prevVah && aLow < prevVah && isCBelowA) {
+      return "OA (OD)";
+    }
+
+    if (
+      (aLow < prevVal && aHigh > prevVal) ||
+      (aHigh > prevVah && aLow < prevVah)
+    ) {
+      return "OA (ORR)";
+    }
+
+    if (prevVal - aLow < 1 || prevVah - aHigh < 1) {
+      return "OA (OTD)";
+    }
+
+    return "OA";
+  }
+
+  if (
+    openRelation === OPENS_OPTIONS.ABOVE_VA ||
+    openRelation === OPENS_OPTIONS.ABOVE_RANGE
+  ) {
+    if (isNearHigh && aLow < prevVah && isCBelowA) {
+      return "OD";
+    }
+
+    if (isNearLow && aHigh > prevVah && isCAboveA) {
+      return "OD";
+    }
+
+    if (aHigh > prevTpoHigh && isBBelowA) {
+      return "ORR";
+    }
+
+    if (aLow <= prevVah + admission && (bHigh > prevVah || cHigh > prevVah)) {
+      return "OTD";
+    }
+  }
+
+  if (
+    openRelation === OPENS_OPTIONS.LOWER_VA ||
+    openRelation === OPENS_OPTIONS.LOWER_RANGE
+  ) {
+    if (isNearLow && aHigh > prevVal && isCAboveA) {
+      return "OD";
+    }
+
+    if (isNearHigh && aLow > prevVal && isCBelowA) {
+      return "OD";
+    }
+
+    if (aLow < prevTpoLow && isBAboveA) {
+      return "ORR";
+    }
+
+    if (aHigh >= prevVal - admission && (bLow < prevVal || cLow < prevVal)) {
+      return "OTD";
+    }
+  }
+
+  // OLD
+
+  if (
+    ((cLow < bLow && bLow < aLow) ||
+      (cHigh > bHigh && bHigh > aHigh) ||
+      (isNearHigh && aHigh > bHigh && aHigh > cHigh) ||
+      (isNearLow && cLow > bLow && aLow > cLow)) &&
+    (isNearHigh || isNearLow)
+  ) {
+    return "OD";
   }
 
   if (
@@ -686,17 +784,6 @@ const determineOpenTypeABC = (acc, current) => {
     (aHigh > bHigh && aLow < bLow)
   ) {
     return "OA";
-  }
-
-  // 1. Open-Drive (OD)
-  if (
-    ((cLow < bLow && bLow < aLow) ||
-      (cHigh > bHigh && bHigh > aHigh) ||
-      (isNearHigh && aHigh > bHigh && aHigh > cHigh) ||
-      (isNearLow && cLow > bLow && aLow > cLow)) &&
-    (isNearHigh || isNearLow)
-  ) {
-    return "OD";
   }
 
   if (
@@ -735,16 +822,6 @@ const determineOpenTypeABC = (acc, current) => {
     return "OTD";
   }
 
-  // 4. Open-Auction (OA)
-  if (
-    openPrice >= prevVal &&
-    openPrice <= prevVah && // Внутри VA
-    aHigh <= prevVah &&
-    aLow >= prevVal
-  ) {
-    return "OA";
-  }
-
   if (
     ((!isCAboveAandB && !isCBelowAandB) || (!isBAboveA && !isBBelowA)) &&
     !(isNearHigh || isNearLow)
@@ -755,6 +832,8 @@ const determineOpenTypeABC = (acc, current) => {
   if (cLow >= lowestLow && cHigh <= highestHigh) {
     return "OA";
   }
+
+  // OLD
 
   return "-"; // Не удалось точно определить тип
 };

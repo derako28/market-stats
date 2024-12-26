@@ -20,6 +20,7 @@ import {
   compileMarketProfileByDays,
   prepareData,
   segmentData,
+  setOpeningType,
 } from "../../utils/prepareData.js";
 import { AgCharts } from "ag-charts-react";
 import {
@@ -90,7 +91,9 @@ const columns = [
 ];
 
 const initialData = segmentData(
-  prepareData(compileMarketProfileByDays(data, 68, 5, 4)),
+  setOpeningType(
+    prepareData(compileMarketProfileByDays(data, 68, 5, 4)),
+  ).reverse(),
 );
 
 export const NQ = () => {

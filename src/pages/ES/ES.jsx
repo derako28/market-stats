@@ -20,6 +20,7 @@ import {
   compileMarketProfileByDays,
   prepareData,
   segmentData,
+  setOpeningType,
 } from "../../utils/prepareData.js";
 import { AgCharts } from "ag-charts-react";
 import {
@@ -71,9 +72,17 @@ const columns = [
   // { id: "open_relation", title: "Open Relation" },
   { id: "opening_type", title: "Opening Type" },
   { id: "tpoOpen", title: "tpoOpen" },
+
+  { id: "vah", title: "vah" },
+  { id: "val", title: "val" },
+  { id: "poc", title: "poc" },
+
   { id: "tpoClose", title: "tpoClose" },
   { id: "tpoHigh", title: "tpoHigh" },
   { id: "tpoLow", title: "tpoLow" },
+
+  { id: "aHigh", title: "aHigh" },
+  { id: "aLow", title: "aLow" },
 
   // { id: "ibSize", title: "IB Size" },
   // { id: "ibHigh", title: "IB High" },
@@ -83,14 +92,12 @@ const columns = [
 
   // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
   // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
-
-  { id: "poc", title: "poc" },
-  { id: "vah", title: "vah" },
-  { id: "val", title: "val" },
 ];
 
 const initialData = segmentData(
-  prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
+  setOpeningType(
+    prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
+  ).reverse(),
 );
 
 export const ES = () => {
@@ -98,9 +105,9 @@ export const ES = () => {
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({
-    charts: true,
+    charts: false,
+    table: true,
     filter: true,
-    table: false,
   });
 
   const dataFilter = (dataFilter) => {
