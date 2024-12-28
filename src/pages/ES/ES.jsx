@@ -1,8 +1,9 @@
-import data from "../../Data-TW/ES.json";
+import data from "../../Data-TW/ES-short.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
+  CANDLE_TYPES,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
@@ -18,7 +19,9 @@ import {
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
+  calculateTrendStatistics,
   compileMarketProfileByDays,
+  getDataChartByFirstCandle,
   prepareData,
   segmentData,
   setOpeningType,
@@ -357,6 +360,38 @@ export const ES = () => {
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataChart(tableData, "isTestRange", TEST_OPTIONS),
+                  tableData.length,
+                  400,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+
+          <div className={"flex justify-center gap-4 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>First Candle Bullish</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChartByFirstCandle(
+                    calculateTrendStatistics(data),
+                    "bullishFirstCandle",
+                  ),
+                  tableData.length,
+                  400,
+                  500,
+                )}
+              />
+            </div>
+
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>First Candle Bearish</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataChartByFirstCandle(
+                    calculateTrendStatistics(data),
+                    "bearishFirstCandle",
+                  ),
                   tableData.length,
                   400,
                   500,

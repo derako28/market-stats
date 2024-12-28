@@ -689,11 +689,6 @@ const determineOpenTypeABC = (acc, current) => {
     return "-";
   }
 
-  console.log("#openRelation: ", openRelation);
-  console.log("#prevItem: ", prevItem);
-  console.log("#current: ", current);
-  console.log("==============");
-
   if (aHigh >= bHigh && aLow <= bLow) {
     return "OA";
   }
@@ -896,4 +891,85 @@ export const findBreakoutPeriods = (ohlcData) => {
       breakoutType: "No Breakout",
     },
   };
+};
+
+export const calculateTrendStatistics = (data) => {
+  const groupedByDay = {};
+
+  // Group data by date
+  data.forEach((candle) => {
+    const date = candle.time.split("T")[0]; // Extract date from ISO format
+    if (!groupedByDay[date]) {
+      groupedByDay[date] = [];
+    }
+    groupedByDay[date].push(candle);
+  });
+
+  // Initialize statistics
+  const stats = {
+    bullishFirstCandle: { bullishDay: 0, bearishDay: 0 },
+    bearishFirstCandle: { bullishDay: 0, bearishDay: 0 },
+  };
+
+  // Process each day
+  Object.entries(groupedByDay).forEach(([day, candles]) => {
+    if (!candles.length) return;
+
+    // Determine first candle trend
+    const firstCandle = candles[0];
+    const firstTrend =
+      firstCandle.close > firstCandle.open ? "bullish" : "bearish";
+
+    // Determine daily trend (close vs open of the last candle)
+    const dailyTrend =
+      candles[candles.length - 1].close > candles[0].open
+        ? "bullish"
+        : "bearish";
+
+    // Update statistics
+    if (firstTrend === "bullish") {
+      if (dailyTrend === "bullish") {
+        stats.bullishFirstCandle.bullishDay += 1;
+      } else {
+        stats.bullishFirstCandle.bearishDay += 1;
+      }
+    } else {
+      if (dailyTrend === "bullish") {
+        stats.bearishFirstCandle.bullishDay += 1;
+      } else {
+        stats.bearishFirstCandle.bearishDay += 1;
+      }
+    }
+  });
+
+  // Calculate percentages
+  const percentages = {};
+  Object.entries(stats).forEach(([trend, outcomes]) => {
+    const total = outcomes.bullishDay + outcomes.bearishDay;
+    percentages[trend] =
+      total > 0
+        ? {
+            bullish: ((outcomes.bullishDay / total) * 100).toFixed(0),
+            bearish: ((outcomes.bearishDay / total) * 100).toFixed(0),
+          }
+        : {
+            bullish: 0,
+            bearish: 0,
+          };
+  });
+
+  return percentages;
+};
+
+export const getDataChartByFirstCandle = (data = [], property) => {
+  return [
+    {
+      asset: "Bearish Day",
+      amount: +data[property]?.bearish,
+    },
+    {
+      asset: "Bullish Day",
+      amount: +data[property]?.bullish,
+    },
+  ];
 };

@@ -215,7 +215,8 @@ export const getBarChartHorizontalConfig = (
           fontSize: 10,
 
           formatter: ({ value }) => {
-            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
+            return `${value}%`;
+            // return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
           },
         },
 
@@ -1434,15 +1435,8 @@ export const convertToSegmentHighLow = (data) => {
 };
 
 export const mergeDataByDate = (data1, data2) => {
-  console.log("#data1: ", data1);
-  console.log("#data2: ", data2[0]);
-
-  console.log(moment(data1[0].TPO_Date, "DD/MM/YYYY"));
-  console.log(moment(data2[0].date, "YYYY-MM-DD"));
-
   return data1.map((item) => {
     const itemDate = moment(item.TPO_Date, "DD/MM/YYYY");
-    console.log("#itemDate: ", itemDate);
 
     const dataPeriods = data2.find((el) => {
       const elDate = moment(el.date, "YYYY-MM-DD");
@@ -1451,9 +1445,6 @@ export const mergeDataByDate = (data1, data2) => {
 
       return itemDate.isSame(elDate);
     });
-
-    console.log(dataPeriods);
-    console.log("======");
 
     return { ...item, ...dataPeriods };
   });
@@ -1471,15 +1462,12 @@ export const mergeTPOData = (tpoArray, segmentArray) => {
     const normalizedDate = entry.date; // Дата в segmentArray уже в формате yyyy-MM-dd
     map[normalizedDate] = entry; // Сохраняем объект с ключом даты
 
-    console.log("#entry.date: ", entry.date);
-
     return map;
   }, {});
 
   // Смерджим данные
   return tpoArray.map((tpoEntry) => {
     const normalizedDate = normalizeDate(tpoEntry.TPO_Date); // Приводим TPO_Date к формату yyyy-MM-dd
-    console.log("#normalizedDate: ", normalizedDate);
 
     // Ищем соответствующие данные сегментов по нормализованной дате
     const segmentData = segmentMap[normalizedDate] || {};

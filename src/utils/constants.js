@@ -205,3 +205,8 @@ export const BREAKOUT_PERIODS_LABEL = {
   L: "L:",
   M: "M:",
 };
+
+export const CANDLE_TYPES = {
+  BEARISH: "Bearish",
+  BULLISH: "Bullish",
+};
