@@ -3,11 +3,9 @@ import data from "../../Data-TW/ES-short.json";
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
-  CANDLE_TYPES,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
-  DATE_RANGE_VALUE,
   DAYS_OPTIONS,
   FILTER_TYPES,
   IB_BROKEN_LABELS,
@@ -39,7 +37,6 @@ import {
   getDataIExtensionChart,
   getOptions,
 } from "../Stats/utils.js";
-import moment from "moment";
 import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Table } from "../../components/share/Table/table.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
@@ -57,7 +54,7 @@ const filterOptions = [
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBrokenByLondon",
+    id: "ibBroken",
     title: "IB Broken",
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BROKEN_OPTIONS),
@@ -73,7 +70,7 @@ const filterOptions = [
 
 const columns = [
   { id: "date", title: "Date" },
-  // { id: "open_relation", title: "Open Relation" },
+  { id: "open_relation", title: "Open Relation" },
   { id: "opening_type", title: "Opening Type" },
   { id: "tpoOpen", title: "tpoOpen" },
 
@@ -114,99 +111,9 @@ export const ES = () => {
     filter: true,
   });
 
-  const dataFilter = (dataFilter) => {
-    const startDate = moment(dataFilter.date?.startDate);
-    const endDate = moment(dataFilter.date?.endDate);
+  console.log("#initialData: ", initialData);
 
-    const filteredData = initialData.filter((item) => {
-      return Object.keys(dataFilter).every((key) => {
-        if (dataFilter[key] === "" || dataFilter[key] === undefined)
-          return true;
-
-        if (key === "day") {
-          return moment(item.date).day() === +dataFilter.day;
-        }
-
-        if (key === "date") {
-          const currentDate = moment(item.date);
-
-          return moment(currentDate).isBetween(startDate, endDate);
-        }
-
-        if (key === "ibSize") {
-          return +item[key] === +dataFilter[key];
-        }
-
-        if (key === "ib_size_from") {
-          return +dataFilter.ib_size_from <= +item.ibSize;
-        }
-
-        if (key === "ib_size_to") {
-          return +dataFilter.ib_size_to >= +item.ibSize;
-        }
-
-        if (key === "date_range") {
-          const dateEl = moment(item.date);
-          const now = moment();
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.LAST_MONTH) {
-            const startDate = now.clone().subtract(1, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_MONTH) {
-            const startDate = now.clone().subtract(3, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.SIX_MONTH) {
-            const startDate = now.clone().subtract(6, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.ONE_YEAR) {
-            const startDate = now.clone().subtract(1, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.TWO_YEAR) {
-            const startDate = now.clone().subtract(2, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_YEAR) {
-            const startDate = now.clone().subtract(3, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.FOUR_YEAR) {
-            const startDate = now.clone().subtract(4, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.FIVE_YEAR) {
-            const startDate = now.clone().subtract(5, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-        }
-
-        return item[key]
-          ?.toString()
-          .toLowerCase()
-          ?.includes(dataFilter[key].toString().toLowerCase());
-      });
-    });
-
-    setTableData(filteredData);
-  };
+  const onFilterData = (data) => setTableData(data);
 
   return (
     <Page>
@@ -233,7 +140,11 @@ export const ES = () => {
       </div>
 
       {visibleConfig.filter && (
-        <Filter options={filterOptions} onChange={dataFilter} />
+        <Filter
+          options={filterOptions}
+          initialData={initialData}
+          onChange={onFilterData}
+        />
       )}
 
       {visibleConfig.charts && (

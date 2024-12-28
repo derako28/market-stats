@@ -108,99 +108,7 @@ export const Dax = () => {
     table: false,
   });
 
-  const dataFilter = (dataFilter) => {
-    const startDate = moment(dataFilter.date?.startDate);
-    const endDate = moment(dataFilter.date?.endDate);
-
-    const filteredData = initialData.filter((item) => {
-      return Object.keys(dataFilter).every((key) => {
-        if (dataFilter[key] === "" || dataFilter[key] === undefined)
-          return true;
-
-        if (key === "day") {
-          return moment(item.date).day() === +dataFilter.day;
-        }
-
-        if (key === "date") {
-          const currentDate = moment(item.date);
-
-          return moment(currentDate).isBetween(startDate, endDate);
-        }
-
-        if (key === "ibSize") {
-          return +item[key] === +dataFilter[key];
-        }
-
-        if (key === "ib_size_from") {
-          return +dataFilter.ib_size_from <= +item.ibSize;
-        }
-
-        if (key === "ib_size_to") {
-          return +dataFilter.ib_size_to >= +item.ibSize;
-        }
-
-        if (key === "date_range") {
-          const dateEl = moment(item.date);
-          const now = moment();
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.LAST_MONTH) {
-            const startDate = now.clone().subtract(1, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_MONTH) {
-            const startDate = now.clone().subtract(3, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.SIX_MONTH) {
-            const startDate = now.clone().subtract(6, "month");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.ONE_YEAR) {
-            const startDate = now.clone().subtract(1, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.TWO_YEAR) {
-            const startDate = now.clone().subtract(2, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.THREE_YEAR) {
-            const startDate = now.clone().subtract(3, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.FOUR_YEAR) {
-            const startDate = now.clone().subtract(4, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-
-          if (dataFilter[key] === DATE_RANGE_VALUE.FIVE_YEAR) {
-            const startDate = now.clone().subtract(5, "year");
-
-            return dateEl.isBetween(startDate, now, "day");
-          }
-        }
-
-        return item[key]
-          ?.toString()
-          .toLowerCase()
-          ?.includes(dataFilter[key].toString().toLowerCase());
-      });
-    });
-
-    setTableData(filteredData);
-  };
+  const onFilterData = (data) => setTableData(data);
 
   return (
     <Page noHeader={false}>
@@ -221,8 +129,13 @@ export const Dax = () => {
       </div>
 
       {visibleConfig.filter && (
-        <Filter options={filterOptions} onChange={dataFilter} />
+        <Filter
+          options={filterOptions}
+          initialData={initialData}
+          onChange={onFilterData}
+        />
       )}
+
       {visibleConfig.charts && (
         <>
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
