@@ -22,13 +22,18 @@ import { Dax } from "../pages/Dax/Dax.jsx";
 import { ES } from "../pages/ES/ES.jsx";
 import { NQ } from "../pages/NQ/NQ.jsx";
 import { YM } from "../pages/YM/YM.jsx";
+import { Home } from "../pages/Home/Home.jsx";
 
 export const AppRoutes = () => {
+  console.log(import.meta.env.BASE_URL);
+
   return (
     <>
       <Router basename={import.meta.env.BASE_URL}>
         <div>
           <Routes>
+            <Route index path={"/market-stats"} element={<Home />} />
+
             {getFeature("newStatistics") && (
               <>
                 <Route path="/market-stats/dax" element={<Dax />} />
