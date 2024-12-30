@@ -1,4 +1,4 @@
-import data from "../../Data-TW/ES-short.json";
+import data from "../../Data-TW/ES.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
@@ -29,9 +29,7 @@ import {
   dataWithIbInfo,
   getBarChartConfig,
   getBarChartHorizontalConfig,
-  getChartConfig,
   getChartConfigForBreakoutPeriods,
-  getDataChart,
   getDataIBChart,
   getDataIBSizeChart,
   getDataIExtensionChart,
@@ -43,6 +41,8 @@ import { Modal } from "../../components/share/Modal/modal.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { Switch } from "../../components/share/Switch/switch.jsx";
+import { ChartDonut } from "../../components/share/Chart/chart-donut.jsx";
+import { ChartBar } from "../../components/share/Chart/chart-bar.jsx";
 
 const filterOptions = [
   {
@@ -111,8 +111,6 @@ export const ES = () => {
     filter: true,
   });
 
-  console.log("#initialData: ", initialData);
-
   const onFilterData = (data) => setTableData(data);
 
   return (
@@ -150,134 +148,155 @@ export const ES = () => {
       {visibleConfig.charts && (
         <>
           <div className={"flex justify-center mt-20 mb-20"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>Open Relation</div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "open_relation",
-                  OPENS_LABEL,
-                  600,
-                  600,
-                )}
-              />
-            </div>
+            <ChartDonut
+              data={initialData}
+              title={"Open Relation"}
+              property={"open_relation"}
+              labels={OPENS_LABEL}
+              width={600}
+              height={600}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>Close Relation</div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "close_relation_prev",
-                  CLOSES_LABEL,
-                  550,
-                  600,
-                )}
-              />
-            </div>
+            <ChartDonut
+              data={initialData}
+              title={"Open Relation"}
+              property={"close_relation_prev"}
+              labels={CLOSES_LABEL}
+              width={550}
+              height={600}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>
-                Close Relation To Current Day
-              </div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "close_relation",
-                  CLOSES_TO_CURRENT_DAY_LABEL,
-                  550,
-                  600,
-                )}
-              />
-            </div>
+            <ChartDonut
+              data={initialData}
+              title={"Close Relation To Current Day"}
+              property={"close_relation"}
+              labels={CLOSES_TO_CURRENT_DAY_LABEL}
+              width={550}
+              height={600}
+            />
           </div>
 
           <div className={"flex gap-8 justify-center mt-20 mb-20"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>Opening Type</div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData.map((item) => ({
-                    ...item,
-                    opening_type: item.opening_type.includes("OA")
-                      ? "OA"
-                      : item.opening_type,
-                  })),
-                  "opening_type",
-                  OPENING_TYPES,
-                  600,
-                  600,
-                )}
-              />
-            </div>
+            <ChartDonut
+              data={tableData.map((item) => ({
+                ...item,
+                opening_type: item.opening_type.includes("OA")
+                  ? "OA"
+                  : item.opening_type,
+              }))}
+              title={"Open Relation"}
+              property={"opening_type"}
+              labels={OPENING_TYPES}
+              width={600}
+              height={600}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>
-                Opening Type With Alternative Opening
-              </div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "opening_type",
-                  OPENING_TYPES,
-                  700,
-                  600,
-                )}
-              />
-            </div>
+            <ChartDonut
+              data={tableData.map((item) => ({
+                ...item,
+                opening_type: item.opening_type.includes("OA")
+                  ? "OA"
+                  : item.opening_type,
+              }))}
+              title={"Opening Type With Alternative Opening"}
+              property={"opening_type"}
+              labels={OPENING_TYPES}
+              width={600}
+              height={600}
+            />
           </div>
 
           {/*Touch ZONE*/}
 
           <div className={"flex justify-center gap-4 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch IB</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestIB", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+            <ChartBar
+              data={initialData}
+              property={"isTestIB"}
+              title={"Touch IB"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch POC</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+            <ChartBar
+              data={initialData}
+              property={"isTestPOC"}
+              title={"Touch POC"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VA</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestVA", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+            <ChartBar
+              data={initialData}
+              property={"isTestVA"}
+              title={"Touch VA"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch Range</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestRange", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+            <ChartBar
+              data={initialData}
+              property={"isTestRange"}
+              title={"Touch Range"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
           </div>
+
+          {1 > 2 && (
+            <>
+              <div className={"flex justify-center gap-4 mb-10"}>
+                <ChartBar
+                  data={tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  )}
+                  property={"isTestVAL"}
+                  title={"Touch VAL (Open Under POC)"}
+                  labels={TEST_OPTIONS}
+                  width={400}
+                  height={500}
+                />
+
+                <ChartBar
+                  data={tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  )}
+                  property={"isTestVAL"}
+                  title={"Touch VAL (Open Over POC)"}
+                  labels={TEST_OPTIONS}
+                  width={400}
+                  height={500}
+                />
+
+                <ChartBar
+                  data={tableData.filter(
+                    (item) => item.open_relation_to_poc === "underPoc",
+                  )}
+                  property={"isTestVAH"}
+                  title={"Touch VAH (Open Under Poc)"}
+                  labels={TEST_OPTIONS}
+                  width={400}
+                  height={500}
+                />
+
+                <ChartBar
+                  data={tableData.filter(
+                    (item) => item.open_relation_to_poc === "overPoc",
+                  )}
+                  property={"isTestVAH"}
+                  title={"Touch VAH (Open Over Poc)"}
+                  labels={TEST_OPTIONS}
+                  width={400}
+                  height={500}
+                />
+              </div>
+            </>
+          )}
+
+          {/*Touch ZONE END*/}
 
           <div className={"flex justify-center gap-4 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -310,102 +329,6 @@ export const ES = () => {
               />
             </div>
           </div>
-
-          {1 > 2 && (
-            <>
-              <div className={"flex justify-center gap-16 mb-10"}>
-                <div className={"flex flex-col justify-center items-center"}>
-                  <div className={"text-gray-300"}>
-                    Touch VAL (Open Under POC)
-                  </div>
-                  <AgCharts
-                    options={getBarChartHorizontalConfig(
-                      getDataChart(
-                        tableData.filter(
-                          (item) => item.open_relation_to_poc === "underPoc",
-                        ),
-                        "isTestVAL",
-                        TEST_OPTIONS,
-                      ),
-                      tableData.filter(
-                        (item) => item.open_relation_to_poc === "underPoc",
-                      ).length,
-                      500,
-                      500,
-                    )}
-                  />
-                </div>
-
-                <div className={"flex flex-col justify-center items-center"}>
-                  <div className={"text-gray-300"}>
-                    Touch VAL (Open Over POC)
-                  </div>
-                  <AgCharts
-                    options={getBarChartHorizontalConfig(
-                      getDataChart(
-                        tableData.filter(
-                          (item) => item.open_relation_to_poc === "overPoc",
-                        ),
-                        "isTestVAL",
-                        TEST_OPTIONS,
-                      ),
-                      tableData.filter(
-                        (item) => item.open_relation_to_poc === "overPoc",
-                      ).length,
-                      500,
-                      500,
-                    )}
-                  />
-                </div>
-
-                <div className={"flex flex-col justify-center items-center"}>
-                  <div className={"text-gray-300"}>
-                    Touch VAH (Open Under Poc)
-                  </div>
-                  <AgCharts
-                    options={getBarChartHorizontalConfig(
-                      getDataChart(
-                        tableData.filter(
-                          (item) => item.open_relation_to_poc === "underPoc",
-                        ),
-                        "isTestVAH",
-                        TEST_OPTIONS,
-                      ),
-                      tableData.filter(
-                        (item) => item.open_relation_to_poc === "underPoc",
-                      ).length,
-                      500,
-                      500,
-                    )}
-                  />
-                </div>
-
-                <div className={"flex flex-col justify-center items-center"}>
-                  <div className={"text-gray-300"}>
-                    Touch VAH (Open Over Poc)
-                  </div>
-                  <AgCharts
-                    options={getBarChartHorizontalConfig(
-                      getDataChart(
-                        tableData.filter(
-                          (item) => item.open_relation_to_poc === "overPoc",
-                        ),
-                        "isTestVAH",
-                        TEST_OPTIONS,
-                      ),
-                      tableData.filter(
-                        (item) => item.open_relation_to_poc === "overPoc",
-                      ).length,
-                      500,
-                      500,
-                    )}
-                  />
-                </div>
-              </div>
-            </>
-          )}
-
-          {/*Touch ZONE END*/}
 
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -493,20 +416,7 @@ export const ES = () => {
               />
             </div>
           </div>
-          {/*IB Ext Bar Type End*/}
-          {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>IB Size</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataIBSizeChart(tableData, "ibSize"),*/}
-          {/*        tableData.length,*/}
-          {/*        1500,*/}
-          {/*        300,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
+
           <div className={"flex justify-center gap-16 mt-20 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
               <div className={"text-gray-300"}>IB Size Segmented</div>
