@@ -32,83 +32,59 @@ export const AppRoutes = () => {
       <Router basename={import.meta.env.BASE_URL}>
         <div>
           <Routes>
-            <Route index path={"/market-stats"} element={<Home />} />
+            <Route index path={"/"} element={<Home />} />
 
             {getFeature("newStatistics") && (
               <>
-                <Route path="/market-stats/dax" element={<Dax />} />
-                <Route path="/market-stats/es" element={<ES />} />
-                <Route path="/market-stats/nq" element={<NQ />} />
-                <Route path="/market-stats/ym" element={<YM />} />
+                <Route path="/dax" element={<Dax />} />
+                <Route path="/es" element={<ES />} />
+                <Route path="/nq" element={<NQ />} />
+                <Route path="/ym" element={<YM />} />
               </>
             )}
 
             {getFeature("dax") && (
               <>
-                <Route
-                  path="/market-stats/stats-table-new"
-                  element={<StatsTableNew />}
-                />
+                <Route path="/stats-table-new" element={<StatsTableNew />} />
 
                 <Route
-                  path="/market-stats/stats-charts-24"
+                  path="/stats-charts-24"
                   element={<StatsChartsAG2024 />}
                 />
                 <Route
-                  path="/market-stats/stats-table-tpo-dax"
+                  path="/stats-table-tpo-dax"
                   element={<StatsTableDaxTPO />}
                 />
               </>
             )}
 
-            <Route
-              path="/market-stats/stats-table-dax"
-              element={<StatsTableDax />}
-            />
+            <Route path="/stats-table-dax" element={<StatsTableDax />} />
 
-            <Route
-              path="/market-stats/stats-charts-dax"
-              element={<StatsChartsDax />}
-            />
+            <Route path="/stats-charts-dax" element={<StatsChartsDax />} />
 
+            <Route path="/stats-table-es" element={<StatsTableES />} />
+            <Route path="/stats-table-nq" element={<StatsTableNQ />} />
             <Route
-              path="/market-stats/stats-table-es"
-              element={<StatsTableES />}
-            />
-            <Route
-              path="/market-stats/stats-table-nq"
-              element={<StatsTableNQ />}
-            />
-            <Route
-              path="/market-stats/stats-charts-es"
+              path="/stats-charts-es"
               element={<StatsChartsAGFiniteqES />}
             />
             <Route
-              path="/market-stats/stats-charts-nq"
+              path="/stats-charts-nq"
               element={<StatsChartsAGFiniteqNQ />}
             />
-            <Route path="/market-stats/backtests" element={<Backtests />} />
+            <Route path="/backtests" element={<Backtests />} />
 
             {getFeature("backtests") && (
               <>
+                <Route path="/backtests-sanya" element={<BacktestsSanya />} />
+                <Route path="/backtests-tapok" element={<BacktestsTapok />} />
                 <Route
-                  path="/market-stats/backtests-sanya"
-                  element={<BacktestsSanya />}
-                />
-                <Route
-                  path="/market-stats/backtests-tapok"
-                  element={<BacktestsTapok />}
-                />
-                <Route
-                  path="/market-stats/backtests-tapok-US500"
+                  path="/backtests-tapok-US500"
                   element={<BacktestsTapokUS500 />}
                 />
               </>
             )}
-            <Route
-              path="*"
-              element={<Navigate to="/market-stats/es" replace />}
-            />
+            <Route path="*" element={<Navigate to="/es" replace />} />
           </Routes>
         </div>
       </Router>
