@@ -52,6 +52,7 @@ const filterOptions = [
     options: getOptions(OPENS_OPTIONS),
   },
   { id: "ib_size_from", title: "IB Size From" },
+  { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
     id: "ibBroken",
@@ -149,7 +150,7 @@ export const ES = () => {
         <>
           <div className={"flex justify-center mt-20 mb-20"}>
             <ChartDonut
-              data={initialData}
+              data={tableData}
               title={"Open Relation"}
               property={"open_relation"}
               labels={OPENS_LABEL}
@@ -158,7 +159,7 @@ export const ES = () => {
             />
 
             <ChartDonut
-              data={initialData}
+              data={tableData}
               title={"Open Relation"}
               property={"close_relation_prev"}
               labels={CLOSES_LABEL}
@@ -167,7 +168,7 @@ export const ES = () => {
             />
 
             <ChartDonut
-              data={initialData}
+              data={tableData}
               title={"Close Relation To Current Day"}
               property={"close_relation"}
               labels={CLOSES_TO_CURRENT_DAY_LABEL}
@@ -210,7 +211,7 @@ export const ES = () => {
 
           <div className={"flex justify-center gap-4 mb-10"}>
             <ChartBar
-              data={initialData}
+              data={tableData}
               property={"isTestIB"}
               title={"Touch IB"}
               labels={TEST_OPTIONS}
@@ -219,7 +220,7 @@ export const ES = () => {
             />
 
             <ChartBar
-              data={initialData}
+              data={tableData}
               property={"isTestPOC"}
               title={"Touch POC"}
               labels={TEST_OPTIONS}
@@ -228,7 +229,7 @@ export const ES = () => {
             />
 
             <ChartBar
-              data={initialData}
+              data={tableData}
               property={"isTestVA"}
               title={"Touch VA"}
               labels={TEST_OPTIONS}
@@ -237,7 +238,7 @@ export const ES = () => {
             />
 
             <ChartBar
-              data={initialData}
+              data={tableData}
               property={"isTestRange"}
               title={"Touch Range"}
               labels={TEST_OPTIONS}

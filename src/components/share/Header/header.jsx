@@ -13,6 +13,13 @@ export const Header = () => {
           <NavLink to={"/ym"}>YM</NavLink>
         </>
       )}
+
+      {getFeature("DAX_VWAP") && (
+        <>
+          <NavLink to={"/dax-vwap"}>DAX VWAP</NavLink>
+        </>
+      )}
+
       {getFeature("dax") && (
         <>
           <NavLink to={"/stats-table-new"}>Table New</NavLink>

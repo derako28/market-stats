@@ -22,6 +22,7 @@ import { Dax } from "../pages/Dax/Dax.jsx";
 import { ES } from "../pages/ES/ES.jsx";
 import { NQ } from "../pages/NQ/NQ.jsx";
 import { YM } from "../pages/YM/YM.jsx";
+import { DaxVwap } from "../pages/DAX+VWAP/dax-vwap.jsx";
 
 export const AppRoutes = () => {
   return (
@@ -35,6 +36,12 @@ export const AppRoutes = () => {
                 <Route path="/es" element={<ES />} />
                 <Route path="/nq" element={<NQ />} />
                 <Route path="/ym" element={<YM />} />
+              </>
+            )}
+
+            {getFeature("DAX_VWAP") && (
+              <>
+                <Route path="/dax-vwap" element={<DaxVwap />} />
               </>
             )}
 
