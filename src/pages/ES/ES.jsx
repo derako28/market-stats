@@ -299,37 +299,37 @@ export const ES = () => {
 
           {/*Touch ZONE END*/}
 
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>First Candle Bullish</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChartByFirstCandle(
-                    calculateTrendStatistics(data),
-                    "bullishFirstCandle",
-                  ),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+          {/*<div className={"flex justify-center gap-4 mb-10"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>First Candle Bullish</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChartByFirstCandle(*/}
+          {/*          calculateTrendStatistics(data),*/}
+          {/*          "bullishFirstCandle",*/}
+          {/*        ),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>First Candle Bearish</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChartByFirstCandle(
-                    calculateTrendStatistics(data),
-                    "bearishFirstCandle",
-                  ),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
-          </div>
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>First Candle Bearish</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChartByFirstCandle(*/}
+          {/*          calculateTrendStatistics(data),*/}
+          {/*          "bearishFirstCandle",*/}
+          {/*        ),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
           <div className={"flex justify-center gap-16 mt-20 mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
