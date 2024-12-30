@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -22,18 +22,13 @@ import { Dax } from "../pages/Dax/Dax.jsx";
 import { ES } from "../pages/ES/ES.jsx";
 import { NQ } from "../pages/NQ/NQ.jsx";
 import { YM } from "../pages/YM/YM.jsx";
-import { Home } from "../pages/Home/Home.jsx";
 
 export const AppRoutes = () => {
-  console.log(import.meta.env.BASE_URL);
-
   return (
     <>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <div>
           <Routes>
-            <Route index path={"/"} element={<Home />} />
-
             {getFeature("newStatistics") && (
               <>
                 <Route path="/dax" element={<Dax />} />

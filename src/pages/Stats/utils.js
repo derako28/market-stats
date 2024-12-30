@@ -1441,8 +1441,6 @@ export const mergeDataByDate = (data1, data2) => {
     const dataPeriods = data2.find((el) => {
       const elDate = moment(el.date, "YYYY-MM-DD");
 
-      // console.log("#el.date: ", elDate);
-
       return itemDate.isSame(elDate);
     });
 

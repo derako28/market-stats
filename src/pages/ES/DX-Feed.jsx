@@ -26,10 +26,8 @@ export const DXFeed = () => {
   feed.addSubscriptions(sub1);
 
   feed.addEventListener((events) => {
-    console.log(events);
     // do something with events
   });
-  console.log(client);
 
   return <>DXFeed</>;
 };
