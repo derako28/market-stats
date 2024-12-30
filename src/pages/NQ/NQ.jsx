@@ -3,6 +3,7 @@ import data from "../../Data-TW/NQ.json";
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
+  CANDLE_TYPES,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
@@ -49,6 +50,12 @@ const filterOptions = [
     title: "Open Relation",
     type: FILTER_TYPES.SELECT,
     options: getOptions(OPENS_OPTIONS),
+  },
+  {
+    id: "first_candle",
+    title: "First Candle",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CANDLE_TYPES),
   },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },

@@ -3,6 +3,7 @@ import data from "../../Data-TW/ES.json";
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
+  CANDLE_TYPES,
   CLOSES_LABEL,
   CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
@@ -17,9 +18,7 @@ import {
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
-  calculateTrendStatistics,
   compileMarketProfileByDays,
-  getDataChartByFirstCandle,
   prepareData,
   segmentData,
   setOpeningType,
@@ -51,7 +50,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(OPENS_OPTIONS),
   },
-  { id: "ib_size_from", title: "IB Size From" },
+  {
+    id: "first_candle",
+    title: "First Candle",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CANDLE_TYPES),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
@@ -72,6 +76,7 @@ const filterOptions = [
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
+  { id: "first_candle", title: "First Candle" },
   { id: "opening_type", title: "Opening Type" },
   { id: "tpoOpen", title: "tpoOpen" },
 
@@ -102,6 +107,7 @@ const initialData = segmentData(
   ).reverse(),
 );
 
+console.log("#initialData: ", initialData);
 export const ES = () => {
   const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();

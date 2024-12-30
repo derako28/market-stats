@@ -35,8 +35,6 @@ export const determineTrendByDay = (data, startTime, endTime) => {
       return "flat";
     });
 
-    console.log("#trends: ", trends);
-
     // Проверяем, есть ли устойчивый тренд
     const hasConsistentTrend = (trend) => trends.every((t) => t === trend);
 

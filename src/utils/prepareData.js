@@ -443,6 +443,7 @@ export const compileMarketProfileByDays = (
       ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
       breakoutPeriods: findBreakoutPeriods(dailyData),
+      first_candle: getFirstCandle(dailyData[0]),
     };
   });
 };
@@ -972,4 +973,14 @@ export const getDataChartByFirstCandle = (data = [], property) => {
       amount: +data[property]?.bullish,
     },
   ];
+};
+
+const getFirstCandle = ({ open, close }) => {
+  if (open > close) {
+    return "bear";
+  }
+
+  if (close > open) {
+    return "bull";
+  }
 };
