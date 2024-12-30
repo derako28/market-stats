@@ -26,7 +26,7 @@ import { YM } from "../pages/YM/YM.jsx";
 export const AppRoutes = () => {
   return (
     <>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <div>
           <Routes>
             {getFeature("newStatistics") && (
