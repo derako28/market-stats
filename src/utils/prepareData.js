@@ -639,14 +639,12 @@ export const forecastNextDay = (historicalData, openRelation) => {
   return forecast;
 };
 
-const determineOpenTypeABC = (acc, current) => {
+const determineOpenTypeABC = (acc, current, admission = 2.5) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem || !current) {
     return "-";
   }
-
-  const admission = 2.5;
 
   const {
     aHigh,

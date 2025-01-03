@@ -23,7 +23,6 @@ import {
   segmentData,
   setOpeningType,
 } from "../../utils/prepareData.js";
-import { AgCharts } from "ag-charts-react";
 import {
   dataWithIbInfo,
   getBarChartConfig,
@@ -42,6 +41,7 @@ import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { Switch } from "../../components/share/Switch/switch.jsx";
 import { ChartDonut } from "../../components/share/Chart/chart-donut.jsx";
 import { ChartBar } from "../../components/share/Chart/chart-bar.jsx";
+import { StatisticsCharts } from "../../components/share/StatisticsCharts/statistics-charts.jsx";
 
 const filterOptions = [
   {
@@ -91,14 +91,14 @@ const columns = [
   { id: "aHigh", title: "aHigh" },
   { id: "aLow", title: "aLow" },
 
-  // { id: "ibSize", title: "IB Size" },
-  // { id: "ibHigh", title: "IB High" },
-  // { id: "ibLow", title: "IB Low" },
+  { id: "ibSize", title: "IB Size" },
+  { id: "ibHigh", title: "IB High" },
+  { id: "ibLow", title: "IB Low" },
 
-  // { id: "ibBroken", title: "IB Broken" },
+  { id: "ibBroken", title: "IB Broken" },
 
-  // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
-  // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
+  { id: "ibExt", subId: "highExt", title: "IB Ext High" },
+  { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 ];
 
 const initialData = segmentData(
@@ -107,7 +107,6 @@ const initialData = segmentData(
   ).reverse(),
 );
 
-console.log("#initialData: ", initialData);
 export const ES = () => {
   const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
@@ -152,293 +151,8 @@ export const ES = () => {
         />
       )}
 
-      {visibleConfig.charts && (
-        <>
-          <div className={"flex justify-center mt-20 mb-20"}>
-            <ChartDonut
-              data={tableData}
-              title={"Open Relation"}
-              property={"open_relation"}
-              labels={OPENS_LABEL}
-              width={600}
-              height={600}
-            />
+      {visibleConfig.charts && <StatisticsCharts data={tableData} />}
 
-            <ChartDonut
-              data={tableData}
-              title={"Open Relation"}
-              property={"close_relation_prev"}
-              labels={CLOSES_LABEL}
-              width={550}
-              height={600}
-            />
-
-            <ChartDonut
-              data={tableData}
-              title={"Close Relation To Current Day"}
-              property={"close_relation"}
-              labels={CLOSES_TO_CURRENT_DAY_LABEL}
-              width={550}
-              height={600}
-            />
-          </div>
-
-          <div className={"flex gap-8 justify-center mt-20 mb-20"}>
-            <ChartDonut
-              data={tableData.map((item) => ({
-                ...item,
-                opening_type: item.opening_type.includes("OA")
-                  ? "OA"
-                  : item.opening_type,
-              }))}
-              title={"Open Relation"}
-              property={"opening_type"}
-              labels={OPENING_TYPES}
-              width={600}
-              height={600}
-            />
-
-            <ChartDonut
-              data={tableData.map((item) => ({
-                ...item,
-                opening_type: item.opening_type.includes("OA")
-                  ? "OA"
-                  : item.opening_type,
-              }))}
-              title={"Opening Type With Alternative Opening"}
-              property={"opening_type"}
-              labels={OPENING_TYPES}
-              width={600}
-              height={600}
-            />
-          </div>
-
-          {/*Touch ZONE*/}
-
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <ChartBar
-              data={tableData}
-              property={"isTestIB"}
-              title={"Touch IB"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={tableData}
-              property={"isTestPOC"}
-              title={"Touch POC"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={tableData}
-              property={"isTestVA"}
-              title={"Touch VA"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={tableData}
-              property={"isTestRange"}
-              title={"Touch Range"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-          </div>
-
-          {1 > 2 && (
-            <>
-              <div className={"flex justify-center gap-4 mb-10"}>
-                <ChartBar
-                  data={tableData.filter(
-                    (item) => item.open_relation_to_poc === "underPoc",
-                  )}
-                  property={"isTestVAL"}
-                  title={"Touch VAL (Open Under POC)"}
-                  labels={TEST_OPTIONS}
-                  width={400}
-                  height={500}
-                />
-
-                <ChartBar
-                  data={tableData.filter(
-                    (item) => item.open_relation_to_poc === "overPoc",
-                  )}
-                  property={"isTestVAL"}
-                  title={"Touch VAL (Open Over POC)"}
-                  labels={TEST_OPTIONS}
-                  width={400}
-                  height={500}
-                />
-
-                <ChartBar
-                  data={tableData.filter(
-                    (item) => item.open_relation_to_poc === "underPoc",
-                  )}
-                  property={"isTestVAH"}
-                  title={"Touch VAH (Open Under Poc)"}
-                  labels={TEST_OPTIONS}
-                  width={400}
-                  height={500}
-                />
-
-                <ChartBar
-                  data={tableData.filter(
-                    (item) => item.open_relation_to_poc === "overPoc",
-                  )}
-                  property={"isTestVAH"}
-                  title={"Touch VAH (Open Over Poc)"}
-                  labels={TEST_OPTIONS}
-                  width={400}
-                  height={500}
-                />
-              </div>
-            </>
-          )}
-
-          {/*Touch ZONE END*/}
-
-          {/*<div className={"flex justify-center gap-4 mb-10"}>*/}
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>First Candle Bullish</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataChartByFirstCandle(*/}
-          {/*          calculateTrendStatistics(data),*/}
-          {/*          "bullishFirstCandle",*/}
-          {/*        ),*/}
-          {/*        tableData.length,*/}
-          {/*        400,*/}
-          {/*        500,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-
-          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-          {/*    <div className={"text-gray-300"}>First Candle Bearish</div>*/}
-          {/*    <AgCharts*/}
-          {/*      options={getBarChartHorizontalConfig(*/}
-          {/*        getDataChartByFirstCandle(*/}
-          {/*          calculateTrendStatistics(data),*/}
-          {/*          "bearishFirstCandle",*/}
-          {/*        ),*/}
-          {/*        tableData.length,*/}
-          {/*        400,*/}
-          {/*        500,*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
-          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>First Breakout Periods</div>
-              <AgCharts
-                options={getChartConfigForBreakoutPeriods(
-                  tableData,
-                  "firstBreakout",
-                  BREAKOUT_PERIODS_LABEL,
-                  600,
-                  600,
-                )}
-              />
-            </div>
-
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>
-                Opposite Breakout Periods
-              </div>
-              <AgCharts
-                options={getChartConfigForBreakoutPeriods(
-                  tableData.filter(
-                    (item) => item?.breakoutPeriods?.oppositeBreakout.period,
-                  ),
-                  "oppositeBreakout",
-                  BREAKOUT_PERIODS_LABEL,
-                  600,
-                  600,
-                )}
-              />
-            </div>
-          </div>
-
-          <div className={"flex justify-center gap-16 mt-10 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Broken</div>
-              <AgCharts
-                options={getBarChartConfig(
-                  getDataIBChart(
-                    dataWithIbInfo(tableData, "ibBroken"),
-                    IB_BROKEN_LABELS,
-                  ),
-                  tableData.length,
-                  700,
-                  300,
-                )}
-              />
-            </div>
-          </div>
-          {/*IB Ext Bar Type*/}
-          <div className={"flex justify-center gap-2 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB High Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExt", "highExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Low Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExt", "lowExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Max Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExt", "maxExt"),
-                  tableData.length,
-                  1400,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size Segmented</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ib_size_segmented"),
-                  tableData.length,
-                  1500,
-                  300,
-                )}
-              />
-            </div>
-          </div>
-        </>
-      )}
       {visibleConfig.table && (
         <Table
           columns={columns}

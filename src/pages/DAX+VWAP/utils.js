@@ -21,8 +21,6 @@ export const determineTrendByDay = (data, startTime, endTime) => {
       return candleTime >= start && candleTime < end;
     });
 
-    // console.log("#filteredCandles: ", filteredCandles);
-
     const firstCandle = filteredCandles[0];
 
     if (!firstCandle) return;

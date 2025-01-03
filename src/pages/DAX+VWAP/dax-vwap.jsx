@@ -13,8 +13,6 @@ export const TRENDS_LABEL = {
 const initialData = determineTrendByDay(data, "9:10", "10:00");
 
 export const DaxVwap = () => {
-  console.log(initialData);
-
   return (
     <Page>
       {/*<Statistic data={initialData} />;*/}
