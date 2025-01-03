@@ -2,19 +2,12 @@ import data from "../../Data-TW/ES.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
-  BREAKOUT_PERIODS_LABEL,
   CANDLE_TYPES,
-  CLOSES_LABEL,
-  CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
-  IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
-  OPENING_TYPES,
-  OPENS_LABEL,
   OPENS_OPTIONS,
-  TEST_OPTIONS,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
@@ -23,24 +16,13 @@ import {
   segmentData,
   setOpeningType,
 } from "../../utils/prepareData.js";
-import {
-  dataWithIbInfo,
-  getBarChartConfig,
-  getBarChartHorizontalConfig,
-  getChartConfigForBreakoutPeriods,
-  getDataIBChart,
-  getDataIBSizeChart,
-  getDataIExtensionChart,
-  getOptions,
-} from "../Stats/utils.js";
+import { getOptions } from "../Stats/utils.js";
 import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Table } from "../../components/share/Table/table.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { Switch } from "../../components/share/Switch/switch.jsx";
-import { ChartDonut } from "../../components/share/Chart/chart-donut.jsx";
-import { ChartBar } from "../../components/share/Chart/chart-bar.jsx";
 import { StatisticsCharts } from "../../components/share/StatisticsCharts/statistics-charts.jsx";
 
 const filterOptions = [
