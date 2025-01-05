@@ -15,28 +15,38 @@ export const getData = (dataFilter) => {
 
   switch (ticker) {
     case "NQ": {
-      data = dataNQ;
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(dataNQ, 68, 5, 4)),
+        ).reverse(),
+      );
       break;
     }
     case "ES": {
-      data = dataES;
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)),
+        ).reverse(),
+      );
       break;
     }
 
     case "YM": {
-      data = dataYM;
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(dataYM, 68, 20)),
+        ).reverse(),
+      );
       break;
     }
 
     default:
-      data = dataES;
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(v, 68, 5, 0.25)),
+        ).reverse(),
+      );
   }
 
-  const dataNew = segmentData(
-    setOpeningType(
-      prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
-    ).reverse(),
-  );
-
-  return onFilterData(dataNew, dataFilter);
+  return onFilterData(data, dataFilter);
 };
