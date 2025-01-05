@@ -28,7 +28,7 @@ export const VisibilityReports = ({ onChange }) => {
   return (
     <>
       <form onChange={handleChange}>
-        <div className={"flex justify-center items-center gap-4"}>
+        <div className={"flex flex-wrap justify-center items-center gap-4"}>
           <Checkbox
             label={"Green & Red Days"}
             key={"GreenRadDays"}
