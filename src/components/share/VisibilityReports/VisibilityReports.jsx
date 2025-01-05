@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 const initialData = {
   GreenRadDays: true,
   IBBreakout: true,
+  IBSizes: true,
 };
 export const VisibilityReports = ({ onChange }) => {
   const setupVisibilities = JSON.parse(
@@ -37,6 +38,11 @@ export const VisibilityReports = ({ onChange }) => {
             label={"IB Breakout"}
             key={"IBBreakout"}
             {...register("IBBreakout")}
+          />
+          <Checkbox
+            label={"IB Sizes"}
+            key={"IBSizes"}
+            {...register("IBSizes")}
           />
         </div>
       </form>

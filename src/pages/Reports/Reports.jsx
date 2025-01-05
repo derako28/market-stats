@@ -14,6 +14,7 @@ import { GreenRedDaysByWeekDay } from "./components/GreenRedDaysByWeekDay.jsx";
 import { VisibilityReports } from "../../components/share/VisibilityReports/VisibilityReports.jsx";
 import { IBBreakout } from "./components/IBBreakout.jsx";
 import { getData } from "./getData.js";
+import { IBSizes } from "./components/IBSizes.jsx";
 
 const filterOptions = [
   {
@@ -71,11 +72,7 @@ export const Reports = () => {
     <div className={"py-8"}>
       <div className={"mb-8"}>
         <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl rounded-xl shadow-lg">
-          <Filter
-            options={filterOptions}
-            initialData={initialData}
-            onChange={onFilterData}
-          />
+          <Filter options={filterOptions} onChange={onFilterData} />
         </div>
         <VisibilityReports onChange={onVisibleReports} />
       </div>
@@ -85,6 +82,7 @@ export const Reports = () => {
       )}
 
       {visibilityReports?.IBBreakout && <IBBreakout data={tableData} />}
+      {visibilityReports?.IBSizes && <IBSizes data={tableData} />}
     </div>
   );
 };

@@ -21,7 +21,7 @@ const defaultValue = {
   ib_size_to: "",
   day: "",
 };
-export const Filter = ({ options, initialData, onChange }) => {
+export const Filter = ({ options, onChange }) => {
   const setupFilter = JSON.parse(localStorage.getItem("dataFilter"));
 
   const { control, register, getValues, reset, handleSubmit } = useForm({

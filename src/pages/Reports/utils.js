@@ -5,6 +5,7 @@ import {
   DAY_TRENDS,
   DATE_RANGE_VALUE,
 } from "../../utils/constants.js";
+import { roundToNearest } from "../../utils/prepareData.js";
 
 const getDayOfWeek = (date) => {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -104,21 +105,7 @@ export const getChartDataGreenRedDays = (data) => {
 export const getChartDataIBBreakout = (data) => {
   const dataWithIbBreakout = dataWithIbInfo(data);
 
-  const dataNew = Object.keys(IB_BROKEN_LABELS).reduce((acc, key) => {
-    const counts = dataWithIbBreakout.reduce((acc, item) => {
-      if (item[key]) {
-        acc = acc + 1;
-      }
-
-      return acc;
-    }, 0);
-
-    acc.push(((counts / dataWithIbBreakout.length) * 100).toFixed(2));
-
-    return acc;
-  }, []);
-
-  const data2 = Object.keys(IB_BROKEN_LABELS).reduce((acc, key) => {
+  const dataPrepare = Object.keys(IB_BROKEN_LABELS).reduce((acc, key) => {
     const counts = dataWithIbBreakout.reduce((acc, item) => {
       if (item[key]) {
         acc = acc + 1;
@@ -137,19 +124,39 @@ export const getChartDataIBBreakout = (data) => {
 
   const dataSet = [
     {
-      data: Object.values(data2),
+      data: Object.values(dataPrepare),
       backgroundColor: "#3b82f6",
       borderRadius: 10,
     },
   ];
 
-  Object.values(IB_BROKEN_LABELS).reduce((acc, label) => {
+  return {
+    dataSet: {
+      labels: Object.keys(dataPrepare),
+      datasets: dataSet,
+    },
+  };
+};
+
+export const getChartDataIBSizes = (data) => {
+  const prepareData = data.reduce((acc, item) => {
+    const ibSize = roundToNearest(item.ibSize);
+
+    acc[ibSize] = acc[ibSize] ? acc[ibSize] + 1 : 1;
+
     return acc;
-  }, []);
+  }, {});
+
+  const dataSet = [
+    {
+      data: Object.values(prepareData),
+      backgroundColor: "#3b82f6",
+    },
+  ];
 
   return {
     dataSet: {
-      labels: Object.keys(data2),
+      labels: Object.keys(prepareData),
       datasets: dataSet,
     },
   };

@@ -1,5 +1,4 @@
 import { CLOSES_OPTIONS, OPENS_OPTIONS, TEST_OPTIONS } from "./constants.js";
-import { toNumber } from "./toNumber.js";
 
 const getIbBroken = (high, low, ibHigh, ibLow) => {
   const highBroken = high > ibHigh;
@@ -36,9 +35,9 @@ export const segmentData = (data, segmentSize = 5) => {
   });
 };
 
-function roundToNearest(number, segmentSize) {
+export const roundToNearest = (number, segmentSize = 1) => {
   return Math.round(number / segmentSize) * segmentSize;
-}
+};
 
 const minPercentage = 0.5;
 export const filterLeastFrequentByIbSize = (
