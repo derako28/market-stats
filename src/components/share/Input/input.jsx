@@ -8,7 +8,12 @@ export const Input = forwardRef(({ label, ...props }, ref) => {
       <label className="block mb-2 text-sm font-medium text-gray-400">
         {label}
       </label>
-      <input className={inputClass} {...props} ref={ref} />
+      <input
+        style={{ minWidth: 120 }}
+        className={inputClass}
+        {...props}
+        ref={ref}
+      />
     </div>
   );
 });
