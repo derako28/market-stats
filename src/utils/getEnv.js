@@ -10,7 +10,8 @@ export const getEnv = () => {
           es: false,
           oldStatistics: false,
           newStatistics: true,
-          DAX_VWAP: true,
+          DAX_VWAP: false,
+          Reports: true,
         },
       };
 
@@ -25,6 +26,7 @@ export const getEnv = () => {
           oldStatistics: false,
           newStatistics: true,
           DAX_VWAP: false,
+          Reports: false,
         },
       };
   }

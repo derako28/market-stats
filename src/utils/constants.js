@@ -111,11 +111,11 @@ export const DIRECTION = {
 };
 
 export const DAYS_LABEL = {
-  MONDAY: "MONDAY",
-  TUESDAY: "TUESDAY",
-  WEDNESDAY: "WEDNESDAY",
-  THURSDAY: "THURSDAY",
-  FRIDAY: "FRIDAY",
+  MONDAY: "Monday",
+  TUESDAY: "Tuesday",
+  WEDNESDAY: "Wednesday",
+  THURSDAY: "Thursday",
+  FRIDAY: "Friday",
 };
 
 export const DAYS_OPTIONS = [
@@ -135,8 +135,8 @@ export const IB_BROKEN_LABELS = {
   is_ib_broken: "IB Broken",
   ib_high_broken: "IB High Broken",
   ib_low_broken: "IB Low Broken",
-  ib_both_broken: "IB Both Broken",
   ib_one_side_broken: "IB One Side Broken",
+  ib_both_broken: "IB Both Side Broken",
   // ib_no_broken: "IB No Broken",
 };
 
@@ -214,4 +214,15 @@ export const BREAKOUT_PERIODS_LABEL = {
 export const CANDLE_TYPES = {
   BEARISH: "Bear",
   BULLISH: "Bull",
+};
+
+export const DAY_TRENDS = {
+  BULLISH: "Bullish",
+  BEARISH: "Bearish",
+};
+
+export const TICKERS = {
+  ES: "ES",
+  NQ: "NQ",
+  YM: "YM",
 };

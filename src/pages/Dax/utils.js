@@ -512,3 +512,12 @@ export const isTestPOC = (acc, item) => {
 
   return TEST_OPTIONS.NO;
 };
+
+export const calculateAverageIBSize = (data) => {
+  const ibSizes = data.map((day) => day.ibSize);
+
+  const totalIBSize = ibSizes.reduce((sum, size) => sum + size, 0);
+  const averageIBSize = totalIBSize / ibSizes.length;
+
+  return parseFloat(averageIBSize.toFixed(2));
+};

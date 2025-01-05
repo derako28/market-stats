@@ -215,8 +215,8 @@ export const getBarChartHorizontalConfig = (
           fontSize: 10,
 
           formatter: ({ value }) => {
-            // return `${value}%`;
-            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
+            return `${value}`;
+            // return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
           },
         },
 
@@ -276,8 +276,8 @@ export const getDataIBSizeChart = (data, property, subProperty = null) => {
     .sort((a, b) => a - b)
     .map((key) => {
       return { asset: key, amount: newData[key] };
-    })
-    .filter((item) => item.amount > data.length * (1 / 100));
+    });
+  // .filter((item) => item.amount > data.length * (1 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {

@@ -23,6 +23,7 @@ import { ES } from "../pages/ES/ES.jsx";
 import { NQ } from "../pages/NQ/NQ.jsx";
 import { YM } from "../pages/YM/YM.jsx";
 import { DaxVwap } from "../pages/DAX+VWAP/dax-vwap.jsx";
+import { Reports } from "../pages/Reports/Reports.jsx";
 
 export const AppRoutes = () => {
   return (
@@ -37,6 +38,10 @@ export const AppRoutes = () => {
                 <Route path="/nq" element={<NQ />} />
                 <Route path="/ym" element={<YM />} />
               </>
+            )}
+
+            {getFeature("Reports") && (
+              <Route path="/reports" element={<Reports />} />
             )}
 
             {getFeature("DAX_VWAP") && (

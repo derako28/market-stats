@@ -421,6 +421,8 @@ export const compileMarketProfileByDays = (
     const cHigh = dailyData[2].high;
     const cLow = dailyData[2].low;
 
+    const trend = tpoOpen > tpoClose ? "Bearish" : "Bullish";
+
     return {
       date,
       tpoHigh,
@@ -433,13 +435,14 @@ export const compileMarketProfileByDays = (
       poc,
       vah,
       val,
-      profile,
+      // profile,
       aHigh,
       aLow,
       bHigh,
       bLow,
       cHigh,
       cLow,
+      trend,
       ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
       breakoutPeriods: findBreakoutPeriods(dailyData),
