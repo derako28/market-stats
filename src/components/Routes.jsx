@@ -40,9 +40,7 @@ export const AppRoutes = () => {
               </>
             )}
 
-            {getFeature("Reports") && (
-              <Route path="/reports" element={<Reports />} />
-            )}
+            <Route path="/reports" element={<Reports />} />
 
             {getFeature("DAX_VWAP") && (
               <>
