@@ -69,7 +69,7 @@ export const Reports = () => {
   const onVisibleReports = (data) => setVisibilityReports(data);
 
   return (
-    <div className={"py-8"}>
+    <div className={"px-4 py-8"}>
       <div className={"mb-8"}>
         <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl rounded-xl shadow-lg">
           <Filter options={filterOptions} onChange={onFilterData} />

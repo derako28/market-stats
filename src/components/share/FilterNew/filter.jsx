@@ -55,29 +55,33 @@ export const Filter = ({ options, onChange }) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={"flex align-middle items-end my-5 px-4 gap-3"}>
+        <div className={"flex align-middle flex-wrap items-end my-5 gap-3"}>
           {options.map((column) => {
             if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
               return (
-                <Controller
-                  key={column.id}
-                  name={column.id}
-                  control={control}
-                  render={({ field }) => (
-                    <DatepickerMY label={column.title} {...field} />
-                  )}
-                />
+                <div className={"flex-auto"}>
+                  <Controller
+                    key={column.id}
+                    name={column.id}
+                    control={control}
+                    render={({ field }) => (
+                      <DatepickerMY label={column.title} {...field} />
+                    )}
+                  />
+                </div>
               );
             }
 
             if (column.type === FILTER_TYPES.SELECT && !column.filter) {
               return (
-                <SelectMy
-                  options={column.options}
-                  label={column.title}
-                  key={column.id}
-                  {...register(column.id)}
-                />
+                <div className={"flex-auto"}>
+                  <SelectMy
+                    options={column.options}
+                    label={column.title}
+                    key={column.id}
+                    {...register(column.id)}
+                  />
+                </div>
               );
             }
 
@@ -87,35 +91,53 @@ export const Filter = ({ options, onChange }) => {
 
             if (column.type === FILTER_TYPES.MULTI_SELECT) {
               return (
-                <Controller
-                  key={column.id}
-                  name={column.id}
-                  control={control}
-                  render={({ field }) => (
-                    <MultiSelectMy
-                      label={column.title}
-                      options={column.options}
-                      {...field}
-                    />
-                  )}
-                />
+                <div className={"flex-auto"}>
+                  <Controller
+                    key={column.id}
+                    name={column.id}
+                    control={control}
+                    render={({ field }) => (
+                      <MultiSelectMy
+                        label={column.title}
+                        options={column.options}
+                        {...field}
+                      />
+                    )}
+                  />
+                </div>
               );
             }
 
             return (
               column.filter ?? (
-                <Input
-                  label={column.title}
-                  name={column.id}
-                  key={column.id}
-                  {...register(column.id)}
-                />
+                <div className={"flex-auto"}>
+                  <Input
+                    label={column.title}
+                    name={column.id}
+                    key={column.id}
+                    {...register(column.id)}
+                  />
+                </div>
               )
             );
           })}
 
-          <Button onClick={onReset} className={"self-end"} label={"Reset"} />
-          <Button onClick={onSubmit} className={"self-end"} label={"Apply"} />
+          <div className={"flex flex-auto gap-2"}>
+            <div className={"flex-auto"}>
+              <Button
+                onClick={onReset}
+                className={"self-end w-full"}
+                label={"Reset"}
+              />
+            </div>
+            <div className={"flex-auto"}>
+              <Button
+                onClick={onSubmit}
+                className={"self-end w-full"}
+                label={"Apply"}
+              />
+            </div>
+          </div>
         </div>
       </form>
     </>
