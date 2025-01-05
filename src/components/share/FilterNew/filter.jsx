@@ -59,9 +59,8 @@ export const Filter = ({ options, onChange }) => {
           {options.map((column) => {
             if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
               return (
-                <div className={"flex-auto"}>
+                <div className={"flex-auto"} key={column.id}>
                   <Controller
-                    key={column.id}
                     name={column.id}
                     control={control}
                     render={({ field }) => (
@@ -74,11 +73,10 @@ export const Filter = ({ options, onChange }) => {
 
             if (column.type === FILTER_TYPES.SELECT && !column.filter) {
               return (
-                <div className={"flex-auto"}>
+                <div className={"flex-auto"} key={column.id}>
                   <SelectMy
                     options={column.options}
                     label={column.title}
-                    key={column.id}
                     {...register(column.id)}
                   />
                 </div>
@@ -91,9 +89,8 @@ export const Filter = ({ options, onChange }) => {
 
             if (column.type === FILTER_TYPES.MULTI_SELECT) {
               return (
-                <div className={"flex-auto"}>
+                <div className={"flex-auto"} key={column.id}>
                   <Controller
-                    key={column.id}
                     name={column.id}
                     control={control}
                     render={({ field }) => (
@@ -110,11 +107,10 @@ export const Filter = ({ options, onChange }) => {
 
             return (
               column.filter ?? (
-                <div className={"flex-auto"}>
+                <div className={"flex-auto"} key={column.id}>
                   <Input
                     label={column.title}
                     name={column.id}
-                    key={column.id}
                     {...register(column.id)}
                   />
                 </div>
