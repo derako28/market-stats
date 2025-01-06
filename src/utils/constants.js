@@ -212,8 +212,8 @@ export const BREAKOUT_PERIODS_LABEL = {
 // };
 
 export const CANDLE_TYPES = {
-  BEARISH: "Bear",
-  BULLISH: "Bull",
+  BEARISH: "Bearish",
+  BULLISH: "Bullish",
 };
 
 export const DAY_TRENDS = {

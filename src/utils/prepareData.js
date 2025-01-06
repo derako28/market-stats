@@ -1,4 +1,9 @@
-import { CLOSES_OPTIONS, OPENS_OPTIONS, TEST_OPTIONS } from "./constants.js";
+import {
+  CANDLE_TYPES,
+  CLOSES_OPTIONS,
+  OPENS_OPTIONS,
+  TEST_OPTIONS,
+} from "./constants.js";
 
 const getIbBroken = (high, low, ibHigh, ibLow) => {
   const highBroken = high > ibHigh;
@@ -977,10 +982,10 @@ export const getDataChartByFirstCandle = (data = [], property) => {
 
 const getFirstCandle = ({ open, close }) => {
   if (open > close) {
-    return "bear";
+    return CANDLE_TYPES.BEARISH;
   }
 
   if (close > open) {
-    return "bull";
+    return CANDLE_TYPES.BULLISH;
   }
 };
