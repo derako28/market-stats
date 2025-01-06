@@ -101,7 +101,6 @@ export const ES = () => {
 
   const onFilterData = (data) => setTableData(data);
 
-  console.log("#tableData: ", tableData);
   return (
     <Page>
       <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
