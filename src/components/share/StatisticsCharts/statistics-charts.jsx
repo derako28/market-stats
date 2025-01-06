@@ -1,11 +1,8 @@
 import { ChartDonut } from "../Chart/chart-donut.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
-  CLOSES_LABEL,
-  CLOSES_TO_CURRENT_DAY_LABEL,
   IB_BROKEN_LABELS,
   OPENING_TYPES,
-  OPENS_LABEL,
   TEST_OPTIONS,
 } from "../../../utils/constants.js";
 import { ChartBar } from "../Chart/chart-bar.jsx";
@@ -75,38 +72,6 @@ export const StatisticsCharts = ({ data }) => {
           height={600}
         />
       </div>
-
-      {/*<div className={"flex justify-center gap-4 mb-10"}>*/}
-      {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-      {/*    <div className={"text-gray-300"}>First Candle Bullish</div>*/}
-      {/*    <AgCharts*/}
-      {/*      options={getBarChartHorizontalConfig(*/}
-      {/*        getDataChartByFirstCandle(*/}
-      {/*          calculateTrendStatistics(data),*/}
-      {/*          "bullishFirstCandle",*/}
-      {/*        ),*/}
-      {/*        data.length,*/}
-      {/*        400,*/}
-      {/*        500,*/}
-      {/*      )}*/}
-      {/*    />*/}
-      {/*  </div>*/}
-
-      {/*  <div className={"flex flex-col justify-center items-center"}>*/}
-      {/*    <div className={"text-gray-300"}>First Candle Bearish</div>*/}
-      {/*    <AgCharts*/}
-      {/*      options={getBarChartHorizontalConfig(*/}
-      {/*        getDataChartByFirstCandle(*/}
-      {/*          calculateTrendStatistics(data),*/}
-      {/*          "bearishFirstCandle",*/}
-      {/*        ),*/}
-      {/*        data.length,*/}
-      {/*        400,*/}
-      {/*        500,*/}
-      {/*      )}*/}
-      {/*    />*/}
-      {/*  </div>*/}
-      {/*</div>*/}
 
       <div className={"flex justify-center gap-16 mt-10 mb-10"}>
         <ChartBar
@@ -264,32 +229,32 @@ export const StatisticsCharts = ({ data }) => {
               height={500}
             />
           </div>
-
-          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
-            <ChartDonut
-              data={data}
-              customHandler={getChartConfigForBreakoutPeriods}
-              title={"First Breakout Periods"}
-              property={"firstBreakout"}
-              labels={BREAKOUT_PERIODS_LABEL}
-              width={600}
-              height={600}
-            />
-
-            <ChartDonut
-              data={data.filter(
-                (item) => item?.breakoutPeriods?.oppositeBreakout.period,
-              )}
-              customHandler={getChartConfigForBreakoutPeriods}
-              title={"Opposite Breakout Periods"}
-              property={"oppositeBreakout"}
-              labels={BREAKOUT_PERIODS_LABEL}
-              width={600}
-              height={600}
-            />
-          </div>
         </>
       )}
+
+      <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+        <ChartDonut
+          data={data}
+          customHandler={getChartConfigForBreakoutPeriods}
+          title={"First Breakout Periods"}
+          property={"firstBreakout"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data.filter(
+            (item) => item?.breakoutPeriods?.oppositeBreakout.period,
+          )}
+          customHandler={getChartConfigForBreakoutPeriods}
+          title={"Opposite Breakout Periods"}
+          property={"oppositeBreakout"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+      </div>
 
       {/*Touch ZONE END*/}
     </>
