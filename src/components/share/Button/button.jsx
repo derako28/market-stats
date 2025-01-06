@@ -1,3 +1,5 @@
+import cn from "classnames";
+
 export const Button = ({
   type = "button",
   label = "",
@@ -8,9 +10,10 @@ export const Button = ({
 }) => {
   return (
     <button
-      className={
-        "w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 hover:text-white"
-      }
+      className={cn(
+        className,
+        "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 hover:text-white",
+      )}
       type={type}
       {...props}
     >

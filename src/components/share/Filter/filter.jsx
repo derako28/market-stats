@@ -180,8 +180,8 @@ export const Filter = ({ options, initialData, onChange }) => {
             );
           })}
 
-          <Button onClick={onReset} className={"self-end"} label={"Reset"} />
-          <Button onClick={onSubmit} className={"self-end"} label={"Apply"} />
+          <Button onClick={onReset} label={"Reset"} />
+          <Button onClick={onSubmit} label={"Apply"} />
         </div>
       </form>
     </>
