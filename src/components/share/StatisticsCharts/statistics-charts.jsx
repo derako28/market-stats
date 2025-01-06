@@ -129,18 +129,6 @@ export const StatisticsCharts = ({ data }) => {
         <ChartBar
           customHandler={() =>
             getBarChartHorizontalConfig(
-              getDataIExtensionChart(data, "ibExt", "highExt"),
-              data.length,
-              700,
-              500,
-            )
-          }
-          title={"IB High Ext"}
-        />
-
-        <ChartBar
-          customHandler={() =>
-            getBarChartHorizontalConfig(
               getDataIExtensionChart(data, "ibExt", "lowExt"),
               data.length,
               700,
@@ -148,6 +136,17 @@ export const StatisticsCharts = ({ data }) => {
             )
           }
           title={"IB Low Ext"}
+        />
+        <ChartBar
+          customHandler={() =>
+            getBarChartHorizontalConfig(
+              getDataIExtensionChart(data, "ibExt", "highExt"),
+              data.length,
+              700,
+              500,
+            )
+          }
+          title={"IB High Ext"}
         />
       </div>
       <div>

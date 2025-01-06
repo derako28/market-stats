@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Filter } from "../../components/share/FilterNew/filter.jsx";
 import {
+  CANDLE_TYPES,
   DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
@@ -32,12 +33,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(OPENS_OPTIONS),
   },
-  // {
-  //   id: "first_candle",
-  //   title: "First Candle",
-  //   type: FILTER_TYPES.SELECT,
-  //   options: getOptions(CANDLE_TYPES),
-  // },
+  {
+    id: "first_candle",
+    title: "First Candle",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CANDLE_TYPES),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
