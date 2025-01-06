@@ -138,48 +138,184 @@ export const Dax = () => {
 
       {visibleConfig.charts && (
         <>
-          <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+          {/*<div className={"flex justify-center gap-16 mt-20 mb-20"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300 mb-4"}>Open Relation</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getChartConfig(*/}
+          {/*        tableData,*/}
+          {/*        "open_relation",*/}
+          {/*        OPENS_LABEL,*/}
+          {/*        500,*/}
+          {/*        600,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300 mb-4"}>Close Relation</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getChartConfig(*/}
+          {/*        tableData,*/}
+          {/*        "close_relation_prev",*/}
+          {/*        CLOSES_LABEL,*/}
+          {/*        450,*/}
+          {/*        600,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300 mb-4"}>*/}
+          {/*      Close Relation To Current Day*/}
+          {/*    </div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getChartConfig(*/}
+          {/*        tableData,*/}
+          {/*        "close_relation",*/}
+          {/*        CLOSES_TO_CURRENT_DAY_LABEL,*/}
+          {/*        500,*/}
+          {/*        600,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+
+          <div className={"flex justify-center gap-16 mt-10 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>Open Relation</div>
+              <div className={"text-gray-300"}>IB Broken by London</div>
               <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "open_relation",
-                  OPENS_LABEL,
-                  500,
-                  600,
+                options={getBarChartConfig(
+                  getDataIBChart(
+                    dataWithIbInfo(tableData, "ibBrokenByLondon"),
+                    IB_BROKEN_LABELS,
+                  ),
+                  tableData.length,
+                  700,
+                  300,
                 )}
               />
             </div>
 
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>Close Relation</div>
+              <div className={"text-gray-300"}>IB Broken by All Day</div>
               <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "close_relation_prev",
-                  CLOSES_LABEL,
-                  450,
-                  600,
-                )}
-              />
-            </div>
-
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300 mb-4"}>
-                Close Relation To Current Day
-              </div>
-              <AgCharts
-                options={getChartConfig(
-                  tableData,
-                  "close_relation",
-                  CLOSES_TO_CURRENT_DAY_LABEL,
-                  500,
-                  600,
+                options={getBarChartConfig(
+                  getDataIBChart(
+                    dataWithIbInfo(tableData, "ibBrokenByAllDay"),
+                    IB_BROKEN_LABELS,
+                  ),
+                  tableData.length,
+                  700,
+                  300,
                 )}
               />
             </div>
           </div>
+          {/*IB Ext Bar Type*/}
+          <div className={"flex justify-center gap-4 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Low Ext</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByLondon", "lowExt"),
+                  tableData.length,
+                  700,
+                  500,
+                )}
+              />
+            </div>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB High Ext</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByLondon", "highExt"),
+                  tableData.length,
+                  700,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+          <div className={"mb-20"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Max Ext</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByLondon", "maxExt"),
+                  tableData.length,
+                  1400,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+          <div className={"flex justify-center gap-4 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Low Ext By All Day</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByAllDay", "lowExt"),
+                  tableData.length,
+                  700,
+                  500,
+                )}
+              />
+            </div>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB High Ext By All Day</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByAllDay", "highExt"),
+                  tableData.length,
+                  700,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+          <div>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Max Ext</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIExtensionChart(tableData, "ibExtByAllDay", "maxExt"),
+                  tableData.length,
+                  1400,
+                  500,
+                )}
+              />
+            </div>
+          </div>
+          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Size</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIBSizeChart(tableData, "ibSize"),
+                  tableData.length,
+                  1700,
+                  300,
+                )}
+              />
+              <div>Average IB SIze: {calculateAverageIBSize(tableData)}</div>
+            </div>
+          </div>
+
+          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
+            <div className={"flex flex-col justify-center items-center"}>
+              <div className={"text-gray-300"}>IB Size Segmented</div>
+              <AgCharts
+                options={getBarChartHorizontalConfig(
+                  getDataIBSizeChart(tableData, "ib_size_segmented"),
+                  tableData.length,
+                  1700,
+                  300,
+                )}
+              />
+            </div>
+          </div>
+
           {/*Touch ZONE*/}
           <div className={"flex justify-center gap-2 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
@@ -231,140 +367,6 @@ export const Dax = () => {
             </div>
           </div>
           {/*Touch ZONE END*/}
-          <div className={"flex justify-center gap-16 mt-10 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Broken by London</div>
-              <AgCharts
-                options={getBarChartConfig(
-                  getDataIBChart(
-                    dataWithIbInfo(tableData, "ibBrokenByLondon"),
-                    IB_BROKEN_LABELS,
-                  ),
-                  tableData.length,
-                  700,
-                  300,
-                )}
-              />
-            </div>
-
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Broken by All Day</div>
-              <AgCharts
-                options={getBarChartConfig(
-                  getDataIBChart(
-                    dataWithIbInfo(tableData, "ibBrokenByAllDay"),
-                    IB_BROKEN_LABELS,
-                  ),
-                  tableData.length,
-                  700,
-                  300,
-                )}
-              />
-            </div>
-          </div>
-          {/*IB Ext Bar Type*/}
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB High Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "highExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Low Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "lowExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div className={"mb-20"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Max Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByLondon", "maxExt"),
-                  tableData.length,
-                  1400,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB High Ext By All Day</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "highExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Low Ext By All Day</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "lowExt"),
-                  tableData.length,
-                  700,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Max Ext</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIExtensionChart(tableData, "ibExtByAllDay", "maxExt"),
-                  tableData.length,
-                  1400,
-                  500,
-                )}
-              />
-            </div>
-          </div>
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ibSize"),
-                  tableData.length,
-                  1700,
-                  300,
-                )}
-              />
-              <div>Average IB SIze: {calculateAverageIBSize(tableData)}</div>
-            </div>
-          </div>
-
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size Segmented</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ib_size_segmented"),
-                  tableData.length,
-                  1700,
-                  300,
-                )}
-              />
-            </div>
-          </div>
         </>
       )}
       {visibleConfig.table && <Table columns={columns} data={tableData} />}
