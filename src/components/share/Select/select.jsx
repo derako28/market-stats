@@ -9,7 +9,13 @@ export const SelectMy = forwardRef(
         <label className="block mb-2 text-sm font-medium text-gray-400">
           {label}
         </label>
-        <select id="countries" className={selectClass} {...props} ref={ref}>
+        <select
+          id="countries"
+          style={{ minHeight: 40 }}
+          className={selectClass}
+          {...props}
+          ref={ref}
+        >
           <option value={""} key={"empty"}>
             -
           </option>

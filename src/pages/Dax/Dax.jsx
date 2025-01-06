@@ -287,20 +287,20 @@ export const Dax = () => {
               />
             </div>
           </div>
-          <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Size</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "ibSize"),
-                  tableData.length,
-                  1700,
-                  300,
-                )}
-              />
-              <div>Average IB SIze: {calculateAverageIBSize(tableData)}</div>
-            </div>
-          </div>
+          {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>IB Size</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataIBSizeChart(tableData, "ibSize"),*/}
+          {/*        tableData.length,*/}
+          {/*        1700,*/}
+          {/*        300,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*    <div>Average IB SIze: {calculateAverageIBSize(tableData)}</div>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
           <div className={"flex justify-center gap-16 mt-20 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>

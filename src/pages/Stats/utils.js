@@ -215,8 +215,8 @@ export const getBarChartHorizontalConfig = (
           fontSize: 10,
 
           formatter: ({ value }) => {
-            return `${value}`;
-            // return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
+            // return `${value}`;
+            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
           },
         },
 
