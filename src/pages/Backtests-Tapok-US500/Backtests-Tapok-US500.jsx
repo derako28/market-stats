@@ -597,7 +597,7 @@ export const BacktestsTapokUS500 = () => {
             options={getBarChartHorizontalConfig(
               getDataIBSizeChart(tableData, "ib_size"),
               1700,
-              300,
+              1400,
             )}
           />
         </div>
@@ -620,7 +620,7 @@ export const BacktestsTapokUS500 = () => {
                 "ib_size",
               ),
               850,
-              300,
+              700,
             )}
           />
         </div>
@@ -634,7 +634,7 @@ export const BacktestsTapokUS500 = () => {
                 "ib_size",
               ),
               850,
-              300,
+              700,
             )}
           />
         </div>
@@ -652,12 +652,12 @@ export const BacktestsTapokUS500 = () => {
       {/*    </div>*/}
       {/*</div>*/}
 
-      <Table
-        columns={columns}
-        data={tableData}
-        filterData={tableData}
-        onClickRow={() => {}}
-      />
+      {/*<ReportTable*/}
+      {/*  columns={columns}*/}
+      {/*  data={tableData}*/}
+      {/*  filterData={tableData}*/}
+      {/*  onClickRow={() => {}}*/}
+      {/*/>*/}
     </Page>
   );
 };

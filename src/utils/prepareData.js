@@ -434,7 +434,7 @@ export const compileMarketProfileByDays = (
       poc,
       vah,
       val,
-      // profile,
+      profile,
       aHigh,
       aLow,
       bHigh,

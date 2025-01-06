@@ -356,7 +356,7 @@ export const StatsChartsAG2024 = () => {
           </div>
         </div>
 
-        {/*<Table  columns={columns} data={tableData} filterData={tableData} />*/}
+        {/*<ReportTable  columns={columns} data={tableData} filterData={tableData} />*/}
       </div>
     </Page>
   );

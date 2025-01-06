@@ -574,7 +574,7 @@ export const BacktestsSanya = () => {
         </div>
       </div>
 
-      {/*<Table columns={columns} data={removeOppositeDirections(optimizedData)} filterData={tableData} onClickRow={() => {}}/>*/}
+      {/*<ReportTable columns={columns} data={removeOppositeDirections(optimizedData)} filterData={tableData} onClickRow={() => {}}/>*/}
       <Table
         columns={columns}
         data={tableData}

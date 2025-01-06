@@ -440,7 +440,7 @@ export const StatsChartsAGFiniteqES = () => {
           </div>
         </div>
 
-        {/*<Table  columns={columns} data={tableData} filterData={tableData} onClickRow={() => {}}/>*/}
+        {/*<ReportTable  columns={columns} data={tableData} filterData={tableData} onClickRow={() => {}}/>*/}
       </div>
     </Page>
   );

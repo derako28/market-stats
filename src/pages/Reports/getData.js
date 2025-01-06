@@ -1,6 +1,8 @@
 import dataES from "../../Data-TW/ES.json";
 import dataNQ from "../../Data-TW/NQ.json";
 import dataYM from "../../Data-TW/YM.json";
+import dataDAX from "../../Data-TW/FDAX.json";
+
 import {
   compileMarketProfileByDays,
   prepareData,
@@ -40,10 +42,19 @@ export const getData = (dataFilter) => {
       break;
     }
 
+    case "DAX": {
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(dataDAX, 68, 5, 1)),
+        ).reverse(),
+      );
+      break;
+    }
+
     default:
       data = segmentData(
         setOpeningType(
-          prepareData(compileMarketProfileByDays(v, 68, 5, 0.25)),
+          prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)),
         ).reverse(),
       );
   }

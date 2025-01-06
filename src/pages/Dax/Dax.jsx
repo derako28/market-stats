@@ -2,20 +2,16 @@ import data from "../../Data-TW/FDAX.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
-  CLOSES_LABEL,
-  CLOSES_TO_CURRENT_DAY_LABEL,
   DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
-  OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
-  calculateAverageIBSize,
   calculateMarketProfileByDay,
   filterLeastFrequentByIbSize,
   prepareData,
@@ -26,7 +22,6 @@ import {
   dataWithIbInfo,
   getBarChartConfig,
   getBarChartHorizontalConfig,
-  getChartConfig,
   getDataChart,
   getDataIBChart,
   getDataIBSizeChart,

@@ -1,13 +1,16 @@
 import { Checkbox } from "../Checkbox/checkbox.jsx";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { REPORT_TYPES } from "../../../utils/constants.js";
 
 const initialData = {
-  GreenRadDays: true,
-  IBBreakout: true,
-  IBSizes: true,
+  [REPORT_TYPES.GREEN_RED_DAYS]: true,
+  [REPORT_TYPES.IB_BREAKOUT]: true,
+  [REPORT_TYPES.IB_SIZES]: true,
+  [REPORT_TYPES.TABLE]: true,
 };
-export const VisibilityReports = ({ onChange }) => {
+
+export const VisibilityReports = ({ options, onChange }) => {
   const setupVisibilities = JSON.parse(
     localStorage.getItem("VisibilityReports"),
   );
@@ -29,21 +32,9 @@ export const VisibilityReports = ({ onChange }) => {
     <>
       <form onChange={handleChange}>
         <div className={"flex flex-wrap justify-center items-center gap-4"}>
-          <Checkbox
-            label={"Green & Red Days"}
-            key={"GreenRadDays"}
-            {...register("GreenRadDays")}
-          />
-          <Checkbox
-            label={"IB Breakout"}
-            key={"IBBreakout"}
-            {...register("IBBreakout")}
-          />
-          <Checkbox
-            label={"IB Sizes"}
-            key={"IBSizes"}
-            {...register("IBSizes")}
-          />
+          {options?.map(({ id, label }) => (
+            <Checkbox label={label} key={id} {...register(id)} />
+          ))}
         </div>
       </form>
     </>

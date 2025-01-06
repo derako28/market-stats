@@ -372,7 +372,7 @@ export const StatsChartsDax = () => {
           </div>
         </div>
 
-        {/*<Table  columns={columns} data={tableData} filterData={tableData} />*/}
+        {/*<ReportTable  columns={columns} data={tableData} filterData={tableData} />*/}
       </div>
     </Page>
   );

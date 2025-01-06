@@ -225,4 +225,19 @@ export const TICKERS = {
   ES: "ES",
   NQ: "NQ",
   YM: "YM",
+  DAX: "DAX",
+};
+
+export const REPORT_TYPES = {
+  GREEN_RED_DAYS: "greenRadDays",
+  IB_BREAKOUT: "ibBreakout",
+  IB_SIZES: "ibSize",
+  TABLE: "table",
+};
+
+export const REPORT_LABELS = {
+  GREEN_RED_DAYS: "Green Red Days",
+  IB_BREAKOUT: "IB Breakout",
+  IB_SIZES: "IB Sizes",
+  TABLE: "Table",
 };

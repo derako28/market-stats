@@ -7,6 +7,8 @@ import {
   FILTER_TYPES,
   IB_BROKEN_OPTIONS,
   OPENS_OPTIONS,
+  REPORT_LABELS,
+  REPORT_TYPES,
   TICKERS,
 } from "../../utils/constants.js";
 import { getOptions } from "../Stats/utils.js";
@@ -15,6 +17,7 @@ import { VisibilityReports } from "../../components/share/VisibilityReports/Visi
 import { IBBreakout } from "./components/IBBreakout.jsx";
 import { getData } from "./getData.js";
 import { IBSizes } from "./components/IBSizes.jsx";
+import { ReportTable } from "./components/share/ReportTable.jsx";
 
 const filterOptions = [
   {
@@ -52,6 +55,25 @@ const filterOptions = [
   },
 ];
 
+const visibilityOptions = [
+  {
+    id: REPORT_TYPES.GREEN_RED_DAYS,
+    label: REPORT_LABELS.GREEN_RED_DAYS,
+  },
+  {
+    id: REPORT_TYPES.IB_BREAKOUT,
+    label: REPORT_LABELS.IB_BREAKOUT,
+  },
+  {
+    id: REPORT_TYPES.IB_SIZES,
+    label: REPORT_LABELS.IB_SIZES,
+  },
+  {
+    id: REPORT_TYPES.TABLE,
+    label: REPORT_LABELS.TABLE,
+  },
+];
+
 export const Reports = () => {
   const [ticker, setTicker] = useState(TICKERS.ES);
   const [initialData, setInitialData] = useState(null);
@@ -74,15 +96,23 @@ export const Reports = () => {
         <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl rounded-xl shadow-lg">
           <Filter options={filterOptions} onChange={onFilterData} />
         </div>
-        <VisibilityReports onChange={onVisibleReports} />
+        <VisibilityReports
+          options={visibilityOptions}
+          onChange={onVisibleReports}
+        />
       </div>
 
-      {visibilityReports?.GreenRadDays && (
+      {visibilityReports[REPORT_TYPES.GREEN_RED_DAYS] && (
         <GreenRedDaysByWeekDay data={tableData} />
       )}
 
-      {visibilityReports?.IBBreakout && <IBBreakout data={tableData} />}
-      {visibilityReports?.IBSizes && <IBSizes data={tableData} />}
+      {visibilityReports[REPORT_TYPES.IB_BREAKOUT] && (
+        <IBBreakout data={tableData} />
+      )}
+      {visibilityReports[REPORT_TYPES.IB_SIZES] && <IBSizes data={tableData} />}
+      {visibilityReports[REPORT_TYPES.TABLE] && (
+        <ReportTable data={tableData} />
+      )}
     </div>
   );
 };

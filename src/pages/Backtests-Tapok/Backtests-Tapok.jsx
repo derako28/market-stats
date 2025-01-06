@@ -508,7 +508,7 @@ export const BacktestsTapok = () => {
         </div>
       </div>
 
-      {/*<Table columns={columns} data={removeOppositeDirections(optimizedData)} filterData={tableData} onClickRow={() => {}}/>*/}
+      {/*<ReportTable columns={columns} data={removeOppositeDirections(optimizedData)} filterData={tableData} onClickRow={() => {}}/>*/}
     </Page>
   );
 };
