@@ -75,7 +75,7 @@ const filterOptions = [
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
-  // { id: "tpoOpen", title: "tpoOpen" },
+  // { id: "tpoOpen", title: "tpoOpen" },npm
   // { id: "tpoClose", title: "tpoClose" },
   // { id: "tpoHigh", title: "tpoHigh" },
   // { id: "tpoLow", title: "tpoLow" },

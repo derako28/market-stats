@@ -9,6 +9,7 @@ import {
   FIRST_FORMED,
   IB_BROKEN_OPTIONS,
   OPENS_OPTIONS,
+  OPENS_RELATION_TO_TOC,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
@@ -34,11 +35,18 @@ const filterOptions = [
     options: getOptions(OPENS_OPTIONS),
   },
   {
+    id: "open_relation_to_poc",
+    title: "Open Relation To Poc",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENS_RELATION_TO_TOC),
+  },
+  {
     id: "first_candle",
     title: "First Candle",
     type: FILTER_TYPES.SELECT,
     options: getOptions(CANDLE_TYPES),
   },
+
   {
     id: "firstSideFormed",
     title: "First Side Formed",
