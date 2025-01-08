@@ -4,6 +4,7 @@ import {
   OPENS_OPTIONS,
   TEST_OPTIONS,
 } from "./constants.js";
+import { getFirstSideFormed } from "../pages/Dax/utils.js";
 
 const getIbBroken = (high, low, ibHigh, ibLow) => {
   const highBroken = high > ibHigh;
@@ -451,6 +452,7 @@ export const compileMarketProfileByDays = (
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
       breakoutPeriods: findBreakoutPeriods(dailyData),
       first_candle: getFirstCandle(dailyData[0]),
+      firstSideFormed: getFirstSideFormed(firstTwoPeriods),
     };
   });
 };

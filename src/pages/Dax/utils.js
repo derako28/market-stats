@@ -1,8 +1,12 @@
 import moment from "moment";
 import {
+  TRENDS,
   CLOSES_OPTIONS,
   OPENS_OPTIONS,
+  OPENS_RELATION_TO_TOC,
   TEST_OPTIONS,
+  FIRST_FORMED,
+  CANDLE_TYPES,
 } from "../../utils/constants.js";
 
 export const calculateMarketProfileByDay = (
@@ -107,6 +111,7 @@ export const calculateMarketProfileByDay = (
       ibHigh,
       ibLow,
       ibSize,
+      firstSideFormed: getFirstSideFormed(firstTwoPeriods),
       ibBrokenByLondon: getIbBroken(
         londonHighLow.high,
         londonHighLow.low,
@@ -329,6 +334,7 @@ export const prepareData = (data) => {
         isTestPOC: isTestPOC(acc, item),
         isTestRange: isTestRange(acc, item),
         isTestIB: isTestIB(acc, item),
+        open_relation_to_poc: getOpenRelationToPoc(acc, item),
       },
     ];
   }, []);
@@ -520,4 +526,69 @@ export const calculateAverageIBSize = (data) => {
   const averageIBSize = totalIBSize / ibSizes.length;
 
   return parseFloat(averageIBSize.toFixed(2));
+};
+
+export const getOpenRelationToPoc = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return null;
+  }
+
+  const { poc: prevPoc } = prevItem;
+  const { tpoOpen } = item;
+
+  if (tpoOpen < prevPoc) {
+    return OPENS_RELATION_TO_TOC.LOWER_POC;
+  }
+
+  if (tpoOpen > prevPoc) {
+    return OPENS_RELATION_TO_TOC.ABOVE_POC;
+  }
+};
+
+export const getFirstSideFormed = (firstTwoPeriods) => {
+  const aPeriod = firstTwoPeriods[0];
+  const bPeriod = firstTwoPeriods[1];
+
+  const aTrend = aPeriod.close > aPeriod.open ? TRENDS.BULLISH : TRENDS.BEARISH;
+  const bTrend = bPeriod.close > bPeriod.open ? TRENDS.BULLISH : TRENDS.BEARISH;
+
+  const close = bPeriod.close;
+
+  if (aTrend === TRENDS.BULLISH && aPeriod.low < bPeriod.low) {
+    return FIRST_FORMED.LOW;
+  } else if (aTrend === TRENDS.BEARISH && aPeriod.high > bPeriod.high) {
+    return FIRST_FORMED.HIGH;
+  } else if (aTrend === TRENDS.BULLISH && aPeriod.high > bPeriod.high) {
+    return FIRST_FORMED.HIGH;
+  } else if (aTrend === TRENDS.BEARISH && aPeriod.high > bPeriod.high) {
+    return FIRST_FORMED.HIGH;
+  } else if (aTrend === TRENDS.BEARISH && aPeriod.low < bPeriod.low) {
+    return FIRST_FORMED.LOW;
+  } else if (bTrend === TRENDS.BULLISH && bPeriod.low < aPeriod.low) {
+    return FIRST_FORMED.LOW;
+  } else if (bTrend === TRENDS.BEARISH && bPeriod.high > aPeriod.high) {
+    return FIRST_FORMED.HIGH;
+  } else if (close > aPeriod.high && close > aPeriod.low) {
+    return FIRST_FORMED.LOW;
+  } else if (close < aPeriod.low && close > bPeriod.low) {
+    return FIRST_FORMED.HIGH;
+  } else if (aPeriod.high >= bPeriod.high) {
+    return FIRST_FORMED.HIGH;
+  } else if (bPeriod.low <= aPeriod.low) {
+    return FIRST_FORMED.LOW;
+  }
+
+  return "No clear formation";
+};
+
+const getFirstCandle = ({ open, close }) => {
+  if (open > close) {
+    return CANDLE_TYPES.BEARISH;
+  }
+
+  if (close > open) {
+    return CANDLE_TYPES.BULLISH;
+  }
 };

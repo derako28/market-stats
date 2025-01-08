@@ -5,6 +5,7 @@ import React from "react";
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
+  { id: "firstSideFormed", title: "First Side Formed" },
   { id: "first_candle", title: "First Candle" },
   { id: "opening_type", title: "Opening Type" },
   { id: "ibSize", title: "IB Size" },

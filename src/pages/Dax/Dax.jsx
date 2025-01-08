@@ -2,12 +2,15 @@ import data from "../../Data-TW/FDAX.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
+  CANDLE_TYPES,
   DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
+  FIRST_FORMED,
   IB_BROKEN_LABELS,
   IB_BROKEN_OPTIONS,
   OPENS_OPTIONS,
+  OPENS_RELATION_TO_TOC,
   TEST_OPTIONS,
 } from "../../utils/constants.js";
 import { useState } from "react";
@@ -40,6 +43,18 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(OPENS_OPTIONS),
   },
+  {
+    id: "open_relation_to_poc",
+    title: "Open Relation To Poc",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENS_RELATION_TO_TOC),
+  },
+  {
+    id: "firstSideFormed",
+    title: "First Side Formed",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(FIRST_FORMED),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
@@ -65,6 +80,7 @@ const columns = [
   // { id: "tpoHigh", title: "tpoHigh" },
   // { id: "tpoLow", title: "tpoLow" },
 
+  { id: "firstSideFormed", title: "First Side Formed" },
   { id: "ibSize", title: "IB Size" },
   { id: "ibHigh", title: "IB High" },
   { id: "ibLow", title: "IB Low" },

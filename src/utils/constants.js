@@ -68,6 +68,11 @@ export const OPENS_OPTIONS = {
   LOWER_RANGE: OPENS_LABEL.LOWER_RANGE,
 };
 
+export const OPENS_RELATION_TO_TOC = {
+  ABOVE_POC: "Above Poc",
+  LOWER_POC: "Lower Poc",
+};
+
 export const CLOSES = {
   IN_VA: "IN_VA",
   ABOVE_VA: "ABOVE_VA",
@@ -219,6 +224,16 @@ export const CANDLE_TYPES = {
 export const DAY_TRENDS = {
   BULLISH: "Bullish",
   BEARISH: "Bearish",
+};
+
+export const TRENDS = {
+  BULLISH: "Bullish",
+  BEARISH: "Bearish",
+};
+
+export const FIRST_FORMED = {
+  LOW: "Low",
+  HIGH: "High",
 };
 
 export const TICKERS = {
