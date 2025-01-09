@@ -10,7 +10,7 @@ import {
   DAYS_OPTIONS,
   DIRECTION,
   FILTER_TYPES,
-  IB_BROKEN,
+  IB_BREAKOUT,
   OPENING_TYPES,
   OPENS_OPTIONS,
 } from "../../utils/constants.js";
@@ -42,10 +42,10 @@ const columns = [
     options: getOptions(DAY_TYPES),
   },
   {
-    id: "ib_broken",
-    title: "IB Broken",
+    id: "ib_breakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN),
+    options: getOptions(IB_BREAKOUT),
   },
   {
     id: "direction",

@@ -20,8 +20,8 @@ import {
   DATE_RANGE_VALUE,
   DAYS_OPTIONS,
   FILTER_TYPES,
-  IB_BROKEN_LABELS,
-  IB_BROKEN_OPTIONS,
+  IB_BREAKOUT_LABELS,
+  IB_BREAKOUT_OPTIONS,
   OPENS_LABEL,
   OPENS_OPTIONS,
   TEST_OPTIONS,
@@ -50,10 +50,10 @@ const filterOptions = [
   { id: "ib_ext", title: "IB_Exp", filter: false },
 
   {
-    id: "ib_broken",
-    title: "IB Broken",
+    id: "ib_breakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN_OPTIONS),
+    options: getOptions(IB_BREAKOUT_OPTIONS),
   },
 
   // { id: 'ib_ext_ny', title: 'IB Exp NY', filter: false  },
@@ -104,7 +104,7 @@ const columns = [
   { id: "opening_type", title: "Opening Type" },
   // { id: 'opening_type', title: 'Opening Type', type: FILTER_TYPES.SELECT, options: getOptions(OPENING_TYPES)  },
   // { id: 'type_day', title: 'Type Day', type: FILTER_TYPES.SELECT   },
-  { id: "ib_broken", title: "IB Broken", type: FILTER_TYPES.SELECT },
+  { id: "ib_breakout", title: "IB Breakout", type: FILTER_TYPES.SELECT },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT  },
   { id: "ib_size", title: "IB Size" },
   { id: "ib_ext", title: "IB_Exp" },
@@ -352,10 +352,10 @@ export const StatsChartsAGFiniteqES = () => {
           </div>
 
           <div className={"flex flex-col justify-center items-center"}>
-            <div className={"text-gray-300"}>IB Broken</div>
+            <div className={"text-gray-300"}>IB Breakout</div>
             <AgCharts
               options={getBarChartHorizontalConfig(
-                getDataIBChart(dataWithIbInfo(tableData), IB_BROKEN_LABELS),
+                getDataIBChart(dataWithIbInfo(tableData), IB_BREAKOUT_LABELS),
                 tableData.length,
                 700,
                 500,
@@ -395,8 +395,8 @@ export const StatsChartsAGFiniteqES = () => {
         {/*    </div>*/}
 
         {/*    <div className={'flex flex-col justify-center items-center'}>*/}
-        {/*        <div className={'text-gray-300 mb-10'}>IB Broken</div>*/}
-        {/*        <AgCharts options={getChartConfigUniversal(tableData, getDataChartIBBroken, 'ib_broken', IB_BROKEN_LABELS,  900, 600)} />*/}
+        {/*        <div className={'text-gray-300 mb-10'}>IB Breakout</div>*/}
+        {/*        <AgCharts options={getChartConfigUniversal(tableData, getDataChartIBBreakout, 'ib_breakout', IB_BREAKOUT_LABELS,  900, 600)} />*/}
         {/*    </div>*/}
         {/*</div>*/}
 
@@ -407,8 +407,8 @@ export const StatsChartsAGFiniteqES = () => {
         {/*    </div>*/}
 
         {/*    <div className={'flex flex-col justify-center items-center'}>*/}
-        {/*        <div className={'text-gray-300'}>IB Broken</div>*/}
-        {/*        <AgCharts options={getBarChartHorizontalConfig(getDataIBChart(dataWithIbInfo(tableData), IB_BROKEN_LABELS), 700, 500)} />*/}
+        {/*        <div className={'text-gray-300'}>IB Breakout</div>*/}
+        {/*        <AgCharts options={getBarChartHorizontalConfig(getDataIBChart(dataWithIbInfo(tableData), IB_BREAKOUT_LABELS), 700, 500)} />*/}
         {/*    </div>*/}
         {/*</div>*/}
 

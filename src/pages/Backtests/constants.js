@@ -30,9 +30,9 @@ export const OPENING_TYPES = {
   ORR: "ORR",
 };
 
-export const IB_BROKEN = {
-  HIGH_BROKEN: "HIGH_BROKEN",
-  LOW_BROKEN: "LOW_BROKEN",
+export const IB_BREAKOUT = {
+  HIGH_BREAKOUT: "HIGH_BREAKOUT",
+  LOW_BREAKOUT: "LOW_BREAKOUT",
 };
 
 export const OPENS = {

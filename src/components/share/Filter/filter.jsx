@@ -57,6 +57,10 @@ export const Filter = ({ options, initialData, onChange }) => {
           return +dataFilter.ib_size_to >= +item.ibSize;
         }
 
+        if (key === "opening_type") {
+          return item.opening_type.includes(dataFilter.opening_type);
+        }
+
         if (key === "date_range") {
           const dateEl = moment(item.date);
           const now = moment();

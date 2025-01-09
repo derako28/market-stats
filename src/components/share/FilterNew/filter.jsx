@@ -15,7 +15,7 @@ import { useEffect } from "react";
 const defaultValue = {
   ticker: TICKERS.ES,
   date_range: DATE_RANGE_VALUE.SIX_MONTH,
-  ibBroken: "",
+  ibBreakout: "",
   open_relation: "",
   ib_size_from: "",
   ib_size_to: "",

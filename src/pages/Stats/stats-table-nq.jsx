@@ -34,7 +34,7 @@ const columns = [
   },
   // { id: "type_day", title: "Day Type" },
   // { id: "opening_type", title: "Opening Type" },
-  // { id: "ib_broken", title: "IB Broken" },
+  // { id: "ib_breakout", title: "IB Breakout" },
   { id: "ib_size", title: "IB Size" },
   // { id: "ib_ext", title: "IB_Exp" },
   { id: "TPO_Open", title: "TPO Open" },
@@ -73,10 +73,10 @@ const filterOptions = [
   // { id: "ib_ext", title: "IB_Exp" },
 
   // {
-  //   id: "ib_broken",
-  //   title: "IB Broken",
+  //   id: "ib_breakout",
+  //   title: "IB Breakout",
   //   type: FILTER_TYPES.SELECT,
-  //   options: getOptions(IB_BROKEN_OPTIONS),
+  //   options: getOptions(IB_BREAKOUT_OPTIONS),
   // },
 
   // { id: 'ib_ext_ny', title: 'IB Exp NY', filter: false  },

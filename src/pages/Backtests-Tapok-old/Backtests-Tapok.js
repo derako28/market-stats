@@ -19,8 +19,8 @@ import {
   DAYS_OPTIONS,
   DIRECTION_OPTIONS,
   FILTER_TYPES,
-  IB_BROKEN,
-  IB_BROKEN_LABELS,
+  IB_BREAKOUT,
+  IB_BREAKOUT_LABELS,
   OPENING_TYPES,
   OPENS_LABEL,
   OPENS_OPTIONS,
@@ -60,10 +60,10 @@ const columns = [
     options: getOptions(DAY_TYPES),
   },
   {
-    id: "ib_broken",
-    title: "IB Broken",
+    id: "ib_breakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN),
+    options: getOptions(IB_BREAKOUT),
   },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION)  },
   { id: "ib_size", title: "IB Size" },
@@ -105,10 +105,10 @@ const filterOptions = [
   },
   { id: "type_day", title: "Type Day", filter: false },
   {
-    id: "ib_broken",
-    title: "IB Broken",
+    id: "ib_breakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN),
+    options: getOptions(IB_BREAKOUT),
   },
   {
     id: "direction",
@@ -367,7 +367,7 @@ export const BacktestsTapok = () => {
 
       {/*<div className={'flex justify-center gap-16 mt-10 mb-20 px-20'}>*/}
       {/*    <div className={'flex flex-col justify-center items-center'}>*/}
-      {/*        <div className={'text-gray-300'}>IB Broken by London</div>*/}
+      {/*        <div className={'text-gray-300'}>IB Breakout by London</div>*/}
       {/*        <AgCharts options={getBarChartConfig(getDataIBChart(dataWithIbInfo(tableData), RR_LABELS),  700, 300)} />*/}
       {/*    </div>*/}
       {/*</div>*/}

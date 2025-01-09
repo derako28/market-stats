@@ -34,14 +34,21 @@ export const OPENING_TYPES = {
   OA_OD: "OA (OD)",
 };
 
+export const OPENING_TYPES_FILTER = {
+  OD: "OD",
+  OTD: "OTD",
+  ORR: "ORR",
+  OA: "OA",
+};
+
 export const CONTINUATION_TYPES = {
   yes: "YES",
   no: "NO",
 };
 
-export const IB_BROKEN = {
-  HIGH_BROKEN: "HIGH_BROKEN",
-  LOW_BROKEN: "LOW_BROKEN",
+export const IB_BREAKOUT = {
+  HIGH_BREAKOUT: "HIGH_BREAKOUT",
+  LOW_BREAKOUT: "LOW_BREAKOUT",
 };
 
 export const OPENS = {
@@ -131,18 +138,18 @@ export const DAYS_OPTIONS = [
   { value: 5, label: DAYS_LABEL.FRIDAY },
 ];
 
-export const IB_BROKEN_OPTIONS = {
-  ib_high_broken: "High Broken",
-  ib_low_broken: "Low Broken",
+export const IB_BREAKOUT_OPTIONS = {
+  ib_high_broken: "High Breakout",
+  ib_low_broken: "Low Breakout",
 };
 
-export const IB_BROKEN_LABELS = {
-  is_ib_broken: "IB Broken",
-  ib_high_broken: "IB High Broken",
-  ib_low_broken: "IB Low Broken",
-  ib_one_side_broken: "IB One Side Broken",
-  ib_both_broken: "IB Both Side Broken",
-  // ib_no_broken: "IB No Broken",
+export const IB_BREAKOUT_LABELS = {
+  is_ib_breakout: "IB Breakout",
+  ib_high_broken: "IB Breakout High",
+  ib_low_broken: "IB Breakout Low",
+  ib_one_side_broken: "IB One Side Breakout",
+  ib_both_broken: "IB Both Side Breakout",
+  ib_no_broken: "IB No Breakout",
 };
 
 export const DIRECTION_OPTIONS = {

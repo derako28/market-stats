@@ -112,19 +112,19 @@ export const calculateMarketProfileByDay = (
       ibLow,
       ibSize,
       firstSideFormed: getFirstSideFormed(firstTwoPeriods),
-      ibBrokenByLondon: getIbBroken(
+      ibBreakoutByLondon: getIbBreakout(
         londonHighLow.high,
         londonHighLow.low,
         ibHigh,
         ibLow,
       ),
-      ibBrokenByAllDay: getIbBroken(
+      ibBreakoutByAllDay: getIbBreakout(
         allDayHighLow.high,
         allDayHighLow.low,
         ibHigh,
         ibLow,
       ),
-      ibBrokenNY: getIbBroken(nyHighLow.high, nyHighLow.low, ibHigh, ibLow),
+      ibBreakoutNY: getIbBreakout(nyHighLow.high, nyHighLow.low, ibHigh, ibLow),
       ibExtByLondon: getIbExt(
         londonHighLow.high,
         londonHighLow.low,
@@ -159,14 +159,14 @@ const getSessionHighLow = (data, sessionStartTime, sessionEndTime) => {
   return { high, low };
 };
 
-const getIbBroken = (high, low, ibHigh, ibLow) => {
-  const highBroken = high > ibHigh;
-  const lowBroken = low < ibLow;
+const getIbBreakout = (high, low, ibHigh, ibLow) => {
+  const highBreakout = high > ibHigh;
+  const lowBreakout = low < ibLow;
 
-  if (highBroken && lowBroken) return "High Broken, Low Broken";
-  if (highBroken) return "High Broken";
-  if (lowBroken) return "Low Broken";
-  return "No Broken";
+  if (highBreakout && lowBreakout) return "High Breakout, Low Breakout";
+  if (highBreakout) return "High Breakout";
+  if (lowBreakout) return "Low Breakout";
+  return "No Breakout";
 };
 
 export const getIbExt = (high, low, ibHigh, ibLow) => {
@@ -271,12 +271,12 @@ export const getIbSizeBreaksByLondon = (data) => {
     return null;
   }
 
-  // Шаг 1: Разделить данные на "High Broken" и "Low Broken"
-  const highBroken = data.filter(
-    ({ ibBrokenByLondon }) => ibBrokenByLondon === "High Broken",
+  // Шаг 1: Разделить данные на "High Breakout" и "Low Breakout"
+  const highBreakout = data.filter(
+    ({ ibBreakoutByLondon }) => ibBreakoutByLondon === "High Breakout",
   );
-  const lowBroken = data.filter(
-    ({ ibBrokenByLondon }) => ibBrokenByLondon === "Low Broken",
+  const lowBreakout = data.filter(
+    ({ ibBreakoutByLondon }) => ibBreakoutByLondon === "Low Breakout",
   );
 
   // Шаг 2: Функция для подсчета частоты
@@ -289,10 +289,10 @@ export const getIbSizeBreaksByLondon = (data) => {
     }, new Map());
 
   // Шаг 3: Подсчет частоты для каждого типа ломки
-  const highFrequencyMap = calculateFrequency(highBroken);
-  const lowFrequencyMap = calculateFrequency(lowBroken);
+  const highFrequencyMap = calculateFrequency(highBreakout);
+  const lowFrequencyMap = calculateFrequency(lowBreakout);
 
-  // Шаг 4: Определить наиболее частое значение для "High Broken"
+  // Шаг 4: Определить наиболее частое значение для "High Breakout"
   const getMostFrequent = (frequencyMap) => {
     let maxFrequency = 0;
     let mostFrequentIbSize = null;
@@ -311,8 +311,8 @@ export const getIbSizeBreaksByLondon = (data) => {
   const mostFrequentLow = getMostFrequent(lowFrequencyMap);
 
   return {
-    highBroken: mostFrequentHigh,
-    lowBroken: mostFrequentLow,
+    highBreakout: mostFrequentHigh,
+    lowBreakout: mostFrequentLow,
   };
 };
 

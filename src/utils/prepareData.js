@@ -6,14 +6,14 @@ import {
 } from "./constants.js";
 import { getFirstSideFormed } from "../pages/Dax/utils.js";
 
-const getIbBroken = (high, low, ibHigh, ibLow) => {
-  const highBroken = high > ibHigh;
-  const lowBroken = low < ibLow;
+const getIbBreakout = (high, low, ibHigh, ibLow) => {
+  const highBreakout = high > ibHigh;
+  const lowBreakout = low < ibLow;
 
-  if (highBroken && lowBroken) return "High Broken, Low Broken";
-  if (highBroken) return "High Broken";
-  if (lowBroken) return "Low Broken";
-  return "No Broken";
+  if (highBreakout && lowBreakout) return "High Breakout, Low Breakout";
+  if (highBreakout) return "High Breakout";
+  if (lowBreakout) return "Low Breakout";
+  return "No Breakout";
 };
 
 export const getIbExt = (high, low, ibHigh, ibLow) => {
@@ -448,11 +448,12 @@ export const compileMarketProfileByDays = (
       cHigh,
       cLow,
       trend,
-      ibBroken: getIbBroken(tpoHigh, tpoLow, ibHigh, ibLow),
+      ib_breakout: getIbBreakout(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
       breakoutPeriods: findBreakoutPeriods(dailyData),
       first_candle: getFirstCandle(dailyData[0]),
       firstSideFormed: getFirstSideFormed(firstTwoPeriods),
+      firstBreakout: findFirstBreakoutPeriods(dailyData),
     };
   });
 };
@@ -622,7 +623,7 @@ export const forecastNextDay = (historicalData, openRelation) => {
     vah: (avgVah + avgHighExt).toFixed(2),
     val: (avgVal - avgLowExt).toFixed(2),
     probableIbSize: avgIbSize.toFixed(2),
-    probableBreak: avgHighExt > avgLowExt ? "High Broken" : "Low Broken",
+    probableBreak: avgHighExt > avgLowExt ? "High Breakout" : "Low Breakout",
   };
 
   // 3. Учет open_relation для уточнения сценария
@@ -990,4 +991,50 @@ const getFirstCandle = ({ open, close }) => {
   if (close > open) {
     return CANDLE_TYPES.BULLISH;
   }
+};
+
+export const findFirstBreakoutPeriods = (ohlcData) => {
+  // 1. Добавляем алфавитные обозначения для периодов
+  const alphabet = "ABCDEFGHIJKLM";
+  ohlcData.forEach((period, index) => {
+    period.period = alphabet[index]; // Присваиваем букву
+  });
+
+  // 2. Рассчитать IB High и IB Low (первые два периода: A и B)
+  const ibHigh = Math.max(ohlcData[0].high, ohlcData[1].high);
+  const ibLow = Math.min(ohlcData[0].low, ohlcData[1].low);
+
+  let firstBreakout = null;
+  let oppositeBreakout = null;
+
+  // 3. Найти первый пробой IB
+  for (const period of ohlcData.slice(2)) {
+    if (!firstBreakout && (period.high > ibHigh || period.low < ibLow)) {
+      firstBreakout = {
+        period: period.period,
+        time: period.time,
+        breakoutType: period.high > ibHigh ? "High Breakout" : "Low Breakout",
+      };
+    }
+
+    // 4. Найти противоположный пробой
+    if (
+      firstBreakout &&
+      !oppositeBreakout &&
+      ((firstBreakout.breakoutType === "High Breakout" && period.low < ibLow) ||
+        (firstBreakout.breakoutType === "Low Breakout" && period.high > ibHigh))
+    ) {
+      oppositeBreakout = {
+        period: period.period,
+        time: period.time,
+        breakoutType:
+          firstBreakout.breakoutType === "High Breakout"
+            ? "Low Breakout"
+            : "High Breakout",
+      };
+      break;
+    }
+  }
+
+  return firstBreakout?.breakoutType || null;
 };

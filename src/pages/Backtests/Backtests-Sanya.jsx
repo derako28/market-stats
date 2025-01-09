@@ -33,7 +33,7 @@ const columns = [
   // { id: 'open', title: 'Open Relation', type: FILTER_TYPES.SELECT, options: getOptions(OPENS_OPTIONS) },
   // { id: 'opening_type', title: 'Opening Type', type: FILTER_TYPES.SELECT, options: getOptions(OPENING_TYPES)  },
   // { id: 'type_day', title: 'Type Day', type: FILTER_TYPES.SELECT, options: getOptions(DAY_TYPES)  },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION)  },
   // { id: 'ib_size', title: 'IB Size'},
   // { id: 'ib_ext', title: 'IB_Exp', filter: false },
@@ -173,7 +173,7 @@ export const BacktestsSanya = () => {
 
       {/*<div className={'flex justify-center gap-16 mt-10 mb-20 px-20'}>*/}
       {/*    <div className={'flex flex-col justify-center items-center'}>*/}
-      {/*        <div className={'text-gray-300'}>IB Broken by London</div>*/}
+      {/*        <div className={'text-gray-300'}>IB Breakout by London</div>*/}
       {/*        <AgCharts options={getBarChartConfig(getDataIBChart(dataWithIbInfo(tableData), RR_LABELS),  700, 300)} />*/}
       {/*    </div>*/}
       {/*</div>*/}

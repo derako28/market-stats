@@ -4,9 +4,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 127,
     "ib_ext": 55,
@@ -17,9 +17,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 58,
     "ib_ext": 250,
@@ -30,9 +30,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 54,
     "ib_ext": 160,
@@ -43,9 +43,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 37,
     "ib_ext": 35,
@@ -56,9 +56,9 @@
     "open": "O > Range",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 71,
     "ib_ext": 75,
@@ -69,9 +69,9 @@
     "open": "O > Range",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 38,
     "ib_ext": 40,
@@ -82,9 +82,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 38,
     "ib_ext": 15,
@@ -95,9 +95,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 26,
     "ib_ext": 115,
@@ -108,9 +108,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 34,
     "ib_ext": 100,
@@ -121,9 +121,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 23,
     "ib_ext": 30,
@@ -134,9 +134,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 28,
     "ib_ext": 30,
@@ -147,9 +147,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 42,
     "ib_ext": 35,
@@ -160,9 +160,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "No Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "No Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 62,
     "ib_ext": 0,
@@ -173,9 +173,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 57,
     "ib_ext": 140,
@@ -186,9 +186,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 38,
     "ib_ext": 50,
@@ -199,9 +199,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 46,
     "ib_ext": 50,
@@ -212,9 +212,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 90,
@@ -225,9 +225,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 36,
     "ib_ext": 95,
@@ -238,9 +238,9 @@
     "open": "O > Range",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 33,
     "ib_ext": 85,
@@ -251,9 +251,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 24,
     "ib_ext": 35,
@@ -264,9 +264,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 20,
     "ib_ext": 100,
@@ -277,9 +277,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 54,
     "ib_ext": 70,
@@ -290,9 +290,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 19,
     "ib_ext": 40,
@@ -303,9 +303,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 27,
     "ib_ext": 170,
@@ -316,9 +316,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 53,
     "ib_ext": 85,
@@ -329,9 +329,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 27,
     "ib_ext": 65,
@@ -342,9 +342,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 28,
     "ib_ext": 70,
@@ -355,9 +355,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 26,
     "ib_ext": 45,
@@ -368,9 +368,9 @@
     "open": "O > Range",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 38,
     "ib_ext": 125,
@@ -381,9 +381,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 37,
     "ib_ext": 135,
@@ -394,9 +394,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 41,
     "ib_ext": 60,
@@ -407,9 +407,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 43,
     "ib_ext": 40,
@@ -420,9 +420,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 34,
     "ib_ext": 70,
@@ -433,9 +433,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 42,
     "ib_ext": 35,
@@ -446,9 +446,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 36,
     "ib_ext": 120,
@@ -459,9 +459,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 25,
     "ib_ext": 80,
@@ -472,9 +472,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 46,
     "ib_ext": 145,
@@ -485,9 +485,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 36,
     "ib_ext": 100,
@@ -498,9 +498,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 26,
     "ib_ext": 70,
@@ -511,9 +511,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 36,
     "ib_ext": 115,
@@ -524,9 +524,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 50,
     "ib_ext": 165,
@@ -537,9 +537,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 71,
     "ib_ext": 40,
@@ -550,9 +550,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 53,
     "ib_ext": 40,
@@ -563,9 +563,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 67,
     "ib_ext": 70,
@@ -576,9 +576,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 30,
     "ib_ext": 120,
@@ -589,9 +589,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 47,
     "ib_ext": 15,
@@ -602,9 +602,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 26,
     "ib_ext": 55,
@@ -615,9 +615,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 37,
     "ib_ext": 100,
@@ -628,9 +628,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 75,
@@ -641,9 +641,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 58,
     "ib_ext": 70,
@@ -654,9 +654,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 93,
     "ib_ext": 490,
@@ -667,9 +667,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 76,
     "ib_ext": 70,
@@ -680,9 +680,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 62,
     "ib_ext": 500,
@@ -693,9 +693,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 95,
     "ib_ext": 130,
@@ -706,9 +706,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 27,
     "ib_ext": 120,
@@ -719,9 +719,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 146,
     "ib_ext": 190,
@@ -732,9 +732,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 56,
     "ib_ext": 100,
@@ -745,9 +745,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 72,
     "ib_ext": 55,
@@ -758,9 +758,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 45,
     "ib_ext": 85,
@@ -771,9 +771,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 53,
     "ib_ext": 330,
@@ -784,9 +784,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 63,
     "ib_ext": 55,
@@ -797,9 +797,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 60,
     "ib_ext": 65,
@@ -810,9 +810,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 37,
     "ib_ext": 55,
@@ -823,9 +823,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 39,
     "ib_ext": 100,
@@ -836,9 +836,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 50,
@@ -849,9 +849,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 39,
     "ib_ext": 35,
@@ -862,9 +862,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 35,
     "ib_ext": 115,
@@ -875,9 +875,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 43,
     "ib_ext": 55,
@@ -888,9 +888,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 31,
     "ib_ext": 50,
@@ -901,9 +901,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 45,
     "ib_ext": 15,
@@ -914,9 +914,9 @@
     "open": "O > VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 17,
     "ib_ext": 65,
@@ -927,9 +927,9 @@
     "open": "O > VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 29,
     "ib_ext": 35,
@@ -940,9 +940,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 23,
     "ib_ext": 30,
@@ -953,9 +953,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Long",
     "ib_size": 22,
     "ib_ext": 75,
@@ -966,9 +966,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 65,
@@ -979,9 +979,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 21,
     "ib_ext": 15,
@@ -992,9 +992,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 125,
@@ -1005,9 +1005,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 24,
     "ib_ext": 70,
@@ -1018,9 +1018,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 35,
@@ -1031,9 +1031,9 @@
     "open": "O < VA",
     "opening_type": "",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 30,
     "ib_ext": 35,
@@ -1044,9 +1044,9 @@
     "open": "O < VA",
     "opening_type": "",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 24,
     "ib_ext": 110,
@@ -1057,9 +1057,9 @@
     "open": "In VA",
     "opening_type": "",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 16,
     "ib_ext": 55,
@@ -1070,9 +1070,9 @@
     "open": "O > Range",
     "opening_type": "",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 36,
     "ib_ext": 170,
@@ -1083,9 +1083,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 46,
     "ib_ext": 85,
@@ -1096,9 +1096,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Long",
     "ib_size": 20,
     "ib_ext": 50,
@@ -1109,9 +1109,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 50,
     "ib_ext": 110,
@@ -1122,9 +1122,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 46,
     "ib_ext": 50,
@@ -1135,9 +1135,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 23,
     "ib_ext": 20,
@@ -1148,9 +1148,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 21,
     "ib_ext": 50,
@@ -1161,9 +1161,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 24,
     "ib_ext": 70,
@@ -1174,9 +1174,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 35,
@@ -1187,9 +1187,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 24,
     "ib_ext": 30,
@@ -1200,9 +1200,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 36,
     "ib_ext": 10,
@@ -1213,9 +1213,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 70,
@@ -1226,9 +1226,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 33,
     "ib_ext": 55,
@@ -1239,9 +1239,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 22,
     "ib_ext": 200,
@@ -1252,9 +1252,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 28,
     "ib_ext": 50,
@@ -1265,9 +1265,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 50,
@@ -1278,9 +1278,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 33,
     "ib_ext": 15,
@@ -1291,9 +1291,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 41,
     "ib_ext": 155,
@@ -1304,9 +1304,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "No Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "No Broken",
     "direction": "Short",
     "ib_size": 61,
     "ib_ext": 105,
@@ -1317,9 +1317,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 60,
     "ib_ext": 90,
@@ -1330,9 +1330,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 54,
     "ib_ext": 50,
@@ -1343,9 +1343,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 22,
     "ib_ext": 80,
@@ -1356,9 +1356,9 @@
     "open": "O < Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 62,
     "ib_ext": 30,
@@ -1369,9 +1369,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 37,
     "ib_ext": 105,
@@ -1382,9 +1382,9 @@
     "open": "O > Range",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 47,
     "ib_ext": 75,
@@ -1395,9 +1395,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 40,
     "ib_ext": 40,
@@ -1408,9 +1408,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 45,
     "ib_ext": 40,
@@ -1421,9 +1421,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 19,
     "ib_ext": 90,
@@ -1434,9 +1434,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 50,
     "ib_ext": 80,
@@ -1447,9 +1447,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 20,
     "ib_ext": 70,
@@ -1460,9 +1460,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 35,
     "ib_ext": 90,
@@ -1473,9 +1473,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 36,
     "ib_ext": 75,
@@ -1486,9 +1486,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 21,
     "ib_ext": 110,
@@ -1499,9 +1499,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 55,
@@ -1512,9 +1512,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 38,
     "ib_ext": 30,
@@ -1525,9 +1525,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 23,
     "ib_ext": 35,
@@ -1538,9 +1538,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 45,
     "ib_ext": 55,
@@ -1551,9 +1551,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 37,
     "ib_ext": 30,
@@ -1564,9 +1564,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 51,
     "ib_ext": 80,
@@ -1577,9 +1577,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 60,
@@ -1590,9 +1590,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "No Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "No Broken",
     "direction": "Short",
     "ib_size": 46,
     "ib_ext": 120,
@@ -1603,9 +1603,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 42,
     "ib_ext": 80,
@@ -1616,9 +1616,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 21,
     "ib_ext": 60,
@@ -1629,9 +1629,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 25,
     "ib_ext": 20,
@@ -1642,9 +1642,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 20,
     "ib_ext": 140,
@@ -1655,9 +1655,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Double Distribution",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 40,
     "ib_ext": 65,
@@ -1668,9 +1668,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 34,
     "ib_ext": 40,
@@ -1681,9 +1681,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 84,
     "ib_ext": 30,
@@ -1694,9 +1694,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 35,
     "ib_ext": 80,
@@ -1707,9 +1707,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 54,
     "ib_ext": 90,
@@ -1720,9 +1720,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 33,
     "ib_ext": 120,
@@ -1733,9 +1733,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 71,
     "ib_ext": 60,
@@ -1746,9 +1746,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 37,
     "ib_ext": 115,
@@ -1759,9 +1759,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 29,
     "ib_ext": 95,
@@ -1772,9 +1772,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 32,
     "ib_ext": 40,
@@ -1785,9 +1785,9 @@
     "open": "O < Range",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 26,
     "ib_ext": 55,
@@ -1798,9 +1798,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 25,
     "ib_ext": 30,
@@ -1811,9 +1811,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 81,
     "ib_ext": 60,
@@ -1824,9 +1824,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 62,
     "ib_ext": 80,
@@ -1837,9 +1837,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 45,
     "ib_ext": 25,
@@ -1850,9 +1850,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 27,
     "ib_ext": 70,
@@ -1863,9 +1863,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 63,
     "ib_ext": 30,
@@ -1876,9 +1876,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 41,
     "ib_ext": 190,
@@ -1889,9 +1889,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 22,
     "ib_ext": 150,
@@ -1902,9 +1902,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Double Distribution",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 65,
     "ib_ext": 60,
@@ -1915,9 +1915,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 40,
     "ib_ext": 55,
@@ -1928,9 +1928,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 22,
     "ib_ext": 160,
@@ -1941,9 +1941,9 @@
     "open": "O < Range",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 76,
     "ib_ext": 95,
@@ -1954,9 +1954,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 76,
     "ib_ext": 125,
@@ -1967,9 +1967,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 40,
     "ib_ext": 160,
@@ -1980,9 +1980,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Long",
     "ib_size": 40,
     "ib_ext": 50,
@@ -1993,9 +1993,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 50,
     "ib_ext": 135,
@@ -2006,9 +2006,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 48,
     "ib_ext": 75,
@@ -2019,9 +2019,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 51,
     "ib_ext": 65,
@@ -2032,9 +2032,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Double Distribution",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 43,
     "ib_ext": 50,
@@ -2045,9 +2045,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 50,
     "ib_ext": 105,
@@ -2058,9 +2058,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 59,
     "ib_ext": 200,
@@ -2071,9 +2071,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 68,
     "ib_ext": 75,
@@ -2084,9 +2084,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 60,
     "ib_ext": 60,
@@ -2097,9 +2097,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 38,
     "ib_ext": 100,
@@ -2110,9 +2110,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 36,
     "ib_ext": 110,
@@ -2123,9 +2123,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 43,
     "ib_ext": 80,
@@ -2136,9 +2136,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 26,
     "ib_ext": 45,
@@ -2149,9 +2149,9 @@
     "open": "O > Range",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 41,
     "ib_ext": 60,
@@ -2162,9 +2162,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 49,
     "ib_ext": 85,
@@ -2175,9 +2175,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 35,
     "ib_ext": 55,
@@ -2188,9 +2188,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "Double Distribution",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 28,
     "ib_ext": 30,
@@ -2201,9 +2201,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 22,
     "ib_ext": 115,
@@ -2214,9 +2214,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 30,
     "ib_ext": 70,
@@ -2227,9 +2227,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 63,
     "ib_ext": 60,
@@ -2240,9 +2240,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Double Distribution",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 20,
     "ib_ext": 55,
@@ -2253,9 +2253,9 @@
     "open": "O < Range",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 38,
     "ib_ext": 65,
@@ -2266,9 +2266,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 34,
     "ib_ext": 45,
@@ -2279,9 +2279,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 44,
     "ib_ext": 90,
@@ -2292,9 +2292,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 25,
     "ib_ext": 180,
@@ -2305,9 +2305,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "No Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "No Broken",
     "direction": "Long",
     "ib_size": 37,
     "ib_ext": 65,
@@ -2318,9 +2318,9 @@
     "open": "O > VA",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 95,
@@ -2331,9 +2331,9 @@
     "open": "O < Range",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Neutral",
     "ib_size": 46,
     "ib_ext": 70,
@@ -2344,9 +2344,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 62,
     "ib_ext": 65,
@@ -2357,9 +2357,9 @@
     "open": "O > Range",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Short",
     "ib_size": 60,
     "ib_ext": 50,
@@ -2370,9 +2370,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 40,
     "ib_ext": 60,
@@ -2383,9 +2383,9 @@
     "open": "O < VA",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 37,
     "ib_ext": 35,
@@ -2396,9 +2396,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 61,
     "ib_ext": 45,
@@ -2409,9 +2409,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 40,
     "ib_ext": 50,
@@ -2422,9 +2422,9 @@
     "open": "O < VA",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 41,
     "ib_ext": 45,
@@ -2435,9 +2435,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 26,
     "ib_ext": 100,
@@ -2448,9 +2448,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 46,
     "ib_ext": 50,
@@ -2461,9 +2461,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 34,
     "ib_ext": 30,
@@ -2474,9 +2474,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "Double Distribution",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 46,
     "ib_ext": 95,
@@ -2487,9 +2487,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 57,
     "ib_ext": 90,
@@ -2500,9 +2500,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Trend",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 69,
     "ib_ext": 35,
@@ -2513,9 +2513,9 @@
     "open": "O < Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 40,
     "ib_ext": 70,
@@ -2526,9 +2526,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 75,
     "ib_ext": 105,
@@ -2539,9 +2539,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 52,
     "ib_ext": 60,
@@ -2552,9 +2552,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 35,
     "ib_ext": 80,
@@ -2565,9 +2565,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Neutral",
     "ib_size": 53,
     "ib_ext": 60,
@@ -2578,9 +2578,9 @@
     "open": "O > Range",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 46,
     "ib_ext": 140,
@@ -2591,9 +2591,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 40,
@@ -2604,9 +2604,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "Double Distribution",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 39,
     "ib_ext": 20,
@@ -2617,9 +2617,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "Trend",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 110,
@@ -2630,9 +2630,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 47,
     "ib_ext": 80,
@@ -2643,9 +2643,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 38,
     "ib_ext": 75,
@@ -2656,9 +2656,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 63,
     "ib_ext": 85,
@@ -2669,9 +2669,9 @@
     "open": "O < Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 37,
     "ib_ext": 60,
@@ -2682,9 +2682,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 51,
     "ib_ext": 50,
@@ -2695,9 +2695,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 32,
     "ib_ext": 190,
@@ -2708,9 +2708,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 45,
     "ib_ext": 30,
@@ -2721,9 +2721,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 48,
     "ib_ext": 40,
@@ -2734,9 +2734,9 @@
     "open": "O < Range",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 50,
     "ib_ext": 85,
@@ -2747,9 +2747,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Double Distribution",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 35,
@@ -2760,9 +2760,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Long",
     "ib_size": 52,
     "ib_ext": 55,
@@ -2773,9 +2773,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 34,
     "ib_ext": 55,
@@ -2786,9 +2786,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 36,
     "ib_ext": 80,
@@ -2799,9 +2799,9 @@
     "open": "O > Range",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 29,
     "ib_ext": 155,
@@ -2812,9 +2812,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 25,
     "ib_ext": 35,
@@ -2825,9 +2825,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 30,
     "ib_ext": 45,
@@ -2838,9 +2838,9 @@
     "open": "O < Range",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 27,
     "ib_ext": 20,
@@ -2851,9 +2851,9 @@
     "open": "O < VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 24,
     "ib_ext": 50,
@@ -2864,9 +2864,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 33,
     "ib_ext": 70,
@@ -2877,9 +2877,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Long",
     "ib_size": 27,
     "ib_ext": 20,
@@ -2890,9 +2890,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 25,
     "ib_ext": 40,
@@ -2903,9 +2903,9 @@
     "open": "O > VA",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 45,
     "ib_ext": 55,
@@ -2916,9 +2916,9 @@
     "open": "O > Range",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 26,
     "ib_ext": 50,
@@ -2929,9 +2929,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 33,
     "ib_ext": 50,
@@ -2942,9 +2942,9 @@
     "open": "In VA",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 19,
     "ib_ext": 105,
@@ -2955,9 +2955,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 15,
     "ib_ext": 20,
@@ -2968,9 +2968,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "Neutral",
     "ib_size": 31,
     "ib_ext": 15,
@@ -2981,9 +2981,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 32,
     "ib_ext": 35,
@@ -2994,9 +2994,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 17,
     "ib_ext": 20,
@@ -3007,9 +3007,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 22,
     "ib_ext": 10,
@@ -3020,9 +3020,9 @@
     "open": "In VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "Short",
     "ib_size": 20,
     "ib_ext": 30,
@@ -3033,9 +3033,9 @@
     "open": "O < VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 53,
     "ib_ext": 0,
@@ -3046,9 +3046,9 @@
     "open": "O < Range",
     "opening_type": "Trend",
     "type_day": "Trend",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 28,
     "ib_ext": 150,
@@ -3059,9 +3059,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "Long",
     "ib_size": 21,
     "ib_ext": 15,
@@ -3072,9 +3072,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 22,
     "ib_ext": 65,
@@ -3085,9 +3085,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 47,
     "ib_ext": 25,
@@ -3098,9 +3098,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 25,
     "ib_ext": 50,
@@ -3111,9 +3111,9 @@
     "open": "O > Range",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 24,
     "ib_ext": 15,
@@ -3124,9 +3124,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 30,
     "ib_ext": 15,
@@ -3137,9 +3137,9 @@
     "open": "O > VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 17,
     "ib_ext": 50,
@@ -3150,9 +3150,9 @@
     "open": "O > VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 27,
     "ib_ext": 25,
@@ -3163,9 +3163,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 25,
     "ib_ext": 65,
@@ -3176,9 +3176,9 @@
     "open": "O < VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "",
     "ib_size": 31,
     "ib_ext": 25,
@@ -3189,9 +3189,9 @@
     "open": "O > Range",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 29,
     "ib_ext": 85,
@@ -3202,9 +3202,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "",
     "ib_size": 63,
     "ib_ext": 60,
@@ -3215,9 +3215,9 @@
     "open": "In VA",
     "opening_type": "ORR",
     "type_day": "Normal",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 45,
     "ib_ext": 20,
@@ -3228,9 +3228,9 @@
     "open": "In VA",
     "opening_type": "OD",
     "type_day": "Normal",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 32,
     "ib_ext": 50,
@@ -3241,9 +3241,9 @@
     "open": "O > VA",
     "opening_type": "ORR",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 26,
     "ib_ext": 50,
@@ -3254,9 +3254,9 @@
     "open": "O < VA",
     "opening_type": "OTD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken, Low Broken",
-    "ib_broken_2h": "High Broken, Low Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken, Low Broken",
+    "ib_breakout_2h": "High Broken, Low Broken",
     "direction": "",
     "ib_size": 35,
     "ib_ext": 25,
@@ -3267,9 +3267,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken, Low Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken, Low Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 23,
     "ib_ext": 20,
@@ -3280,9 +3280,9 @@
     "open": "O > Range",
     "opening_type": "OTD",
     "type_day": "Neutral",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 52,
     "ib_ext": 50,
@@ -3293,9 +3293,9 @@
     "open": "O > VA",
     "opening_type": "OD",
     "type_day": "NORMAL OF VARIATION",
-    "ib_broken": "Low Broken",
-    "ib_broken_ny": "Low Broken",
-    "ib_broken_2h": "Low Broken",
+    "ib_breakout": "Low Broken",
+    "ib_breakout_ny": "Low Broken",
+    "ib_breakout_2h": "Low Broken",
     "direction": "",
     "ib_size": 23,
     "ib_ext": 90,
@@ -3306,9 +3306,9 @@
     "open": "In VA",
     "opening_type": "OA",
     "type_day": "Neutral",
-    "ib_broken": "High Broken",
-    "ib_broken_ny": "High Broken",
-    "ib_broken_2h": "High Broken",
+    "ib_breakout": "High Broken",
+    "ib_breakout_ny": "High Broken",
+    "ib_breakout_2h": "High Broken",
     "direction": "",
     "ib_size": 22,
     "ib_ext": 25,
@@ -3321,8 +3321,8 @@
     "ib_size": 38,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3331,8 +3331,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3341,8 +3341,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3351,8 +3351,8 @@
     "ib_size": 43,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3361,8 +3361,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3371,8 +3371,8 @@
     "ib_size": 27,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3381,8 +3381,8 @@
     "ib_size": 62,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3391,8 +3391,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3401,8 +3401,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3411,8 +3411,8 @@
     "ib_size": 69,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3421,8 +3421,8 @@
     "ib_size": 59,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3431,8 +3431,8 @@
     "ib_size": 47,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3441,8 +3441,8 @@
     "ib_size": 38,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3451,8 +3451,8 @@
     "ib_size": 60,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3461,8 +3461,8 @@
     "ib_size": 49,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3471,8 +3471,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3481,8 +3481,8 @@
     "ib_size": 60,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3491,8 +3491,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3501,8 +3501,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3511,8 +3511,8 @@
     "ib_size": 20,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3521,8 +3521,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3531,8 +3531,8 @@
     "ib_size": 56,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3541,8 +3541,8 @@
     "ib_size": 62,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3551,8 +3551,8 @@
     "ib_size": 25,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3561,8 +3561,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3571,8 +3571,8 @@
     "ib_size": 44,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3581,8 +3581,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3591,8 +3591,8 @@
     "ib_size": 57,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3601,8 +3601,8 @@
     "ib_size": 21,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3611,8 +3611,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3621,8 +3621,8 @@
     "ib_size": 21,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3631,8 +3631,8 @@
     "ib_size": 27,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3641,8 +3641,8 @@
     "ib_size": 30,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3651,8 +3651,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3661,8 +3661,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3671,8 +3671,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3681,8 +3681,8 @@
     "ib_size": 27,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3691,8 +3691,8 @@
     "ib_size": 70,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3701,8 +3701,8 @@
     "ib_size": 25,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3711,8 +3711,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3721,8 +3721,8 @@
     "ib_size": 27,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3731,8 +3731,8 @@
     "ib_size": 35,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3741,8 +3741,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3751,8 +3751,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3761,8 +3761,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3771,8 +3771,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3781,8 +3781,8 @@
     "ib_size": 30,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3791,8 +3791,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3801,8 +3801,8 @@
     "ib_size": 25,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3811,8 +3811,8 @@
     "ib_size": 47,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3821,8 +3821,8 @@
     "ib_size": 56,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3831,8 +3831,8 @@
     "ib_size": 33,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3841,8 +3841,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3851,8 +3851,8 @@
     "ib_size": 33,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3861,8 +3861,8 @@
     "ib_size": 35,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3871,8 +3871,8 @@
     "ib_size": 54,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3881,8 +3881,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3891,8 +3891,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3901,8 +3901,8 @@
     "ib_size": 26,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3911,8 +3911,8 @@
     "ib_size": 30,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3921,8 +3921,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3931,8 +3931,8 @@
     "ib_size": 19,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3941,8 +3941,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3951,8 +3951,8 @@
     "ib_size": 48,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3961,8 +3961,8 @@
     "ib_size": 83,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3971,8 +3971,8 @@
     "ib_size": 30,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3981,8 +3981,8 @@
     "ib_size": 62,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -3991,8 +3991,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4001,8 +4001,8 @@
     "ib_size": 23,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4011,8 +4011,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4021,8 +4021,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4031,8 +4031,8 @@
     "ib_size": 58,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4041,8 +4041,8 @@
     "ib_size": 48,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4051,8 +4051,8 @@
     "ib_size": 64,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4061,8 +4061,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4071,8 +4071,8 @@
     "ib_size": 33,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4081,8 +4081,8 @@
     "ib_size": 210,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4091,8 +4091,8 @@
     "ib_size": 49,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4101,8 +4101,8 @@
     "ib_size": 68,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4111,8 +4111,8 @@
     "ib_size": 47,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4121,8 +4121,8 @@
     "ib_size": 51,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4131,8 +4131,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4141,8 +4141,8 @@
     "ib_size": 44,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4151,8 +4151,8 @@
     "ib_size": 35,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4161,8 +4161,8 @@
     "ib_size": 48,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4171,8 +4171,8 @@
     "ib_size": 57,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4181,8 +4181,8 @@
     "ib_size": 23,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4191,8 +4191,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4201,8 +4201,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4211,8 +4211,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4221,8 +4221,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4231,8 +4231,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4241,8 +4241,8 @@
     "ib_size": 24,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4251,8 +4251,8 @@
     "ib_size": 19,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4261,8 +4261,8 @@
     "ib_size": 25,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4271,8 +4271,8 @@
     "ib_size": 26,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4281,8 +4281,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4291,8 +4291,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4301,8 +4301,8 @@
     "ib_size": 55,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4311,8 +4311,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4321,8 +4321,8 @@
     "ib_size": 78,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4331,8 +4331,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4341,8 +4341,8 @@
     "ib_size": 47,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4351,8 +4351,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4361,8 +4361,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4371,8 +4371,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4381,8 +4381,8 @@
     "ib_size": 48,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4391,8 +4391,8 @@
     "ib_size": 51,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4401,8 +4401,8 @@
     "ib_size": 27,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4411,8 +4411,8 @@
     "ib_size": 59,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4421,8 +4421,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4431,8 +4431,8 @@
     "ib_size": 65,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4441,8 +4441,8 @@
     "ib_size": 44,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4451,8 +4451,8 @@
     "ib_size": 33,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4461,8 +4461,8 @@
     "ib_size": 56,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4471,8 +4471,8 @@
     "ib_size": 79,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4481,8 +4481,8 @@
     "ib_size": 73,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4491,8 +4491,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4501,8 +4501,8 @@
     "ib_size": 50,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4511,8 +4511,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4521,8 +4521,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4531,8 +4531,8 @@
     "ib_size": 35,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4541,8 +4541,8 @@
     "ib_size": 70,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4551,8 +4551,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4561,8 +4561,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4571,8 +4571,8 @@
     "ib_size": 63,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4581,8 +4581,8 @@
     "ib_size": 61,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4591,8 +4591,8 @@
     "ib_size": 66,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4601,8 +4601,8 @@
     "ib_size": 43,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4611,8 +4611,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4621,8 +4621,8 @@
     "ib_size": 58,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4631,8 +4631,8 @@
     "ib_size": 51,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4641,8 +4641,8 @@
     "ib_size": 52,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4651,8 +4651,8 @@
     "ib_size": 61,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4661,8 +4661,8 @@
     "ib_size": 53,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4671,8 +4671,8 @@
     "ib_size": 43,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4681,8 +4681,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4691,8 +4691,8 @@
     "ib_size": 52,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4701,8 +4701,8 @@
     "ib_size": 65,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4711,8 +4711,8 @@
     "ib_size": 61,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4721,8 +4721,8 @@
     "ib_size": 83,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4731,8 +4731,8 @@
     "ib_size": 87,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4741,8 +4741,8 @@
     "ib_size": 81,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4751,8 +4751,8 @@
     "ib_size": 64,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4761,8 +4761,8 @@
     "ib_size": 80,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4771,8 +4771,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4781,8 +4781,8 @@
     "ib_size": 44,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4791,8 +4791,8 @@
     "ib_size": 55,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4801,8 +4801,8 @@
     "ib_size": 50,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4811,8 +4811,8 @@
     "ib_size": 122,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4821,8 +4821,8 @@
     "ib_size": 97,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4831,8 +4831,8 @@
     "ib_size": 144,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4841,8 +4841,8 @@
     "ib_size": 158,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4851,8 +4851,8 @@
     "ib_size": 118,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4861,8 +4861,8 @@
     "ib_size": 99,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4871,8 +4871,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4881,8 +4881,8 @@
     "ib_size": 54,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4891,8 +4891,8 @@
     "ib_size": 68,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4901,8 +4901,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4911,8 +4911,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4921,8 +4921,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4931,8 +4931,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4941,8 +4941,8 @@
     "ib_size": 52,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4951,8 +4951,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4961,8 +4961,8 @@
     "ib_size": 21,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4971,8 +4971,8 @@
     "ib_size": 33,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4981,8 +4981,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -4991,8 +4991,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5001,8 +5001,8 @@
     "ib_size": 32,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5011,8 +5011,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5021,8 +5021,8 @@
     "ib_size": 25,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5031,8 +5031,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5041,8 +5041,8 @@
     "ib_size": 40,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5051,8 +5051,8 @@
     "ib_size": 78,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5061,8 +5061,8 @@
     "ib_size": 56,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5071,8 +5071,8 @@
     "ib_size": 58,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5081,8 +5081,8 @@
     "ib_size": 51,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5091,8 +5091,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5101,8 +5101,8 @@
     "ib_size": 80,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5111,8 +5111,8 @@
     "ib_size": 63,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5121,8 +5121,8 @@
     "ib_size": 50,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5131,8 +5131,8 @@
     "ib_size": 76,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5141,8 +5141,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5151,8 +5151,8 @@
     "ib_size": 31,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5161,8 +5161,8 @@
     "ib_size": 73,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5171,8 +5171,8 @@
     "ib_size": 38,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5181,8 +5181,8 @@
     "ib_size": 29,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5191,8 +5191,8 @@
     "ib_size": 70,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5201,8 +5201,8 @@
     "ib_size": 5,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5211,8 +5211,8 @@
     "ib_size": 40,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5221,8 +5221,8 @@
     "ib_size": 30,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5231,8 +5231,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5241,8 +5241,8 @@
     "ib_size": 54,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5251,8 +5251,8 @@
     "ib_size": 46,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5261,8 +5261,8 @@
     "ib_size": 61,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5271,8 +5271,8 @@
     "ib_size": 40,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5281,8 +5281,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5291,8 +5291,8 @@
     "ib_size": 59,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5301,8 +5301,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5311,8 +5311,8 @@
     "ib_size": 26,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5321,8 +5321,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5331,8 +5331,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5341,8 +5341,8 @@
     "ib_size": 57,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5351,8 +5351,8 @@
     "ib_size": 39,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5361,8 +5361,8 @@
     "ib_size": 54,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5371,8 +5371,8 @@
     "ib_size": 36,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5381,8 +5381,8 @@
     "ib_size": 28,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5391,8 +5391,8 @@
     "ib_size": 42,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5401,8 +5401,8 @@
     "ib_size": 73,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5411,8 +5411,8 @@
     "ib_size": 79,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5421,8 +5421,8 @@
     "ib_size": 41,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5431,8 +5431,8 @@
     "ib_size": 60,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5441,8 +5441,8 @@
     "ib_size": 55,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5451,8 +5451,8 @@
     "ib_size": 56,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5461,8 +5461,8 @@
     "ib_size": 55,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5471,8 +5471,8 @@
     "ib_size": 38,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5481,8 +5481,8 @@
     "ib_size": 67,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5491,8 +5491,8 @@
     "ib_size": 34,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5501,8 +5501,8 @@
     "ib_size": 197,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5511,8 +5511,8 @@
     "ib_size": 66,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5521,8 +5521,8 @@
     "ib_size": 40,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5531,8 +5531,8 @@
     "ib_size": 106,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5541,8 +5541,8 @@
     "ib_size": 61,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5551,8 +5551,8 @@
     "ib_size": 71,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5561,8 +5561,8 @@
     "ib_size": 120,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5571,8 +5571,8 @@
     "ib_size": 52,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5581,8 +5581,8 @@
     "ib_size": 71,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5591,8 +5591,8 @@
     "ib_size": 45,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   },
   {
     "Property": "",
@@ -5601,7 +5601,7 @@
     "ib_size": 69,
     "ib_exp": "",
     "ib_exp_ny": "",
-    "ib_broken_2h": "",
-    "ib_broken_ny": ""
+    "ib_breakout_2h": "",
+    "ib_breakout_ny": ""
   }
 ]

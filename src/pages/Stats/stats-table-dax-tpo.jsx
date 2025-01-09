@@ -33,10 +33,10 @@ const columns = [
   //   options: getOptions(DAY_TYPES),
   // },
   // {
-  //   id: "ib_broken",
-  //   title: "IB Broken",
+  //   id: "ib_breakout",
+  //   title: "IB Breakout",
   //   type: FILTER_TYPES.SELECT,
-  //   options: getOptions(IB_BROKEN),
+  //   options: getOptions(IB_BREAKOUT),
   // },
   // {
   //   id: "direction",

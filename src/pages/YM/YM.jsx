@@ -6,7 +6,8 @@ import {
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
-  IB_BROKEN_OPTIONS,
+  IB_BREAKOUT_OPTIONS,
+  OPENING_TYPES_FILTER,
   OPENS_OPTIONS,
   OPENS_RELATION_TO_TOC,
 } from "../../utils/constants.js";
@@ -45,13 +46,19 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(FIRST_FORMED),
   },
+  {
+    id: "opening_type",
+    title: "Opening Type",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENING_TYPES_FILTER),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBroken",
-    title: "IB Broken",
+    id: "firstBreakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN_OPTIONS),
+    options: getOptions(IB_BREAKOUT_OPTIONS),
   },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
   {
@@ -75,7 +82,7 @@ const columns = [
   { id: "ibHigh", title: "IB High" },
   { id: "ibLow", title: "IB Low" },
 
-  { id: "ibBroken", title: "IB Broken" },
+  { id: "firstBreakout", title: "IB Breakout" },
 
   { id: "ibExt", subId: "highExt", title: "IB Ext High" },
   { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },

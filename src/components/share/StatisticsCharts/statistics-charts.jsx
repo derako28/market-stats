@@ -1,7 +1,8 @@
 import { ChartDonut } from "../Chart/chart-donut.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
-  IB_BROKEN_LABELS,
+  IB_BREAKOUT_LABELS,
+  IB_BREAKOUT_OPTIONS,
   OPENING_TYPES,
   TEST_OPTIONS,
 } from "../../../utils/constants.js";
@@ -48,45 +49,34 @@ export const StatisticsCharts = ({ data }) => {
       {/*  />*/}
       {/*</div>*/}
 
-      <div className={"flex gap-8 justify-center mt-20 mb-20"}>
-        <ChartDonut
-          data={data.map((item) => ({
-            ...item,
-            opening_type: item.opening_type.includes("OA")
-              ? "OA"
-              : item.opening_type,
-          }))}
-          title={"Opening Types"}
-          property={"opening_type"}
-          labels={OPENING_TYPES}
-          width={600}
-          height={600}
-        />
-
-        <ChartDonut
-          data={data}
-          title={"Opening Types With Alternative Opening"}
-          property={"opening_type"}
-          labels={OPENING_TYPES}
-          width={700}
-          height={600}
-        />
-      </div>
-
       <div className={"flex justify-center gap-16 mt-10 mb-10"}>
         <ChartBar
           customHandler={() =>
             getBarChartConfig(
               getDataIBChart(
-                dataWithIbInfo(data, "ibBroken"),
-                IB_BROKEN_LABELS,
+                dataWithIbInfo(data, "ib_breakout"),
+                IB_BREAKOUT_LABELS,
               ),
               data.length,
               700,
               300,
             )
           }
-          title={"IB Broken"}
+          title={"IB Breakout"}
+        />
+        <ChartBar
+          customHandler={() =>
+            getBarChartConfig(
+              getDataIBChart(
+                dataWithIbInfo(data, "firstBreakout"),
+                IB_BREAKOUT_OPTIONS,
+              ),
+              data.length,
+              700,
+              300,
+            )
+          }
+          title={"IB Breakout"}
         />
       </div>
       {/*IB Ext Bar Type*/}
@@ -179,6 +169,31 @@ export const StatisticsCharts = ({ data }) => {
           labels={TEST_OPTIONS}
           width={400}
           height={500}
+        />
+      </div>
+
+      <div className={"flex gap-8 justify-center mt-20 mb-20"}>
+        <ChartDonut
+          data={data.map((item) => ({
+            ...item,
+            opening_type: item.opening_type.includes("OA")
+              ? "OA"
+              : item.opening_type,
+          }))}
+          title={"Opening Types"}
+          property={"opening_type"}
+          labels={OPENING_TYPES}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data}
+          title={"Opening Types With Alternative Opening"}
+          property={"opening_type"}
+          labels={OPENING_TYPES}
+          width={700}
+          height={600}
         />
       </div>
 

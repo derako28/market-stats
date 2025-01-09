@@ -7,7 +7,8 @@ import {
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
-  IB_BROKEN_OPTIONS,
+  IB_BREAKOUT_OPTIONS,
+  OPENING_TYPES_FILTER,
   OPENS_OPTIONS,
   OPENS_RELATION_TO_TOC,
 } from "../../utils/constants.js";
@@ -46,20 +47,25 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(CANDLE_TYPES),
   },
-
   {
     id: "firstSideFormed",
     title: "First Side Formed",
     type: FILTER_TYPES.SELECT,
     options: getOptions(FIRST_FORMED),
   },
+  {
+    id: "opening_type",
+    title: "Opening Type",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENING_TYPES_FILTER),
+  },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBroken",
-    title: "IB Broken",
+    id: "firstBreakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN_OPTIONS),
+    options: getOptions(IB_BREAKOUT_OPTIONS),
   },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
   {
@@ -73,29 +79,31 @@ const filterOptions = [
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
-  { id: "first_candle", title: "First Candle" },
   { id: "opening_type", title: "Opening Type" },
-  { id: "tpoOpen", title: "tpoOpen" },
-
-  { id: "vah", title: "vah" },
-  { id: "val", title: "val" },
-  { id: "poc", title: "poc" },
-
-  { id: "tpoClose", title: "tpoClose" },
-  { id: "tpoHigh", title: "tpoHigh" },
-  { id: "tpoLow", title: "tpoLow" },
-
-  { id: "aHigh", title: "aHigh" },
-  { id: "aLow", title: "aLow" },
-
-  { id: "ibSize", title: "IB Size" },
-  { id: "ibHigh", title: "IB High" },
-  { id: "ibLow", title: "IB Low" },
-
-  { id: "ibBroken", title: "IB Broken" },
-
-  { id: "ibExt", subId: "highExt", title: "IB Ext High" },
-  { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
+  { id: "first_candle", title: "First Candle" },
+  { id: "firstSideFormed", title: "First Side Formed" },
+  { id: "firstBreakout", title: "IB Breakout" },
+  // { id: "tpoOpen", title: "tpoOpen" },
+  //
+  // { id: "vah", title: "vah" },
+  // { id: "val", title: "val" },
+  // { id: "poc", title: "poc" },
+  //
+  // { id: "tpoClose", title: "tpoClose" },
+  // { id: "tpoHigh", title: "tpoHigh" },
+  // { id: "tpoLow", title: "tpoLow" },
+  //
+  // { id: "aHigh", title: "aHigh" },
+  // { id: "aLow", title: "aLow" },
+  //
+  // { id: "ibSize", title: "IB Size" },
+  // { id: "ibHigh", title: "IB High" },
+  // { id: "ibLow", title: "IB Low" },
+  //
+  // { id: "firstBreakout", title: "IB Breakout" },
+  //
+  // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
+  // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 ];
 
 const initialData = segmentData(

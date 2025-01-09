@@ -70,7 +70,7 @@ const filterOptions = [
   // { id: 'open', title: 'Open Relation', type: FILTER_TYPES.SELECT, options: getOptions(OPENS_OPTIONS)},
   // { id: 'opening_type', title: 'Opening Type', type: FILTER_TYPES.SELECT, options: getOptions(OPENING_TYPES)},
   // { id: 'type_day', title: 'Type Day', filter: false },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION_OPTIONS) },
   // { id: 'result', title: 'Result', type: FILTER_TYPES.SELECT, options: getOptions(RESULT_OPTIONS) },
   // { id: 'day', title: 'Day', type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS }
@@ -130,7 +130,7 @@ const excludeFilterOptions = [
 
   // { id: 'ib_size_segmented', title: 'IB Size Segmented'},
   // { id: 'type_day', title: 'Type Day', filter: false },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION_OPTIONS) },
   // { id: 'result', title: 'Result', type: FILTER_TYPES.SELECT, options: getOptions(RESULT_OPTIONS) },
 

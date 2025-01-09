@@ -7,7 +7,7 @@ import {
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
-  IB_BROKEN_OPTIONS,
+  IB_BREAKOUT_OPTIONS,
   OPENS_OPTIONS,
   REPORT_LABELS,
   REPORT_TYPES,
@@ -49,10 +49,10 @@ const filterOptions = [
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBroken",
-    title: "IB Broken",
+    id: "ibBreakout",
+    title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BROKEN_OPTIONS),
+    options: getOptions(IB_BREAKOUT_OPTIONS),
   },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
   {

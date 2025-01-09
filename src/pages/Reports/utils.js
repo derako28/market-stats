@@ -1,6 +1,6 @@
 import moment from "moment";
 import {
-  IB_BROKEN_LABELS,
+  IB_BREAKOUT_LABELS,
   DAYS_LABEL,
   DAY_TRENDS,
   DATE_RANGE_VALUE,
@@ -105,7 +105,7 @@ export const getChartDataGreenRedDays = (data) => {
 export const getChartDataIBBreakout = (data) => {
   const dataWithIbBreakout = dataWithIbInfo(data);
 
-  const dataPrepare = Object.keys(IB_BROKEN_LABELS).reduce((acc, key) => {
+  const dataPrepare = Object.keys(IB_BREAKOUT_LABELS).reduce((acc, key) => {
     const counts = dataWithIbBreakout.reduce((acc, item) => {
       if (item[key]) {
         acc = acc + 1;
@@ -114,7 +114,7 @@ export const getChartDataIBBreakout = (data) => {
       return acc;
     }, 0);
 
-    acc[IB_BROKEN_LABELS[key]] = (
+    acc[IB_BREAKOUT_LABELS[key]] = (
       (counts / dataWithIbBreakout.length) *
       100
     ).toFixed(2);
@@ -162,21 +162,22 @@ export const getChartDataIBSizes = (data) => {
   };
 };
 
-export const dataWithIbInfo = (data, property = "ibBroken") => {
+export const dataWithIbInfo = (data, property = "ibBreakout") => {
   return data.map((item) => {
-    const isHighBroken = item[property]?.includes("High Broken");
-    const isLowBroken = item[property]?.includes("Low Broken");
+    const isHighBreakout = item[property]?.includes("High Breakout");
+    const isLowBreakout = item[property]?.includes("Low Breakout");
 
     return {
-      is_ib_broken: isHighBroken || isLowBroken,
+      is_ib_breakout: isHighBreakout || isLowBreakout,
       ib_one_side_broken:
-        (isLowBroken && !isHighBroken) || (!isLowBroken && isHighBroken),
-      ib_high_broken: isHighBroken,
-      // ib_high_broken: isHighBroken && !isLowBroken,
-      // ib_low_broken: isLowBroken && !isHighBroken,
-      ib_low_broken: isLowBroken,
-      ib_both_broken: isLowBroken && isHighBroken,
-      ib_no_broken: !isLowBroken && !isHighBroken,
+        (isLowBreakout && !isHighBreakout) ||
+        (!isLowBreakout && isHighBreakout),
+      ib_high_broken: isHighBreakout,
+      // ib_high_broken: isHighBreakout && !isLowBreakout,
+      // ib_low_broken: isLowBreakout && !isHighBreakout,
+      ib_low_broken: isLowBreakout,
+      ib_both_broken: isLowBreakout && isHighBreakout,
+      ib_no_broken: !isLowBreakout && !isHighBreakout,
     };
   });
 };

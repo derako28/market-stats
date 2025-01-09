@@ -9,7 +9,7 @@ const columns = [
   { id: "first_candle", title: "First Candle" },
   { id: "opening_type", title: "Opening Type" },
   { id: "ibSize", title: "IB Size" },
-  { id: "ibBroken", title: "IB Broken" },
+  { id: "ibBreakout", title: "IB Breakout" },
 ];
 
 export const ReportTable = ({ data }) => {

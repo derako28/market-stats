@@ -244,19 +244,20 @@ export const getBarChartHorizontalConfig = (
   };
 };
 
-export const dataWithIbInfo = (data, property = "ib_broken") => {
+export const dataWithIbInfo = (data, property = "ib_breakout") => {
   return data.map((item) => {
-    const isHighBroken = item[property]?.includes("High Broken");
-    const isLowBroken = item[property]?.includes("Low Broken");
+    const isHighBreakout = item[property]?.includes("High Breakout");
+    const isLowBreakout = item[property]?.includes("Low Breakout");
 
     return {
-      is_ib_broken: isHighBroken || isLowBroken,
+      is_ib_breakout: isHighBreakout || isLowBreakout,
       ib_one_side_broken:
-        (isLowBroken && !isHighBroken) || (!isLowBroken && isHighBroken),
-      ib_high_broken: isHighBroken,
-      ib_low_broken: isLowBroken,
-      ib_both_broken: isLowBroken && isHighBroken,
-      ib_no_broken: !isLowBroken && !isHighBroken,
+        (isLowBreakout && !isHighBreakout) ||
+        (!isLowBreakout && isHighBreakout),
+      ib_high_broken: isHighBreakout,
+      ib_low_broken: isLowBreakout,
+      ib_both_broken: isLowBreakout && isHighBreakout,
+      ib_no_broken: !isLowBreakout && !isHighBreakout,
     };
   });
 };
@@ -364,7 +365,7 @@ export const getChartConfigForExt = (
   };
 };
 
-export const getChartConfigFoBroken = (
+export const getChartConfigFoBreakout = (
   data = [],
   property,
   labels,
@@ -792,10 +793,10 @@ export const getIbExtSide = (item, type) => {
     : (tpoLow - IBLow) * -1;
 };
 
-export const getIbBroken = (item) => {
+export const getIbBreakout = (item) => {
   const roundNumber = 0.5;
   const admission = 0.5;
-  const ibBroken = [];
+  const ibBreakout = [];
 
   const tpoHigh = roundToNearest(toNumber(item?.TPO_High), roundNumber);
   const tpoLow = roundToNearest(toNumber(item?.TPO_Low), roundNumber);
@@ -804,13 +805,13 @@ export const getIbBroken = (item) => {
   const IBLow = roundToNearest(toNumber(item?.IBRLow), roundNumber);
 
   if (tpoHigh - admission > IBHigh) {
-    ibBroken.push("High Broken");
+    ibBreakout.push("High Breakout");
   }
   if (tpoLow + admission < IBLow) {
-    ibBroken.push("Low Broken");
+    ibBreakout.push("Low Breakout");
   }
 
-  return ibBroken.join(", ");
+  return ibBreakout.join(", ");
 };
 
 export const isTestVA = (acc, item) => {
@@ -947,7 +948,7 @@ export const prepareDataFiniteq = (data) => {
           ib_ext: getIbExt(item),
           ib_ext_high: getIbExtSide(item, "high"),
           ib_ext_low: getIbExtSide(item, "low"),
-          ib_broken: getIbBroken(item),
+          ib_breakout: getIbBreakout(item),
           type_day: determineDayType(item),
           isTestVA: isTestVA(acc, item),
           isTestPOC: isTestPOC(acc, item),
@@ -1140,18 +1141,23 @@ export const getChartConfigUniversal = (
   };
 };
 
-export const getDataChartIBBroken = (data, property = "ib_broken", labels) => {
+export const getDataChartIBBreakout = (
+  data,
+  property = "ib_breakout",
+  labels,
+) => {
   const newData = data.map((item) => {
-    const isHighBroken = item[property]?.includes("High Broken");
-    const isLowBroken = item[property]?.includes("Low Broken");
+    const isHighBreakout = item[property]?.includes("High Breakout");
+    const isLowBreakout = item[property]?.includes("Low Breakout");
 
     return {
-      is_ib_broken: isHighBroken || isLowBroken,
-      ib_high_broken: isHighBroken,
-      ib_low_broken: isLowBroken,
-      ib_both_broken: isLowBroken && isHighBroken,
+      is_ib_breakout: isHighBreakout || isLowBreakout,
+      ib_high_broken: isHighBreakout,
+      ib_low_broken: isLowBreakout,
+      ib_both_broken: isLowBreakout && isHighBreakout,
       ib_one_side_broken:
-        (isLowBroken && !isHighBroken) || (!isLowBroken && isHighBroken),
+        (isLowBreakout && !isHighBreakout) ||
+        (!isLowBreakout && isHighBreakout),
     };
   });
 

@@ -52,7 +52,7 @@ const columns = [
   },
   // { id: 'opening_type', title: 'Opening Type', type: FILTER_TYPES.SELECT, options: getOptions(OPENING_TYPES)  },
   // { id: 'type_day', title: 'Type Day', type: FILTER_TYPES.SELECT, options: getOptions(DAY_TYPES)  },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION)  },
   { id: "ib_size", title: "IB Size" },
   // { id: 'ib_ext', title: 'IB_Exp', filter: false },
@@ -77,7 +77,7 @@ const filterOptions = [
   },
   // { id: 'opening_type', title: 'Opening Type', type: FILTER_TYPES.SELECT, options: getOptions(OPENING_TYPES)},
   // { id: 'type_day', title: 'Type Day', filter: false },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   // { id: 'direction', title: 'Direction', type: FILTER_TYPES.SELECT, options: getOptions(DIRECTION_OPTIONS) },
   {
     id: "result",
@@ -111,7 +111,7 @@ const excludeFilterOptions = [
     options: getOptions(OPENING_TYPES),
   },
   { id: "type_day", title: "Type Day", filter: false },
-  // { id: 'ib_broken', title: 'IB Broken', type: FILTER_TYPES.SELECT, options: getOptions(IB_BROKEN)  },
+  // { id: 'ib_breakout', title: 'IB Breakout', type: FILTER_TYPES.SELECT, options: getOptions(IB_BREAKOUT)  },
   {
     id: "direction",
     title: "Direction",

@@ -171,19 +171,20 @@ export const getDataIBChart = (data = [], labels) => {
   // .filter((item) => item.amount >= 5)
 };
 
-export const dataWithIbInfo = (data, property = "ib_broken") => {
+export const dataWithIbInfo = (data, property = "ib_breakout") => {
   return data.map((item) => {
-    const isHighBroken = item[property].includes("High Broken");
-    const isLowBroken = item[property]?.includes("Low Broken");
+    const isHighBreakout = item[property].includes("High Breakout");
+    const isLowBreakout = item[property]?.includes("Low Breakout");
 
     return {
       ...item,
-      "1r": isHighBroken || isLowBroken,
-      ib_high_broken: isHighBroken,
-      ib_low_broken: isLowBroken,
-      ib_both_broken: isLowBroken && isHighBroken,
+      "1r": isHighBreakout || isLowBreakout,
+      ib_high_broken: isHighBreakout,
+      ib_low_broken: isLowBreakout,
+      ib_both_broken: isLowBreakout && isHighBreakout,
       ib_one_side_broken:
-        (isLowBroken && !isHighBroken) || (!isLowBroken && isHighBroken),
+        (isLowBreakout && !isHighBreakout) ||
+        (!isLowBreakout && isHighBreakout),
     };
   });
 };
