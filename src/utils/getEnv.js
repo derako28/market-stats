@@ -4,7 +4,7 @@ export const getEnv = () => {
       return {
         env: "dev",
         features: {
-          dax: true,
+          dax: false,
           backtests: false,
           nq: false,
           es: false,

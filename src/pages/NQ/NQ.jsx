@@ -128,19 +128,19 @@ export const NQ = () => {
 
       <Statistic data={tableData} />
 
-      <div className={"m-4"}>
-        <Switch
-          labelOn={"Charts"}
-          labelOff={"Table"}
-          onClick={(value) => {
-            setVisibleConfig({
-              ...visibleConfig,
-              charts: value,
-              table: !value,
-            });
-          }}
-        />
-      </div>
+      {/*<div className={"m-4"}>*/}
+      {/*  <Switch*/}
+      {/*    labelOn={"Charts"}*/}
+      {/*    labelOff={"Table"}*/}
+      {/*    onClick={(value) => {*/}
+      {/*      setVisibleConfig({*/}
+      {/*        ...visibleConfig,*/}
+      {/*        charts: value,*/}
+      {/*        table: !value,*/}
+      {/*      });*/}
+      {/*    }}*/}
+      {/*  />*/}
+      {/*</div>*/}
 
       {visibleConfig.filter && (
         <Filter

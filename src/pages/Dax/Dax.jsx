@@ -2,7 +2,6 @@ import data from "../../Data-TW/FDAX.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
-  CANDLE_TYPES,
   DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
@@ -35,6 +34,7 @@ import { Filter } from "../../components/share/Filter/filter.jsx";
 import { Table } from "../../components/share/Table/table.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { Switch } from "../../components/share/Switch/switch.jsx";
+import { ChartBar } from "../../components/share/Chart/chart-bar.jsx";
 
 const filterOptions = [
   {
@@ -333,7 +333,7 @@ export const Dax = () => {
               <div className={"text-gray-300"}>Touch IB</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestIB", TEST_OPTIONS),
+                  getDataChart(tableData, "isTouchIB", TEST_OPTIONS),
                   tableData.length,
                   400,
                   500,
@@ -345,7 +345,7 @@ export const Dax = () => {
               <div className={"text-gray-300"}>Touch POC</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
+                  getDataChart(tableData, "isTouchPOC", TEST_OPTIONS),
                   tableData.length,
                   400,
                   500,
@@ -357,7 +357,7 @@ export const Dax = () => {
               <div className={"text-gray-300"}>Touch VA</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestVA", TEST_OPTIONS),
+                  getDataChart(tableData, "isTouchVA", TEST_OPTIONS),
                   tableData.length,
                   400,
                   500,
@@ -369,13 +369,81 @@ export const Dax = () => {
               <div className={"text-gray-300"}>Touch Range</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTestRange", TEST_OPTIONS),
+                  getDataChart(tableData, "isTouchRange", TEST_OPTIONS),
                   tableData.length,
                   400,
                   500,
                 )}
               />
             </div>
+          </div>
+
+          <div className={"flex justify-center gap-4 mb-10"}>
+            <ChartBar
+              data={tableData}
+              property={"isTouchVAL"}
+              title={"Touch VAL"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
+
+            <ChartBar
+              data={tableData}
+              property={"isTouchVAH"}
+              title={"Touch VAH"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
+
+            <ChartBar
+              data={tableData.filter(
+                (item) =>
+                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,
+              )}
+              property={"isTouchVAL"}
+              title={"Touch VAL (Open Under POC)"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
+
+            <ChartBar
+              data={tableData.filter(
+                (item) =>
+                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,
+              )}
+              property={"isTouchVAL"}
+              title={"Touch VAL (Open Over POC)"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
+
+            <ChartBar
+              data={tableData.filter(
+                (item) =>
+                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,
+              )}
+              property={"isTouchVAH"}
+              title={"Touch VAH (Open Under Poc)"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
+
+            <ChartBar
+              data={tableData.filter(
+                (item) =>
+                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,
+              )}
+              property={"isTouchVAH"}
+              title={"Touch VAH (Open Over Poc)"}
+              labels={TEST_OPTIONS}
+              width={400}
+              height={500}
+            />
           </div>
           {/*Touch ZONE END*/}
         </>

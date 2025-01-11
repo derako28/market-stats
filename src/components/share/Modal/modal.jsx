@@ -18,9 +18,9 @@ export const Modal = ({ onClose, onShow = false, children }) => {
 
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-end justify-center text-center sm:items-center">
-              <div className="relative py-2 transform overflow-hidden rounded-lg  text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-7xl">
+              <div className="relative py-2 transform overflow-hidden rounded-xl  text-left shadow-xl transition-all sm:my-8">
                 <button
-                  className={"absolute top-1 right-3 self-end text-gray-200"}
+                  className={"absolute top-4 right-3 self-end text-gray-200"}
                   onClick={onClose}
                 >
                   X

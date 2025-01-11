@@ -20,10 +20,16 @@ export const Filter = ({ options, initialData, onChange }) => {
   const onSubmit = () => {
     onChange(dataFilter());
   };
+
   const onReset = () => {
     reset();
     onChange(initialData);
   };
+
+  const handleChange = () => {
+    onChange(dataFilter());
+  };
+
   const dataFilter = () => {
     const dataFilter = getValues();
 
@@ -124,7 +130,7 @@ export const Filter = ({ options, initialData, onChange }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange}>
         <div className={"flex align-middle items-end my-5 px-4 gap-3"}>
           {options.map((column) => {
             if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {

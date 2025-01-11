@@ -57,19 +57,19 @@ const filterOptions = [
 
   // { id: 'ib_ext_ny', title: 'IB Exp NY', filter: false  },
   {
-    id: "isTestVA",
+    id: "isTouchVA",
     title: "Test VA",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),
   },
   {
-    id: "isTestPOC",
+    id: "isTouchPOC",
     title: "Test POC",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),
   },
   {
-    id: "isTestIB",
+    id: "isTouchIB",
     title: "Test IB",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),
@@ -295,7 +295,7 @@ export const StatsChartsAGFiniteqNQ = () => {
             <div className={"text-gray-300"}>Test VA</div>
             <AgCharts
               options={getBarChartHorizontalConfig(
-                getDataChart(tableData, "isTestVA", TEST_OPTIONS),
+                getDataChart(tableData, "isTouchVA", TEST_OPTIONS),
                 tableData.length,
                 500,
                 500,
@@ -307,7 +307,7 @@ export const StatsChartsAGFiniteqNQ = () => {
             <div className={"text-gray-300"}>Test POC</div>
             <AgCharts
               options={getBarChartHorizontalConfig(
-                getDataChart(tableData, "isTestPOC", TEST_OPTIONS),
+                getDataChart(tableData, "isTouchPOC", TEST_OPTIONS),
                 tableData.length,
                 500,
                 500,
@@ -319,7 +319,7 @@ export const StatsChartsAGFiniteqNQ = () => {
             <div className={"text-gray-300"}>Test Range</div>
             <AgCharts
               options={getBarChartHorizontalConfig(
-                getDataChart(tableData, "isTestRange", TEST_OPTIONS),
+                getDataChart(tableData, "isTouchRange", TEST_OPTIONS),
                 tableData.length,
                 500,
                 500,
@@ -329,7 +329,7 @@ export const StatsChartsAGFiniteqNQ = () => {
 
           {/*<div className={'flex flex-col justify-center items-center'}>*/}
           {/*    <div className={'text-gray-300'}>Test IB</div>*/}
-          {/*    <AgCharts options={getBarChartHorizontalConfig(getDataChart(tableData, 'isTestIB', TEST_OPTIONS), tableData.length, 500, 500)} />*/}
+          {/*    <AgCharts options={getBarChartHorizontalConfig(getDataChart(tableData, 'isTouchIB', TEST_OPTIONS), tableData.length, 500, 500)} />*/}
           {/*</div>*/}
         </div>
 

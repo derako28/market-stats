@@ -4,6 +4,7 @@ import {
   IB_BREAKOUT_LABELS,
   IB_BREAKOUT_OPTIONS,
   OPENING_TYPES,
+  OPENS_RELATION_TO_TOC,
   TEST_OPTIONS,
 } from "../../../utils/constants.js";
 import { ChartBar } from "../Chart/chart-bar.jsx";
@@ -76,9 +77,100 @@ export const StatisticsCharts = ({ data }) => {
               300,
             )
           }
-          title={"IB Breakout"}
+          title={"IB First Breakout"}
         />
       </div>
+
+      {/*Touch ZONE*/}
+
+      <div className={"flex justify-center gap-4 mb-10"}>
+        <ChartBar
+          data={data}
+          property={"isTouchIB"}
+          title={"Touch IB"}
+          labels={TEST_OPTIONS}
+          width={400}
+          height={500}
+        />
+
+        <ChartBar
+          data={data}
+          property={"isTouchPOC"}
+          title={"Touch POC"}
+          labels={TEST_OPTIONS}
+          width={400}
+          height={500}
+        />
+
+        <ChartBar
+          data={data}
+          property={"isTouchVA"}
+          title={"Touch VA"}
+          labels={TEST_OPTIONS}
+          width={400}
+          height={500}
+        />
+
+        <ChartBar
+          data={data}
+          property={"isTouchRange"}
+          title={"Touch Range"}
+          labels={TEST_OPTIONS}
+          width={400}
+          height={500}
+        />
+      </div>
+
+      {/*<div className={"flex justify-center gap-4 mb-10"}>*/}
+      {/*  <ChartBar*/}
+      {/*    data={data.filter(*/}
+      {/*      (item) =>*/}
+      {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,*/}
+      {/*    )}*/}
+      {/*    property={"isTouchVAL"}*/}
+      {/*    title={"Touch VAL (Open Under POC)"}*/}
+      {/*    labels={TEST_OPTIONS}*/}
+      {/*    width={400}*/}
+      {/*    height={500}*/}
+      {/*  />*/}
+
+      {/*  <ChartBar*/}
+      {/*    data={data.filter(*/}
+      {/*      (item) =>*/}
+      {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,*/}
+      {/*    )}*/}
+      {/*    property={"isTouchVAL"}*/}
+      {/*    title={"Touch VAL (Open Over POC)"}*/}
+      {/*    labels={TEST_OPTIONS}*/}
+      {/*    width={400}*/}
+      {/*    height={500}*/}
+      {/*  />*/}
+
+      {/*  <ChartBar*/}
+      {/*    data={data.filter(*/}
+      {/*      (item) =>*/}
+      {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,*/}
+      {/*    )}*/}
+      {/*    property={"isTouchVAH"}*/}
+      {/*    title={"Touch VAH (Open Under Poc)"}*/}
+      {/*    labels={TEST_OPTIONS}*/}
+      {/*    width={400}*/}
+      {/*    height={500}*/}
+      {/*  />*/}
+
+      {/*  <ChartBar*/}
+      {/*    data={data.filter(*/}
+      {/*      (item) =>*/}
+      {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,*/}
+      {/*    )}*/}
+      {/*    property={"isTouchVAH"}*/}
+      {/*    title={"Touch VAH (Open Over Poc)"}*/}
+      {/*    labels={TEST_OPTIONS}*/}
+      {/*    width={400}*/}
+      {/*    height={500}*/}
+      {/*  />*/}
+      {/*</div>*/}
+
       {/*IB Ext Bar Type*/}
       <div className={"flex justify-center gap-2 mb-10"}>
         <ChartBar
@@ -132,46 +224,6 @@ export const StatisticsCharts = ({ data }) => {
         />
       </div>
 
-      {/*Touch ZONE*/}
-
-      <div className={"flex justify-center gap-4 mb-10"}>
-        <ChartBar
-          data={data}
-          property={"isTestIB"}
-          title={"Touch IB"}
-          labels={TEST_OPTIONS}
-          width={400}
-          height={500}
-        />
-
-        <ChartBar
-          data={data}
-          property={"isTestPOC"}
-          title={"Touch POC"}
-          labels={TEST_OPTIONS}
-          width={400}
-          height={500}
-        />
-
-        <ChartBar
-          data={data}
-          property={"isTestVA"}
-          title={"Touch VA"}
-          labels={TEST_OPTIONS}
-          width={400}
-          height={500}
-        />
-
-        <ChartBar
-          data={data}
-          property={"isTestRange"}
-          title={"Touch Range"}
-          labels={TEST_OPTIONS}
-          width={400}
-          height={500}
-        />
-      </div>
-
       <div className={"flex gap-8 justify-center mt-20 mb-20"}>
         <ChartDonut
           data={data.map((item) => ({
@@ -196,56 +248,6 @@ export const StatisticsCharts = ({ data }) => {
           height={600}
         />
       </div>
-
-      {1 > 2 && (
-        <>
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <ChartBar
-              data={data.filter(
-                (item) => item.open_relation_to_poc === "underPoc",
-              )}
-              property={"isTestVAL"}
-              title={"Touch VAL (Open Under POC)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={data.filter(
-                (item) => item.open_relation_to_poc === "overPoc",
-              )}
-              property={"isTestVAL"}
-              title={"Touch VAL (Open Over POC)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={data.filter(
-                (item) => item.open_relation_to_poc === "underPoc",
-              )}
-              property={"isTestVAH"}
-              title={"Touch VAH (Open Under Poc)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-
-            <ChartBar
-              data={data.filter(
-                (item) => item.open_relation_to_poc === "overPoc",
-              )}
-              property={"isTestVAH"}
-              title={"Touch VAH (Open Over Poc)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-          </div>
-        </>
-      )}
 
       <div className={"flex justify-center gap-16 mt-20 mb-20"}>
         <ChartDonut

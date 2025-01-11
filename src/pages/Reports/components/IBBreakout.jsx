@@ -1,35 +1,47 @@
 import { ChartBar } from "./share/ChartBar.jsx";
 import React from "react";
 import { getChartDataIBBreakout } from "../utils.js";
+import { FIRST_FORMED } from "../../../utils/constants.js";
 
 export const IBBreakout = ({ data }) => {
+  const firstFormedLow = data.filter(
+    ({ firstSideFormed }) => firstSideFormed === FIRST_FORMED.LOW,
+  );
+  const firstFormedHigh = data.filter(
+    ({ firstSideFormed }) => firstSideFormed === FIRST_FORMED.HIGH,
+  );
+
   return (
     <>
-      <div className="mx-auto max-w-screen-xl rounded-xl shadow-lg space-y-6 mb-12">
-        <div className="space-y-3 mb-4">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg md:text-xl font-semibold">IB Breakout</h3>
-            {/*<button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition">*/}
-            {/*  Customize*/}
-            {/*</button>*/}
-          </div>
-          {/*<p className="text-xs md:text-sm text-gray-400">*/}
-          {/*  custom settings: open to close candle*/}
-          {/*</p>*/}
-          {/*<p className="text-xs md:text-sm text-gray-400">*/}
-          {/*  07/04/2024 - 01/02/2025*/}
-          {/*</p>*/}
-          {/*<p className="text-xs md:text-sm text-gray-400">*/}
-          {/*  built by <span className="text-blue-400 underline">Quiet</span>*/}
-          {/*</p>*/}
-        </div>
+      <div className="mx-auto max-w-screen-xl rounded-xl shadow-lg space-y-6 mb-8">
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="flex-1 bg-gray-800 p-4 rounded-lg shadow-inner">
-            <ChartBar data={getChartDataIBBreakout(data).dataSet} />
+          <div className="flex-1 bg-gray-800 p-4 rounded-md shadow-inner">
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-sm font-semibold">IB Breakout</h3>
+            </div>
+            <ChartBar data={getChartDataIBBreakout(data, "firstBreakout")} />
           </div>
-          {/*<div className="flex-1 bg-gray-800 p-4 rounded-lg shadow-inner">*/}
-          {/*  <InsightsTable data={getChartDataGreenRedDays(data).insights} />*/}
-          {/*</div>*/}
+          <div className="flex-1 bg-gray-800 p-4 rounded-md shadow-inner">
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-sm font-semibold">
+                IB <strong>Low</strong> formed first
+              </h3>
+            </div>
+            <ChartBar
+              data={getChartDataIBBreakout(firstFormedLow, "firstBreakout")}
+            />
+          </div>
+          <div className="flex-1 bg-gray-800 p-4 rounded-md shadow-inner">
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-sm font-semibold">
+                IB <strong>High</strong> formed first
+              </h3>
+            </div>
+
+            <ChartBar
+              data={getChartDataIBBreakout(firstFormedHigh, "firstBreakout")}
+            />
+          </div>
         </div>
       </div>
     </>

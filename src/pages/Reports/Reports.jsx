@@ -1,126 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Filter } from "../../components/share/FilterNew/filter.jsx";
-import {
-  CANDLE_TYPES,
-  DATE_RANGE_OPTIONS,
-  DAYS_OPTIONS,
-  FILTER_TYPES,
-  FIRST_FORMED,
-  IB_BREAKOUT_OPTIONS,
-  OPENS_OPTIONS,
-  REPORT_LABELS,
-  REPORT_TYPES,
-  TICKERS,
-} from "../../utils/constants.js";
-import { getOptions } from "../Stats/utils.js";
+import { REPORT_TYPES, TICKERS } from "../../utils/constants.js";
 import { GreenRedDaysByWeekDay } from "./components/GreenRedDaysByWeekDay.jsx";
-import { VisibilityReports } from "../../components/share/VisibilityReports/VisibilityReports.jsx";
 import { IBBreakout } from "./components/IBBreakout.jsx";
 import { getData } from "./getData.js";
 import { IBSizes } from "./components/IBSizes.jsx";
 import { ReportTable } from "./components/share/ReportTable.jsx";
-
-const filterOptions = [
-  {
-    id: "ticker",
-    title: "Ticker",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(TICKERS),
-  },
-  {
-    id: "open_relation",
-    title: "Open Relation",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(OPENS_OPTIONS),
-  },
-  {
-    id: "first_candle",
-    title: "First Candle",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(CANDLE_TYPES),
-  },
-  {
-    id: "firstSideFormed",
-    title: "First Side Formed",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(FIRST_FORMED),
-  },
-  { id: "ib_size_from", title: "IB Size From" },
-  { id: "ib_size_to", title: "IB Size To" },
-  {
-    id: "ibBreakout",
-    title: "IB Breakout",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BREAKOUT_OPTIONS),
-  },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
-  {
-    id: "date_range",
-    title: "Date Range",
-    type: FILTER_TYPES.SELECT,
-    options: DATE_RANGE_OPTIONS,
-  },
-];
-
-const visibilityOptions = [
-  {
-    id: REPORT_TYPES.GREEN_RED_DAYS,
-    label: REPORT_LABELS.GREEN_RED_DAYS,
-  },
-  {
-    id: REPORT_TYPES.IB_BREAKOUT,
-    label: REPORT_LABELS.IB_BREAKOUT,
-  },
-  {
-    id: REPORT_TYPES.IB_SIZES,
-    label: REPORT_LABELS.IB_SIZES,
-  },
-  {
-    id: REPORT_TYPES.TABLE,
-    label: REPORT_LABELS.TABLE,
-  },
-];
+import { TouchZones } from "./components/TouchZones.jsx";
+import { Modal } from "../../components/share/Modal/modal.jsx";
+import { Button } from "../../components/share/Button/button.jsx";
+import { PageSettings } from "./components/share/PageSettings.jsx";
+import { getPercent, getSetting } from "./utils.js";
+import { Page } from "../../components/share/Page/page.jsx";
 
 export const Reports = () => {
+  const [modalData, setModalData] = useState(false);
   const [ticker, setTicker] = useState(TICKERS.ES);
   const [initialData, setInitialData] = useState(null);
   const [tableData, setTableData] = useState(initialData);
-  const [visibilityReports, setVisibilityReports] = useState({});
+  const [visibilitySetting, setVisibilitySetting] = useState({});
 
   const onFilterData = (dataFilter) => {
     if (dataFilter && ticker !== dataFilter?.ticker) {
       setInitialData(getData(dataFilter));
+
       setTicker(dataFilter.ticker);
     }
     setTableData(getData(dataFilter));
   };
 
-  const onVisibleReports = (data) => setVisibilityReports(data);
+  const onChangeSettings = (data) => {
+    setVisibilitySetting(data);
+  };
+
+  useEffect(() => {
+    setVisibilitySetting(getSetting());
+    setInitialData(getData());
+  }, []);
 
   return (
-    <div className={"px-4 py-8"}>
-      <div className={"mb-8"}>
+    <Page noHeader className={"px-4 py-2"}>
+      <div className={"mb-12"}>
+        <Button
+          className={"absolute right-5 top-5"}
+          onClick={() => setModalData(true)}
+        >
+          <svg
+            className="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path d="M1 5h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 1 0 0-2H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2Zm18 4h-1.424a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2h10.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Zm0 6H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 0 0 0 2h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Z" />
+          </svg>
+        </Button>
         <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl rounded-xl shadow-lg">
-          <Filter options={filterOptions} onChange={onFilterData} />
+          {visibilitySetting && <Filter onChange={onFilterData} />}
         </div>
-        <VisibilityReports
-          options={visibilityOptions}
-          onChange={onVisibleReports}
-        />
+        <div className={"text-center"}>
+          {visibilitySetting &&
+            visibilitySetting[REPORT_TYPES.DAYS_COUNTER] && (
+              <>
+                Days: {tableData?.length} (
+                {getPercent(tableData?.length, initialData?.length)}%)
+              </>
+            )}
+        </div>
       </div>
 
-      {visibilityReports[REPORT_TYPES.GREEN_RED_DAYS] && (
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.GREEN_RED_DAYS] && (
         <GreenRedDaysByWeekDay data={tableData} />
       )}
 
-      {visibilityReports[REPORT_TYPES.IB_BREAKOUT] && (
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.IB_BREAKOUT] && (
         <IBBreakout data={tableData} />
       )}
-      {visibilityReports[REPORT_TYPES.IB_SIZES] && <IBSizes data={tableData} />}
-      {visibilityReports[REPORT_TYPES.TABLE] && (
+
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.TOUCH_ZONES] && (
+        <TouchZones data={tableData} />
+      )}
+
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.IB_SIZES] && (
+        <IBSizes data={tableData} />
+      )}
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.TABLE] && (
         <ReportTable data={tableData} />
       )}
-    </div>
+
+      <Modal
+        onClose={() => setModalData(false)}
+        onShow={modalData || !visibilitySetting}
+      >
+        <div className={"mt-5 text-gray-200"}>
+          <PageSettings onChange={onChangeSettings} />
+        </div>
+      </Modal>
+    </Page>
   );
 };

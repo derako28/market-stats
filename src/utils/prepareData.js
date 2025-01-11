@@ -2,6 +2,7 @@ import {
   CANDLE_TYPES,
   CLOSES_OPTIONS,
   OPENS_OPTIONS,
+  OPENS_RELATION_TO_TOC,
   TEST_OPTIONS,
 } from "./constants.js";
 import { getFirstSideFormed } from "../pages/Dax/utils.js";
@@ -107,12 +108,12 @@ export const prepareData = (data) => {
         open_relation: getOpenRelation(acc, item),
         close_relation_prev: getCloseRelationByPrevDay(acc, item),
         close_relation: getCloseRelation(item),
-        isTestVA: isTestVA(acc, item),
-        isTestVAL: isTestVAL(acc, item),
-        isTestVAH: isTestVAH(acc, item),
-        isTestPOC: isTestPOC(acc, item),
-        isTestRange: isTestRange(acc, item),
-        isTestIB: isTestIB(acc, item),
+        isTouchVA: isTouchVA(acc, item),
+        isTouchVAL: isTouchVAL(acc, item),
+        isTouchVAH: isTouchVAH(acc, item),
+        isTouchPOC: isTouchPOC(acc, item),
+        isTouchRange: isTouchRange(acc, item),
+        isTouchIB: isTouchIB(acc, item),
         open_relation_to_poc: getOpenRelationToPoc(acc, item),
         // type_day: determineDayType(item),
       },
@@ -219,14 +220,14 @@ export const getOpenRelationToPoc = (acc, item) => {
   const { tpoOpen } = item;
 
   if (tpoOpen < prevPoc) {
-    return "underPoc";
+    return OPENS_RELATION_TO_TOC.LOWER_POC;
   }
 
   if (tpoOpen > prevPoc) {
-    return "overPoc";
+    return OPENS_RELATION_TO_TOC.ABOVE_POC;
   }
 };
-export const isTestVA = (acc, item) => {
+export const isTouchVA = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -252,7 +253,7 @@ export const isTestVA = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestVAL = (acc, item) => {
+export const isTouchVAL = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -270,7 +271,7 @@ export const isTestVAL = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestVAH = (acc, item) => {
+export const isTouchVAH = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -288,7 +289,7 @@ export const isTestVAH = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestRange = (acc, item) => {
+export const isTouchRange = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -313,7 +314,7 @@ export const isTestRange = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestIB = (acc, item) => {
+export const isTouchIB = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -339,7 +340,7 @@ export const isTestIB = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestPOC = (acc, item) => {
+export const isTouchPOC = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {

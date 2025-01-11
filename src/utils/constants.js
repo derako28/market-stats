@@ -251,15 +251,37 @@ export const TICKERS = {
 };
 
 export const REPORT_TYPES = {
+  DAYS_COUNTER: "daysCounter",
   GREEN_RED_DAYS: "greenRadDays",
-  IB_BREAKOUT: "ibBreakout",
+  IB_BREAKOUT: "ibBreakoutWidget",
+  TOUCH_ZONES: "touchZones",
   IB_SIZES: "ibSize",
   TABLE: "table",
 };
 
 export const REPORT_LABELS = {
+  DAYS_COUNTER: "Days Counter",
   GREEN_RED_DAYS: "Green Red Days",
   IB_BREAKOUT: "IB Breakout",
+  TOUCH_ZONES: "Touch Zones",
   IB_SIZES: "IB Sizes",
   TABLE: "Table",
+};
+
+export const TOUCH_ZONES = {
+  TOUCH_VAL: "Touch Val",
+  TOUCH_VAH: "Touch Vah",
+  TOUCH_VAL_ABOVE_POC: "Touch Val (Open Above Poc)",
+  TOUCH_VAL_BELOW_POC: "Touch Vah (Open Above Poc)",
+  TOUCH_VAH_ABOVE_POC: "Touch Val (Open Below Poc)",
+  TOUCH_VAH_BELOW_POC: "Touch Vah (Open Below Poc)",
+};
+
+export const TOUCH_ZONES_KEYS = {
+  TOUCH_VAL: "isTouchVAL",
+  TOUCH_VAH: "isTouchVAH",
+  // TOUCH_VAL_ABOVE_POC: "isTouchVAL",
+  // TOUCH_VAL_BELOW_POC: "isTouchVAH",
+  // TOUCH_VAH_ABOVE_POC: "isTouchVAL",
+  // TOUCH_VAH_BELOW_POC: "isTouchVAH",
 };

@@ -6,6 +6,8 @@ export const Button = ({
   variant = "primary",
   size = "md",
   className,
+  onClick,
+  children,
   ...props
 }) => {
   return (
@@ -15,9 +17,10 @@ export const Button = ({
         "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 hover:text-white",
       )}
       type={type}
+      onClick={onClick}
       {...props}
     >
-      {label}
+      {label} {children}
     </button>
   );
 };

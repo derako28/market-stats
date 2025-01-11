@@ -330,10 +330,12 @@ export const prepareData = (data) => {
 
         // opening_type: determineOpenTypeABC(acc, item),
         // type_day: determineDayType(item),
-        isTestVA: isTestVA(acc, item),
-        isTestPOC: isTestPOC(acc, item),
-        isTestRange: isTestRange(acc, item),
-        isTestIB: isTestIB(acc, item),
+        isTouchVA: isTouchVA(acc, item),
+        isTouchPOC: isTouchPOC(acc, item),
+        isTouchVAL: isTouchVAL(acc, item),
+        isTouchVAH: isTouchVAH(acc, item),
+        isTouchRange: isTouchRange(acc, item),
+        isTouchIB: isTouchIB(acc, item),
         open_relation_to_poc: getOpenRelationToPoc(acc, item),
       },
     ];
@@ -416,7 +418,7 @@ export const getCloseRelationByPrevDay = (acc, current) => {
   }
 };
 
-export const isTestVA = (acc, item) => {
+export const isTouchVA = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -442,7 +444,7 @@ export const isTestVA = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestRange = (acc, item) => {
+export const isTouchRange = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -467,7 +469,7 @@ export const isTestRange = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestIB = (acc, item) => {
+export const isTouchIB = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -493,7 +495,7 @@ export const isTestIB = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestPOC = (acc, item) => {
+export const isTouchPOC = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -591,4 +593,40 @@ const getFirstCandle = ({ open, close }) => {
   if (close > open) {
     return CANDLE_TYPES.BULLISH;
   }
+};
+
+export const isTouchVAL = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return false;
+  }
+
+  const { tpoOpen, tpoLow, tpoHigh } = item;
+
+  const { val: prevVal, poc: prevPoc } = prevItem;
+
+  if (tpoLow <= prevVal) {
+    return TEST_OPTIONS.YES;
+  }
+
+  return TEST_OPTIONS.NO;
+};
+
+export const isTouchVAH = (acc, item) => {
+  const prevItem = acc[acc.length - 1];
+
+  if (!prevItem) {
+    return false;
+  }
+
+  const { tpoHigh } = item;
+
+  const { vah: prevVah } = prevItem;
+
+  if (tpoHigh >= prevVah) {
+    return TEST_OPTIONS.YES;
+  }
+
+  return TEST_OPTIONS.NO;
 };

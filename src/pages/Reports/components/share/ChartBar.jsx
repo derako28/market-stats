@@ -51,7 +51,7 @@ const getOptions = (paramsOptions) => {
 
 export const ChartBar = ({ data, paramsOptions }) => {
   return (
-    <div className="relative h-64 md:h-80 lg:h-96">
+    <div className="relative h-64 md:64 lg:64">
       <Bar data={data} options={getOptions(paramsOptions)} />
     </div>
   );

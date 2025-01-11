@@ -44,9 +44,9 @@ const columns = [
   { id: "VAL", title: "VAL" },
   { id: "POC", title: "POC" },
 
-  { id: "isTestVA", title: "Test VA" },
-  { id: "isTestPOC", title: "Test POC" },
-  // { id: "isTestIB", title: "Test IB" },
+  { id: "isTouchVA", title: "Test VA" },
+  { id: "isTouchPOC", title: "Test POC" },
+  // { id: "isTouchIB", title: "Test IB" },
 
   // { id: "A_High", title: "A_High" },
   // { id: "A_Low", title: "A_Low" },
@@ -82,19 +82,19 @@ const filterOptions = [
   // { id: 'ib_ext_ny', title: 'IB Exp NY', filter: false  },
 
   {
-    id: "isTestVA",
+    id: "isTouchVA",
     title: "Test VA",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),
   },
   {
-    id: "isTestPOC",
+    id: "isTouchPOC",
     title: "Test POC",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),
   },
   {
-    id: "isTestIB",
+    id: "isTouchIB",
     title: "Test IB",
     type: FILTER_TYPES.SELECT,
     options: getOptions(TEST_OPTIONS),

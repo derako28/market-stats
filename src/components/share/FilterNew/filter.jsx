@@ -1,28 +1,90 @@
 import { Controller, useForm } from "react-hook-form";
 import { DatepickerMY } from "../Datepicker/datepicker.jsx";
 import {
+  CANDLE_TYPES,
+  DATE_RANGE_OPTIONS,
   DATE_RANGE_VALUE,
+  DAYS_OPTIONS,
   FILTER_TYPES,
+  FIRST_FORMED,
+  IB_BREAKOUT_OPTIONS,
+  OPENING_TYPES_FILTER,
+  OPENS_OPTIONS,
   TICKERS,
 } from "../../../utils/constants.js";
 import { SelectMy } from "../Select/select.jsx";
 import { Button } from "../Button/button.jsx";
 import { Input } from "../Input/input.jsx";
 import { MultiSelectMy } from "../MultiSelect/multi-select.jsx";
-import moment from "moment";
 import { useEffect } from "react";
+import { getSetting } from "../../../pages/Reports/utils.js";
+import { getOptions } from "../../../pages/Stats/utils.js";
+
+const filterOptions = [
+  {
+    id: "ticker",
+    title: "Ticker",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TICKERS),
+  },
+  {
+    id: "open_relation",
+    title: "Open Relation",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENS_OPTIONS),
+  },
+  {
+    id: "opening_type",
+    title: "Opening Type",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(OPENING_TYPES_FILTER),
+  },
+  {
+    id: "first_candle",
+    title: "First Candle",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CANDLE_TYPES),
+  },
+  {
+    id: "firstSideFormed",
+    title: "First Side Formed",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(FIRST_FORMED),
+  },
+  { id: "ib_size_from", title: "IB Size From" },
+  { id: "ib_size_to", title: "IB Size To" },
+  {
+    id: "ibBreakout",
+    title: "IB Breakout",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(IB_BREAKOUT_OPTIONS),
+  },
+  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "date_range",
+    title: "Date Range",
+    type: FILTER_TYPES.SELECT,
+    options: DATE_RANGE_OPTIONS,
+  },
+];
 
 const defaultValue = {
   ticker: TICKERS.ES,
-  date_range: DATE_RANGE_VALUE.SIX_MONTH,
+  date_range: "",
   ibBreakout: "",
   open_relation: "",
+  opening_type: "",
+  first_candle: "",
+  firstSideFormed: "",
   ib_size_from: "",
   ib_size_to: "",
   day: "",
 };
-export const Filter = ({ options, onChange }) => {
+
+export const Filter = ({ onChange }) => {
   const setupFilter = JSON.parse(localStorage.getItem("dataFilter"));
+  const visibilitySetting = getSetting();
+  // const [isPending, startTransition] = useTransition();
 
   const { control, register, getValues, reset, handleSubmit } = useForm({
     defaultValues: defaultValue,
@@ -52,71 +114,79 @@ export const Filter = ({ options, onChange }) => {
     handleOnChange();
   }, []);
 
+  useEffect(() => {
+    reset(defaultValue);
+  }, []);
+
+  if (!visibilitySetting) return;
+
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onChange={handleSubmit(onSubmit)}>
         <div className={"flex align-middle flex-wrap items-end my-5 gap-3"}>
-          {options.map((column) => {
-            if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
+          {filterOptions
+            .filter((column) => visibilitySetting[column.id])
+            .map((column) => {
+              if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
+                return (
+                  <div className={"flex-auto"} key={column.id}>
+                    <Controller
+                      name={column.id}
+                      control={control}
+                      render={({ field }) => (
+                        <DatepickerMY label={column.title} {...field} />
+                      )}
+                    />
+                  </div>
+                );
+              }
+
+              if (column.type === FILTER_TYPES.SELECT && !column.filter) {
+                return (
+                  <div className={"flex-auto"} key={column.id}>
+                    <SelectMy
+                      options={column.options}
+                      label={column.title}
+                      {...register(column.id)}
+                    />
+                  </div>
+                );
+              }
+
+              // if(column.type === FILTER_TYPES.MULTI_SELECT && !column.filter){
+              //     return  <MultiSelectMy options={column.options} label={column.title} key={column.id} {...register(column.id)}/>
+              // }
+
+              if (column.type === FILTER_TYPES.MULTI_SELECT) {
+                return (
+                  <div className={"flex-auto"} key={column.id}>
+                    <Controller
+                      name={column.id}
+                      control={control}
+                      render={({ field }) => (
+                        <MultiSelectMy
+                          label={column.title}
+                          options={column.options}
+                          {...field}
+                        />
+                      )}
+                    />
+                  </div>
+                );
+              }
+
               return (
-                <div className={"flex-auto"} key={column.id}>
-                  <Controller
-                    name={column.id}
-                    control={control}
-                    render={({ field }) => (
-                      <DatepickerMY label={column.title} {...field} />
-                    )}
-                  />
-                </div>
+                column.filter ?? (
+                  <div className={"flex-auto"} key={column.id}>
+                    <Input
+                      label={column.title}
+                      name={column.id}
+                      {...register(column.id)}
+                    />
+                  </div>
+                )
               );
-            }
-
-            if (column.type === FILTER_TYPES.SELECT && !column.filter) {
-              return (
-                <div className={"flex-auto"} key={column.id}>
-                  <SelectMy
-                    options={column.options}
-                    label={column.title}
-                    {...register(column.id)}
-                  />
-                </div>
-              );
-            }
-
-            // if(column.type === FILTER_TYPES.MULTI_SELECT && !column.filter){
-            //     return  <MultiSelectMy options={column.options} label={column.title} key={column.id} {...register(column.id)}/>
-            // }
-
-            if (column.type === FILTER_TYPES.MULTI_SELECT) {
-              return (
-                <div className={"flex-auto"} key={column.id}>
-                  <Controller
-                    name={column.id}
-                    control={control}
-                    render={({ field }) => (
-                      <MultiSelectMy
-                        label={column.title}
-                        options={column.options}
-                        {...field}
-                      />
-                    )}
-                  />
-                </div>
-              );
-            }
-
-            return (
-              column.filter ?? (
-                <div className={"flex-auto"} key={column.id}>
-                  <Input
-                    label={column.title}
-                    name={column.id}
-                    {...register(column.id)}
-                  />
-                </div>
-              )
-            );
-          })}
+            })}
 
           <div className={"flex flex-auto gap-2"}>
             <div className={"flex-auto"}>
@@ -126,13 +196,13 @@ export const Filter = ({ options, onChange }) => {
                 label={"Reset"}
               />
             </div>
-            <div className={"flex-auto"}>
-              <Button
-                onClick={onSubmit}
-                className={"self-end w-full"}
-                label={"Apply"}
-              />
-            </div>
+            {/*<div className={"flex-auto"}>*/}
+            {/*  <Button*/}
+            {/*    onClick={onSubmit}*/}
+            {/*    className={"self-end w-full"}*/}
+            {/*    label={"Apply"}*/}
+            {/*  />*/}
+            {/*</div>*/}
           </div>
         </div>
       </form>

@@ -814,7 +814,7 @@ export const getIbBreakout = (item) => {
   return ibBreakout.join(", ");
 };
 
-export const isTestVA = (acc, item) => {
+export const isTouchVA = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -842,7 +842,7 @@ export const isTestVA = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestRange = (acc, item) => {
+export const isTouchRange = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -870,7 +870,7 @@ export const isTestRange = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestIB = (acc, item) => {
+export const isTouchIB = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -898,7 +898,7 @@ export const isTestIB = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const isTestPOC = (acc, item) => {
+export const isTouchPOC = (acc, item) => {
   const prevItem = acc[acc.length - 1];
 
   if (!prevItem) {
@@ -950,10 +950,10 @@ export const prepareDataFiniteq = (data) => {
           ib_ext_low: getIbExtSide(item, "low"),
           ib_breakout: getIbBreakout(item),
           type_day: determineDayType(item),
-          isTestVA: isTestVA(acc, item),
-          isTestPOC: isTestPOC(acc, item),
-          isTestRange: isTestRange(acc, item),
-          isTestIB: isTestIB(acc, item),
+          isTouchVA: isTouchVA(acc, item),
+          isTouchPOC: isTouchPOC(acc, item),
+          isTouchRange: isTouchRange(acc, item),
+          isTouchIB: isTouchIB(acc, item),
         },
       ];
     }, [])
@@ -1192,8 +1192,8 @@ export const prepareDataABC = (data) => {
 
         opening_type: determineOpenTypeABC(acc, item),
         type_day: determineDayType(item),
-        isTestVA: isTestVA(acc, item),
-        isTestPOC: isTestPOC(acc, item),
+        isTouchVA: isTouchVA(acc, item),
+        isTouchPOC: isTouchPOC(acc, item),
       },
     ];
   }, []);

@@ -6,10 +6,11 @@ const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
   { id: "firstSideFormed", title: "First Side Formed" },
-  { id: "first_candle", title: "First Candle" },
+  // { id: "first_candle", title: "First Candle" },
   { id: "opening_type", title: "Opening Type" },
   { id: "ibSize", title: "IB Size" },
-  { id: "ibBreakout", title: "IB Breakout" },
+  { id: "firstBreakout", title: "First IB Breakout" },
+  { id: "ib_breakout", title: "IB Breakout" },
 ];
 
 export const ReportTable = ({ data }) => {
@@ -17,7 +18,7 @@ export const ReportTable = ({ data }) => {
     <div className="mx-auto max-w-screen-xl rounded-xl shadow-lg space-y-6 mb-12">
       <div className="space-y-3 mb-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg md:text-xl font-semibold">Table</h3>
+          {/*<h3 className="text-sm font-semibold">Table</h3>*/}
         </div>
       </div>
       <div

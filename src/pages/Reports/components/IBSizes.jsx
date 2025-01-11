@@ -7,7 +7,7 @@ export const IBSizes = ({ data }) => {
     <div className="mx-auto max-w-screen-xl rounded-xl shadow-lg space-y-6 mb-12">
       <div className="space-y-3 mb-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg md:text-xl font-semibold">IB Sizes</h3>
+          <h3 className="text-sm font-semibold">IB Sizes</h3>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
