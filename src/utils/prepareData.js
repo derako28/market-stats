@@ -18,8 +18,8 @@ const getIbBreakout = (high, low, ibHigh, ibLow) => {
 };
 
 export const getIbExt = (high, low, ibHigh, ibLow) => {
-  const highExt = high > ibHigh ? (high - ibHigh) * 4 : 0;
-  const lowExt = low < ibLow ? (ibLow - low) * 4 : 0;
+  const highExt = high > ibHigh ? high - ibHigh : 0;
+  const lowExt = low < ibLow ? ibLow - low : 0;
   const maxExt = highExt > lowExt ? highExt : lowExt;
 
   return { highExt, lowExt, maxExt };
