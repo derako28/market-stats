@@ -30,31 +30,6 @@ export const OPENING_TYPES = {
   ORR: "ORR",
 };
 
-export const LOCATION_TYPES = {
-  VAH: "VAH",
-  VAL: "VAL",
-};
-
-export const PERIOD_TYPES = {
-  A: "A",
-  B: "B",
-  C: "C",
-  D: "D",
-  E: "E",
-  F: "F",
-  G: "G",
-  I: "I",
-  M: "M",
-  K: "K",
-  J: "J",
-  L: "L",
-};
-
-export const SL_OPTIONS = {
-  mp_end: "MP end",
-  ten: "10",
-};
-
 export const IB_BREAKOUT = {
   HIGH_BREAKOUT: "HIGH_BREAKOUT",
   LOW_BREAKOUT: "LOW_BREAKOUT",
@@ -75,6 +50,7 @@ export const OPENS_LABEL = {
   ABOVE_RANGE: "O > Range",
   LOWER_RANGE: "O < Range",
 };
+
 export const OPENS_OPTIONS = {
   IN_VA: OPENS_LABEL.IN_VA,
   ABOVE_VA: OPENS_LABEL.ABOVE_VA,
@@ -97,50 +73,7 @@ export const DAYS_LABEL = {
   FRIDAY: "FRIDAY",
 };
 
-export const MONTH_LABEL = {
-  January: "January",
-  February: "February",
-  March: "March",
-  April: "April",
-  May: "May",
-  June: "June",
-  July: "July",
-  August: "August",
-  September: "September",
-  October: "October",
-  November: "November",
-  December: "December",
-};
-
-export const YEAR_LABEL = {
-  2023: "2023",
-  2024: "2024",
-};
-
 export const DAYS_OPTIONS = [
-  { value: 1, label: DAYS_LABEL.MONDAY },
-  { value: 2, label: DAYS_LABEL.TUESDAY },
-  { value: 3, label: DAYS_LABEL.WEDNESDAY },
-  { value: 4, label: DAYS_LABEL.THURSDAY },
-  { value: 5, label: DAYS_LABEL.FRIDAY },
-];
-
-export const MONTH_LABELS = {
-  1: "January",
-  2: "February",
-  3: "March",
-  4: "April",
-  5: "May",
-  6: "June",
-  7: "July",
-  8: "August",
-  9: "September",
-  10: "October",
-  11: "November",
-  12: "December",
-};
-
-export const MONTH_OPTIONS = [
   { value: 1, label: DAYS_LABEL.MONDAY },
   { value: 2, label: DAYS_LABEL.TUESDAY },
   { value: 3, label: DAYS_LABEL.WEDNESDAY },
@@ -200,9 +133,4 @@ export const chartConfig = (getData, data, width = 300, height = 300) => {
       },
     },
   };
-};
-
-export const DIRECTION_POSITION = {
-  LONG: "Long",
-  SHORT: "Short",
 };

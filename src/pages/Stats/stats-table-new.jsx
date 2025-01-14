@@ -1,13 +1,13 @@
 import data from "../../Data/es-09-24.json";
 
 import { Table } from "../../components/share/Table/table.jsx";
-import BacktestData from "../Backtests/data-backtests-2.json";
+import BacktestData from "../BacktestsOld/data-backtests-2.json";
 
 import { useEffect, useState } from "react";
 import { getDayOfWeek, prepareDataABC, setMatchOpeningType } from "./utils";
 import { Page } from "../../components/share/Page/page.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
-import { BacktestTable } from "../Backtests/backtest-table.jsx";
+import { BacktestTable } from "../BacktestsOld/backtest-table.jsx";
 
 import moment from "moment/moment";
 import { Filter } from "../../components/share/Filter/filter.jsx";

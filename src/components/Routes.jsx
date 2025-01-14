@@ -14,9 +14,9 @@ import { StatsTableES } from "../pages/Stats/stats-table-es.jsx";
 import { StatsTableNQ } from "../pages/Stats/stats-table-nq.jsx";
 import { StatsChartsAGFiniteqES } from "../pages/Stats/stats-charts-finiteq-es.jsx";
 import { StatsChartsAGFiniteqNQ } from "../pages/Stats/stats-charts-finiteq-nq.jsx";
-import { Backtests } from "../pages/Backtests/Backtests.jsx";
-import { BacktestsSanya } from "../pages/Backtests/Backtests-Sanya.jsx";
-import { BacktestsTapok } from "../pages/Backtests-Tapok/Backtests-Tapok.jsx";
+// import { BacktestsOld } from "../pages/Backtests/BacktestsOld.jsx";
+// import { BacktestsSanya } from "../pages/BacktestsOld/Backtests-Sanya.jsx";
+// import { BacktestsTapok } from "../pages/Backtests-Tapok/Backtests-Tapok.jsx";
 import { BacktestsTapokUS500 } from "../pages/Backtests-Tapok-US500/Backtests-Tapok-US500.jsx";
 import { Dax } from "../pages/Dax/Dax.jsx";
 import { ES } from "../pages/ES/ES.jsx";
@@ -24,6 +24,7 @@ import { NQ } from "../pages/NQ/NQ.jsx";
 import { YM } from "../pages/YM/YM.jsx";
 import { DaxVwap } from "../pages/DAX+VWAP/dax-vwap.jsx";
 import { Reports } from "../pages/Reports/Reports.jsx";
+import { Backtests } from "../pages/Backtests/Backtests.jsx";
 
 export const AppRoutes = () => {
   return (
@@ -77,12 +78,12 @@ export const AppRoutes = () => {
               path="/stats-charts-nq"
               element={<StatsChartsAGFiniteqNQ />}
             />
-            <Route path="/backtests" element={<Backtests />} />
 
             {getFeature("backtests") && (
               <>
-                <Route path="/backtests-sanya" element={<BacktestsSanya />} />
-                <Route path="/backtests-tapok" element={<BacktestsTapok />} />
+                <Route path="/backtests" element={<Backtests />} />
+                {/*<Route path="/backtests-sanya" element={<BacktestsSanya />} />*/}
+                {/*<Route path="/backtests-tapok" element={<BacktestsTapok />} />*/}
                 <Route
                   path="/backtests-tapok-US500"
                   element={<BacktestsTapokUS500 />}

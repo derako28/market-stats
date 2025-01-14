@@ -8,9 +8,7 @@ export const GreenRedDaysByWeekDay = ({ data }) => {
     <div className="text-white mx-auto max-w-screen-xl rounded-xl shadow-lg space-y-6 mb-4">
       <div className="space-y-3 mb-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-sm font-semibold">
-            ES green & red days by weekday
-          </h3>
+          <h3 className="text-sm font-semibold">Green & Red Days by weekday</h3>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-6">

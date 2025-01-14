@@ -43,8 +43,8 @@ export const Header = () => {
       {getFeature("backtests") && (
         <>
           <NavLink to={"/backtests"}>Backtests</NavLink>
-          <NavLink to={"/backtests-sanya"}>Backtests Sanya</NavLink>
-          <NavLink to={"/backtests-tapok"}>Backtests Tapok</NavLink>
+          {/*<NavLink to={"/backtests-sanya"}>Backtests Sanya</NavLink>*/}
+          {/*<NavLink to={"/backtests-tapok"}>Backtests Tapok</NavLink>*/}
           <NavLink to={"/backtests-tapok-US500"}>Backtests Tapok US500</NavLink>
         </>
       )}

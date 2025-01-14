@@ -287,6 +287,9 @@ export const getDataChart = (data = [], property, labels) => {
       return {
         asset: labels[key],
         amount: data.filter((item) => {
+          // console.log(item[property]);
+          // console.log(labels[key]);
+
           return (
             item[property]?.toString()?.toLowerCase() ===
             labels[key]?.toString()?.toLowerCase()

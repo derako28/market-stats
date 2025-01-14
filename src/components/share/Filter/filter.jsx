@@ -14,11 +14,15 @@ const defaultValue = {
     endDate: "31-01-2024",
   },
 };
-export const Filter = ({ options, initialData, onChange }) => {
+export const Filter = ({ options, initialData, onChange, handler = true }) => {
   const { control, register, getValues, reset, handleSubmit } = useForm();
 
   const onSubmit = () => {
-    onChange(dataFilter());
+    if (handler) {
+      onChange(dataFilter());
+    } else {
+      onChange(getValues());
+    }
   };
 
   const onReset = () => {
@@ -27,7 +31,11 @@ export const Filter = ({ options, initialData, onChange }) => {
   };
 
   const handleChange = () => {
-    onChange(dataFilter());
+    // if (handler) {
+    //   onChange(dataFilter());
+    // } else {
+    //   onChange(getValues());
+    // }
   };
 
   const dataFilter = () => {

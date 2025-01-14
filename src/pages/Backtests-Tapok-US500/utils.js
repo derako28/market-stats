@@ -430,8 +430,6 @@ export const getDataLine = (data) => {
     acc[item.date] = profit;
 
     return acc;
-
-    // return [...acc, {date: new Date(moment(date, "DD-MM-YYYY").format()), profit: profit}]
   }, []);
 
   return Object.keys(prepareData).map((key) => {

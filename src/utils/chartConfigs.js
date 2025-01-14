@@ -5,6 +5,7 @@ export const chartConfig = (
   labels,
   width = 300,
   height = 300,
+  isTotal,
 ) => {
   const newData = getData(data, property, labels);
   return {
@@ -37,6 +38,17 @@ export const chartConfig = (
           },
           // avoidCollisions: false
         },
+        innerLabels: [
+          {
+            text: isTotal ? data.length.toString() : null,
+            fontSize: 16,
+          },
+          {
+            text: "",
+            fontSize: 16,
+            spacing: 10,
+          },
+        ],
       },
     ],
     legend: {

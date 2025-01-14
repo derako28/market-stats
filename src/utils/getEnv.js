@@ -5,7 +5,7 @@ export const getEnv = () => {
         env: "dev",
         features: {
           dax: false,
-          backtests: false,
+          backtests: true,
           nq: false,
           es: false,
           oldStatistics: false,
