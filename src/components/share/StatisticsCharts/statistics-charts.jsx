@@ -285,7 +285,7 @@ export const StatisticsCharts = ({ data }) => {
 
         <ChartDonut
           data={data}
-          title={"Low Periods"}
+          title={"Low In Periods"}
           property={"lowInPeriod"}
           labels={BREAKOUT_PERIODS_LABEL}
           width={600}

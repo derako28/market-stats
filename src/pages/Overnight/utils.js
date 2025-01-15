@@ -259,3 +259,33 @@ const getTrend = (data) => {
     return TRENDS.BULLISH;
   }
 };
+
+export const getDataIExtensionChart = (
+  data,
+  property = "ib_ext",
+  subProperty = null,
+) => {
+  const newDataReduce = data.reduce((acc, item) => {
+    const overnight_range = item.overnight_range;
+    const ibExt = item[property];
+
+    const ovExtCof = ((ibExt / overnight_range) * 100).toFixed(0);
+    const roundedIbExt = roundToNearest(ovExtCof, 10);
+
+    if (ibExt !== 0) {
+      acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
+    }
+
+    return acc;
+  }, {});
+
+  return Object.keys(newDataReduce)
+    .sort((a, b) => a - b)
+    .map((key) => {
+      return {
+        asset: key === "0" ? "0-25" : key + "%",
+        amount: newDataReduce[key],
+      };
+    })
+    .filter((item) => item.amount > data.length * (1 / 100));
+};

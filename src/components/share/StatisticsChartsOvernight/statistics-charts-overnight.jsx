@@ -2,11 +2,9 @@ import { ChartDonut } from "../Chart/chart-donut.jsx";
 import { BREAKOUT_PERIODS_LABEL, TRENDS } from "../../../utils/constants.js";
 import { ChartBar } from "../Chart/chart-bar.jsx";
 import {
-  dataWithIbInfo,
   getBarChartConfig,
   getBarChartHorizontalConfig,
   getDataIBChart,
-  getDataIExtensionChart,
 } from "../../../pages/Stats/utils.js";
 import {
   BREAKOUT_LABELS,
@@ -14,6 +12,7 @@ import {
 } from "../../../pages/Overnight/constatnts.js";
 import {
   dataWithBreakoutInfo,
+  getDataIExtensionChart,
   getRangeSizeChart,
 } from "../../../pages/Overnight/utils.js";
 

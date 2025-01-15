@@ -428,11 +428,11 @@ export const getDataIExtensionChart = (
   subProperty = null,
 ) => {
   const newDataReduce = data.reduce((acc, item) => {
-    const overnight_range = item.overnight_range;
-    const ibExt = item[property];
+    const ib_size = item.ib_size || item.ibSize;
+    const ibExt = subProperty ? item[property][subProperty] : item[property];
 
-    const ovExtCof = ((ibExt / overnight_range) * 100).toFixed(0);
-    const roundedIbExt = roundToNearest(ovExtCof, 10);
+    const ibExtCof = ((ibExt / ib_size) * 100).toFixed(0);
+    const roundedIbExt = roundToNearest(ibExtCof, 25);
 
     if (ibExt !== 0) {
       acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
