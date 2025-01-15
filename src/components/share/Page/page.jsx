@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PageSettings } from "../../../pages/Reports/components/share/PageSettings.jsx";
 import { Modal } from "../Modal/modal.jsx";
 
-export const Page = ({ children, noHeader }) => {
+export const Page = ({ children, noHeader, className }) => {
   // const [onShowSettingModal, setOnShowSettingModal] = useState(false);
   //
   // const onChangeSettings = (data) => {
@@ -12,7 +12,7 @@ export const Page = ({ children, noHeader }) => {
   // };
 
   return (
-    <>
+    <div className={className}>
       {/*<Button*/}
       {/*  className={"absolute right-5 top-5"}*/}
       {/*  onClick={() => setModalData(true)}*/}
@@ -36,6 +36,6 @@ export const Page = ({ children, noHeader }) => {
 
       {!noHeader && <Header />}
       {children}
-    </>
+    </div>
   );
 };

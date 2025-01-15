@@ -287,9 +287,6 @@ export const getDataChart = (data = [], property, labels) => {
       return {
         asset: labels[key],
         amount: data.filter((item) => {
-          // console.log(item[property]);
-          // console.log(labels[key]);
-
           return (
             item[property]?.toString()?.toLowerCase() ===
             labels[key]?.toString()?.toLowerCase()
@@ -431,11 +428,11 @@ export const getDataIExtensionChart = (
   subProperty = null,
 ) => {
   const newDataReduce = data.reduce((acc, item) => {
-    const ib_size = item.ib_size || item.ibSize;
-    const ibExt = subProperty ? item[property][subProperty] : item[property];
+    const overnight_range = item.overnight_range;
+    const ibExt = item[property];
 
-    const ibExtCof = ((ibExt / ib_size) * 100).toFixed(0);
-    const roundedIbExt = roundToNearest(ibExtCof, 25);
+    const ovExtCof = ((ibExt / overnight_range) * 100).toFixed(0);
+    const roundedIbExt = roundToNearest(ovExtCof, 10);
 
     if (ibExt !== 0) {
       acc[roundedIbExt] = acc[roundedIbExt] ? acc[roundedIbExt] + 1 : 1;
@@ -1559,7 +1556,7 @@ export const getDataChartForBreakoutPeriods = (data = [], type, labels) => {
       return {
         asset: labels[key],
         amount: data.filter((item) => {
-          const value = item["breakoutPeriods"][type].period;
+          const value = item["breakoutPeriods"][type]?.period;
 
           return (
             value?.toString()?.toLowerCase() ===

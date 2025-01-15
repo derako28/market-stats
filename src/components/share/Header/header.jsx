@@ -14,6 +14,13 @@ export const Header = () => {
         </>
       )}
 
+      {getFeature("Overnight") && (
+        <>
+          <NavLink to={"/nq-overnight"}>NQ Overnight</NavLink>
+          <NavLink to={"/es-overnight"}>ES Overnight</NavLink>
+        </>
+      )}
+
       {getFeature("DAX_VWAP") && (
         <>
           <NavLink to={"/dax-vwap"}>DAX VWAP</NavLink>

@@ -71,6 +71,22 @@ export const Filter = ({ options, initialData, onChange, handler = true }) => {
           return +dataFilter.ib_size_to >= +item.ibSize;
         }
 
+        if (key === "ov_size_from") {
+          return +dataFilter.ov_size_from <= +item.overnight_range;
+        }
+
+        if (key === "ov_size_to") {
+          return +dataFilter.ov_size_to >= +item.overnight_range;
+        }
+
+        if (key === "day_size_from") {
+          return +dataFilter.day_size_from <= +item.day_range;
+        }
+
+        if (key === "day_size_to") {
+          return +dataFilter.day_size_to >= +item.day_range;
+        }
+
         if (key === "opening_type") {
           return item.opening_type.includes(dataFilter.opening_type);
         }
@@ -139,7 +155,11 @@ export const Filter = ({ options, initialData, onChange, handler = true }) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange}>
-        <div className={"flex align-middle items-end my-5 px-4 gap-3"}>
+        <div
+          className={
+            "flex justify-center align-middle items-end my-5 px-4 gap-3"
+          }
+        >
           {options.map((column) => {
             if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
               return (

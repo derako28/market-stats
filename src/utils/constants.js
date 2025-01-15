@@ -213,9 +213,9 @@ export const BREAKOUT_PERIODS_LABEL = {
   H: "H",
   I: "I",
   J: "J",
-  K: "K:",
-  L: "L:",
-  M: "M:",
+  K: "K",
+  L: "L",
+  M: "M",
 };
 
 // export const CANDLE_TYPES = {
