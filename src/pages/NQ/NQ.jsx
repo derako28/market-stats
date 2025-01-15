@@ -10,7 +10,6 @@ import {
   IB_BREAKOUT_OPTIONS,
   OPENING_TYPES_FILTER,
   OPENS_OPTIONS,
-  OPENS_RELATION_TO_TOC,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
@@ -25,7 +24,6 @@ import { Table } from "../../components/share/Table/table.jsx";
 import { Modal } from "../../components/share/Modal/modal.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
-import { Switch } from "../../components/share/Switch/switch.jsx";
 import { StatisticsCharts } from "../../components/share/StatisticsCharts/statistics-charts.jsx";
 
 const filterOptions = [
@@ -105,6 +103,8 @@ const initialData = segmentData(
     prepareData(compileMarketProfileByDays(data, 68, 5, 4)),
   ).reverse(),
 );
+
+console.log("#initialData: ", initialData);
 
 export const NQ = () => {
   const [tableData, setTableData] = useState(initialData);

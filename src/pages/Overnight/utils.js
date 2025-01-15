@@ -1,4 +1,5 @@
 import { roundToNearest } from "../../utils/prepareData.js";
+import { TRENDS } from "../../utils/constants.js";
 
 export const prepareData = (data) => {
   const groupedData = data.reduce((acc, entry) => {
@@ -65,6 +66,9 @@ export const prepareData = (data) => {
           overnightMax,
           overnightMin,
         ).oppositeBreakout.period,
+        ...getLowHighPeriod(rth),
+        trend_overnight: getTrend(overnight),
+        trend_rth: getTrend(rth),
       };
     });
 };
@@ -209,4 +213,49 @@ export const dataWithBreakoutInfo = (data, property = "ib_breakout") => {
       no_broken: !isLowBreakout && !isHighBreakout,
     };
   });
+};
+
+const getLowHighPeriod = (ohlcData) => {
+  const alphabet = "ABCDEFGHIJKLMN";
+  ohlcData.forEach((period, index) => {
+    period.period = alphabet[index]; // Присваиваем букву
+  });
+
+  let highInPeriod = {
+    high: 0,
+    period: null,
+  };
+  let lowInPeriod = {
+    low: ohlcData[0].low,
+    period: null,
+  };
+
+  ohlcData.forEach((item) => {
+    if (item.high > highInPeriod.high) {
+      highInPeriod.high = item.high;
+      highInPeriod.period = item.period;
+    }
+
+    if (item.low < lowInPeriod.low) {
+      lowInPeriod.low = item.low;
+      lowInPeriod.period = item.period;
+    }
+  });
+
+  return {
+    lowInPeriod: lowInPeriod.period,
+    highInPeriod: highInPeriod.period,
+  };
+};
+
+const getTrend = (data) => {
+  const open = data[0].open;
+  const close = data[data.length - 1].close;
+
+  if (open > close) {
+    return TRENDS.BEARISH;
+  }
+  if (open < close) {
+    return TRENDS.BULLISH;
+  }
 };

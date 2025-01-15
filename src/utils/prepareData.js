@@ -455,6 +455,7 @@ export const compileMarketProfileByDays = (
       first_candle: getFirstCandle(dailyData[0]),
       firstSideFormed: getFirstSideFormed(firstTwoPeriods),
       firstBreakout: findFirstBreakoutPeriods(dailyData),
+      ...getLowHighPeriod(dailyData),
     };
   });
 };
@@ -1038,4 +1039,37 @@ export const findFirstBreakoutPeriods = (ohlcData) => {
   }
 
   return firstBreakout?.breakoutType || null;
+};
+
+const getLowHighPeriod = (ohlcData) => {
+  const alphabet = "ABCDEFGHIJKLMN";
+  ohlcData.forEach((period, index) => {
+    period.period = alphabet[index]; // Присваиваем букву
+  });
+
+  let highInPeriod = {
+    high: 0,
+    period: null,
+  };
+  let lowInPeriod = {
+    low: ohlcData[0].low,
+    period: null,
+  };
+
+  ohlcData.forEach((item) => {
+    if (item.high > highInPeriod.high) {
+      highInPeriod.high = item.high;
+      highInPeriod.period = item.period;
+    }
+
+    if (item.low < lowInPeriod.low) {
+      lowInPeriod.low = item.low;
+      lowInPeriod.period = item.period;
+    }
+  });
+
+  return {
+    lowInPeriod: lowInPeriod.period,
+    highInPeriod: highInPeriod.period,
+  };
 };

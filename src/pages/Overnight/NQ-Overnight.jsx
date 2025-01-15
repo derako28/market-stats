@@ -5,6 +5,7 @@ import {
   DAYS_OPTIONS,
   FILTER_TYPES,
   IB_BREAKOUT_OPTIONS,
+  TRENDS,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import { getOptions } from "../Stats/utils.js";
@@ -16,6 +17,7 @@ import { MarketProfileChart } from "../../components/share/MarketProfile/MarketP
 import { StatisticsChartsOvernight } from "../../components/share/StatisticsChartsOvernight/statistics-charts-overnight.jsx";
 import { prepareData } from "./utils.js";
 import { useLocation } from "react-router-dom";
+import { Switch } from "../../components/share/Switch/switch.jsx";
 
 const filterOptions = [
   { id: "ov_size_from", title: "Ov Range Size From" },
@@ -24,6 +26,18 @@ const filterOptions = [
   { id: "day_size_from", title: "Day Range Size From" },
   { id: "day_size_to", title: "Day Range Size To" },
 
+  {
+    id: "trend_overnight",
+    title: "Trend Overnight",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
+  {
+    id: "trend_rth",
+    title: "Trend Rth",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
   {
     id: "first_overnight_breakout",
     title: "First Breakout",
@@ -38,6 +52,9 @@ const columns = [
 
   { id: "day_range", title: "Day Range" },
   { id: "overnight_range", title: "Overnight Range" },
+
+  { id: "trend_overnight", title: "Trend Overnight" },
+  { id: "trend_rth", title: "Trend Rth" },
 
   { id: "ov_ext_low", title: "Ext Low" },
   { id: "ov_ext_high", title: "Ext High" },
@@ -71,6 +88,30 @@ export const NQOvernight = () => {
         </div>
       </Modal>
 
+      <Statistic data={tableData} />
+
+      <div className={"m-4"}>
+        <Switch
+          labelOn={"Charts"}
+          labelOff={"Table"}
+          onClick={(value) => {
+            setVisibleConfig({
+              ...visibleConfig,
+              charts: value,
+              table: !value,
+            });
+          }}
+        />
+      </div>
+
+      {visibleConfig.filter && (
+        <Filter
+          options={filterOptions}
+          initialData={initialData}
+          onChange={onFilterData}
+        />
+      )}
+
       {visibleConfig.table && (
         <Table
           columns={columns}
@@ -78,16 +119,6 @@ export const NQOvernight = () => {
           onClickRow={(item) => {
             setModalData(item);
           }}
-        />
-      )}
-
-      <Statistic data={tableData} />
-
-      {visibleConfig.filter && (
-        <Filter
-          options={filterOptions}
-          initialData={initialData}
-          onChange={onFilterData}
         />
       )}
 

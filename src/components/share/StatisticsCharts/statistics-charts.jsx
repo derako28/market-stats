@@ -273,6 +273,26 @@ export const StatisticsCharts = ({ data }) => {
         />
       </div>
 
+      <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+        <ChartDonut
+          data={data}
+          title={"High In Periods"}
+          property={"highInPeriod"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data}
+          title={"Low Periods"}
+          property={"lowInPeriod"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+      </div>
+
       {/*Touch ZONE END*/}
     </>
   );

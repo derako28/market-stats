@@ -1,5 +1,5 @@
 import { ChartDonut } from "../Chart/chart-donut.jsx";
-import { BREAKOUT_PERIODS_LABEL } from "../../../utils/constants.js";
+import { BREAKOUT_PERIODS_LABEL, TRENDS } from "../../../utils/constants.js";
 import { ChartBar } from "../Chart/chart-bar.jsx";
 import {
   dataWithIbInfo,
@@ -165,7 +165,45 @@ export const StatisticsChartsOvernight = ({ data }) => {
         />
       </div>
 
-      {/*Touch ZONE END*/}
+      <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+        <ChartDonut
+          data={data}
+          title={"High In Periods"}
+          property={"highInPeriod"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data}
+          title={"Low Periods"}
+          property={"lowInPeriod"}
+          labels={BREAKOUT_PERIODS_LABEL}
+          width={600}
+          height={600}
+        />
+      </div>
+
+      <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+        <ChartDonut
+          data={data}
+          title={"Trend By Overnight"}
+          property={"trend_overnight"}
+          labels={TRENDS}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data}
+          title={"Trend By Rth"}
+          property={"trend_rth"}
+          labels={TRENDS}
+          width={600}
+          height={600}
+        />
+      </div>
     </>
   );
 };
