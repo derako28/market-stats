@@ -1073,3 +1073,19 @@ const getLowHighPeriod = (ohlcData) => {
     highInPeriod: highInPeriod.period,
   };
 };
+
+export const mergeArraysByDate = (array1, array2) => {
+  const dateCounts = [...array1, ...array2].reduce((acc, item) => {
+    acc[item.date] = (acc[item.date] || 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.values(
+    [...array1, ...array2].reduce((acc, item) => {
+      if (dateCounts[item.date] > 1) {
+        acc[item.date] = { ...acc[item.date], ...item };
+      }
+      return acc;
+    }, {}),
+  );
+};

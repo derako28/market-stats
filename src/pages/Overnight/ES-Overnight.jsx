@@ -17,18 +17,20 @@ import { StatisticsChartsOvernight } from "../../components/share/StatisticsChar
 import { prepareData } from "./utils.js";
 
 const filterOptions = [
-  { id: "ov_size_from", title: "Ov Range Size From" },
-  { id: "ov_size_to", title: "Ov Range Size To" },
+  { id: "date", title: "Date" },
 
-  { id: "day_size_from", title: "Day Range Size From" },
-  { id: "day_size_to", title: "Day Range Size To" },
+  { id: "day_range", title: "Day Range" },
+  { id: "overnight_range", title: "Overnight Range" },
 
-  {
-    id: "first_overnight_breakout",
-    title: "First Breakout",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BREAKOUT_OPTIONS),
-  },
+  { id: "trend_overnight", title: "Trend Overnight" },
+  { id: "trend_rth", title: "Trend Rth" },
+
+  { id: "ov_ext_low", title: "Ext Low" },
+  { id: "ov_ext_high", title: "Ext High" },
+  { id: "ov_ext_max", title: "Ext Max" },
+
+  { id: "overnight_breakout", title: "Overnight Breakout" },
+  { id: "first_overnight_breakout", title: "First Breakout" },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
 ];
 

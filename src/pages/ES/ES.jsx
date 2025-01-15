@@ -1,9 +1,11 @@
 import data from "../../Data-TW/ES.json";
 
+import esOvernight from "../../Data-TW/ES-Overnight.json";
+import { prepareData as prepareDataOvernight } from "../Overnight/utils.js";
+
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   CANDLE_TYPES,
-  DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
@@ -11,10 +13,12 @@ import {
   OPENING_TYPES_FILTER,
   OPENS_OPTIONS,
   OPENS_RELATION_TO_TOC,
+  TRENDS,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
   compileMarketProfileByDays,
+  mergeArraysByDate,
   prepareData,
   segmentData,
   setOpeningType,
@@ -29,6 +33,31 @@ import { Switch } from "../../components/share/Switch/switch.jsx";
 import { StatisticsCharts } from "../../components/share/StatisticsCharts/statistics-charts.jsx";
 
 const filterOptions = [
+  { id: "ov_size_from", title: "Ov Range Size From" },
+  { id: "ov_size_to", title: "Ov Range Size To" },
+
+  { id: "day_size_from", title: "Day Range Size From" },
+  { id: "day_size_to", title: "Day Range Size To" },
+
+  {
+    id: "trend_overnight",
+    title: "Trend Overnight",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
+  {
+    id: "trend_rth",
+    title: "Trend Rth",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
+  {
+    id: "first_overnight_breakout",
+    title: "First Overnight Breakout",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(IB_BREAKOUT_OPTIONS),
+  },
+
   {
     id: "open_relation",
     title: "Open Relation",
@@ -68,12 +97,12 @@ const filterOptions = [
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
-  {
-    id: "date_range",
-    title: "Date Range",
-    type: FILTER_TYPES.SELECT,
-    options: DATE_RANGE_OPTIONS,
-  },
+  // {
+  //   id: "date_range",
+  //   title: "Date Range",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: DATE_RANGE_OPTIONS,
+  // },
 ];
 
 const columns = [
@@ -83,6 +112,8 @@ const columns = [
   { id: "first_candle", title: "First Candle" },
   { id: "firstSideFormed", title: "First Side Formed" },
   { id: "firstBreakout", title: "IB Breakout" },
+  { id: "overnight_range", title: "Overnight Range" },
+  { id: "day_range", title: "Day Range" },
   // { id: "tpoOpen", title: "tpoOpen" },
   //
   // { id: "vah", title: "vah" },
@@ -106,14 +137,18 @@ const columns = [
   // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 ];
 
+const overnight = prepareDataOvernight(esOvernight);
+
 const initialData = segmentData(
   setOpeningType(
     prepareData(compileMarketProfileByDays(data, 68, 5, 0.25)),
   ).reverse(),
 );
 
+const dataWithOvernight = mergeArraysByDate(initialData, overnight);
+
 export const ES = () => {
-  const [tableData, setTableData] = useState(initialData);
+  const [tableData, setTableData] = useState(dataWithOvernight);
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({
@@ -151,7 +186,7 @@ export const ES = () => {
       {visibleConfig.filter && (
         <Filter
           options={filterOptions}
-          initialData={initialData}
+          initialData={dataWithOvernight}
           onChange={onFilterData}
         />
       )}

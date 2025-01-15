@@ -62,6 +62,7 @@ const columns = [
 
   { id: "overnight_breakout", title: "Overnight Breakout" },
   { id: "first_overnight_breakout", title: "First Breakout" },
+  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
 ];
 
 const initialData = prepareData(data);

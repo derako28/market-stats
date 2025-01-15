@@ -224,6 +224,34 @@ export const StatisticsCharts = ({ data }) => {
         />
       </div>
 
+      <div className={"flex justify-center gap-16 mt-20 mb-10"}>
+        <ChartBar
+          customHandler={() =>
+            getBarChartHorizontalConfig(
+              getDataIBSizeChart(data, "overnight_range"),
+              data.length,
+              1400,
+              500,
+            )
+          }
+          title={"Overnight Range"}
+        />
+      </div>
+
+      <div className={"flex justify-center gap-16 mt-20 mb-10"}>
+        <ChartBar
+          customHandler={() =>
+            getBarChartHorizontalConfig(
+              getDataIBSizeChart(data, "day_range"),
+              data.length,
+              1400,
+              500,
+            )
+          }
+          title={"Day Range"}
+        />
+      </div>
+
       <div className={"flex gap-8 justify-center mt-20 mb-20"}>
         <ChartDonut
           data={data.map((item) => ({

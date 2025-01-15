@@ -156,8 +156,9 @@ export const Filter = ({ options, initialData, onChange, handler = true }) => {
     <>
       <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange}>
         <div
+          style={{ maxWidth: "1280px", margin: "0 auto" }}
           className={
-            "flex justify-center align-middle items-end my-5 px-4 gap-3"
+            "flex flex-wrap justify-center align-middle items-end my-5 px-4 gap-3 gap-y-6"
           }
         >
           {options.map((column) => {

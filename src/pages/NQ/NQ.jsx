@@ -1,19 +1,23 @@
+import nqOvernight from "../../Data-TW/NQ-Overnight.json";
+import { prepareData as prepareDataOvernight } from "../Overnight/utils.js";
+
 import data from "../../Data-TW/NQ.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   CANDLE_TYPES,
-  DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
   IB_BREAKOUT_OPTIONS,
   OPENING_TYPES_FILTER,
   OPENS_OPTIONS,
+  TRENDS,
 } from "../../utils/constants.js";
 import { useState } from "react";
 import {
   compileMarketProfileByDays,
+  mergeArraysByDate,
   prepareData,
   segmentData,
   setOpeningType,
@@ -25,8 +29,34 @@ import { Modal } from "../../components/share/Modal/modal.jsx";
 import { Statistic } from "../../components/share/Statistic/Statistic.jsx";
 import { MarketProfileChart } from "../../components/share/MarketProfile/MarketProfile.jsx";
 import { StatisticsCharts } from "../../components/share/StatisticsCharts/statistics-charts.jsx";
+import { Switch } from "../../components/share/Switch/switch.jsx";
 
 const filterOptions = [
+  { id: "ov_size_from", title: "Ov Range Size From" },
+  { id: "ov_size_to", title: "Ov Range Size To" },
+
+  { id: "day_size_from", title: "Day Range Size From" },
+  { id: "day_size_to", title: "Day Range Size To" },
+
+  {
+    id: "trend_overnight",
+    title: "Trend Overnight",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
+  {
+    id: "trend_rth",
+    title: "Trend Rth",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(TRENDS),
+  },
+  {
+    id: "first_overnight_breakout",
+    title: "First Overnight Breakout",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(IB_BREAKOUT_OPTIONS),
+  },
+
   {
     id: "open_relation",
     title: "Open Relation",
@@ -67,12 +97,12 @@ const filterOptions = [
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
   { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
-  {
-    id: "date_range",
-    title: "Date Range",
-    type: FILTER_TYPES.SELECT,
-    options: DATE_RANGE_OPTIONS,
-  },
+  // {
+  //   id: "date_range",
+  //   title: "Date Range",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: DATE_RANGE_OPTIONS,
+  // },
 ];
 
 const columns = [
@@ -98,16 +128,18 @@ const columns = [
   { id: "val", title: "val" },
 ];
 
+const overnight = prepareDataOvernight(nqOvernight);
+
 const initialData = segmentData(
   setOpeningType(
     prepareData(compileMarketProfileByDays(data, 68, 5, 4)),
   ).reverse(),
 );
 
-console.log("#initialData: ", initialData);
+const dataWithOvernight = mergeArraysByDate(initialData, overnight);
 
 export const NQ = () => {
-  const [tableData, setTableData] = useState(initialData);
+  const [tableData, setTableData] = useState(dataWithOvernight);
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({
@@ -128,24 +160,24 @@ export const NQ = () => {
 
       <Statistic data={tableData} />
 
-      {/*<div className={"m-4"}>*/}
-      {/*  <Switch*/}
-      {/*    labelOn={"Charts"}*/}
-      {/*    labelOff={"Table"}*/}
-      {/*    onClick={(value) => {*/}
-      {/*      setVisibleConfig({*/}
-      {/*        ...visibleConfig,*/}
-      {/*        charts: value,*/}
-      {/*        table: !value,*/}
-      {/*      });*/}
-      {/*    }}*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <div className={"m-4"}>
+        <Switch
+          labelOn={"Charts"}
+          labelOff={"Table"}
+          onClick={(value) => {
+            setVisibleConfig({
+              ...visibleConfig,
+              charts: value,
+              table: !value,
+            });
+          }}
+        />
+      </div>
 
       {visibleConfig.filter && (
         <Filter
           options={filterOptions}
-          initialData={initialData}
+          initialData={dataWithOvernight}
           onChange={onFilterData}
         />
       )}

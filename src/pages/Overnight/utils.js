@@ -55,7 +55,7 @@ export const prepareData = (data) => {
           overnightMax,
           overnightMin,
         ),
-        breakoutPeriods: findBreakoutPeriods(rth, overnightMax, overnightMin),
+        breakout_periods: findBreakoutPeriods(rth, overnightMax, overnightMin),
         first_breakout_period: findBreakoutPeriods(
           rth,
           overnightMax,
