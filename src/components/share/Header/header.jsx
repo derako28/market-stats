@@ -55,6 +55,12 @@ export const Header = () => {
           <NavLink to={"/backtests-tapok-US500"}>Backtests Tapok US500</NavLink>
         </>
       )}
+
+      {getFeature("weaklyStatistics") && (
+        <>
+          <NavLink to={"/dax-weakly"}>DAX Weakly</NavLink>
+        </>
+      )}
     </div>
   );
 };

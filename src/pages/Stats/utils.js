@@ -278,7 +278,7 @@ export const getDataIBSizeChart = (data, property, subProperty = null) => {
     .map((key) => {
       return { asset: key, amount: newData[key] };
     });
-  // .filter((item) => item.amount > data.length * (1 / 100));
+  // .filter((item) => item.amount > data.length * (0.5 / 100));
 };
 
 export const getDataChart = (data = [], property, labels) => {

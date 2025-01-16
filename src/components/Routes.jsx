@@ -25,6 +25,7 @@ import { Backtests } from "../pages/Backtests/Backtests.jsx";
 import { NQOvernight } from "../pages/Overnight/NQ-Overnight.jsx";
 import { ESOvernight } from "../pages/Overnight/ES-Overnight.jsx";
 import { useEffect } from "react";
+import { DaxWeakly } from "../pages/Dax/Dax-Weakly.jsx";
 
 export const AppRoutes = () => {
   const module = localStorage.getItem("module");
@@ -45,6 +46,12 @@ export const AppRoutes = () => {
                 <Route path="/es" element={<ES />} />
                 <Route path="/nq" element={<NQ />} />
                 <Route path="/ym" element={<YM />} />
+              </>
+            )}
+
+            {getFeature("weaklyStatistics") && (
+              <>
+                <Route path="/dax-weakly" element={<DaxWeakly />} />
               </>
             )}
 

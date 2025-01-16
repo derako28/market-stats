@@ -630,3 +630,11 @@ export const isTouchVAH = (acc, item) => {
 
   return TEST_OPTIONS.NO;
 };
+
+export const prepareWeaklyData = (data) => {
+  return data.map((item) => {
+    const weaklySize = roundToNearest(item.high - item.low, 25);
+
+    return { ...item, weakly_size: weaklySize };
+  });
+};

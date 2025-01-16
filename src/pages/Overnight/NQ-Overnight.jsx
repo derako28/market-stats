@@ -82,7 +82,7 @@ export const NQOvernight = () => {
   const onFilterData = (data) => setTableData(data);
 
   return (
-    <Page className={"p-4"}>
+    <Page>
       <Modal onClose={() => setModalData(null)} onShow={!!modalData}>
         <div className={"mt-5 text-gray-200"}>
           <MarketProfileChart data={modalData} />

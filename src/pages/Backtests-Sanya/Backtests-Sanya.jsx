@@ -28,18 +28,6 @@ import {
   sortByDate,
 } from "./utils";
 import {
-  DAY_TYPES,
-  DAY_TYPES_LABEL,
-  DAYS_OPTIONS,
-  DIRECTION_OPTIONS,
-  FILTER_TYPES,
-  IB_BREAKOUT,
-  OPENING_TYPES,
-  OPENS_LABEL,
-  OPENS_OPTIONS,
-  RESULT_OPTIONS,
-} from "../Stats/constants";
-import {
   getBarChartHorizontalConfig,
   getChartConfig,
   getDataIBSizeChart,
@@ -51,6 +39,15 @@ import {
 } from "../Stats/utils";
 import moment from "moment/moment";
 import { Statistic } from "./statistic.jsx";
+import {
+  DAY_TYPES,
+  DAYS_OPTIONS,
+  FILTER_TYPES,
+  IB_BREAKOUT,
+  OPENING_TYPES,
+  OPENS_OPTIONS,
+} from "./constants.js";
+import { DIRECTION_OPTIONS, RESULT_OPTIONS } from "../../utils/constants.js";
 
 const columns = [
   { id: "date", title: "Date" },

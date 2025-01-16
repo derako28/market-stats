@@ -1,7 +1,6 @@
-import { chartConfig } from "../Stats/constants";
 import { getDayOfWeek, getMonth } from "../Stats/utils";
 import moment from "moment";
-import colors from "tailwindcss/colors";
+import { chartConfig } from "./constants.js";
 
 export const mergeStatsAndBack = (stats, backs) => {
   return backs.map((back) => {
