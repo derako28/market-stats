@@ -143,6 +143,18 @@ export const IB_BREAKOUT_OPTIONS = {
   ib_low_broken: "Low Breakout",
 };
 
+export const IB_BREAKOUT_SIDES_OPTIONS = {
+  ib_one_side_broken: "IB One Side Breakout",
+  ib_both_broken: "IB Both Side Breakout",
+  ib_no_broken: "IB No Breakout",
+};
+
+export const IB_EXTENSION_SIDES_OPTIONS = {
+  ib_one_side_broken: "Side Extension",
+  ib_both_broken: "Both Side Extension",
+  ib_no_broken: "No Extension",
+};
+
 export const IB_BREAKOUT_LABELS = {
   is_ib_breakout: "IB Breakout",
   ib_high_broken: "IB Breakout High",

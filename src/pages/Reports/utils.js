@@ -106,10 +106,14 @@ export const getChartDataGreenRedDays = (data) => {
   };
 };
 
-export const getChartDataIBBreakout = (data, property = "ibBreakout") => {
+export const getChartDataIBBreakout = (
+  data,
+  property = "ibBreakout",
+  labels = [],
+) => {
   const dataWithIbBreakout = dataWithIbInfo(data, property);
 
-  const dataPrepare = Object.keys(IB_BREAKOUT_OPTIONS).reduce((acc, key) => {
+  const dataPrepare = Object.keys(labels).reduce((acc, key) => {
     const counts = dataWithIbBreakout.reduce((acc, item) => {
       if (item[key]) {
         acc = acc + 1;
@@ -122,11 +126,6 @@ export const getChartDataIBBreakout = (data, property = "ibBreakout") => {
       counts,
       dataWithIbBreakout.length,
     );
-
-    // acc[IB_BREAKOUT_LABELS[key]] = (
-    //   (counts / dataWithIbBreakout.length) *
-    //   100
-    // ).toFixed(2);
 
     return acc;
   }, {});
@@ -404,4 +403,42 @@ export const getSetting = () => {
 export const getPercent = (count, total) => {
   if (count === 0) return 0;
   return ((count / total) * 100).toFixed(0);
+};
+
+export const getChartDonutDataIBBreakout = (
+  data,
+  property = "ibBreakout",
+  labels = [],
+) => {
+  const dataWithIbBreakout = dataWithIbInfo(data, property);
+
+  const dataPrepare = Object.keys(labels).reduce((acc, key) => {
+    const counts = dataWithIbBreakout.reduce((acc, item) => {
+      if (item[key]) {
+        acc = acc + 1;
+      }
+
+      return acc;
+    }, 0);
+
+    acc[IB_BREAKOUT_LABELS[key]] = getPercent(
+      counts,
+      dataWithIbBreakout.length,
+    );
+
+    return acc;
+  }, {});
+
+  const dataSet = [
+    {
+      data: Object.values(dataPrepare),
+      backgroundColor: ["#3b82f6", "#0d0f12", "#818181FF"],
+      borderWidth: 0,
+    },
+  ];
+
+  return {
+    labels: Object.keys(dataPrepare),
+    datasets: dataSet,
+  };
 };
