@@ -61,6 +61,11 @@ export const Header = () => {
           <NavLink to={"/dax-weekly"}>DAX Weakly</NavLink>
         </>
       )}
+      {getFeature("newReports") && (
+        <>
+          <NavLink to={"/reports"}>New Reports</NavLink>
+        </>
+      )}
     </div>
   );
 };

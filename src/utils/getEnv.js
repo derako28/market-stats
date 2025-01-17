@@ -31,6 +31,7 @@ export const getEnv = () => {
           Reports: true,
           Overnight: true,
           weeklyStatistics: false,
+          newReports: true,
         },
       };
 
@@ -48,6 +49,7 @@ export const getEnv = () => {
           Reports: false,
           Overnight: true,
           weeklyStatistics: false,
+          newReports: true,
         },
       };
   }
