@@ -6,6 +6,7 @@ import data from "../../Data-TW/NQ.json";
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   CANDLE_TYPES,
+  DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
@@ -96,13 +97,18 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
-  // {
-  //   id: "date_range",
-  //   title: "Date Range",
-  //   type: FILTER_TYPES.SELECT,
-  //   options: DATE_RANGE_OPTIONS,
-  // },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
+  {
+    id: "date_range",
+    title: "Date Range",
+    type: FILTER_TYPES.SELECT,
+    options: DATE_RANGE_OPTIONS,
+  },
 ];
 
 const columns = [
@@ -139,7 +145,7 @@ const initialData = segmentData(
 const dataWithOvernight = mergeArraysByDate(initialData, overnight);
 
 export const NQ = () => {
-  const [tableData, setTableData] = useState(dataWithOvernight);
+  const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({

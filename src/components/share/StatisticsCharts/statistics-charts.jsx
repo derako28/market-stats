@@ -1,21 +1,24 @@
 import { ChartDonut } from "../Chart/chart-donut.jsx";
 import {
   BREAKOUT_PERIODS_LABEL,
+  DAYS_LABEL,
   IB_BREAKOUT_LABELS,
   IB_BREAKOUT_OPTIONS,
   OPENING_TYPES,
-  OPENS_RELATION_TO_TOC,
   TEST_OPTIONS,
 } from "../../../utils/constants.js";
 import { ChartBar } from "../Chart/chart-bar.jsx";
 import {
   dataWithIbInfo,
   getBarChartConfig,
+  getBarChartConfigFoWeeklyHighLow,
   getBarChartHorizontalConfig,
   getChartConfigForBreakoutPeriods,
+  getChartConfigForWeeklyHighLow,
   getDataIBChart,
   getDataIBSizeChart,
   getDataIExtensionChart,
+  getWeeklyHighLowStats,
 } from "../../../pages/Stats/utils.js";
 
 export const StatisticsCharts = ({ data }) => {
@@ -224,33 +227,33 @@ export const StatisticsCharts = ({ data }) => {
         />
       </div>
 
-      <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-        <ChartBar
-          customHandler={() =>
-            getBarChartHorizontalConfig(
-              getDataIBSizeChart(data, "overnight_range"),
-              data.length,
-              1400,
-              500,
-            )
-          }
-          title={"Overnight Range"}
-        />
-      </div>
+      {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
+      {/*  <ChartBar*/}
+      {/*    customHandler={() =>*/}
+      {/*      getBarChartHorizontalConfig(*/}
+      {/*        getDataIBSizeChart(data, "overnight_range"),*/}
+      {/*        data.length,*/}
+      {/*        1400,*/}
+      {/*        500,*/}
+      {/*      )*/}
+      {/*    }*/}
+      {/*    title={"Overnight Range"}*/}
+      {/*  />*/}
+      {/*</div>*/}
 
-      <div className={"flex justify-center gap-16 mt-20 mb-10"}>
-        <ChartBar
-          customHandler={() =>
-            getBarChartHorizontalConfig(
-              getDataIBSizeChart(data, "day_range"),
-              data.length,
-              1400,
-              500,
-            )
-          }
-          title={"Day Range"}
-        />
-      </div>
+      {/*<div className={"flex justify-center gap-16 mt-20 mb-10"}>*/}
+      {/*  <ChartBar*/}
+      {/*    customHandler={() =>*/}
+      {/*      getBarChartHorizontalConfig(*/}
+      {/*        getDataIBSizeChart(data, "day_range"),*/}
+      {/*        data.length,*/}
+      {/*        1400,*/}
+      {/*        500,*/}
+      {/*      )*/}
+      {/*    }*/}
+      {/*    title={"Day Range"}*/}
+      {/*  />*/}
+      {/*</div>*/}
 
       <div className={"flex gap-8 justify-center mt-20 mb-20"}>
         <ChartDonut
@@ -321,7 +324,41 @@ export const StatisticsCharts = ({ data }) => {
         />
       </div>
 
-      {/*Touch ZONE END*/}
+      <div className={"flex justify-center gap-16 mt-20 mb-20"}>
+        <ChartBar
+          data={data}
+          title={"Highest high of the week"}
+          property={"high"}
+          customHandler={() =>
+            getBarChartConfigFoWeeklyHighLow(
+              getWeeklyHighLowStats(data).highDays,
+              getWeeklyHighLowStats(data).weeks,
+              700,
+              300,
+            )
+          }
+          labels={DAYS_LABEL}
+          width={600}
+          height={600}
+        />
+
+        <ChartDonut
+          data={data}
+          title={"Lowest low of the week"}
+          property={"low"}
+          customHandler={() =>
+            getBarChartConfigFoWeeklyHighLow(
+              getWeeklyHighLowStats(data).lowDays,
+              getWeeklyHighLowStats(data).weeks,
+              700,
+              300,
+            )
+          }
+          labels={DAYS_LABEL}
+          width={600}
+          height={600}
+        />
+      </div>
     </>
   );
 };

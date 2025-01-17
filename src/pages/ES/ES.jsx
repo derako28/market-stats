@@ -6,6 +6,7 @@ import { prepareData as prepareDataOvernight } from "../Overnight/utils.js";
 import { Page } from "../../components/share/Page/page.jsx";
 import {
   CANDLE_TYPES,
+  DATE_RANGE_OPTIONS,
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
@@ -96,13 +97,24 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
   // {
-  //   id: "date_range",
-  //   title: "Date Range",
+  //   id: "first_overnight_breakout",
+  //   title: "Overnight Breakout",
   //   type: FILTER_TYPES.SELECT,
-  //   options: DATE_RANGE_OPTIONS,
+  //   options: getOptions(IB_BREAKOUT_OPTIONS),
   // },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
+  {
+    id: "date_range",
+    title: "Date Range",
+    type: FILTER_TYPES.SELECT,
+    options: DATE_RANGE_OPTIONS,
+  },
 ];
 
 const columns = [
@@ -114,27 +126,6 @@ const columns = [
   { id: "firstBreakout", title: "IB Breakout" },
   { id: "overnight_range", title: "Overnight Range" },
   { id: "day_range", title: "Day Range" },
-  // { id: "tpoOpen", title: "tpoOpen" },
-  //
-  // { id: "vah", title: "vah" },
-  // { id: "val", title: "val" },
-  // { id: "poc", title: "poc" },
-  //
-  // { id: "tpoClose", title: "tpoClose" },
-  // { id: "tpoHigh", title: "tpoHigh" },
-  // { id: "tpoLow", title: "tpoLow" },
-  //
-  // { id: "aHigh", title: "aHigh" },
-  // { id: "aLow", title: "aLow" },
-  //
-  // { id: "ibSize", title: "IB Size" },
-  // { id: "ibHigh", title: "IB High" },
-  // { id: "ibLow", title: "IB Low" },
-  //
-  // { id: "firstBreakout", title: "IB Breakout" },
-  //
-  // { id: "ibExt", subId: "highExt", title: "IB Ext High" },
-  // { id: "ibExt", subId: "lowExt", title: "IB Ext Low" },
 ];
 
 const overnight = prepareDataOvernight(esOvernight);
@@ -148,7 +139,7 @@ const initialData = segmentData(
 const dataWithOvernight = mergeArraysByDate(initialData, overnight);
 
 export const ES = () => {
-  const [tableData, setTableData] = useState(dataWithOvernight);
+  const [tableData, setTableData] = useState(initialData);
   const [modalData, setModalData] = useState();
 
   const [visibleConfig, setVisibleConfig] = useState({

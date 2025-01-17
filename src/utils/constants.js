@@ -285,3 +285,16 @@ export const TOUCH_ZONES_KEYS = {
   // TOUCH_VAH_ABOVE_POC: "isTouchVAL",
   // TOUCH_VAH_BELOW_POC: "isTouchVAH",
 };
+
+export const colorsForChart = [
+  "rgba(0, 117, 225, 1)",
+  "rgba(0, 117, 225, .9)",
+  "rgba(0, 117, 225, .8)",
+  "rgba(0, 117, 225, .7)",
+  "rgba(0, 117, 225, .6)",
+  "rgba(0, 117, 225, .5)",
+  "rgba(0, 117, 225, .4)",
+  "rgba(0, 117, 225, .3)",
+  "rgba(0, 117, 225, .2)",
+  "rgba(0, 117, 225, .1)",
+];

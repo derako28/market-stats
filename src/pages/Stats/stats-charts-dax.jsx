@@ -67,7 +67,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const columns = [

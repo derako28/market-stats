@@ -56,9 +56,9 @@ export const Header = () => {
         </>
       )}
 
-      {getFeature("weaklyStatistics") && (
+      {getFeature("weeklyStatistics") && (
         <>
-          <NavLink to={"/dax-weakly"}>DAX Weakly</NavLink>
+          <NavLink to={"/dax-weekly"}>DAX Weakly</NavLink>
         </>
       )}
     </div>

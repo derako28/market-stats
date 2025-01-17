@@ -1,4 +1,9 @@
-import { OPENS_OPTIONS, TEST_OPTIONS } from "../../utils/constants.js";
+import {
+  colorsForChart,
+  DAYS_LABEL,
+  OPENS_OPTIONS,
+  TEST_OPTIONS,
+} from "../../utils/constants.js";
 import moment from "moment";
 import dataTapok from "../../Data/tapok-sep.json";
 import { chartConfig } from "../../utils/chartConfigs.js";
@@ -212,10 +217,9 @@ export const getBarChartHorizontalConfig = (
         yKey: "amount",
         label: {
           color: "#fff",
-          fontSize: 10,
 
           formatter: ({ value }) => {
-            // return `${value}`;
+            // return `${value}%`;
             return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
           },
         },
@@ -1568,3 +1572,213 @@ export const getDataChartForBreakoutPeriods = (data = [], type, labels) => {
     .sort((a, b) => b.amount - a.amount)
     .filter(({ amount }) => amount);
 };
+
+export const getChartConfigForWeeklyHighLow = (
+  data = [],
+  type,
+  labels,
+  width = 300,
+  height = 300,
+) => {
+  const { lowDays, highDays, weeks } = getWeeklyHighLowStats(data);
+
+  const newData = getDataChartForWeeklyHighLow(
+    type === "low" ? lowDays : highDays,
+    labels,
+  );
+
+  return {
+    data: newData,
+    width: width,
+    height: height,
+    theme: "ag-default-dark",
+    background: {
+      visible: false,
+    },
+
+    series: [
+      {
+        type: "donut",
+        calloutLabelKey: "asset",
+        angleKey: "amount",
+        innerRadiusRatio: 0.8,
+
+        fills: colorsForChart,
+
+        calloutLabel: {
+          formatter: ({ value }) => {
+            return `${value.toFixed(0)} ${weeks ? `(${((value / weeks) * 100).toFixed(0)}%)` : ""} `;
+          },
+        },
+
+        innerLabels: [
+          {
+            text: weeks.toString(),
+            fontSize: 16,
+          },
+        ],
+      },
+    ],
+    legend: {
+      enabled: true,
+      item: {
+        label: {
+          spacing: 20,
+          formatter: ({ itemId, value }) => {
+            return `${value}: (${((newData[itemId].amount / weeks) * 100).toFixed(0)}%)`;
+          },
+        },
+      },
+    },
+  };
+};
+
+export const getDataChartForWeeklyHighLow = (data = [], labels) => {
+  return Object.keys(labels).map((key) => {
+    const value = data.find((item) => item.day === labels[key]);
+
+    return {
+      asset: labels[key],
+      amount: value.count,
+    };
+  });
+};
+
+export const getWeeklyHighLowStats = (ohlcData) => {
+  // Преобразование даты и группировка данных по неделям
+  const dataWithDay = ohlcData.map((entry) => ({
+    ...entry,
+    date: new Date(entry.date),
+    dayOfWeek: new Date(entry.date).getDay(), // 0 = Воскресенье, 1 = Понедельник, ..., 6 = Суббота
+  }));
+
+  // Группировка данных по неделям
+  const weeks = {};
+
+  const getISOWeekNumber = (date) => {
+    const startDate = new Date(date.getFullYear(), 0, 1);
+    const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+    const weekNumber = Math.ceil((days + 1) / 7);
+    return weekNumber;
+  };
+
+  dataWithDay.forEach((entry) => {
+    // Номер недели по ISO
+    const year = entry.date.getFullYear();
+    const weekNumber = getISOWeekNumber(entry.date);
+
+    const weekKey = `${year}-W${weekNumber}`;
+    if (!weeks[weekKey]) {
+      weeks[weekKey] = [];
+    }
+    weeks[weekKey].push(entry);
+  });
+
+  // Анализ каждой недели
+  const stats = {
+    highDays: Array(7).fill(0), // Индексы: 0 (Воскресенье) -> 6 (Суббота)
+    lowDays: Array(7).fill(0),
+  };
+
+  Object.values(weeks).forEach((week) => {
+    let weeklyHigh = -Infinity;
+    let weeklyLow = Infinity;
+    let highDay = null;
+    let lowDay = null;
+
+    // Найти high и low недели
+    week.forEach((day) => {
+      if (day.tpoHigh > weeklyHigh) {
+        weeklyHigh = day.tpoHigh;
+        highDay = day.dayOfWeek;
+      }
+      if (day.tpoLow < weeklyLow) {
+        weeklyLow = day.tpoLow;
+        lowDay = day.dayOfWeek;
+      }
+    });
+
+    // Увеличить счетчики для дней недели
+    if (highDay !== null) stats.highDays[highDay]++;
+    if (lowDay !== null) stats.lowDays[lowDay]++;
+  });
+
+  // Форматирование результата
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return {
+    weeks: Object.keys(weeks).length, // Количество недель
+    highDays: stats.highDays.map((count, index) => ({
+      day: dayNames[index],
+      count,
+    })),
+    lowDays: stats.lowDays.map((count, index) => ({
+      day: dayNames[index],
+      count,
+    })),
+  };
+};
+
+export const getBarChartConfigFoWeeklyHighLow = (
+  data = [],
+  total,
+  width = 300,
+  height = 300,
+) => {
+  const dataForChart = getDataChartForWeeklyHighLow(data, DAYS_LABEL);
+
+  return {
+    background: {
+      visible: false,
+    },
+    width: width,
+    height: height,
+    data: dataForChart,
+    series: [
+      {
+        type: "bar",
+        xKey: "asset",
+        yKey: "amount",
+        label: {
+          color: "#fff",
+          fontSize: 10,
+
+          formatter: ({ value }) => {
+            // return `${value}`;
+            return `${value.toFixed(0)} ${total ? `(${((value / total) * 100).toFixed(1)}%)` : ""} `;
+          },
+        },
+
+        itemStyler: ({ datum, yKey }) => ({
+          fill: "rgba(0, 117, 225, 1)",
+        }),
+      },
+    ],
+    axes: [
+      {
+        type: "asset",
+        position: "left",
+        label: {
+          // color: "#fff",
+        },
+      },
+      {
+        type: "amount",
+        position: "bottom",
+        label: {
+          // color: "#fff",
+        },
+      },
+    ],
+  };
+};
+
+export const getWeeklyDataForChartBar = (data) => {};

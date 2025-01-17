@@ -75,7 +75,12 @@ const filterOptions = [
     options: getOptions(TEST_OPTIONS),
   },
 
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
   {
     id: "date_range",
     title: "Date Range",

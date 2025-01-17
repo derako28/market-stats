@@ -122,7 +122,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(RESULT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const excludeFilterOptions = [
@@ -161,7 +166,12 @@ const excludeFilterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(RESULT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const prepareDataStat = sortByDate(dataStats);

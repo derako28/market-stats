@@ -17,7 +17,7 @@ export const ChartBar = ({
         <AgCharts
           options={
             customHandler
-              ? customHandler()
+              ? customHandler(data, property, labels, width, height)
               : getBarChartHorizontalConfig(
                   getDataChart(data, property, labels),
                   data.length,

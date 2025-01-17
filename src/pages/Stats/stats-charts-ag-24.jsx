@@ -53,7 +53,12 @@ const filterOptions = [
   { id: "ib_size_segmented", title: "IB Size Segmented" },
   { id: "ib_ext", title: "IB_Exp", filter: false },
   { id: "ib_ext_ny", title: "IB Exp NY", filter: false },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const columns = [

@@ -43,18 +43,18 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(OPENS_OPTIONS),
   },
-  {
-    id: "open_relation_to_poc",
-    title: "Open Relation To Poc",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(OPENS_RELATION_TO_TOC),
-  },
-  {
-    id: "firstSideFormed",
-    title: "First Side Formed",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(FIRST_FORMED),
-  },
+  // {
+  //   id: "open_relation_to_poc",
+  //   title: "Open Relation To Poc",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(OPENS_RELATION_TO_TOC),
+  // },
+  // {
+  //   id: "firstSideFormed",
+  //   title: "First Side Formed",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(FIRST_FORMED),
+  // },
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
@@ -63,13 +63,18 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
   {
-    id: "date_range",
-    title: "Date Range",
+    id: "day",
+    title: "Weekday",
     type: FILTER_TYPES.SELECT,
-    options: DATE_RANGE_OPTIONS,
+    options: DAYS_OPTIONS,
   },
+  // {
+  //   id: "date_range",
+  //   title: "Date Range",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: DATE_RANGE_OPTIONS,
+  // },
 ];
 
 const columns = [
@@ -226,7 +231,7 @@ export const Dax = () => {
           {/*IB Ext Bar Type*/}
           <div className={"flex justify-center gap-4 mb-10"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Low Ext</div>
+              <div className={"text-gray-300"}>IB Low Ext By London</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExtByLondon", "lowExt"),
@@ -237,7 +242,7 @@ export const Dax = () => {
               />
             </div>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB High Ext</div>
+              <div className={"text-gray-300"}>IB High Ext By London</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExtByLondon", "highExt"),
@@ -250,7 +255,7 @@ export const Dax = () => {
           </div>
           <div className={"mb-20"}>
             <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>IB Max Ext</div>
+              <div className={"text-gray-300"}>IB Max Ext By London</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
                   getDataIExtensionChart(tableData, "ibExtByLondon", "maxExt"),
@@ -320,7 +325,7 @@ export const Dax = () => {
                 options={getBarChartHorizontalConfig(
                   getDataIBSizeChart(tableData, "ib_size_segmented"),
                   tableData.length,
-                  1700,
+                  1400,
                   300,
                 )}
               />
@@ -328,123 +333,123 @@ export const Dax = () => {
           </div>
 
           {/*Touch ZONE*/}
-          <div className={"flex justify-center gap-2 mb-10"}>
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch IB</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTouchIB", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+          {/*<div className={"flex justify-center gap-2 mb-10"}>*/}
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>Touch IB</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChart(tableData, "isTouchIB", TEST_OPTIONS),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch POC</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTouchPOC", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>Touch POC</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChart(tableData, "isTouchPOC", TEST_OPTIONS),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch VA</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTouchVA", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>Touch VA</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChart(tableData, "isTouchVA", TEST_OPTIONS),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
 
-            <div className={"flex flex-col justify-center items-center"}>
-              <div className={"text-gray-300"}>Touch Range</div>
-              <AgCharts
-                options={getBarChartHorizontalConfig(
-                  getDataChart(tableData, "isTouchRange", TEST_OPTIONS),
-                  tableData.length,
-                  400,
-                  500,
-                )}
-              />
-            </div>
-          </div>
+          {/*  <div className={"flex flex-col justify-center items-center"}>*/}
+          {/*    <div className={"text-gray-300"}>Touch Range</div>*/}
+          {/*    <AgCharts*/}
+          {/*      options={getBarChartHorizontalConfig(*/}
+          {/*        getDataChart(tableData, "isTouchRange", TEST_OPTIONS),*/}
+          {/*        tableData.length,*/}
+          {/*        400,*/}
+          {/*        500,*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
-          <div className={"flex justify-center gap-4 mb-10"}>
-            <ChartBar
-              data={tableData}
-              property={"isTouchVAL"}
-              title={"Touch VAL"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
+          {/*<div className={"flex justify-center gap-4 mb-10"}>*/}
+          {/*  <ChartBar*/}
+          {/*    data={tableData}*/}
+          {/*    property={"isTouchVAL"}*/}
+          {/*    title={"Touch VAL"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
 
-            <ChartBar
-              data={tableData}
-              property={"isTouchVAH"}
-              title={"Touch VAH"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
+          {/*  <ChartBar*/}
+          {/*    data={tableData}*/}
+          {/*    property={"isTouchVAH"}*/}
+          {/*    title={"Touch VAH"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
 
-            <ChartBar
-              data={tableData.filter(
-                (item) =>
-                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,
-              )}
-              property={"isTouchVAL"}
-              title={"Touch VAL (Open Under POC)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
+          {/*  <ChartBar*/}
+          {/*    data={tableData.filter(*/}
+          {/*      (item) =>*/}
+          {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,*/}
+          {/*    )}*/}
+          {/*    property={"isTouchVAL"}*/}
+          {/*    title={"Touch VAL (Open Under POC)"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
 
-            <ChartBar
-              data={tableData.filter(
-                (item) =>
-                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,
-              )}
-              property={"isTouchVAL"}
-              title={"Touch VAL (Open Over POC)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
+          {/*  <ChartBar*/}
+          {/*    data={tableData.filter(*/}
+          {/*      (item) =>*/}
+          {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,*/}
+          {/*    )}*/}
+          {/*    property={"isTouchVAL"}*/}
+          {/*    title={"Touch VAL (Open Over POC)"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
 
-            <ChartBar
-              data={tableData.filter(
-                (item) =>
-                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,
-              )}
-              property={"isTouchVAH"}
-              title={"Touch VAH (Open Under Poc)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
+          {/*  <ChartBar*/}
+          {/*    data={tableData.filter(*/}
+          {/*      (item) =>*/}
+          {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.LOWER_POC,*/}
+          {/*    )}*/}
+          {/*    property={"isTouchVAH"}*/}
+          {/*    title={"Touch VAH (Open Under Poc)"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
 
-            <ChartBar
-              data={tableData.filter(
-                (item) =>
-                  item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,
-              )}
-              property={"isTouchVAH"}
-              title={"Touch VAH (Open Over Poc)"}
-              labels={TEST_OPTIONS}
-              width={400}
-              height={500}
-            />
-          </div>
+          {/*  <ChartBar*/}
+          {/*    data={tableData.filter(*/}
+          {/*      (item) =>*/}
+          {/*        item.open_relation_to_poc === OPENS_RELATION_TO_TOC.ABOVE_POC,*/}
+          {/*    )}*/}
+          {/*    property={"isTouchVAH"}*/}
+          {/*    title={"Touch VAH (Open Over Poc)"}*/}
+          {/*    labels={TEST_OPTIONS}*/}
+          {/*    width={400}*/}
+          {/*    height={500}*/}
+          {/*  />*/}
+          {/*</div>*/}
           {/*Touch ZONE END*/}
         </>
       )}

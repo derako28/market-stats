@@ -44,7 +44,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const columns = [
@@ -62,7 +67,12 @@ const columns = [
 
   { id: "overnight_breakout", title: "Overnight Breakout" },
   { id: "first_overnight_breakout", title: "First Breakout" },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const initialData = prepareData(data);

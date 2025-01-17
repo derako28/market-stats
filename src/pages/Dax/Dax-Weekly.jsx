@@ -1,4 +1,4 @@
-import data from "../../Data-TW/FDAX-Weakly.json";
+import data from "../../Data-TW/FDAX-Weekly.json";
 
 import { Page } from "../../components/share/Page/page.jsx";
 import {
@@ -64,7 +64,12 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
   {
     id: "date_range",
     title: "Date Range",
@@ -106,7 +111,7 @@ const columns = [
 
 const initialData = prepareWeaklyData(data);
 
-export const DaxWeakly = () => {
+export const DaxWeekly = () => {
   const [tableData, setTableData] = useState(initialData);
 
   const [visibleConfig, setVisibleConfig] = useState({
@@ -136,7 +141,7 @@ export const DaxWeakly = () => {
               <div className={"text-gray-300"}>Size Weakly Range</div>
               <AgCharts
                 options={getBarChartHorizontalConfig(
-                  getDataIBSizeChart(tableData, "weakly_size"),
+                  getDataIBSizeChart(tableData, "weekly_size"),
                   tableData.length,
                   1700,
                   300,

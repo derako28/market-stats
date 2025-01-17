@@ -80,7 +80,12 @@ const filterOptions = [
     options: getOptions(OPENING_TYPES),
   },
   { id: "type_day", title: "Type Day", filter: false },
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 const initialData = mergeStatsAndBack(dataStats, data);

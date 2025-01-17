@@ -44,7 +44,12 @@ const columns = [
 
 const filterOptions = [
   ...columns,
-  { id: "day", title: "Day", type: FILTER_TYPES.SELECT, options: DAYS_OPTIONS },
+  {
+    id: "day",
+    title: "Weekday",
+    type: FILTER_TYPES.SELECT,
+    options: DAYS_OPTIONS,
+  },
 ];
 
 export const StatsCharts = () => {
