@@ -31,11 +31,11 @@ export const Filter = ({ options, initialData, onChange, handler = true }) => {
   };
 
   const handleChange = () => {
-    // if (handler) {
-    //   onChange(dataFilter());
-    // } else {
-    //   onChange(getValues());
-    // }
+    if (handler) {
+      onChange(dataFilter());
+    } else {
+      onChange(getValues());
+    }
   };
 
   const dataFilter = () => {
@@ -51,6 +51,10 @@ export const Filter = ({ options, initialData, onChange, handler = true }) => {
 
         if (key === "day") {
           return moment(item.date).day() === +dataFilter.day;
+        }
+
+        if (key === "time") {
+          return moment(item.time).day() === +dataFilter.time;
         }
 
         if (key === "date") {

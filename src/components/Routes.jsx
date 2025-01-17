@@ -51,7 +51,7 @@ export const AppRoutes = () => {
 
             {getFeature("weeklyStatistics") && (
               <>
-                <Route path="/dax-weekly" element={<Daxweekly />} />
+                <Route path="/dax-weekly" element={<DaxWeekly />} />
               </>
             )}
 

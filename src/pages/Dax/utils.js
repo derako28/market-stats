@@ -631,10 +631,10 @@ export const isTouchVAH = (acc, item) => {
   return TEST_OPTIONS.NO;
 };
 
-export const prepareWeaklyData = (data) => {
+export const prepareDataForSizeRange = (data) => {
   return data.map((item) => {
-    const weeklySize = roundToNearest(item.high - item.low, 25);
+    const rangeSize = roundToNearest(item.high - item.low, 25);
 
-    return { ...item, weekly_size: weeklySize };
+    return { ...item, range: rangeSize };
   });
 };
