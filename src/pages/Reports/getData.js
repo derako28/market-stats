@@ -1,4 +1,4 @@
-import dataES from "../../Data-TW/ES_Without_2024.json";
+import dataES from "../../Data-TW/ES.json";
 import dataNQ from "../../Data-TW/NQ.json";
 import dataYM from "../../Data-TW/YM.json";
 import dataDAX from "../../Data-TW/FDAX.json";

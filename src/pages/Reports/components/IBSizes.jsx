@@ -12,11 +12,11 @@ export const IBSizes = ({ data }) => {
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="flex-1 bg-gray-800 p-4 rounded-lg shadow-inner">
-          <ChartBar data={getChartDataIBSizes(data).dataSet} />
+          <ChartBar
+            data={getChartDataIBSizes(data).dataSet}
+            paramsOptions={{ symbol: null }}
+          />
         </div>
-        {/*<div className="flex-1 bg-gray-800 p-4 rounded-lg shadow-inner">*/}
-        {/*  <InsightsTable data={getChartDataGreenRedDays(data).insights} />*/}
-        {/*</div>*/}
       </div>
     </div>
   );

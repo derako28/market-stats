@@ -229,60 +229,59 @@ export const onFilterData = (data, dataFilter) => {
       }
 
       if (key === "date_range") {
+        const dateEl = moment(item.date);
+        const now = moment();
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.LAST_MONTH) {
+          const startDate = now.clone().subtract(1, "month");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.THREE_MONTH) {
+          const startDate = now.clone().subtract(3, "month");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.SIX_MONTH) {
+          const startDate = now.clone().subtract(6, "month");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.ONE_YEAR) {
+          const startDate = now.clone().subtract(1, "year");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.TWO_YEAR) {
+          const startDate = now.clone().subtract(2, "year");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.THREE_YEAR) {
+          const startDate = now.clone().subtract(3, "year");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.FOUR_YEAR) {
+          const startDate = now.clone().subtract(4, "year");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
+        if (dataFilter[key] === DATE_RANGE_VALUE.FIVE_YEAR) {
+          const startDate = now.clone().subtract(5, "year");
+
+          return dateEl.isBetween(startDate, now, "day");
+        }
+
         return true;
       }
-      // if (key === "date_range") {
-      //   const dateEl = moment(item.date);
-      //   const now = moment();
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.LAST_MONTH) {
-      //     const startDate = now.clone().subtract(1, "month");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.THREE_MONTH) {
-      //     const startDate = now.clone().subtract(3, "month");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.SIX_MONTH) {
-      //     const startDate = now.clone().subtract(6, "month");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.ONE_YEAR) {
-      //     const startDate = now.clone().subtract(1, "year");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.TWO_YEAR) {
-      //     const startDate = now.clone().subtract(2, "year");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.THREE_YEAR) {
-      //     const startDate = now.clone().subtract(3, "year");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.FOUR_YEAR) {
-      //     const startDate = now.clone().subtract(4, "year");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      //
-      //   if (dataFilter[key] === DATE_RANGE_VALUE.FIVE_YEAR) {
-      //     const startDate = now.clone().subtract(5, "year");
-      //
-      //     return dateEl.isBetween(startDate, now, "day");
-      //   }
-      // }
 
       return item[key]
         ?.toString()
@@ -319,79 +318,6 @@ export const getChartDataTouchesZones = (data, property) => {
       },
     ],
   };
-
-  // const daysArr = Object.values(DAYS_LABEL);
-  //
-  // const dataGroupByWeekday = groupByWeekday(data);
-  //
-  // const prepareData = daysArr.reduce((acc, weekday) => {
-  //   const dataByWeekday = dataGroupByWeekday[weekday];
-  //   let bullishDays = 0;
-  //   let bearishDays = 0;
-  //
-  //   dataByWeekday?.forEach((item) => {
-  //     if (item.trend === DAY_TRENDS.BULLISH) {
-  //       bullishDays++;
-  //     }
-  //
-  //     if (item.trend === DAY_TRENDS.BEARISH) {
-  //       bearishDays++;
-  //     }
-  //   });
-  //
-  //   acc[weekday] = {
-  //     bullish: bullishDays,
-  //     bearish: bearishDays,
-  //     total: bullishDays + bearishDays,
-  //     bullishPercentage: (
-  //       (bullishDays / (bullishDays + bearishDays)) *
-  //       100
-  //     ).toFixed(2),
-  //     bearishPercentage: (
-  //       (bearishDays / (bullishDays + bearishDays)) *
-  //       100
-  //     ).toFixed(2),
-  //   };
-  //
-  //   return acc;
-  // }, {});
-  //
-  // const dataF = daysArr.reduce(
-  //   (acc, day) => {
-  //     const item = prepareData[day];
-  //     const itemsOfDays = item.bullish + item.bearish;
-  //
-  //     acc.bullish.push(item.bullishPercentage);
-  //     acc.bearish.push(item.bearishPercentage);
-  //
-  //     return acc;
-  //   },
-  //   {
-  //     bullish: [],
-  //     bearish: [],
-  //   },
-  // );
-  //
-  // return {
-  //   dataSet: {
-  //     labels: Object.values(DAYS_LABEL),
-  //     datasets: [
-  //       {
-  //         label: "Green Days",
-  //         data: dataF.bullish,
-  //         backgroundColor: "#3b82f6",
-  //         borderRadius: 10,
-  //       },
-  //       {
-  //         label: "Red Days",
-  //         data: dataF.bearish,
-  //         backgroundColor: "#0d0f12",
-  //         borderRadius: 10,
-  //       },
-  //     ],
-  //   },
-  //   insights: prepareData,
-  // };
 };
 
 const generateData = (data, keys) => {

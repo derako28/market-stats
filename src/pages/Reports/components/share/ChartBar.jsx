@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(
   CategoryScale,
@@ -17,6 +18,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  ChartDataLabels,
 );
 
 const getOptions = (paramsOptions) => {
@@ -25,6 +27,17 @@ const getOptions = (paramsOptions) => {
     maintainAspectRatio: false,
 
     plugins: {
+      datalabels: {
+        color: "#fff",
+        size: 18,
+        formatter: (value) => labelFormatter(value, paramsOptions?.symbol),
+        font: {
+          size: 14,
+        },
+      },
+      tooltip: {
+        enabled: false,
+      },
       legend: {
         display: paramsOptions?.legend || false,
         position: "bottom",
@@ -47,6 +60,12 @@ const getOptions = (paramsOptions) => {
       },
     },
   };
+};
+
+const labelFormatter = (value, symbol = "percent") => {
+  const symbolFoLabel = symbol === "percent" ? "%" : "";
+
+  return value > 0 ? value + symbolFoLabel : null;
 };
 
 export const ChartBar = ({ data, paramsOptions }) => {

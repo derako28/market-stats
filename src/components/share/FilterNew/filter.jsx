@@ -158,10 +158,6 @@ export const Filter = ({ onChange }) => {
                 );
               }
 
-              // if(column.type === FILTER_TYPES.MULTI_SELECT && !column.filter){
-              //     return  <MultiSelectMy options={column.options} label={column.title} key={column.id} {...register(column.id)}/>
-              // }
-
               if (column.type === FILTER_TYPES.MULTI_SELECT) {
                 return (
                   <div className={"flex-auto"} key={column.id}>
@@ -201,13 +197,6 @@ export const Filter = ({ onChange }) => {
                 label={"Reset"}
               />
             </div>
-            {/*<div className={"flex-auto"}>*/}
-            {/*  <Button*/}
-            {/*    onClick={onSubmit}*/}
-            {/*    className={"self-end w-full"}*/}
-            {/*    label={"Apply"}*/}
-            {/*  />*/}
-            {/*</div>*/}
           </div>
         </div>
       </form>
