@@ -267,6 +267,7 @@ export const REPORT_TYPES = {
   GREEN_RED_DAYS: "greenRadDays",
   IB_BREAKOUT: "ibBreakoutWidget",
   TOUCH_ZONES: "touchZones",
+  TOUCH_VA_ZONES: "touchVAZones",
   IB_SIZES: "ibSize",
   TABLE: "table",
 };
@@ -276,6 +277,7 @@ export const REPORT_LABELS = {
   GREEN_RED_DAYS: "Green Red Days",
   IB_BREAKOUT: "IB Breakout",
   TOUCH_ZONES: "Touch Zones",
+  TOUCH_VA_ZONES: "Touch VA Zones",
   IB_SIZES: "IB Sizes",
   TABLE: "Table",
 };
@@ -310,3 +312,10 @@ export const colorsForChart = [
   "rgba(0, 117, 225, .2)",
   "rgba(0, 117, 225, .1)",
 ];
+
+export const CLOSE_B_PERIOD = {
+  ABOVE_75: "Above 75%",
+  ABOVE_50: "Above 50%",
+  BELOW_50: "Below 50%",
+  BELOW_25: "Below 25%",
+};

@@ -2,6 +2,7 @@ import { Controller, useForm } from "react-hook-form";
 import { DatepickerMY } from "../Datepicker/datepicker.jsx";
 import {
   CANDLE_TYPES,
+  CLOSE_B_PERIOD,
   DATE_RANGE_OPTIONS,
   DATE_RANGE_VALUE,
   DAYS_OPTIONS,
@@ -54,7 +55,13 @@ const filterOptions = [
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBreakout",
+    id: "firstBreakout",
+    title: "First IB Breakout",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(IB_BREAKOUT_OPTIONS),
+  },
+  {
+    id: "ib_breakout",
     title: "IB Breakout",
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
@@ -64,6 +71,12 @@ const filterOptions = [
     title: "Weekday",
     type: FILTER_TYPES.SELECT,
     options: DAYS_OPTIONS,
+  },
+  {
+    id: "closing_b_period",
+    title: "Closing B Period",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CLOSE_B_PERIOD),
   },
   {
     id: "date_range",
@@ -76,7 +89,8 @@ const filterOptions = [
 const defaultValue = {
   ticker: TICKERS.ES,
   date_range: "",
-  ibBreakout: "",
+  firstBreakout: "",
+  ib_breakout: "",
   open_relation: "",
   opening_type: "",
   first_candle: "",
@@ -84,6 +98,7 @@ const defaultValue = {
   ib_size_from: "",
   ib_size_to: "",
   day: "",
+  closing_b_period: "",
 };
 
 export const Filter = ({ onChange }) => {

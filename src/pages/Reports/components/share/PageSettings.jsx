@@ -41,13 +41,21 @@ const filterOptions = [
   { id: "ib_size_from", title: "IB Size From" },
   { id: "ib_size_to", title: "IB Size To" },
   {
-    id: "ibBreakout",
+    id: "firstBreakout",
+    title: "First IB Breakout",
+  },
+  {
+    id: "ib_breakout",
     title: "IB Breakout",
   },
   { id: "day", title: "Day" },
   {
     id: "date_range",
     title: "Date Range",
+  },
+  {
+    id: "closing_b_period",
+    title: "Closing B Period",
   },
 ];
 

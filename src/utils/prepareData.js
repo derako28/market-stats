@@ -115,6 +115,7 @@ export const prepareData = (data) => {
         isTouchRange: isTouchRange(acc, item),
         isTouchIB: isTouchIB(acc, item),
         open_relation_to_poc: getOpenRelationToPoc(acc, item),
+        closing_b_period: getCloseBPeriod(item),
         // type_day: determineDayType(item),
       },
     ];
@@ -441,7 +442,7 @@ export const compileMarketProfileByDays = (
       poc,
       vah,
       val,
-      profile,
+      // profile,
       aHigh,
       aLow,
       bHigh,
@@ -449,6 +450,7 @@ export const compileMarketProfileByDays = (
       cHigh,
       cLow,
       trend,
+      firstTwoPeriods,
       ib_breakout: getIbBreakout(tpoHigh, tpoLow, ibHigh, ibLow),
       ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
       breakoutPeriods: findBreakoutPeriods(dailyData),
@@ -1088,4 +1090,33 @@ export const mergeArraysByDate = (array1, array2) => {
       return acc;
     }, {}),
   );
+};
+
+export const getCloseBPeriod = (item) => {
+  const { aLow, aHigh, bLow, bHigh, firstTwoPeriods } = item;
+
+  const bClose = firstTwoPeriods[1].close;
+  const high = Math.max(aHigh, bHigh);
+  const low = Math.min(aLow, bLow);
+
+  const range = high - low;
+  const median = high - range * 0.5;
+  const upperQuartile = high - range * 0.25;
+  const lowerQuartile = high - range * 0.6;
+
+  if (bClose > upperQuartile) {
+    return "Above 75%, Above 50%";
+  }
+
+  if (bClose >= median) {
+    return "Above 50%";
+  }
+
+  if (bClose < lowerQuartile) {
+    return "Below 25%, Below 50%";
+  }
+
+  if (bClose <= median) {
+    return "Below 50%";
+  }
 };

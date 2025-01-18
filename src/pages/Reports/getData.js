@@ -16,18 +16,19 @@ export const getData = (dataFilter) => {
   let data = dataES;
 
   switch (ticker) {
-    case "NQ": {
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataNQ, 68, 5, 4)),
-        ).reverse(),
-      );
-      break;
-    }
     case "ES": {
       data = segmentData(
         setOpeningType(
           prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)),
+        ).reverse(),
+      );
+      break;
+    }
+
+    case "NQ": {
+      data = segmentData(
+        setOpeningType(
+          prepareData(compileMarketProfileByDays(dataNQ, 68, 5, 4)),
         ).reverse(),
       );
       break;
