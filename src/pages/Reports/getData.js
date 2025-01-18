@@ -9,7 +9,7 @@ import {
   segmentData,
   setOpeningType,
 } from "../../utils/prepareData.js";
-import { onFilterData } from "./utils.js";
+import { filterByThreshold, onFilterData } from "./utils.js";
 
 export const getData = (dataFilter) => {
   const ticker = dataFilter?.ticker;
@@ -60,5 +60,5 @@ export const getData = (dataFilter) => {
       );
   }
 
-  return onFilterData(data, dataFilter);
+  return filterByThreshold(onFilterData(data, dataFilter));
 };

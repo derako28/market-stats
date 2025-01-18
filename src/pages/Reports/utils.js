@@ -157,10 +157,8 @@ export const getChartDataIBSizes = (data) => {
   ];
 
   return {
-    dataSet: {
-      labels: Object.keys(prepareData),
-      datasets: dataSet,
-    },
+    labels: Object.keys(prepareData),
+    datasets: dataSet,
   };
 };
 
@@ -440,4 +438,20 @@ export const getChartDonutDataIBBreakout = (
     labels: Object.keys(dataPrepare),
     datasets: dataSet,
   };
+};
+
+export const filterByThreshold = (data, thresholdPercent = 1) => {
+  const totalEntries = data.length; // Общее количество записей
+  const threshold = (thresholdPercent / 300) * totalEntries; // Пороговое значение
+
+  // Подсчитываем частоту каждого ib_size
+  const frequencyMap = data.reduce((acc, { ibSizeSegmented: ib_size }) => {
+    acc[ib_size] = (acc[ib_size] || 0) + 1;
+    return acc;
+  }, {});
+
+  // Фильтруем данные, удаляя те, что встречаются реже, чем порог
+  return data.filter(
+    ({ ibSizeSegmented: ib_size }) => frequencyMap[ib_size] >= threshold,
+  );
 };

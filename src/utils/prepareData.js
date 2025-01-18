@@ -439,6 +439,7 @@ export const compileMarketProfileByDays = (
       ibHigh,
       ibLow,
       ibSize,
+      ibSizeSegmented: roundToNearest(ibSize, 5),
       poc,
       vah,
       val,
