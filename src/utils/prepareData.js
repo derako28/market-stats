@@ -373,11 +373,10 @@ export const compileMarketProfileByDays = (
   tpr = 5,
   step = 0.25,
 ) => {
-  const priceStep = tpr * step; // Рассчитываем шаг цен
+  const priceStep = tpr * step;
 
-  // Группировка данных по дням
   const groupedData = data
-    .filter((item) => !item.time.includes("22:00"))
+    .filter((item) => item.period !== "N")
     .reduce((acc, entry) => {
       const date = entry.time.split("T")[0];
 
@@ -386,81 +385,82 @@ export const compileMarketProfileByDays = (
       return acc;
     }, {});
 
-  // Итоговый массив с §данными по дням
-  return Object.entries(groupedData).map(([date, dailyData]) => {
-    const profileArray = calculateTPOProfile(dailyData, priceStep); // Формируем TPO профиль
+  return Object.entries(groupedData)
+    .filter(([_, data]) => data.length > 10)
+    .map(([date, dailyData]) => {
+      const profileArray = calculateTPOProfile(dailyData, priceStep); // Формируем TPO профиль
 
-    // Расчёт Value Area
-    const { vah, val } = calculateValueArea(profileArray, valueAreaPercent);
+      // Расчёт Value Area
+      const { vah, val } = calculateValueArea(profileArray, valueAreaPercent);
 
-    // Расчёт POC, используя метод поиска ближе к центру Value Area
-    const poc = getPOCWithValueAreaCenter(profileArray, vah, val);
+      // Расчёт POC, используя метод поиска ближе к центру Value Area
+      const poc = getPOCWithValueAreaCenter(profileArray, vah, val);
 
-    // Формируем данные профиля
-    const profile = profileArray.map((level) => ({
-      price: level.price,
-      segments: level.segments,
-      tpoCount: level.segments.length,
-      isPOC: level.price === poc,
-      isVAH: level.price === vah,
-      isVAL: level.price === val,
-    }));
+      // Формируем данные профиля
+      const profile = profileArray.map((level) => ({
+        price: level.price,
+        segments: level.segments,
+        tpoCount: level.segments.length,
+        isPOC: level.price === poc,
+        isVAH: level.price === vah,
+        isVAL: level.price === val,
+      }));
 
-    const tpoHigh = Math.max(...dailyData.map(({ high }) => high));
-    const tpoLow = Math.min(...dailyData.map(({ low }) => low));
+      const tpoHigh = Math.max(...dailyData.map(({ high }) => high));
+      const tpoLow = Math.min(...dailyData.map(({ low }) => low));
 
-    const tpoOpen = dailyData[0]?.open;
-    const tpoClose = dailyData[dailyData.length - 1]?.close;
+      const tpoOpen = dailyData[0]?.open;
+      const tpoClose = dailyData[dailyData.length - 1]?.close;
 
-    const firstTwoPeriods = dailyData.slice(0, 2);
+      const firstTwoPeriods = dailyData.slice(0, 2);
 
-    const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
-    const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
+      const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
+      const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
 
-    const ibSize = ibHigh - ibLow;
+      const ibSize = ibHigh - ibLow;
 
-    const aHigh = dailyData[0].high;
-    const aLow = dailyData[0].low;
+      const aHigh = dailyData[0].high;
+      const aLow = dailyData[0].low;
 
-    const bHigh = dailyData[1].high;
-    const bLow = dailyData[1].low;
+      const bHigh = dailyData[1].high;
+      const bLow = dailyData[1].low;
 
-    const cHigh = dailyData[2].high;
-    const cLow = dailyData[2].low;
+      const cHigh = dailyData[2].high;
+      const cLow = dailyData[2].low;
 
-    const trend = tpoOpen > tpoClose ? "Bearish" : "Bullish";
+      const trend = tpoOpen > tpoClose ? "Bearish" : "Bullish";
 
-    return {
-      date,
-      tpoHigh,
-      tpoLow,
-      tpoOpen,
-      tpoClose,
-      ibHigh,
-      ibLow,
-      ibSize,
-      ibSizeSegmented: roundToNearest(ibSize, 5),
-      poc,
-      vah,
-      val,
-      // profile,
-      aHigh,
-      aLow,
-      bHigh,
-      bLow,
-      cHigh,
-      cLow,
-      trend,
-      firstTwoPeriods,
-      ib_breakout: getIbBreakout(tpoHigh, tpoLow, ibHigh, ibLow),
-      ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
-      breakoutPeriods: findBreakoutPeriods(dailyData),
-      first_candle: getFirstCandle(dailyData[0]),
-      firstSideFormed: getFirstSideFormed(firstTwoPeriods),
-      firstBreakout: findFirstBreakoutPeriods(dailyData),
-      ...getLowHighPeriod(dailyData),
-    };
-  });
+      return {
+        date,
+        tpoHigh,
+        tpoLow,
+        tpoOpen,
+        tpoClose,
+        ibHigh,
+        ibLow,
+        ibSize,
+        ibSizeSegmented: roundToNearest(ibSize, 5),
+        poc,
+        vah,
+        val,
+        // profile,
+        aHigh,
+        aLow,
+        bHigh,
+        bLow,
+        cHigh,
+        cLow,
+        trend,
+        firstTwoPeriods,
+        ib_breakout: getIbBreakout(tpoHigh, tpoLow, ibHigh, ibLow),
+        ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
+        breakoutPeriods: findBreakoutPeriods(dailyData),
+        first_candle: getFirstCandle(dailyData[0]),
+        firstSideFormed: getFirstSideFormed(firstTwoPeriods),
+        firstBreakout: findFirstBreakoutPeriods(dailyData),
+        ...getLowHighPeriod(dailyData),
+      };
+    });
 };
 
 export const groupDataByDate = (data) => {

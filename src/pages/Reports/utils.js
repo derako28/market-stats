@@ -4,7 +4,6 @@ import {
   DAYS_LABEL,
   DAY_TRENDS,
   DATE_RANGE_VALUE,
-  IB_BREAKOUT_OPTIONS,
   TOUCH_ZONES,
   TOUCH_ZONES_KEYS,
   OPENS_RELATION_TO_TOC,
@@ -59,8 +58,8 @@ export const getChartDataGreenRedDays = (data) => {
         (bullishDays / (bullishDays + bearishDays)) *
         100
       ).toFixed(2),
-      bullishPercentage: getPercent(bullishDays, bullishDays + bearishDays),
-      bearishPercentage: getPercent(bearishDays, bullishDays + bearishDays),
+      bullishPercentage: getPercent(bullishDays, bullishDays + bearishDays, 2),
+      bearishPercentage: getPercent(bearishDays, bullishDays + bearishDays, 2),
     };
 
     return acc;
@@ -397,9 +396,9 @@ export const getSetting = () => {
   return JSON.parse(localStorage.getItem("settings")) || null;
 };
 
-export const getPercent = (count, total) => {
+export const getPercent = (count, total, fractionDigits = 0) => {
   if (count === 0) return 0;
-  return ((count / total) * 100).toFixed(0);
+  return ((count / total) * 100).toFixed(fractionDigits);
 };
 
 export const getChartDonutDataIBBreakout = (

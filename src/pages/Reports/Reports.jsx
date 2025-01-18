@@ -40,8 +40,6 @@ export const Reports = () => {
     setInitialData(getData());
   }, []);
 
-  // console.log(JSON.stringify(tableData && tableData[0]));
-
   return (
     <Page noHeader className={"px-4 py-2"}>
       <div className={"mb-12"}>
