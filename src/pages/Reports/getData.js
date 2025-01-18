@@ -6,7 +6,6 @@ import dataDAX from "../../Data-TW/FDAX.json";
 import {
   compileMarketProfileByDays,
   prepareData,
-  segmentData,
   setOpeningType,
 } from "../../utils/prepareData.js";
 import { filterByThreshold, onFilterData } from "./utils.js";
@@ -17,46 +16,36 @@ export const getData = (dataFilter) => {
 
   switch (ticker) {
     case "ES": {
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)),
-        ).reverse(),
+      data = setOpeningType(
+        prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)).reverse(),
       );
       break;
     }
 
     case "NQ": {
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataNQ, 68, 5, 4)),
-        ).reverse(),
+      data = setOpeningType(
+        prepareData(compileMarketProfileByDays(dataNQ, 68, 5, 4)).reverse(),
       );
       break;
     }
 
     case "YM": {
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataYM, 68, 20)),
-        ).reverse(),
+      data = setOpeningType(
+        prepareData(compileMarketProfileByDays(dataYM, 68, 20)).reverse(),
       );
       break;
     }
 
     case "DAX": {
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataDAX, 68, 5, 1)),
-        ).reverse(),
+      data = setOpeningType(
+        prepareData(compileMarketProfileByDays(dataDAX, 68, 5, 1)).reverse(),
       );
       break;
     }
 
     default:
-      data = segmentData(
-        setOpeningType(
-          prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)),
-        ).reverse(),
+      data = setOpeningType(
+        prepareData(compileMarketProfileByDays(dataES, 68, 5, 0.25)).reverse(),
       );
   }
 

@@ -141,7 +141,7 @@ export const getChartDataIBBreakout = (
 
 export const getChartDataIBSizes = (data) => {
   const prepareData = data.reduce((acc, item) => {
-    const ibSize = roundToNearest(item.ibSize, 5);
+    const ibSize = item.ibSizeSegmented;
 
     acc[ibSize] = acc[ibSize] ? acc[ibSize] + 1 : 1;
 
