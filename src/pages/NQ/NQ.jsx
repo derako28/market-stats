@@ -78,7 +78,7 @@ const filterOptions = [
   },
   {
     id: "first_candle",
-    title: "First Candle",
+    title: "First Period",
     type: FILTER_TYPES.SELECT,
     options: getOptions(CANDLE_TYPES),
   },

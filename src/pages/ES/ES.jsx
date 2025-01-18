@@ -73,7 +73,7 @@ const filterOptions = [
   },
   {
     id: "first_candle",
-    title: "First Candle",
+    title: "First Period",
     type: FILTER_TYPES.SELECT,
     options: getOptions(CANDLE_TYPES),
   },
@@ -121,7 +121,7 @@ const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
   { id: "opening_type", title: "Opening Type" },
-  { id: "first_candle", title: "First Candle" },
+  { id: "first_candle", title: "First Period" },
   { id: "firstSideFormed", title: "First Side Formed" },
   { id: "firstBreakout", title: "IB Breakout" },
   { id: "overnight_range", title: "Overnight Range" },
