@@ -55,14 +55,12 @@ export const getChartDataGreenRedDays = (data) => {
       bullish: bullishDays,
       bearish: bearishDays,
       total: bullishDays + bearishDays,
-      bullishPercentage: (
+      bullishPercentage2: (
         (bullishDays / (bullishDays + bearishDays)) *
         100
       ).toFixed(2),
-      bearishPercentage: (
-        (bearishDays / (bullishDays + bearishDays)) *
-        100
-      ).toFixed(2),
+      bullishPercentage: getPercent(bullishDays, bullishDays + bearishDays),
+      bearishPercentage: getPercent(bearishDays, bullishDays + bearishDays),
     };
 
     return acc;
@@ -71,8 +69,6 @@ export const getChartDataGreenRedDays = (data) => {
   const dataF = daysArr.reduce(
     (acc, day) => {
       const item = prepareData[day];
-      const itemsOfDays = item.bullish + item.bearish;
-
       acc.bullish.push(item.bullishPercentage);
       acc.bearish.push(item.bearishPercentage);
 
