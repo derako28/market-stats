@@ -62,7 +62,7 @@ const labelFormatter = (value, symbol = "percent") => {
 
 export const ChartDonut = ({ data, paramsOptions }) => {
   return (
-    <div style={{ width: "50%", margin: "auto" }}>
+    <div className={"p-4"} style={{ maxWidth: 350, margin: "0 auto" }}>
       <Pie data={data} options={getOptions(paramsOptions)} />
     </div>
   );

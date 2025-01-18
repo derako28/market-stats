@@ -150,13 +150,13 @@ export const Filter = ({ onChange }) => {
   return (
     <>
       <form onChange={handleSubmit(onSubmit)}>
-        <div className={"flex align-middle flex-wrap items-end my-5 gap-3"}>
+        <div className={"flex flex-wrap items-end my-5 gap-3"}>
           {filterOptions
             .filter((column) => visibilitySetting[column.id])
             .map((column) => {
               if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
                 return (
-                  <div key={column.id}>
+                  <div key={column.id} className={"w-full sm:w-auto"}>
                     <Controller
                       name={column.id}
                       control={control}
@@ -170,7 +170,7 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.SELECT && !column.filter) {
                 return (
-                  <div key={column.id}>
+                  <div key={column.id} className={"w-full sm:w-auto"}>
                     <SelectMy
                       options={column.options}
                       label={column.title}
@@ -182,7 +182,7 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.MULTI_SELECT) {
                 return (
-                  <div key={column.id}>
+                  <div key={column.id} className={"w-full sm:w-auto"}>
                     <Controller
                       name={column.id}
                       control={control}
@@ -200,7 +200,7 @@ export const Filter = ({ onChange }) => {
 
               return (
                 column.filter ?? (
-                  <div key={column.id}>
+                  <div key={column.id} className={"w-full sm:w-auto "}>
                     <Input
                       label={column.title}
                       name={column.id}
@@ -211,7 +211,7 @@ export const Filter = ({ onChange }) => {
               );
             })}
 
-          <div className={"flex flex-auto gap-2"}>
+          <div className={"flex flex-auto gap-2 mt-2 sm:mt-0"}>
             <div className={"flex-auto"}>
               <Button
                 onClick={onReset}
