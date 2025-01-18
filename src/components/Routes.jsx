@@ -40,6 +40,8 @@ export const AppRoutes = () => {
       <Router>
         <div>
           <Routes>
+            <Route path="/" element={<Reports />} />
+
             {getFeature("newStatistics") && (
               <>
                 <Route path="/dax" element={<Dax />} />
@@ -61,8 +63,6 @@ export const AppRoutes = () => {
                 <Route path="/es-overnight" element={<ESOvernight />} />
               </>
             )}
-
-            <Route path="/reports" element={<Reports />} />
 
             {getFeature("DAX_VWAP") && (
               <>

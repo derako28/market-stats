@@ -1,10 +1,10 @@
 import { Controller, useForm } from "react-hook-form";
 import { DatepickerMY } from "../Datepicker/datepicker.jsx";
 import {
+  BREAKOUT_PERIODS_LABEL,
   CANDLE_TYPES,
   CLOSE_B_PERIOD,
   DATE_RANGE_OPTIONS,
-  DATE_RANGE_VALUE,
   DAYS_OPTIONS,
   FILTER_TYPES,
   FIRST_FORMED,
@@ -60,12 +60,18 @@ const filterOptions = [
     type: FILTER_TYPES.SELECT,
     options: getOptions(IB_BREAKOUT_OPTIONS),
   },
-  {
-    id: "ib_breakout",
-    title: "IB Breakout",
-    type: FILTER_TYPES.SELECT,
-    options: getOptions(IB_BREAKOUT_OPTIONS),
-  },
+  // {
+  //   id: "firstBreakoutInPeriod",
+  //   title: "First IB Breakout In Period",
+  //   type: FILTER_TYPES.MULTI_SELECT,
+  //   options: getOptions(BREAKOUT_PERIODS_LABEL).slice(2),
+  // },
+  // {
+  //   id: "ib_breakout",
+  //   title: "IB Breakout",
+  //   type: FILTER_TYPES.SELECT,
+  //   options: getOptions(IB_BREAKOUT_OPTIONS),
+  // },
   {
     id: "day",
     title: "Weekday",
@@ -90,6 +96,7 @@ const defaultValue = {
   ticker: TICKERS.ES,
   date_range: "",
   firstBreakout: "",
+  firstBreakoutInPeriod: "",
   ib_breakout: "",
   open_relation: "",
   opening_type: "",
@@ -149,7 +156,7 @@ export const Filter = ({ onChange }) => {
             .map((column) => {
               if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
                 return (
-                  <div className={"flex-auto"} key={column.id}>
+                  <div key={column.id}>
                     <Controller
                       name={column.id}
                       control={control}
@@ -163,7 +170,7 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.SELECT && !column.filter) {
                 return (
-                  <div className={"flex-auto"} key={column.id}>
+                  <div key={column.id}>
                     <SelectMy
                       options={column.options}
                       label={column.title}
@@ -175,7 +182,7 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.MULTI_SELECT) {
                 return (
-                  <div className={"flex-auto"} key={column.id}>
+                  <div key={column.id}>
                     <Controller
                       name={column.id}
                       control={control}
@@ -193,7 +200,7 @@ export const Filter = ({ onChange }) => {
 
               return (
                 column.filter ?? (
-                  <div className={"flex-auto"} key={column.id}>
+                  <div key={column.id}>
                     <Input
                       label={column.title}
                       name={column.id}
@@ -212,6 +219,13 @@ export const Filter = ({ onChange }) => {
                 label={"Reset"}
               />
             </div>
+            {/*<div className={"flex-auto"}>*/}
+            {/*  <Button*/}
+            {/*    onClick={onSubmit}*/}
+            {/*    className={"self-end w-full"}*/}
+            {/*    label={"Apply"}*/}
+            {/*  />*/}
+            {/*</div>*/}
           </div>
         </div>
       </form>

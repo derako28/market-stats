@@ -45,6 +45,10 @@ const filterOptions = [
     title: "First IB Breakout",
   },
   {
+    id: "firstBreakoutInPeriod",
+    title: "First IB Breakout In Period",
+  },
+  {
     id: "ib_breakout",
     title: "IB Breakout",
   },

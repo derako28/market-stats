@@ -193,9 +193,6 @@ export const onFilterData = (data, dataFilter) => {
     return data;
   }
 
-  // const startDate = moment(dataFilter.date?.startDate);
-  // const endDate = moment(dataFilter.date?.endDate);
-
   return data.filter((item) => {
     return Object.keys(dataFilter).every((key) => {
       if (
@@ -225,6 +222,12 @@ export const onFilterData = (data, dataFilter) => {
 
       if (key === "ib_size_to") {
         return +dataFilter.ib_size_to >= +item.ibSize;
+      }
+
+      if (key === "firstBreakoutInPeriod") {
+        const periods = dataFilter?.firstBreakoutInPeriod || [];
+
+        return !periods.includes(item?.breakoutPeriods?.firstBreakout?.period);
       }
 
       if (key === "date_range") {

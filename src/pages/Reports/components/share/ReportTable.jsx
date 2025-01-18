@@ -5,12 +5,10 @@ import React from "react";
 const columns = [
   { id: "date", title: "Date" },
   { id: "open_relation", title: "Open Relation" },
-  { id: "firstSideFormed", title: "First Side Formed" },
   { id: "opening_type", title: "Opening Type" },
   { id: "ibSize", title: "IB Size" },
   { id: "firstBreakout", title: "First IB Breakout" },
   { id: "ib_breakout", title: "IB Breakout" },
-  { id: "closing_b_period", title: "Closing B Period" },
 ];
 
 export const ReportTable = ({ data }) => {

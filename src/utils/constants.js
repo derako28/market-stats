@@ -259,7 +259,7 @@ export const TICKERS = {
   ES: "ES",
   NQ: "NQ",
   YM: "YM",
-  DAX: "DAX",
+  // DAX: "DAX",
 };
 
 export const REPORT_TYPES = {
