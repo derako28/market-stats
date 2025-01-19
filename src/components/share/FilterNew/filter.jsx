@@ -154,7 +154,7 @@ export const Filter = ({ onChange }) => {
   if (!visibilitySetting) return null;
 
   return (
-    <>
+    <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl2 rounded-xl">
       <form>
         <div className="flex flex-wrap items-end my-5 gap-3">
           {filterOptions
@@ -245,6 +245,6 @@ export const Filter = ({ onChange }) => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };

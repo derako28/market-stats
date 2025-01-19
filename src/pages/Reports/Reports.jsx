@@ -43,23 +43,16 @@ export const Reports = () => {
 
   return (
     <Page noHeader className={"px-4 py-2"}>
-      <div className={"mb-12"}>
-        <ButtonSettings onClick={() => setModalData(true)} />
+      <ButtonSettings onClick={() => setModalData(true)} />
 
-        <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl2 rounded-xl shadow-lg">
-          {visibilitySetting && <Filter onChange={onFilterData} />}
-        </div>
+      {visibilitySetting && <Filter onChange={onFilterData} />}
 
-        <div className={"text-center"}>
-          {visibilitySetting &&
-            visibilitySetting[REPORT_TYPES.DAYS_COUNTER] && (
-              <>
-                Days: {tableData?.length} (
-                {getPercent(tableData?.length, initialData?.length)}%)
-              </>
-            )}
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.DAYS_COUNTER] && (
+        <div className={"text-center mb-8"}>
+          Days: {tableData?.length} (
+          {getPercent(tableData?.length, initialData?.length)}%)
         </div>
-      </div>
+      )}
 
       {visibilitySetting && visibilitySetting[REPORT_TYPES.GREEN_RED_DAYS] && (
         <GreenRedDaysByWeekDay data={tableData} />
