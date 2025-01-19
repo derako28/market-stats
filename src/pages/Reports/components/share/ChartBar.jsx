@@ -54,8 +54,10 @@ const getOptions = (paramsOptions) => {
         grid: { color: "#374151" },
       },
       y: {
+        min: 0,
+        max: 100,
         stacked: true,
-        ticks: { color: "#ffffff" },
+        ticks: { color: "#ffffff", stepSize: 10 },
         grid: { color: "#374151" },
       },
     },

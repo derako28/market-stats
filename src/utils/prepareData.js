@@ -443,6 +443,7 @@ export const compileMarketProfileByDays = (
         poc,
         vah,
         val,
+        dailyData,
         // profile,
         aHigh,
         aLow,
@@ -1120,4 +1121,122 @@ export const getCloseBPeriod = (item) => {
   if (bClose <= median) {
     return "Below 50%";
   }
+};
+
+export const getDataWithTestIB = (data, zonePercent = 50) => {
+  return data.map((item) => {
+    return {
+      ...item,
+      testZoneIbUntilBreakout: checkIbTouchWithZoneUntilBreakoutIB(
+        item.dailyData,
+        item.firstBreakout,
+        zonePercent,
+      ),
+      testZoneIbAfterBreakout: checkIbTouchWithZoneAfterBreakoutIB(
+        item.dailyData,
+        item.firstBreakout,
+        zonePercent,
+      ),
+    };
+  });
+};
+
+export const checkIbTouchWithZoneUntilBreakoutIB = (
+  data,
+  breakoutType,
+  zonePercent = 50,
+) => {
+  if (data === undefined || data?.length < 2) {
+    return "NO"; // Если недостаточно данных, сразу возвращаем NO
+  }
+
+  // Шаг 1: Определяем IB (первые два периода)
+  const ibHigh = Math.max(data[0].high, data[1].high);
+  const ibLow = Math.min(data[0].low, data[1].low);
+
+  // Шаг 2: Вычисляем процент зоны IB (например, 60%)
+  const ibRange = ibHigh - ibLow;
+
+  let zoneValue;
+
+  // В зависимости от направления пробоя, вычисляем зону
+  if (breakoutType === "High Breakout") {
+    zoneValue = ibLow + ibRange * (zonePercent / 100); // Процент от нижней границы IB
+  } else {
+    zoneValue = ibHigh - ibRange * (zonePercent / 100); // Процент от верхней границы IB
+  }
+
+  // Шаг 3: Проверяем свечи до пробоя IB
+  for (let i = 2; i < data.length; i++) {
+    const { high, low } = data[i];
+
+    // Проверяем, что свеча тестирует зону IB до пробоя
+    if (breakoutType === "High Breakout" && low <= zoneValue) {
+      return "YES";
+    }
+
+    if (breakoutType === "Low Breakout" && high >= zoneValue) {
+      return "YES";
+    }
+
+    // Если уже произошел пробой, прекращаем проверку
+    if (
+      (breakoutType === "High Breakout" && high > ibHigh) ||
+      (breakoutType === "Low Breakout" && low < ibLow)
+    ) {
+      break;
+    }
+  }
+
+  return "NO"; // Если зона не была протестирована до пробоя
+};
+
+export const checkIbTouchWithZoneAfterBreakoutIB = (
+  data,
+  breakoutType,
+  zonePercent = 50,
+) => {
+  if (data === undefined || data?.length < 2) {
+    return "NO"; // Если недостаточно данных, сразу возвращаем NO
+  }
+
+  // Шаг 1: Определяем IB (первые два периода)
+  const ibHigh = Math.max(data[0].high, data[1].high);
+  const ibLow = Math.min(data[0].low, data[1].low);
+
+  // Шаг 2: Вычисляем процент зоны IB (например, 60%)
+  const ibRange = ibHigh - ibLow;
+
+  let zoneValue;
+
+  // В зависимости от направления пробоя, вычисляем зону
+  if (breakoutType === "High Breakout") {
+    zoneValue = ibLow + ibRange * (zonePercent / 100); // Процент от нижней границы IB
+  } else {
+    zoneValue = ibHigh - ibRange * (zonePercent / 100); // Процент от верхней границы IB
+  }
+
+  // Шаг 3: Проверяем ретест зоны IB после пробоя
+  let hasRetestedZone = false;
+  let isBreakOutIB = false;
+
+  for (let i = 2; i < data.length; i++) {
+    const { high, low } = data[i];
+
+    if (high > ibHigh || low < ibLow) {
+      isBreakOutIB = true;
+    }
+
+    if (isBreakOutIB) {
+      if (breakoutType === "High Breakout" && low <= zoneValue) {
+        hasRetestedZone = true;
+        break;
+      } else if (breakoutType === "Low Breakout" && high >= zoneValue) {
+        hasRetestedZone = true;
+        break;
+      }
+    }
+  }
+
+  return hasRetestedZone ? "YES" : "NO"; // Если ретест был, возвращаем "YES", иначе "NO"
 };

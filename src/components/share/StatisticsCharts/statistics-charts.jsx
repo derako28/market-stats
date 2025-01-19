@@ -25,7 +25,7 @@ export const StatisticsCharts = ({ data }) => {
   return (
     <>
       {/*<div className={"flex justify-center mt-20 mb-20"}>*/}
-      {/*  <ChartDonut*/}
+      {/*  <ChartPie*/}
       {/*    data={data}*/}
       {/*    title={"Open Relation"}*/}
       {/*    property={"open_relation"}*/}
@@ -34,7 +34,7 @@ export const StatisticsCharts = ({ data }) => {
       {/*    height={600}*/}
       {/*  />*/}
 
-      {/*  <ChartDonut*/}
+      {/*  <ChartPie*/}
       {/*    data={data}*/}
       {/*    title={"Close Relation"}*/}
       {/*    property={"close_relation_prev"}*/}
@@ -43,7 +43,7 @@ export const StatisticsCharts = ({ data }) => {
       {/*    height={600}*/}
       {/*  />*/}
 
-      {/*  <ChartDonut*/}
+      {/*  <ChartPie*/}
       {/*    data={data}*/}
       {/*    title={"Close Relation To Current Day"}*/}
       {/*    property={"close_relation"}*/}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
@@ -33,24 +32,6 @@ const getOptions = (paramsOptions) => {
         },
       },
     },
-    // layout: {
-    //   padding: {
-    //     top: 20, // Отступ сверху
-    //     bottom: 20, // Отступ снизу
-    //   },
-    // },
-    // scales: {
-    //   x: {
-    //     stacked: true,
-    //     ticks: { color: "#ffffff" },
-    //     grid: { color: "#374151" },
-    //   },
-    //   y: {
-    //     stacked: true,
-    //     ticks: { color: "#ffffff" },
-    //     grid: { color: "#374151" },
-    //   },
-    // },
   };
 };
 
@@ -60,9 +41,9 @@ const labelFormatter = (value, symbol = "percent") => {
   return value > 0 ? value + symbolFoLabel : null;
 };
 
-export const ChartDonut = ({ data, paramsOptions }) => {
+export const ChartPie = ({ data, paramsOptions }) => {
   return (
-    <div className={"p-4"} style={{ maxWidth: 350, margin: "0 auto" }}>
+    <div className={"p-2"} style={{ maxWidth: 350, margin: "0 auto" }}>
       <Pie data={data} options={getOptions(paramsOptions)} />
     </div>
   );

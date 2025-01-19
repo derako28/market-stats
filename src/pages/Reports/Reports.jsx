@@ -14,6 +14,7 @@ import { getPercent, getSetting } from "./utils.js";
 import { Page } from "../../components/share/Page/page.jsx";
 import { ButtonSettings } from "./components/share/ButtonSettings.jsx";
 import { TouchVAZones } from "./components/TouchVAZones.jsx";
+import { RetestIB } from "./components/RetestIB.jsx";
 
 export const Reports = () => {
   const [modalData, setModalData] = useState(false);
@@ -45,7 +46,7 @@ export const Reports = () => {
       <div className={"mb-12"}>
         <ButtonSettings onClick={() => setModalData(true)} />
 
-        <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl rounded-xl shadow-lg">
+        <div className="flex justify-center items-center gap-4 text-white px-4 md:px-8 lg:px-12 mx-auto max-w-screen-xl2 rounded-xl shadow-lg">
           {visibilitySetting && <Filter onChange={onFilterData} />}
         </div>
 
@@ -66,6 +67,10 @@ export const Reports = () => {
 
       {visibilitySetting && visibilitySetting[REPORT_TYPES.IB_BREAKOUT] && (
         <IBBreakout data={tableData} />
+      )}
+
+      {visibilitySetting && visibilitySetting[REPORT_TYPES.RETEST_IB] && (
+        <RetestIB data={tableData} />
       )}
 
       {visibilitySetting && visibilitySetting[REPORT_TYPES.TOUCH_ZONES] && (

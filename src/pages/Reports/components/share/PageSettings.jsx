@@ -102,8 +102,8 @@ export const PageSettings = ({ onChange }) => {
   return (
     <>
       <form onChange={handleChange}>
-        <div className={"flex flex-col space-y-4 "} style={{ width: 200 }}>
-          <div className={"flex flex-col gap-1"}>
+        <div className={"flex flex-col space-y-4 "} style={{ width: 250 }}>
+          <div className={"flex flex-col gap-2"}>
             <h4 className={"mb-2"}>Filters:</h4>
             {filterOptions?.map((item) => (
               <Checkbox

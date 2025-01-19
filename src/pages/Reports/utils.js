@@ -58,8 +58,8 @@ export const getChartDataGreenRedDays = (data) => {
         (bullishDays / (bullishDays + bearishDays)) *
         100
       ).toFixed(2),
-      bullishPercentage: getPercent(bullishDays, bullishDays + bearishDays, 2),
-      bearishPercentage: getPercent(bearishDays, bullishDays + bearishDays, 2),
+      bullishPercentage: getPercent(bullishDays, bullishDays + bearishDays),
+      bearishPercentage: getPercent(bearishDays, bullishDays + bearishDays),
     };
 
     return acc;
@@ -453,4 +453,32 @@ export const filterByThreshold = (data, thresholdPercent = 1) => {
   return data.filter(
     ({ ibSizeSegmented: ib_size }) => frequencyMap[ib_size] >= threshold,
   );
+};
+
+export const getChartDataRetestIB = (data, property) => {
+  const totalDays = data.length;
+
+  const is50IbTestedCounts = data.reduce((acc, item) => {
+    if (item[property] === "YES") {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
+
+  const percentage = {
+    yes: getPercent(is50IbTestedCounts, totalDays),
+    no: getPercent(totalDays - is50IbTestedCounts, totalDays),
+  };
+
+  return {
+    labels: ["Yes", "No"],
+    datasets: [
+      {
+        label: "",
+        data: [percentage.yes, percentage.no],
+        backgroundColor: ["#3b82f6", "#0d0f12"],
+        borderRadius: 10,
+      },
+    ],
+  };
 };

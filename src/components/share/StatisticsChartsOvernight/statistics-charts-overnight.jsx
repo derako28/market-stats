@@ -118,7 +118,7 @@ export const StatisticsChartsOvernight = ({ data }) => {
       </div>
 
       {/*<div className={"flex gap-8 justify-center mt-20 mb-20"}>*/}
-      {/*  <ChartDonut*/}
+      {/*  <ChartPie*/}
       {/*    data={data.map((item) => ({*/}
       {/*      ...item,*/}
       {/*      opening_type: item.opening_type.includes("OA")*/}
@@ -132,7 +132,7 @@ export const StatisticsChartsOvernight = ({ data }) => {
       {/*    height={600}*/}
       {/*  />*/}
 
-      {/*  <ChartDonut*/}
+      {/*  <ChartPie*/}
       {/*    data={data}*/}
       {/*    title={"Opening Types With Alternative Opening"}*/}
       {/*    property={"opening_type"}*/}
