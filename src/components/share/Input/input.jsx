@@ -9,7 +9,7 @@ export const Input = forwardRef(({ label, ...props }, ref) => {
         {label}
       </label>
       <input
-        style={{ minWidth: 120 }}
+        style={{ width: 120 }}
         className={inputClass}
         {...props}
         ref={ref}

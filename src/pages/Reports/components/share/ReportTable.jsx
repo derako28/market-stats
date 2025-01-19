@@ -7,7 +7,7 @@ const columns = [
   { id: "open_relation", title: "Open Relation" },
   { id: "opening_type", title: "Opening Type" },
   { id: "ibSize", title: "IB Size" },
-  { id: "firstBreakout", title: "First IB Breakout" },
+  // { id: "firstBreakout", title: "First IB Breakout" },
   { id: "ib_breakout", title: "IB Breakout" },
 ];
 

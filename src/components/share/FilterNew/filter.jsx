@@ -1,7 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import { DatepickerMY } from "../Datepicker/datepicker.jsx";
 import {
-  BREAKOUT_PERIODS_LABEL,
   CANDLE_TYPES,
   CLOSE_B_PERIOD,
   DATE_RANGE_OPTIONS,
@@ -20,6 +19,7 @@ import { MultiSelectMy } from "../MultiSelect/multi-select.jsx";
 import { useEffect } from "react";
 import { getSetting } from "../../../pages/Reports/utils.js";
 import { getOptions } from "../../../pages/Stats/utils.js";
+import { useDebounce } from "../../../Hooks/useDebounce.js";
 
 const filterOptions = [
   {
@@ -111,25 +111,36 @@ const defaultValue = {
 export const Filter = ({ onChange }) => {
   const setupFilter = JSON.parse(localStorage.getItem("dataFilter"));
   const visibilitySetting = getSetting();
-  // const [isPending, startTransition] = useTransition();
 
-  const { control, register, getValues, reset, handleSubmit } = useForm({
+  const { control, register, getValues, reset, watch } = useForm({
     defaultValues: defaultValue,
   });
 
+  // Слежение за значениями
+  const ibSizeFromValue = watch("ib_size_from");
+  const ibSizeToValue = watch("ib_size_to");
+
+  // Дебаунс для инпутов
+  const debouncedIbSizeFrom = useDebounce(ibSizeFromValue, 500);
+  const debouncedIbSizeTo = useDebounce(ibSizeToValue, 500);
+
+  useEffect(() => {
+    // Обновляем фильтр только для инпутов с дебаунсом
+    onChange({
+      ...getValues(),
+      ib_size_from: debouncedIbSizeFrom,
+      ib_size_to: debouncedIbSizeTo,
+    });
+  }, [debouncedIbSizeFrom, debouncedIbSizeTo]);
+
   const handleOnChange = () => {
+    // Мгновенно обновляем фильтры для всех остальных элементов
     onChange(getValues());
   };
 
-  const onSubmit = () => {
-    handleOnChange();
-
-    localStorage.setItem("dataFilter", JSON.stringify(getValues()));
-  };
   const onReset = () => {
     reset({ ...defaultValue, ticker: getValues("ticker") });
-
-    handleOnChange();
+    onChange(getValues());
     localStorage.removeItem("dataFilter");
   };
 
@@ -137,31 +148,30 @@ export const Filter = ({ onChange }) => {
     if (setupFilter) {
       reset(setupFilter);
     }
-
     handleOnChange();
   }, []);
 
-  useEffect(() => {
-    reset(defaultValue);
-  }, []);
-
-  if (!visibilitySetting) return;
+  if (!visibilitySetting) return null;
 
   return (
     <>
-      <form onChange={handleSubmit(onSubmit)}>
-        <div className={"flex flex-wrap items-end my-5 gap-3"}>
+      <form>
+        <div className="flex flex-wrap items-end my-5 gap-3">
           {filterOptions
             .filter((column) => visibilitySetting[column.id])
             .map((column) => {
               if (column.type === FILTER_TYPES.DATEPICKER_RANGE) {
                 return (
-                  <div key={column.id} className={"w-full sm:w-auto"}>
+                  <div key={column.id} className="w-full sm:w-auto">
                     <Controller
                       name={column.id}
                       control={control}
                       render={({ field }) => (
-                        <DatepickerMY label={column.title} {...field} />
+                        <DatepickerMY
+                          label={column.title}
+                          {...field}
+                          onChange={handleOnChange}
+                        />
                       )}
                     />
                   </div>
@@ -170,11 +180,11 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.SELECT && !column.filter) {
                 return (
-                  <div key={column.id} className={"w-full sm:w-auto"}>
+                  <div key={column.id} className="w-full sm:w-auto">
                     <SelectMy
                       options={column.options}
                       label={column.title}
-                      {...register(column.id)}
+                      {...register(column.id, { onChange: handleOnChange })}
                     />
                   </div>
                 );
@@ -182,7 +192,7 @@ export const Filter = ({ onChange }) => {
 
               if (column.type === FILTER_TYPES.MULTI_SELECT) {
                 return (
-                  <div key={column.id} className={"w-full sm:w-auto"}>
+                  <div key={column.id} className="w-full sm:w-auto">
                     <Controller
                       name={column.id}
                       control={control}
@@ -191,6 +201,7 @@ export const Filter = ({ onChange }) => {
                           label={column.title}
                           options={column.options}
                           {...field}
+                          onChange={handleOnChange}
                         />
                       )}
                     />
@@ -198,34 +209,39 @@ export const Filter = ({ onChange }) => {
                 );
               }
 
-              return (
-                column.filter ?? (
-                  <div key={column.id} className={"w-full sm:w-auto "}>
+              if (["ib_size_from", "ib_size_to"].includes(column.id)) {
+                return (
+                  <div key={column.id} className="w-full sm:w-auto">
                     <Input
                       label={column.title}
                       name={column.id}
                       {...register(column.id)}
                     />
                   </div>
+                );
+              }
+
+              return (
+                column.filter ?? (
+                  <div key={column.id} className="w-full sm:w-auto">
+                    <Input
+                      label={column.title}
+                      name={column.id}
+                      {...register(column.id, { onBlur: handleOnChange })}
+                    />
+                  </div>
                 )
               );
             })}
 
-          <div className={"flex flex-auto gap-2 mt-2 sm:mt-0"}>
-            <div className={"flex-auto"}>
+          <div className="flex flex-auto gap-2 mt-2 sm:mt-0">
+            <div className="flex-auto">
               <Button
                 onClick={onReset}
-                className={"self-end w-full"}
-                label={"Reset"}
+                className="w-full sm:w-auto"
+                label="Reset"
               />
             </div>
-            {/*<div className={"flex-auto"}>*/}
-            {/*  <Button*/}
-            {/*    onClick={onSubmit}*/}
-            {/*    className={"self-end w-full"}*/}
-            {/*    label={"Apply"}*/}
-            {/*  />*/}
-            {/*</div>*/}
           </div>
         </div>
       </form>

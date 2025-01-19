@@ -16,7 +16,7 @@ const getDayOfWeek = (date) => {
 };
 
 export const groupByWeekday = (data) => {
-  return data.reduce((grouped, item) => {
+  return data?.reduce((grouped, item) => {
     const date = moment(item.date);
     const weekday = getDayOfWeek(date);
 
