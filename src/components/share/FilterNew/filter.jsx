@@ -107,6 +107,7 @@ const defaultValue = {
   open_relation: "",
   opening_type: "",
   first_candle: "",
+  ib_trend: "",
   firstSideFormed: "",
   ib_size_from: "",
   ib_size_to: "",
