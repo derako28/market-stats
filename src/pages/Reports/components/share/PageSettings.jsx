@@ -35,6 +35,10 @@ const filterOptions = [
     title: "First Period",
   },
   {
+    id: "ib_trend",
+    title: "IB Trend",
+  },
+  {
     id: "firstSideFormed",
     title: "First Side Formed",
   },

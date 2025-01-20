@@ -414,6 +414,11 @@ export const compileMarketProfileByDays = (
 
       const firstTwoPeriods = dailyData.slice(0, 2);
 
+      const ibTrend =
+        firstTwoPeriods[0].open > firstTwoPeriods[1].close
+          ? CANDLE_TYPES.BEARISH
+          : CANDLE_TYPES.BULLISH;
+
       const ibHigh = Math.max(...firstTwoPeriods.map(({ high }) => high));
       const ibLow = Math.min(...firstTwoPeriods.map(({ low }) => low));
 
@@ -453,6 +458,7 @@ export const compileMarketProfileByDays = (
         cLow,
         trend,
         firstTwoPeriods,
+        ib_trend: ibTrend,
         ib_breakout: getIbBreakout(tpoHigh, tpoLow, ibHigh, ibLow),
         ibExt: getIbExt(tpoHigh, tpoLow, ibHigh, ibLow),
         breakoutPeriods: findBreakoutPeriods(dailyData),

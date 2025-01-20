@@ -47,6 +47,12 @@ const filterOptions = [
     options: getOptions(CANDLE_TYPES),
   },
   {
+    id: "ib_trend",
+    title: "IB Trend",
+    type: FILTER_TYPES.SELECT,
+    options: getOptions(CANDLE_TYPES),
+  },
+  {
     id: "firstSideFormed",
     title: "First Side Formed",
     type: FILTER_TYPES.SELECT,
